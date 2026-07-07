@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Kero Mais Pães Congelados</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   ALMA — PROPOSTA KERO MAIS PÃES CONGELADOS
+   Conteúdo · Posicionamento · Performance
+   Design: Editorial Light · White · Orange
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.5;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6.2rem); font-weight: 800;
+  line-height: .96; letter-spacing: -.045em; max-width: 920px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 540px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(10rem, 20vw, 16rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SEÇÕES BASE
+═══════════════════════════════════════════════════════ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 560px; }
+
+/* ═══════════════════════════════════════════════════════
+   DIAGNÓSTICO — 3 CARDS
+═══════════════════════════════════════════════════════ */
+.diag-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.diag-card { background: var(--white); padding: 48px 36px; transition: background .3s; }
+.diag-card:hover { background: var(--orange-l); }
+.diag-num {
+  font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.05em;
+  color: var(--orange); margin-bottom: 8px; line-height: 1;
+}
+.diag-label {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 20px;
+}
+.diag-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.02em; }
+.diag-card p { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.diag-quote {
+  background: var(--ink); padding: 48px;
+  border-top: 3px solid var(--orange);
+}
+.diag-quote p {
+  font-size: clamp(.95rem, 1.8vw, 1.15rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.6); max-width: 680px; margin: 0 auto; line-height: 1.8; text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ESTRATÉGIA — DOIS LADOS
+═══════════════════════════════════════════════════════ */
+.dif-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.dif-side { padding: 56px 48px; }
+.dif-side.comum { background: var(--off); }
+.dif-side.novo  { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.1; margin-bottom: 20px; }
+.dif-side p { font-size: .85rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict {
+  background: var(--orange); padding: 28px 48px;
+  display: flex; align-items: center;
+}
+.dif-verdict p { font-size: .88rem; font-weight: 600; letter-spacing: .02em; color: var(--black); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════
+   ENTREGAS — DOIS PLANOS LADO A LADO
+═══════════════════════════════════════════════════════ */
+.planos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  margin-bottom: 40px;
+}
+.plano-card {
+  border: 1px solid var(--line); padding: 48px 40px;
+  background: var(--white); position: relative;
+}
+.plano-card.destaque {
+  background: var(--ink); border-color: transparent;
+  border-top: 3px solid var(--orange);
+}
+.plano-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); border: 1px solid var(--line-s); padding: 5px 14px; margin-bottom: 24px;
+}
+.plano-card.destaque .plano-tag {
+  color: var(--orange); border-color: rgba(249,115,22,.3); background: rgba(249,115,22,.06);
+}
+.plano-card h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 800;
+  letter-spacing: -.03em; color: var(--ink); margin-bottom: 32px; line-height: 1.1;
+}
+.plano-card.destaque h3 { color: var(--white); }
+.entrega-list { list-style: none; margin-bottom: 32px; }
+.entrega-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.plano-card.destaque .entrega-item { border-bottom-color: rgba(255,255,255,.08); }
+.entrega-item:last-child { border-bottom: none; }
+.entrega-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--orange-l); border: 1.5px solid rgba(249,115,22,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; flex-shrink: 0; color: var(--orange); font-weight: 700;
+}
+.plano-card.destaque .entrega-icon {
+  background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.3);
+}
+.entrega-body { flex: 1; }
+.entrega-title { font-size: .86rem; font-weight: 700; margin-bottom: 3px; }
+.plano-card.destaque .entrega-title { color: var(--white); }
+.entrega-desc { font-size: .75rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+.plano-card.destaque .entrega-desc { color: rgba(255,255,255,.4); }
+.entrega-bonus {
+  background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.25);
+  padding: 6px 12px; margin-top: 6px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: .66rem; font-weight: 600; color: var(--orange); letter-spacing: .04em;
+}
+.entrega-bonus::before { content: '✦'; font-size:.4rem; }
+
+.plano-note {
+  background: rgba(249,115,22,.06); border: 1px solid rgba(249,115,22,.2);
+  padding: 14px 18px; margin-top: 24px; display: flex; align-items: flex-start; gap: 10px;
+}
+.plano-note p {
+  font-size: .72rem; font-weight: 300; color: var(--dim); line-height: 1.65;
+}
+.plano-note span { color: var(--orange); font-size:.75rem; flex-shrink:0; margin-top:1px; }
+
+.plano-site-extra {
+  border: 1px solid var(--line-s); padding: 16px 18px; margin-top: 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.plano-site-extra .label { font-size: .75rem; font-weight: 500; color: var(--dim); }
+.plano-site-extra .val { font-size: .88rem; font-weight: 700; color: var(--ink); white-space: nowrap; }
+
+.plano-inc-badge {
+  background: rgba(249,115,22,.08); border: 1px dashed rgba(249,115,22,.4);
+  padding: 14px 18px; margin-top: 16px; display: flex; align-items: center; gap: 10px;
+}
+.plano-inc-badge .inc-label { font-size: .72rem; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.5; }
+.plano-inc-badge .inc-label s { color: rgba(255,255,255,.25); font-style: normal; }
+.plano-inc-badge .inc-label strong { color: var(--orange); font-weight: 600; }
+
+.plano-roles-lbl {
+  font-size: .52rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.plano-roles-lbl::before { content:''; width:14px; height:1px; background:var(--dim); }
+.plano-card.destaque .plano-roles-lbl { color: rgba(255,255,255,.3); }
+.plano-card.destaque .plano-roles-lbl::before { background: rgba(255,255,255,.2); }
+.plano-roles { display: flex; flex-wrap: wrap; gap: 8px; }
+.role-tag {
+  font-size: .6rem; font-weight: 500; letter-spacing: .05em; color: var(--muted);
+  border: 1px solid rgba(16,24,40,.14); padding: 6px 12px;
+}
+.plano-card.destaque .role-tag {
+  color: rgba(255,255,255,.4); border-color: rgba(255,255,255,.12);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TRANSIÇÃO LARANJA
+═══════════════════════════════════════════════════════ */
+.transicao {
+  background: var(--orange); padding: 80px 32px; text-align: center;
+}
+.transicao-inner { max-width: 720px; margin: 0 auto; }
+.transicao p {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 600;
+  color: var(--black); line-height: 1.45; letter-spacing: -.02em;
+}
+.transicao p em { font-style: italic; font-weight: 300; }
+.transicao-arrow {
+  width: 1px; height: 48px; background: rgba(0,0,0,.25); margin: 36px auto 0;
+  position: relative;
+}
+.transicao-arrow::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 6px; height: 6px; border-right: 1.5px solid rgba(0,0,0,.4);
+  border-bottom: 1.5px solid rgba(0,0,0,.4); transform: translateX(-50%) rotate(45deg) translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   PREÇOS — ANCORAGEM
+═══════════════════════════════════════════════════════ */
+.precos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-bottom: 48px;
+}
+.preco-card { padding: 56px 48px; }
+.preco-card.standard { background: var(--ink); }
+.preco-card.featured { background: var(--white); border-top: 3px solid var(--orange); }
+.preco-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 14px; margin-bottom: 20px;
+}
+.standard .preco-badge { color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.12); }
+.featured .preco-badge { color: var(--orange); background: var(--orange-l); }
+.preco-card h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: 1.05; margin-bottom: 8px;
+}
+.standard .preco-card h3, .standard h3 { color: var(--white); }
+.featured h3 { color: var(--ink); }
+.preco-sub {
+  font-size: .78rem; font-weight: 300; margin-bottom: 28px; line-height: 1.6;
+}
+.standard .preco-sub { color: rgba(255,255,255,.35); }
+.featured .preco-sub { color: var(--muted); }
+.preco-val-wrap { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.preco-val {
+  font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 800; letter-spacing: -.05em;
+}
+.standard .preco-val { color: var(--white); }
+.featured .preco-val { color: var(--ink); }
+.preco-per { font-size: .88rem; font-weight: 300; }
+.standard .preco-per { color: rgba(255,255,255,.35); }
+.featured .preco-per { color: var(--muted); }
+.preco-items { list-style: none; margin-bottom: 28px; }
+.preco-items li {
+  font-size: .8rem; font-weight: 300; padding: 9px 0;
+  border-bottom: 1px solid; display: flex; align-items: flex-start; gap: 10px;
+  line-height: 1.5;
+}
+.standard .preco-items li { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.07); }
+.featured .preco-items li { color: var(--dim); border-color: var(--line); }
+.preco-items li:last-child { border-bottom: none; }
+.preco-items li::before { content:'→'; flex-shrink:0; margin-top:1px; }
+.standard .preco-items li::before { color: rgba(249,115,22,.6); }
+.featured .preco-items li::before { color: var(--orange); }
+.preco-extra-site {
+  padding: 14px 16px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  margin-bottom: 24px;
+}
+.preco-extra-site p { font-size: .72rem; color: rgba(255,255,255,.4); line-height: 1.5; }
+.preco-extra-site strong { color: rgba(255,255,255,.7); font-weight: 600; }
+.preco-destaque-block {
+  background: var(--orange-l); border: 1px solid rgba(249,115,22,.2);
+  padding: 14px 16px; margin-bottom: 24px;
+}
+.preco-destaque-block p { font-size: .72rem; color: var(--orange-d); line-height: 1.55; font-weight: 400; }
+.preco-destaque-block p s { color: rgba(249,115,22,.5); }
+.preco-destaque-block strong { font-weight: 700; }
+.preco-bonus-block {
+  background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.3);
+  padding: 13px 16px; margin-bottom: 10px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.preco-bonus-block::before { content: '✦'; color: var(--orange); font-size: .65rem; flex-shrink:0; margin-top:2px; }
+.preco-bonus-block p { font-size: .72rem; color: rgba(255,255,255,.55); line-height: 1.55; }
+.preco-bonus-block strong { color: var(--orange); font-weight: 600; }
+.preco-avulso-block {
+  padding: 13px 16px; margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03);
+}
+.preco-avulso-block p { font-size: .68rem; color: rgba(255,255,255,.3); line-height: 1.5; }
+.preco-avulso-block strong { color: rgba(255,255,255,.45); font-weight: 600; }
+.preco-avulso-block .avulso-label {
+  font-size: .58rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.2); display: block; margin-bottom: 4px;
+}
+.preco-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; font-size: .72rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.standard .preco-cta {
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.standard .preco-cta:hover { background: rgba(255,255,255,.18); }
+.featured .preco-cta {
+  background: var(--orange); color: var(--black);
+}
+.featured .preco-cta:hover { background: var(--orange-d); color: var(--white); transform: translateY(-2px); }
+.preco-cta::after { content: '→'; }
+
+/* ─── CTA FINAL ─── */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:620px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:480px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+.cta-validade {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border:1px solid rgba(249,115,22,.3);
+  border-radius:99px; font-size:.65rem; font-weight:500; letter-spacing:.08em;
+  color:rgba(249,115,22,.8); margin-bottom:20px;
+}
+.validade-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--orange);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
+.cta-main {
+  display:inline-flex; align-items:center; gap:12px; padding:18px 48px;
+  background:var(--orange); color:var(--black);
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; transition:background .25s, transform .2s;
+}
+.cta-main:hover { background:var(--orange-d); color:var(--white); transform:translateY(-2px); }
+.cta-main::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top:16px; font-size:.68rem; color:var(--dim); letter-spacing:.05em; }
+
+/* ─── PRÓXIMOS PASSOS ─── */
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; text-align:center; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .diag-grid { grid-template-columns: 1fr; }
+  .dif-grid   { grid-template-columns: 1fr; }
+  .planos-grid { grid-template-columns: 1fr; gap: 24px; }
+  .precos-grid { grid-template-columns: 1fr; }
+  .hero-deco  { display: none; }
+  .pp-steps   { flex-direction: column; align-items: center; gap: 24px; }
+  .pp-arrow   { transform: rotate(90deg); padding: 0; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .section { padding: 80px 0; }
+  .dif-side { padding: 40px 24px; }
+  .plano-card { padding: 36px 24px; }
+  .preco-card { padding: 40px 24px; }
+  .transicao { padding: 60px 24px; }
+}
+@media(max-width:400px){
+  .wrap { padding: 0 16px; }
+  .section { padding: 64px 0; }
+  .plano-card, .preco-card { padding: 32px 18px; }
+  .transicao { padding: 48px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <a href="#contato" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">Fabricando qualidade</span>
+      <span class="line2">há anos. Hora de<br>distribuir autoridade.</span>
+    </h1>
+    <p class="hero-sub">A Kero Mais tem produto, processos e parceiros — falta o posicionamento digital que transforma uma fábrica goiana em referência nacional no segmento de panificação congelada.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Conteúdo Estratégico</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Posicionamento B2B</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Site Institucional</span>
+    </div>
+  </div>
+  <div class="hero-deco">K+</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — DIAGNÓSTICO
+════════════════════════════ -->
+<section class="section alt" id="diagnostico">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — O diagnóstico</div>
+      <h2 class="t-headline sh r d1">842 posts.<br>E o Instagram ainda não<br>conta o tamanho da Kero Mais.</h2>
+      <p class="t-body sp r d2">Antes de propor qualquer coisa, fizemos uma leitura completa do seu perfil. O Instagram já gera contatos — mas o posicionamento não comunica a escala e a seriedade que a Kero Mais representa. É isso que freia o crescimento.</p>
+    </div>
+    <div class="diag-grid r d2">
+      <div class="diag-card">
+        <div class="diag-num">~0,5%</div>
+        <div class="diag-label">Taxa de engajamento</div>
+        <h3>Produto bom. Conteúdo sem estratégia.</h3>
+        <p>Com 6.776 seguidores e 842 publicações, o perfil não performa como deveria. Os Reels chegam a 2.497 visualizações — prova de que o formato e o produto funcionam. O que falta é uma estratégia que direcione esse alcance para quem importa.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">0</div>
+        <div class="diag-label">Jornada para novos parceiros</div>
+        <h3>A bio diz "para o seu empreendimento". O perfil não explica como.</h3>
+        <p>Nenhum conteúdo que convença um potencial distribuidor a fechar. Sem landing page, sem funil, sem narrativa de parceria. O parceiro que se interessa pelo produto chega direto no WhatsApp — sem qualificação, sem contexto, tudo na mão humana.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">∅</div>
+        <div class="diag-label">Presença institucional</div>
+        <h3>Uma marca sem endereço digital.</h3>
+        <p>Nenhum site. Sem domínio, sem página de apresentação, sem credencial para o parceiro que pesquisa antes de ligar. Em 2026, isso custa contratos — especialmente no mercado B2B, onde credibilidade é pré-requisito para a conversa comercial.</p>
+      </div>
+    </div>
+    <div class="diag-quote r d3">
+      <p>"A Kero Mais tem o melhor insumo de qualquer estratégia de marketing: produto bom, com volume e consistência. O que falta é construir o canal que leva esse produto — e essa marca — até quem precisa."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — A VIRADA
+════════════════════════════ -->
+<section class="section" id="estrategia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — A virada</div>
+      <h2 class="t-headline sh r d1">Não é sobre postar mais.<br>É sobre comunicar para<br>quem decide.</h2>
+      <p class="t-body sp r d2">O volume de postagens não é o problema. O que precisa mudar é a direção — de conteúdo de fábrica para conteúdo que fala com o parceiro ideal.</p>
+    </div>
+    <div class="dif-grid r d2">
+      <div class="dif-side comum">
+        <div class="dif-tag">O que o perfil comunica hoje</div>
+        <h3>Conteúdo de<br>processo industrial</h3>
+        <p>Posts de bastidores da produção em loop, frases genéricas do dia e hashtags apenas da própria marca. Uma presença que mostra que existe, mas não convence ninguém a querer ser parceiro.</p>
+        <ul class="dif-items">
+          <li>Conteúdo repetitivo de fábrica (90% do feed)</li>
+          <li>Hashtags exclusivas da marca — sem alcance externo</li>
+          <li>Nenhuma prova social de distribuidor satisfeito</li>
+          <li>WhatsApp como único destino, sem nenhuma qualificação</li>
+          <li>Sem site para o parceiro pesquisar e se convencer</li>
+        </ul>
+      </div>
+      <div class="dif-side novo">
+        <div class="dif-tag orange">Estratégia Alma · Posicionamento B2B</div>
+        <h3>Conteúdo que<br>conquista parceiros</h3>
+        <p>Cada publicação serve como argumento comercial — mostrando o produto, o processo, o ROI do parceiro e a autoridade da marca no segmento. Com site e funil, o percurso até o fechamento se torna previsível.</p>
+        <ul class="dif-items pos">
+          <li>Conteúdo estratégico para distribuidores e revendedores</li>
+          <li>Presença editorial que constrói autoridade no segmento</li>
+          <li>Site institucional como base de credibilidade</li>
+          <li>Histórias de parceiros reais como prova social</li>
+          <li>Funil claro: conteúdo → site → contato qualificado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dif-verdict r d3">
+      <p>Uma fábrica com 25+ itens e capacidade de atender empreendedores em Goiás não pode depender apenas de indicação. A estratégia digital existe para escalar isso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — O QUE ENTREGAMOS
+════════════════════════════ -->
+<section class="section alt" id="entregas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — O que entregamos</div>
+      <h2 class="t-headline sh r d1">Dois caminhos completos.<br>Uma escolha estratégica.</h2>
+      <p class="t-body sp r d2">Cada plano foi montado para resolver um problema real da Kero Mais — com equipe dedicada, cadência definida e entregáveis claros todo mês.</p>
+    </div>
+
+    <div class="planos-grid r d2">
+
+      <!-- PLANO CONTEÚDO -->
+      <div class="plano-card">
+        <div class="plano-tag">Plano 01</div>
+        <h3>Conteúdo +<br>Posicionamento</h3>
+        <ul class="entrega-list">
+          <li class="entrega-item">
+            <div class="entrega-icon">▶</div>
+            <div class="entrega-body">
+              <div class="entrega-title">3 postagens por semana</div>
+              <div class="entrega-desc">Cards, carrosséis e Reels estratégicos com foco em parceiros — ~13 publicações/mês com roteirização, design e edição incluídos.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◉</div>
+            <div class="entrega-body">
+              <div class="entrega-title">3 dias de postagens nos stories por semana</div>
+              <div class="entrega-desc">Conteúdo de bastidores, engajamento e distribuição de posts — mantendo presença ativa diária no perfil.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">🎬</div>
+            <div class="entrega-body">
+              <div class="entrega-title">1 diária de gravação por mês</div>
+              <div class="entrega-desc">5 horas de captação profissional na fábrica ou locação — roteiro, direção e edição incluídos.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◆</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Estratégia editorial mensal</div>
+              <div class="entrega-desc">Pauta mensal alinhada ao funil B2B: conteúdo de produto, prova social, captação de parceiros e autoridade de marca.</div>
+            </div>
+          </li>
+        </ul>
+        <div style="margin-top:32px;">
+          <div class="plano-roles-lbl">7 especialistas no projeto</div>
+          <div class="plano-roles">
+            <span class="role-tag">Videomaker</span>
+            <span class="role-tag">Editor</span>
+            <span class="role-tag">Designer</span>
+            <span class="role-tag">Copywriter</span>
+            <span class="role-tag">Estrategista</span>
+            <span class="role-tag">Gestor de tráfego</span>
+            <span class="role-tag">Social media</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLANO PERFORMANCE -->
+      <div class="plano-card destaque">
+        <div class="plano-tag">Plano 02 · Mais completo</div>
+        <h3>Performance<br>Completo</h3>
+        <ul class="entrega-list">
+          <li class="entrega-item">
+            <div class="entrega-icon">✓</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Tudo do Plano Conteúdo</div>
+              <div class="entrega-desc">3 postagens/semana, 3 stories/semana, 1 gravação/mês e estratégia editorial mensal.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◉</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Site institucional incluso</div>
+              <div class="entrega-desc">Desenvolvimento completo do site da Kero Mais — sem custo adicional. Você fornece apenas o domínio.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">⚡</div>
+            <div class="entrega-body">
+              <div class="entrega-title">CRM com IA — qualificação automática</div>
+              <div class="entrega-desc">Sistema integrado ao WhatsApp que identifica o perfil de cada contato, qualifica automaticamente e transfere para o comercial com contexto completo. Nenhum parceiro potencial se perde por falta de resposta.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◆</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Página de apresentação para parceiros</div>
+              <div class="entrega-desc">Uma seção dedicada no site para distribuidores e revendedores — com catálogo, condições comerciais e formulário de interesse.</div>
+            </div>
+          </li>
+        </ul>
+        <div style="margin-top:32px;">
+          <div class="plano-roles-lbl">9 especialistas no projeto</div>
+          <div class="plano-roles">
+            <span class="role-tag">Videomaker</span>
+            <span class="role-tag">Editor</span>
+            <span class="role-tag">Designer</span>
+            <span class="role-tag">Copywriter</span>
+            <span class="role-tag">Estrategista</span>
+            <span class="role-tag">Gestor de tráfego</span>
+            <span class="role-tag">Social media</span>
+            <span class="role-tag">Desenvolvedor web</span>
+            <span class="role-tag">Especialista em IA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TRANSIÇÃO
+════════════════════════════ -->
+<div class="transicao r">
+  <div class="transicao-inner">
+    <p>Fechar o Plano Performance significa ter o site sem custo adicional — e um sistema que trabalha para você <em>enquanto a equipe comercial dorme.</em></p>
+    <div class="transicao-arrow"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     04 — INVESTIMENTO
+════════════════════════════ -->
+<section class="section" id="investimento">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — Investimento</div>
+      <h2 class="t-headline sh r d1">Transparente.<br>Sem surpresas.</h2>
+      <p class="t-body sp r d2">Dois planos construídos para realidades diferentes. Escolha o que faz mais sentido para o momento da Kero Mais — e conte com a equipe para crescer junto.</p>
+    </div>
+
+    <div class="precos-grid r d2">
+
+      <!-- PLANO PADRÃO -->
+      <div class="preco-card standard">
+        <div class="preco-badge">Plano 01</div>
+        <h3>Conteúdo +<br>Posicionamento</h3>
+        <p class="preco-sub">Para quem quer construir a base digital com consistência e qualidade de marca.</p>
+        <div class="preco-val-wrap">
+          <span class="preco-val">R$ 4.000</span>
+          <span class="preco-per">/mês</span>
+        </div>
+        <ul class="preco-items">
+          <li>3 postagens estratégicas por semana</li>
+          <li>3 dias de postagens nos stories por semana</li>
+          <li>1 gravação/mês</li>
+          <li>Estratégia editorial B2B mensal</li>
+          <li>7 especialistas dedicados à conta</li>
+        </ul>
+        <div class="preco-bonus-block">
+          <p><strong>Bônus nos 3 primeiros meses:</strong> 1 gravação extra por mês — sem custo adicional.</p>
+        </div>
+        <div class="preco-avulso-block">
+          <span class="avulso-label">Contratação avulsa · não inclusa no plano</span>
+          <p><strong>Site institucional:</strong> R$ 3.500 em até 4× de R$ 875 · você fornece apenas o domínio.</p>
+        </div>
+        <div class="preco-avulso-block">
+          <span class="avulso-label">Sob demanda</span>
+          <p><strong>Diária de gravação adicional:</strong> R$ 600 por diária (5h de captação).</p>
+        </div>
+        <a href="https://wa.me/5562999999999" class="preco-cta">Quero este plano</a>
+      </div>
+
+      <!-- PLANO PERFORMANCE -->
+      <div class="preco-card featured">
+        <div class="preco-badge">Plano 02 · Mais completo</div>
+        <h3>Performance<br>Completo</h3>
+        <p class="preco-sub">Para quem quer resultado agora — com site, IA e um ecossistema que capta e qualifica parceiros automaticamente.</p>
+        <div class="preco-val-wrap">
+          <span class="preco-val">R$ 5.000</span>
+          <span class="preco-per">/mês</span>
+        </div>
+        <ul class="preco-items">
+          <li>Tudo do Plano Conteúdo</li>
+          <li>Site institucional completo <strong>(incluso)</strong></li>
+          <li>CRM com IA — qualificação automática no WhatsApp</li>
+          <li>Página de apresentação para parceiros</li>
+          <li>9 especialistas dedicados à conta</li>
+        </ul>
+        <div class="preco-destaque-block">
+          <p>Site institucional: <s>R$ 3.500</s> → <strong>incluso neste plano</strong>. Você só paga o domínio.</p>
+        </div>
+        <div class="preco-destaque-block" style="margin-top:8px;">
+          <p><strong>Diária de gravação adicional:</strong> R$ 600 por diária (5h) · sob demanda.</p>
+        </div>
+        <a href="https://wa.me/5562999999999" class="preco-cta">Quero o plano completo</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA FINAL
+════════════════════════════ -->
+<section class="section alt" id="contato">
+  <div class="wrap">
+    <div class="cta-wrap">
+      <div class="cta-validade r">
+        <div class="validade-dot"></div>
+        Proposta disponível até 30/06/2026
+      </div>
+      <h2 class="t-headline r d1">Vamos construir a<br>referência do mercado<br>de panificação?</h2>
+      <p class="cp r d2">Esta proposta foi feita para a Kero Mais — com base no que encontramos no seu perfil e no que você mesmo apontou como prioridade. O próximo passo é simples.</p>
+      <a href="https://wa.me/5562999999999" class="cta-main r d3">Falar com a equipe</a>
+      <p class="cta-sub r d4">Resposta em até 24 horas · Sem compromisso</p>
+
+      <div class="proximos-passos r d4">
+        <p class="pp-title">Próximos passos</p>
+        <div class="pp-steps">
+          <div class="pp-step">
+            <div class="pp-step-num">01</div>
+            <p class="pp-step-name">Conversa de alinhamento</p>
+            <p class="pp-step-desc">Confirmamos o plano escolhido e alinhamos as prioridades do primeiro mês.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">02</div>
+            <p class="pp-step-name">Onboarding da conta</p>
+            <p class="pp-step-desc">Briefing, acesso aos canais e definição da estratégia editorial inaugural.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">03</div>
+            <p class="pp-step-name">Primeira gravação</p>
+            <p class="pp-step-desc">Agendamento da primeira diária de captação — roteiro, direção e edição incluídos.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">04</div>
+            <p class="pp-step-name">Go live</p>
+            <p class="pp-step-desc">Calendário editorial ativo, primeiros posts publicados, site e IA em produção (Plano Performance).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <p>Alma.Convert · Agência Prospect · prospect.trafego@gmail.com · Proposta preparada exclusivamente para Kero Mais Pães Congelados · 2026</p>
+</footer>
+
+<!-- ════════════════════════════
+     SCRIPTS
+════════════════════════════ -->
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- ── TRACKER ── -->
+<script>
+(function(){
+  var WEBHOOK = "https://script.google.com/macros/s/AKfycbxQ2OJsIx3VWtCIJpVT5DMmiCtoNeK2vRRQypwF4fZTU2paSqxQA9UvUq5abSHYlffc/exec";
+  if(!WEBHOOK || WEBHOOK.indexOf("COLE_AQUI") > -1) return;
+  var ua  = navigator.userAgent || "";
+  var mob = /Mobi|Android|iPhone|iPad/i.test(ua);
+  var nav = (ua.match(/(Chrome|Safari|Firefox|Edge|OPR)\/[\d.]+/) || ["Desconhecido"])[0];
+  var ref = document.referrer || "direto";
+  fetch("https://ip-api.com/json/?fields=city,regionName&lang=pt-BR")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Kero Mais Pães Congelados")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Posicionamento + Performance")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent(d.city || "—")
+        + "&estado="      + encodeURIComponent(d.regionName || "—");
+      new Image().src = src;
+    })
+    .catch(function(){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Kero Mais Pães Congelados")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Posicionamento + Performance")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent("—")
+        + "&estado="      + encodeURIComponent("—");
+      new Image().src = src;
+    });
+})();
+</script>
+
+</body>
+</html>

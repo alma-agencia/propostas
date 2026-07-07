@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Janaina · Enxoval Bebê Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   ALMA — PROPOSTA JANAINA · ENXOVAL BEBÊ PREMIUM
+   Lançamento de marca · Duas fases · R$ 3.500/mês
+   Design: Editorial Light · White · Orange
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.5;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6.2rem); font-weight: 800;
+  line-height: .96; letter-spacing: -.045em; max-width: 920px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 540px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(10rem, 20vw, 16rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SEÇÕES BASE
+═══════════════════════════════════════════════════════ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 560px; }
+
+/* ═══════════════════════════════════════════════════════
+   OPORTUNIDADE — 3 CARDS
+═══════════════════════════════════════════════════════ */
+.diag-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.diag-card { background: var(--white); padding: 48px 36px; transition: background .3s; }
+.diag-card:hover { background: var(--orange-l); }
+.diag-num {
+  font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.05em;
+  color: var(--orange); margin-bottom: 8px; line-height: 1;
+}
+.diag-label {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 20px;
+}
+.diag-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.02em; }
+.diag-card p { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.diag-quote {
+  background: var(--ink); padding: 48px;
+  border-top: 3px solid var(--orange);
+}
+.diag-quote p {
+  font-size: clamp(.95rem, 1.8vw, 1.15rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.6); max-width: 680px; margin: 0 auto; line-height: 1.8; text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ESTRATÉGIA — DOIS LADOS
+═══════════════════════════════════════════════════════ */
+.dif-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.dif-side { padding: 56px 48px; }
+.dif-side.comum { background: var(--off); }
+.dif-side.novo  { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.1; margin-bottom: 20px; }
+.dif-side p { font-size: .85rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict {
+  background: var(--orange); padding: 28px 48px;
+  display: flex; align-items: center;
+}
+.dif-verdict p { font-size: .88rem; font-weight: 600; letter-spacing: .02em; color: var(--black); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════
+   FASES — DOIS CARDS LADO A LADO
+═══════════════════════════════════════════════════════ */
+.planos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  margin-bottom: 40px;
+}
+.plano-card {
+  border: 1px solid var(--line); padding: 48px 40px;
+  background: var(--white); position: relative;
+}
+.plano-card.destaque {
+  background: var(--ink); border-color: transparent;
+  border-top: 3px solid var(--orange);
+}
+.plano-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); border: 1px solid var(--line-s); padding: 5px 14px; margin-bottom: 24px;
+}
+.plano-card.destaque .plano-tag {
+  color: var(--orange); border-color: rgba(249,115,22,.3); background: rgba(249,115,22,.06);
+}
+.plano-card h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 800;
+  letter-spacing: -.03em; color: var(--ink); margin-bottom: 32px; line-height: 1.1;
+}
+.plano-card.destaque h3 { color: var(--white); }
+.entrega-list { list-style: none; margin-bottom: 32px; }
+.entrega-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.plano-card.destaque .entrega-item { border-bottom-color: rgba(255,255,255,.08); }
+.entrega-item:last-child { border-bottom: none; }
+.entrega-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--orange-l); border: 1.5px solid rgba(249,115,22,.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; flex-shrink: 0; color: var(--orange); font-weight: 700;
+}
+.plano-card.destaque .entrega-icon {
+  background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.3);
+}
+.entrega-body { flex: 1; }
+.entrega-title { font-size: .86rem; font-weight: 700; margin-bottom: 3px; }
+.plano-card.destaque .entrega-title { color: var(--white); }
+.entrega-desc { font-size: .75rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+.plano-card.destaque .entrega-desc { color: rgba(255,255,255,.4); }
+.entrega-bonus {
+  background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.25);
+  padding: 6px 12px; margin-top: 6px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: .66rem; font-weight: 600; color: var(--orange); letter-spacing: .04em;
+}
+.entrega-bonus::before { content: '✦'; font-size:.4rem; }
+.plano-note {
+  background: rgba(249,115,22,.06); border: 1px solid rgba(249,115,22,.2);
+  padding: 14px 18px; margin-top: 24px; display: flex; align-items: flex-start; gap: 10px;
+}
+.plano-note p { font-size: .72rem; font-weight: 300; color: var(--dim); line-height: 1.65; }
+.plano-note span { color: var(--orange); font-size:.75rem; flex-shrink:0; margin-top:1px; }
+.plano-roles-lbl {
+  font-size: .52rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.plano-roles-lbl::before { content:''; width:14px; height:1px; background:var(--dim); }
+.plano-card.destaque .plano-roles-lbl { color: rgba(255,255,255,.3); }
+.plano-card.destaque .plano-roles-lbl::before { background: rgba(255,255,255,.2); }
+.plano-roles { display: flex; flex-wrap: wrap; gap: 8px; }
+.role-tag {
+  font-size: .6rem; font-weight: 500; letter-spacing: .05em; color: var(--muted);
+  border: 1px solid rgba(16,24,40,.14); padding: 6px 12px;
+}
+.plano-card.destaque .role-tag {
+  color: rgba(255,255,255,.4); border-color: rgba(255,255,255,.12);
+}
+
+/* ── Conector de fases ── */
+.fase-conector {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 24px 0 8px; color: var(--dim);
+}
+.fase-conector-line { flex: 1; height: 1px; background: var(--line); }
+.fase-conector-label {
+  font-size: .58rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); white-space: nowrap; padding: 6px 16px;
+  border: 1px solid rgba(249,115,22,.3); background: var(--orange-l);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TRANSIÇÃO LARANJA
+═══════════════════════════════════════════════════════ */
+.transicao {
+  background: var(--orange); padding: 80px 32px; text-align: center;
+}
+.transicao-inner { max-width: 720px; margin: 0 auto; }
+.transicao p {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 600;
+  color: var(--black); line-height: 1.45; letter-spacing: -.02em;
+}
+.transicao p em { font-style: italic; font-weight: 300; }
+.transicao-arrow {
+  width: 1px; height: 48px; background: rgba(0,0,0,.25); margin: 36px auto 0;
+  position: relative;
+}
+.transicao-arrow::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 6px; height: 6px; border-right: 1.5px solid rgba(0,0,0,.4);
+  border-bottom: 1.5px solid rgba(0,0,0,.4); transform: translateX(-50%) rotate(45deg) translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════
+   PREÇOS
+═══════════════════════════════════════════════════════ */
+.precos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-bottom: 48px;
+}
+.preco-card { padding: 56px 48px; }
+.preco-card.standard { background: var(--ink); }
+.preco-card.featured { background: var(--white); border-top: 3px solid var(--orange); }
+.preco-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 14px; margin-bottom: 20px;
+}
+.standard .preco-badge { color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.12); }
+.featured .preco-badge { color: var(--orange); background: var(--orange-l); }
+.preco-card h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: 1.05; margin-bottom: 8px;
+}
+.standard .preco-card h3, .standard h3 { color: var(--white); }
+.featured h3 { color: var(--ink); }
+.preco-sub {
+  font-size: .78rem; font-weight: 300; margin-bottom: 28px; line-height: 1.6;
+}
+.standard .preco-sub { color: rgba(255,255,255,.35); }
+.featured .preco-sub { color: var(--muted); }
+.preco-val-wrap { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.preco-val {
+  font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 800; letter-spacing: -.05em;
+}
+.standard .preco-val { color: var(--white); }
+.featured .preco-val { color: var(--ink); }
+.preco-per { font-size: .88rem; font-weight: 300; }
+.standard .preco-per { color: rgba(255,255,255,.35); }
+.featured .preco-per { color: var(--muted); }
+.preco-items { list-style: none; margin-bottom: 28px; }
+.preco-items li {
+  font-size: .8rem; font-weight: 300; padding: 9px 0;
+  border-bottom: 1px solid; display: flex; align-items: flex-start; gap: 10px;
+  line-height: 1.5;
+}
+.standard .preco-items li { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.07); }
+.featured .preco-items li { color: var(--dim); border-color: var(--line); }
+.preco-items li:last-child { border-bottom: none; }
+.preco-items li::before { content:'→'; flex-shrink:0; margin-top:1px; }
+.standard .preco-items li::before { color: rgba(249,115,22,.6); }
+.featured .preco-items li::before { color: var(--orange); }
+.preco-destaque-block {
+  background: var(--orange-l); border: 1px solid rgba(249,115,22,.2);
+  padding: 14px 16px; margin-bottom: 24px;
+}
+.preco-destaque-block p { font-size: .72rem; color: var(--orange-d); line-height: 1.55; font-weight: 400; }
+.preco-destaque-block p s { color: rgba(249,115,22,.5); }
+.preco-destaque-block strong { font-weight: 700; }
+.preco-bonus-block {
+  background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.3);
+  padding: 13px 16px; margin-bottom: 10px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.preco-bonus-block::before { content: '✦'; color: var(--orange); font-size: .65rem; flex-shrink:0; margin-top:2px; }
+.preco-bonus-block p { font-size: .72rem; color: rgba(255,255,255,.55); line-height: 1.55; }
+.preco-bonus-block strong { color: var(--orange); font-weight: 600; }
+.preco-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; font-size: .72rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.standard .preco-cta {
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.standard .preco-cta:hover { background: rgba(255,255,255,.18); }
+.featured .preco-cta { background: var(--orange); color: var(--black); }
+.featured .preco-cta:hover { background: var(--orange-d); color: var(--white); transform: translateY(-2px); }
+.preco-cta::after { content: '→'; }
+
+/* ─── CTA FINAL ─── */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:620px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:480px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+.cta-validade {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border:1px solid rgba(249,115,22,.3);
+  border-radius:99px; font-size:.65rem; font-weight:500; letter-spacing:.08em;
+  color:rgba(249,115,22,.8); margin-bottom:20px;
+}
+.validade-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--orange);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
+.cta-main {
+  display:inline-flex; align-items:center; gap:12px; padding:18px 48px;
+  background:var(--orange); color:var(--black);
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; transition:background .25s, transform .2s;
+}
+.cta-main:hover { background:var(--orange-d); color:var(--white); transform:translateY(-2px); }
+.cta-main::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top:16px; font-size:.68rem; color:var(--dim); letter-spacing:.05em; }
+
+/* ─── PRÓXIMOS PASSOS ─── */
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; text-align:center; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .diag-grid { grid-template-columns: 1fr; }
+  .dif-grid   { grid-template-columns: 1fr; }
+  .planos-grid { grid-template-columns: 1fr; gap: 24px; }
+  .precos-grid { grid-template-columns: 1fr; }
+  .hero-deco  { display: none; }
+  .pp-steps   { flex-direction: column; align-items: center; gap: 24px; }
+  .pp-arrow   { transform: rotate(90deg); padding: 0; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .section { padding: 80px 0; }
+  .dif-side { padding: 40px 24px; }
+  .plano-card { padding: 36px 24px; }
+  .preco-card { padding: 40px 24px; }
+  .transicao { padding: 60px 24px; }
+}
+@media(max-width:400px){
+  .wrap { padding: 0 16px; }
+  .section { padding: 64px 0; }
+  .plano-card, .preco-card { padding: 32px 18px; }
+  .transicao { padding: 48px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <a href="#contato" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">Uma marca que ainda</span>
+      <span class="line2">não existe — e já<br>tem estratégia.</span>
+    </h1>
+    <p class="hero-sub">O enxoval chegará da China em 2 meses. Esse é o prazo para construir uma marca premium que vende antes mesmo de ter estoque disponível — com site, audiência e tráfego rodando no dia do lançamento.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Enxoval Premium</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Tráfego Pago</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Site E-commerce</span>
+    </div>
+  </div>
+  <div class="hero-deco">JB</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — A OPORTUNIDADE
+════════════════════════════ -->
+<section class="section alt" id="diagnostico">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — A oportunidade</div>
+      <h2 class="t-headline sh r d1">O mercado de enxoval<br>premium no Brasil ainda<br>não tem dono.</h2>
+      <p class="t-body sp r d2">O segmento de enxoval de bebê premium importado cresce com a demanda de mães que enxergam qualidade como prioridade — e a maioria das marcas existentes não entrega uma experiência digital à altura do produto.</p>
+    </div>
+    <div class="diag-grid r d2">
+      <div class="diag-card">
+        <div class="diag-num">↑ 34%</div>
+        <div class="diag-label">Crescimento do segmento premium</div>
+        <h3>Alta demanda, pouca oferta com marca.</h3>
+        <p>Enxoval premium importado é um dos segmentos mais pesquisados por gestantes no Instagram e Pinterest — mas 90% das marcas que existem não têm presença digital consistente. A oportunidade está aberta.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">~60d</div>
+        <div class="diag-label">Janela de lançamento</div>
+        <h3>2 meses para construir audiência antes do primeiro produto.</h3>
+        <p>Os produtos chegam da China em cerca de 2 meses. Esse prazo não é uma espera — é a janela de ouro para criar o perfil, aquecer a audiência e construir a expectativa antes da primeira venda.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-num">∞</div>
+        <div class="diag-label">Margem para posicionamento</div>
+        <h3>Produto importado com margem para marketing agressivo.</h3>
+        <p>A linha premium em algodão de qualidade superior justifica um posicionamento de valor — e uma margem que permite investir em tráfego pago de forma sustentável. CAC controlado, escala previsível.</p>
+      </div>
+    </div>
+    <div class="diag-quote r d3">
+      <p>"Você tem o produto certo, o mercado certo e o tempo certo. O que precisamos construir agora é a audiência que vai comprar no dia do lançamento."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — A VIRADA
+════════════════════════════ -->
+<section class="section" id="estrategia">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — A virada</div>
+      <h2 class="t-headline sh r d1">Não se lança uma marca.<br>Se constrói — com método<br>e antes do primeiro produto.</h2>
+      <p class="t-body sp r d2">A diferença entre lançar e simplesmente aparecer está no que acontece antes. Marca construída com antecedência chega ao mercado com audiência, identidade e confiança.</p>
+    </div>
+    <div class="dif-grid r d2">
+      <div class="dif-side comum">
+        <div class="dif-tag">Lançamento sem estratégia</div>
+        <h3>Produto chega,<br>marca não existe</h3>
+        <p>A abordagem mais comum — e que falha mais: criar o perfil quando o produto chegou, tentar crescer organicamente e depender da sorte do algoritmo para vender o primeiro lote.</p>
+        <ul class="dif-items">
+          <li>Zero audiência no dia do lançamento</li>
+          <li>Sem site — vendas dependem do DM</li>
+          <li>Identidade visual genérica, sem diferencial</li>
+          <li>Tráfego pago sem dados históricos para otimizar</li>
+          <li>Primeiro mês é o pior mês (sem tração)</li>
+        </ul>
+      </div>
+      <div class="dif-side novo">
+        <div class="dif-tag orange">Estratégia Alma · Lançamento com antecedência</div>
+        <h3>Audiência pronta<br>antes do estoque</h3>
+        <p>Construímos o perfil, a identidade e o site nos 2 meses antes do produto chegar — para que no dia do lançamento já exista uma audiência aquecida, uma loja pronta e campanhas rodando.</p>
+        <ul class="dif-items pos">
+          <li>Audiência construída antes do primeiro produto</li>
+          <li>Site e-commerce pronto para o lançamento</li>
+          <li>Identidade visual premium que justifica o preço</li>
+          <li>Tráfego pago com dados desde o pré-lançamento</li>
+          <li>Primeiro mês é o melhor mês (expectativa criada)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dif-verdict r d3">
+      <p>Marcas premium não nascem — são lançadas. E o lançamento começa muito antes do primeiro produto chegar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — A JORNADA
+════════════════════════════ -->
+<section class="section alt" id="entregas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — A jornada</div>
+      <h2 class="t-headline sh r d1">Duas fases. Uma trajetória<br>contínua para o crescimento.</h2>
+      <p class="t-body sp r d2">A estrutura em duas fases respeita o momento atual da marca — com entregas pensadas para o pré-lançamento e para a expansão depois que o produto já estiver no mercado.</p>
+    </div>
+
+    <div class="planos-grid r d2">
+
+      <!-- FASE 1 -->
+      <div class="plano-card">
+        <div class="plano-tag">Fase 1 · 3 meses</div>
+        <h3>Lançamento —<br>Da marca ao mercado</h3>
+        <ul class="entrega-list">
+          <li class="entrega-item">
+            <div class="entrega-icon">◆</div>
+            <div class="entrega-body">
+              <div class="entrega-title">2 postagens por semana</div>
+              <div class="entrega-desc">~8 publicações/mês — conteúdo de pré-lançamento, apresentação dos produtos, bastidores da marca. Estratégia de expectativa para aquecer a audiência antes do estoque chegar.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">🎬</div>
+            <div class="entrega-body">
+              <div class="entrega-title">1 visita de captação por mês</div>
+              <div class="entrega-desc">Sessão fotográfica e de vídeo dos produtos — construindo banco de mídia profissional para alimentar o feed, o site e os criativos de tráfego.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◉</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Designer dedicado</div>
+              <div class="entrega-desc">Desenvolvimento da identidade visual da marca — paleta, tipografia, templates de feed e stories para comunicar o posicionamento premium desde o primeiro post.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">⚡</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Tráfego pago</div>
+              <div class="entrega-desc">Campanhas no Instagram e Facebook para construir audiência, aumentar seguidores qualificados e preparar o pixel com dados antes do lançamento oficial.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">▶</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Site e-commerce completo</div>
+              <div class="entrega-desc">Loja virtual com catálogo de produtos, checkout integrado, página de marca e configuração de meios de pagamento. Pronto para receber os primeiros pedidos.
+                <span class="entrega-bonus">Incluso na Fase 1</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="plano-note">
+          <span>→</span>
+          <p>Duração de 3 meses — cobre a construção da marca, o pré-lançamento e a primeira fase de vendas com estoque disponível.</p>
+        </div>
+        <div style="margin-top:28px;">
+          <div class="plano-roles-lbl">Equipe dedicada</div>
+          <div class="plano-roles">
+            <span class="role-tag">Gestor de tráfego</span>
+            <span class="role-tag">Designer</span>
+            <span class="role-tag">Copywriter</span>
+            <span class="role-tag">Estrategista</span>
+            <span class="role-tag">Social media</span>
+            <span class="role-tag">Desenvolvedor web</span>
+            <span class="role-tag">Videomaker</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="plano-card destaque">
+        <div class="plano-tag">Fase 2 · Continuidade</div>
+        <h3>Expansão —<br>Escala e consolidação</h3>
+        <ul class="entrega-list">
+          <li class="entrega-item">
+            <div class="entrega-icon">◆</div>
+            <div class="entrega-body">
+              <div class="entrega-title">3 postagens por semana</div>
+              <div class="entrega-desc">~12 publicações/mês — maior cadência, mais formatos. Conteúdo de produto, prova social, educação sobre qualidade e expansão de coleções.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">🎬</div>
+            <div class="entrega-body">
+              <div class="entrega-title">1 visita de captação por mês</div>
+              <div class="entrega-desc">Sessão mensal mantida — ampliando o banco de mídia com fotos de lookbook, reels de unboxing e depoimentos de clientes satisfeitos.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">◉</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Designer dedicado</div>
+              <div class="entrega-desc">Evolução contínua da identidade visual — campanhas sazonais, lançamento de novas peças, materiais de datas comemorativas (Dia das Mães, Natal, Chá de Bebê).</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">⚡</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Tráfego pago em escala</div>
+              <div class="entrega-desc">Com o pixel aquecido pela Fase 1, as campanhas da Fase 2 rodam com dados reais — retargeting de visitantes, lookalike de compradores, escala progressiva de ROAS.</div>
+            </div>
+          </li>
+          <li class="entrega-item">
+            <div class="entrega-icon">✓</div>
+            <div class="entrega-body">
+              <div class="entrega-title">Site e-commerce ativo</div>
+              <div class="entrega-desc">O site entregue na Fase 1 continua operando — liberando o orçamento que seria gasto com desenvolvimento para ser reinvestido integralmente em performance e escala.</div>
+            </div>
+          </li>
+        </ul>
+        <div style="margin-top:28px;">
+          <div class="plano-roles-lbl">Equipe mantida</div>
+          <div class="plano-roles">
+            <span class="role-tag">Gestor de tráfego</span>
+            <span class="role-tag">Designer</span>
+            <span class="role-tag">Copywriter</span>
+            <span class="role-tag">Estrategista</span>
+            <span class="role-tag">Social media</span>
+            <span class="role-tag">Videomaker</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fase-conector r d3">
+      <div class="fase-conector-line"></div>
+      <div class="fase-conector-label">Mesma mensalidade nas duas fases · Mais entregas na Fase 2</div>
+      <div class="fase-conector-line"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TRANSIÇÃO
+════════════════════════════ -->
+<div class="transicao r">
+  <div class="transicao-inner">
+    <p>O site entregue na Fase 1 não some na Fase 2 — ele fica ativo, e o orçamento antes dedicado ao desenvolvimento vira <em>performance pura.</em></p>
+    <div class="transicao-arrow"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     04 — INVESTIMENTO
+════════════════════════════ -->
+<section class="section" id="investimento">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — Investimento</div>
+      <h2 class="t-headline sh r d1">Um valor. Duas fases.<br>Mais entregas<br>conforme cresce.</h2>
+      <p class="t-body sp r d2">A mensalidade é a mesma nas duas fases. O que muda é o que você recebe — e a Fase 2 entrega mais porque o site já foi construído na Fase 1.</p>
+    </div>
+
+    <div class="precos-grid r d2">
+
+      <!-- FASE 1 -->
+      <div class="preco-card standard">
+        <div class="preco-badge">Fase 1 · 3 meses</div>
+        <h3>Lançamento</h3>
+        <p class="preco-sub">Construção da marca, identidade, site e-commerce, tráfego e primeiras vendas.</p>
+        <div class="preco-val-wrap">
+          <span class="preco-val">R$ 3.500</span>
+          <span class="preco-per">/mês</span>
+        </div>
+        <ul class="preco-items">
+          <li>2 postagens por semana (~8/mês)</li>
+          <li>1 visita de captação por mês</li>
+          <li>Designer dedicado — identidade visual completa</li>
+          <li>Tráfego pago — Meta Ads (Instagram + Facebook)</li>
+          <li>Site e-commerce completo <strong>(incluso)</strong></li>
+        </ul>
+        <div class="preco-bonus-block">
+          <p><strong>Duração:</strong> 3 meses de lançamento — cobre pré-lançamento, chegada do produto e primeiras vendas.</p>
+        </div>
+        <a href="https://wa.me/5511999999999" class="preco-cta">Começar pela Fase 1</a>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="preco-card featured">
+        <div class="preco-badge">Fase 2 · Continuidade</div>
+        <h3>Expansão</h3>
+        <p class="preco-sub">Escala de conteúdo, performance de tráfego e consolidação da marca no mercado.</p>
+        <div class="preco-val-wrap">
+          <span class="preco-val">R$ 3.500</span>
+          <span class="preco-per">/mês</span>
+        </div>
+        <ul class="preco-items">
+          <li>3 postagens por semana (~12/mês)</li>
+          <li>1 visita de captação por mês</li>
+          <li>Designer dedicado — campanhas e lançamentos</li>
+          <li>Tráfego pago com pixel aquecido e escala progressiva</li>
+          <li>Site e-commerce ativo <strong>(já entregue na Fase 1)</strong></li>
+        </ul>
+        <div class="preco-destaque-block">
+          <p>Site entregue na Fase 1: <s>investimento encerrado</s> → <strong>orçamento vira performance na Fase 2.</strong></p>
+        </div>
+        <a href="https://wa.me/5511999999999" class="preco-cta">Quero a jornada completa</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA FINAL
+════════════════════════════ -->
+<section class="section alt" id="contato">
+  <div class="wrap">
+    <div class="cta-wrap">
+      <div class="cta-validade r">
+        <div class="validade-dot"></div>
+        Proposta disponível até 30/07/2026
+      </div>
+      <h2 class="t-headline r d1">Vamos construir<br>juntos essa marca?</h2>
+      <p class="cp r d2">Os 2 meses antes do produto chegar são os mais importantes da história dessa marca. Com estratégia, eles se transformam em audiência aquecida, loja pronta e primeiras vendas no dia do lançamento.</p>
+      <a href="https://wa.me/5511999999999" class="cta-main r d3">Falar com a equipe</a>
+      <p class="cta-sub r d4">Resposta em até 24 horas · Sem compromisso</p>
+
+      <div class="proximos-passos r d4">
+        <p class="pp-title">Próximos passos</p>
+        <div class="pp-steps">
+          <div class="pp-step">
+            <div class="pp-step-num">01</div>
+            <p class="pp-step-name">Alinhamento inicial</p>
+            <p class="pp-step-desc">Confirmamos o plano, os prazos e as prioridades do pré-lançamento.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">02</div>
+            <p class="pp-step-name">Criação da identidade</p>
+            <p class="pp-step-desc">Designer começa a trabalhar na marca, paleta e identidade visual premium.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">03</div>
+            <p class="pp-step-name">Perfil e tráfego ativos</p>
+            <p class="pp-step-desc">Instagram no ar, primeiros posts e campanhas de aquecimento rodando.</p>
+          </div>
+          <div class="pp-arrow">→</div>
+          <div class="pp-step">
+            <div class="pp-step-num">04</div>
+            <p class="pp-step-name">Lançamento</p>
+            <p class="pp-step-desc">Produto chega — audiência já existe, site está no ar, primeiras vendas acontecem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <p>Alma.Convert · Agência Prospect · prospect.trafego@gmail.com · Proposta preparada exclusivamente para Janaina · Enxoval Bebê Premium · 2026</p>
+</footer>
+
+<!-- ════════════════════════════
+     SCRIPTS
+════════════════════════════ -->
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>

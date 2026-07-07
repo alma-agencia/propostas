@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · The Smart ICE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PROPOSTA THE SMART ICE
+   Conteúdo + Marketing Estratégico
+   Design: Editorial · White · Orange
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --ice:     #e8f4fb;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.45;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 45vw; height: 100%;
+  background: linear-gradient(135deg, transparent 30%, rgba(30,130,200,.04) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem); font-weight: 800;
+  line-height: .96; letter-spacing: -.045em; max-width: 880px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 560px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(10rem, 22vw, 18rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section.dark { background: var(--ink); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+.section-num.c { justify-content:center; }
+.section-num.c::before, .section-num.c::after { content:''; width:20px; height:1px; background:var(--orange); opacity:.4; }
+.section-num.light { color: rgba(255,255,255,.35); }
+.section-num.light::before { background: rgba(255,255,255,.2); }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 540px; }
+p.sp.light { color: rgba(255,255,255,.4); }
+
+/* ═══════════════════════════════════════════
+   PILARES
+═══════════════════════════════════════════ */
+.pilares-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.pilar-cell { background: var(--white); padding: 52px 36px; transition: background .3s; }
+.pilar-cell:hover { background: var(--orange-l); }
+.pilar-icon {
+  font-size: 2rem; margin-bottom: 28px; display: block; line-height: 1;
+  color: var(--orange);
+}
+.pilar-cell h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -.02em; }
+.pilar-cell p  { font-size: .83rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.pilar-quote {
+  background: var(--ink); padding: 52px 48px; text-align: center;
+}
+.pilar-quote p {
+  font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.65); max-width: 680px; margin: 0 auto; line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════
+   DIFERENCIAL
+═══════════════════════════════════════════ */
+.dif-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.dif-side { padding: 56px 48px; }
+.dif-side.common { background: var(--off); }
+.dif-side.legado { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.1; margin-bottom: 20px; }
+.dif-side p { font-size: .85rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict {
+  background: var(--orange); padding: 28px 48px;
+  display: flex; align-items: center;
+}
+.dif-verdict p { font-size: .88rem; font-weight: 600; letter-spacing: .03em; color: var(--black); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   ENTREGÁVEIS — GRID DETALHADO
+═══════════════════════════════════════════ */
+.entrega-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-bottom: 1px;
+}
+.entrega-card { background: var(--white); padding: 44px 40px; transition: background .3s; }
+.entrega-card:hover { background: var(--orange-l); }
+.entrega-icon {
+  font-size: 1.8rem; color: var(--orange);
+  margin-bottom: 20px; display: block; line-height: 1;
+}
+.entrega-card h3 { font-size: 1rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 12px; }
+.entrega-card p  { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+/* ═══════════════════════════════════════════
+   PLANOS — DOIS CARDS (ANCORAGEM)
+═══════════════════════════════════════════ */
+.planos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+
+.plano-card { padding: 56px 48px; position: relative; }
+.plano-card.standard { background: var(--ink); }
+.plano-card.destaque { background: var(--white); border-top: 4px solid var(--orange); }
+
+.rec-label {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--black);
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 22px; white-space: nowrap;
+}
+
+.card-badge {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.standard .card-badge { color: rgba(255,255,255,.35); }
+.standard .card-badge::before { content:''; width:14px; height:1px; background:rgba(255,255,255,.2); }
+.destaque .card-badge { color: var(--orange); }
+.destaque .card-badge::before { content:''; width:14px; height:1px; background:var(--orange); opacity:.5; }
+
+.plano-card h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: .97; margin-bottom: 24px;
+}
+.standard .plano-card h3 { color: var(--white); }
+.destaque .plano-card h3 { color: var(--ink); }
+
+.price-row {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+}
+.price-val {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 800; letter-spacing: -.04em;
+}
+.standard .price-val { color: var(--white); }
+.destaque .price-val { color: var(--ink); }
+.price-per { font-size: .88rem; font-weight: 300; }
+.standard .price-per { color: rgba(255,255,255,.35); }
+.destaque .price-per { color: var(--muted); }
+.price-note {
+  font-size: .62rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.standard .price-note { color: rgba(255,255,255,.2); }
+.destaque .price-note { color: var(--muted); }
+
+.plano-items { list-style: none; margin-bottom: 28px; }
+.plano-items li {
+  font-size: .8rem; font-weight: 300; padding: 10px 0;
+  border-bottom: 1px solid; display: flex; gap: 12px; align-items: flex-start;
+  line-height: 1.55;
+}
+.plano-items li:last-child { border-bottom: none; }
+.standard .plano-items li { color: rgba(255,255,255,.5); border-bottom-color: rgba(255,255,255,.07); }
+.destaque .plano-items li { color: var(--dim); border-bottom-color: var(--line); }
+.plano-items li::before { content:'→'; flex-shrink:0; font-size:.8rem; margin-top:1px; }
+.standard .plano-items li::before { color: rgba(255,255,255,.2); }
+.destaque .plano-items li::before { color: var(--orange); }
+
+.plano-note {
+  border: 1px solid rgba(249,115,22,.3);
+  background: rgba(249,115,22,.06);
+  padding: 18px 22px; margin-top: 8px;
+}
+.plano-note-label {
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.plano-note-label::before { content:'✦'; font-size:.4rem; }
+.plano-note-value {
+  font-size: .88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+}
+.plano-note-sub {
+  font-size: .72rem; font-weight: 300; color: var(--dim); line-height: 1.5;
+}
+
+/* Dark note strip for standard card */
+.plano-note-dark {
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  padding: 18px 22px; margin-top: 8px;
+}
+.plano-note-dark-label {
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: 8px;
+}
+.plano-note-dark-sub {
+  font-size: .75rem; font-weight: 300; color: rgba(255,255,255,.3); line-height: 1.5;
+}
+
+/* ─── CTA ─── */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:640px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:480px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+.cta-validade {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border:1px solid rgba(249,115,22,.3);
+  border-radius:99px; font-size:.65rem; font-weight:500; letter-spacing:.08em;
+  color:rgba(249,115,22,.8); margin-bottom:20px;
+}
+.validade-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--orange);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
+.cta-main {
+  display:inline-flex; align-items:center; gap:12px; padding:18px 48px;
+  background:var(--orange); color:var(--black);
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; transition:background .25s, transform .2s;
+}
+.cta-main:hover { background:var(--orange-d); color:var(--white); transform:translateY(-2px); }
+.cta-main::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top:16px; font-size:.68rem; color:var(--dim); letter-spacing:.05em; }
+
+/* ─── PRÓXIMOS PASSOS ─── */
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+/* ═══════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  .pilares-grid, .planos-grid, .entrega-grid { grid-template-columns:1fr; }
+  .dif-grid { grid-template-columns:1fr; }
+  .hero-deco { display:none; }
+  .pp-steps { flex-direction:column; align-items:center; gap:24px; }
+  .pp-arrow { transform:rotate(90deg); padding:0; }
+  .rec-label { font-size:.5rem; }
+}
+@media(max-width:600px){
+  .wrap { padding:0 20px; }
+  .section { padding:80px 0; }
+  .plano-card, .dif-side { padding:40px 24px; }
+  .entrega-card { padding:36px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <a href="#contato" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · Laura · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">O Brasil vai adotar a banheira de gelo.</span>
+      <span class="line2">A The Smart ICE vai liderar essa virada.</span>
+    </h1>
+    <p class="hero-sub">Crioterapia já é um hábito consolidado em mercados maduros. No Brasil, o mercado está sendo formado agora — e quem contar a história primeiro vai ser lembrado como pioneiro. Esta proposta é sobre isso.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Conteúdo Estratégico</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Cobertura de Eventos</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Tráfego de Distribuição</span>
+    </div>
+  </div>
+  <div class="hero-deco">↗</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — A OPORTUNIDADE
+════════════════════════════ -->
+<section class="section alt" id="visao">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — A oportunidade</div>
+      <h2 class="t-headline sh r d1">O mercado de crioterapia<br>está sendo criado agora.</h2>
+      <p class="t-body sp r d2">Nos EUA, Europa e Austrália, o ice bath já é rotina de atletas, executivos e entusiastas de saúde. No Brasil, ainda é novidade — e a janela para ser a marca de referência está aberta. Não por muito tempo.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-cell r d1">
+        <span class="pilar-icon">◆</span>
+        <h3>Um mercado em formação</h3>
+        <p>O interesse por crioterapia cresce no Brasil impulsionado por medicina esportiva, medicina preventiva e cultura de bem-estar. O público já existe e está buscando referências. Falta uma marca brasileira que ocupe esse espaço com autoridade.</p>
+      </div>
+      <div class="pilar-cell r d2">
+        <span class="pilar-icon">◈</span>
+        <h3>Produto que precisa ser vivido</h3>
+        <p>Banheira de gelo não se vende com um anúncio frio. Precisa de educação, de prova social, de alguém mostrando a experiência e o que acontece depois. A jornada do conteúdo constrói o desejo antes da decisão.</p>
+      </div>
+      <div class="pilar-cell r d3">
+        <span class="pilar-icon">∞</span>
+        <h3>Eventos como motor de marca</h3>
+        <p>Os encontros que a Laura já organiza com grupos de mulheres são o coração da marca — experiência real, emoção, transformação. Registrado e distribuído do jeito certo, cada evento vira conteúdo que converte.</p>
+      </div>
+    </div>
+    <div class="pilar-quote r d4">
+      <p>A crioterapia já é prática estabelecida em clínicas de recuperação, espaços de performance e programas de saúde preventiva ao redor do mundo. No Brasil, esse mercado está em formação — e o posicionamento de quem entrar agora vai definir quem será lembrado como referência.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — O PROBLEMA
+════════════════════════════ -->
+<section class="section" id="diferencial">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — O diagnóstico</div>
+      <h2 class="t-headline sh r d1">Tráfego sem conteúdo<br>não constrói mercado.</h2>
+      <p class="t-body sp r d2">Para produtos que introduzem novos comportamentos, a jornada de decisão começa antes do clique. O público precisa ser educado, ver prova social e construir confiança — e é o conteúdo que faz esse trabalho. O tráfego amplifica o que já existe.</p>
+    </div>
+    <div class="dif-grid r d2">
+      <div class="dif-side common">
+        <div class="dif-tag">O caminho que não funciona sozinho</div>
+        <h3>Anúncio sem<br>jornada de conteúdo</h3>
+        <p>Impulsionar posts esporádicos para um produto nichado sem educação prévia resulta em clique de curiosidade, zero conversão e budget desperdiçado. O público precisa entender antes de querer.</p>
+        <ul class="dif-items">
+          <li>Produto não familiar exige educação antes da venda</li>
+          <li>Post isolado não constrói desejo nem confiança</li>
+          <li>Sem conteúdo consistente, o perfil não cresce organicamente</li>
+          <li>Eventos acontecem e somem — sem registro, sem alcance</li>
+          <li>Laura sozinha não tem tempo para alimentar tudo isso</li>
+        </ul>
+      </div>
+      <div class="dif-side legado">
+        <div class="dif-tag orange">Método Alma · Conteúdo + Tráfego</div>
+        <h3>Jornada que educa,<br>envolve e converte</h3>
+        <p>Conteúdo consistente que mostra a experiência, registra eventos, humaniza a marca e educa o público — com tráfego estratégico para ampliar o alcance para quem já tem perfil de adotar o hábito.</p>
+        <ul class="dif-items pos">
+          <li>Time dedicado que alimenta o perfil — Laura faz o que faz melhor</li>
+          <li>Cobertura profissional dos eventos transforma experiência em conteúdo</li>
+          <li>Jornada de vídeos que educa e cria desejo de forma progressiva</li>
+          <li>Tráfego como distribuição — não como substituto de estratégia</li>
+          <li>Conteúdo que vive nas redes e continua trabalhando por meses</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dif-verdict r d3">
+      <p>A The Smart ICE não precisa de mais anúncios aleatórios. Precisa de uma presença digital que faça o mercado entender que ice bath é para eles — antes de vender qualquer coisa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — O QUE ENTREGAMOS
+════════════════════════════ -->
+<section class="section alt" id="entregas">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — O que o time entrega</div>
+      <h2 class="t-headline sh r d1">Um time à disposição.<br>A ideia que sai do papel.</h2>
+      <p class="t-body sp r d2">Laura não precisa se preocupar com o que postar, quando postar ou como registrar. Esse é o trabalho do time. Ela faz o produto acontecer. Nós fazemos o mundo saber.</p>
+    </div>
+    <div class="entrega-grid">
+      <div class="entrega-card r d1">
+        <span class="entrega-icon">◎</span>
+        <h3>Produção de vídeos e fotos</h3>
+        <p>Conteúdo produzido com direção de arte e roteiro pensado para cada formato — Reels educativos, bastidores, depoimentos, protocolos. Tudo com a identidade visual e o tom da The Smart ICE.</p>
+      </div>
+      <div class="entrega-card r d2">
+        <span class="entrega-icon">◈</span>
+        <h3>Cobertura de eventos</h3>
+        <p>Cada encontro com grupos de mulheres, cada parceria com espaços, cada protocolo ao vivo vira conteúdo. Captação no local, edição, legenda estratégica — um evento que alcança muito além dos presentes.</p>
+      </div>
+      <div class="entrega-card r d3">
+        <span class="entrega-icon">◆</span>
+        <h3>Gestão editorial do Instagram</h3>
+        <p>Calendário mensal com pautas, publicação nos melhores horários, copy alinhado com a voz da Laura e da marca. O perfil vai ser alimentado com consistência — sem depender da agenda da Laura.</p>
+      </div>
+      <div class="entrega-card r d4">
+        <span class="entrega-icon">∞</span>
+        <h3>Tráfego estratégico de distribuição</h3>
+        <p>O melhor conteúdo merece ser ampliado. Campanhas de tráfego que distribuem os vídeos e posts para públicos com perfil de adotar o hábito — pessoas que já seguem lifestyle, performance e saúde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     04 — OS PLANOS (ANCORAGEM)
+════════════════════════════ -->
+<section class="section" id="plano">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — Escolha o seu plano</div>
+      <h2 class="t-headline sh r d1">Dois caminhos para construir<br>a marca líder em ice bath no Brasil.</h2>
+      <p class="t-body sp r d2">Um plano base que já move a agulha, e um plano completo para quem quer dominar o mercado. Você escolhe o ritmo.</p>
+    </div>
+    <div class="planos-grid r d2">
+
+      <!-- PLANO A: BASE -->
+      <div class="plano-card standard">
+        <div class="card-badge">Cenário 1 — Base</div>
+        <h3>Presença consistente<br>e distribuição inteligente</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 3.500</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">Investimento mensal · 12 meses</div>
+        <ul class="plano-items">
+          <li>2 conteúdos por semana — 8 publicações mensais</li>
+          <li>4 vídeos produzidos por mês (Reels educativos e bastidores)</li>
+          <li>4 posts estáticos ou carrosséis complementares</li>
+          <li>1 cobertura de evento por mês inclusa</li>
+          <li>Calendário editorial mensal com pautas e copy</li>
+          <li>Tráfego de distribuição dos melhores conteúdos</li>
+          <li>Relatório mensal de performance e alcance</li>
+        </ul>
+        <div class="plano-note-dark">
+          <div class="plano-note-dark-label">Cobertura de evento adicional</div>
+          <div class="plano-note-dark-sub">Cada evento adicional além da cobertura inclusa: + R$ 1.000 por evento.</div>
+        </div>
+      </div>
+
+      <!-- PLANO B: COMPLETO (DESTAQUE) -->
+      <div class="plano-card destaque">
+        <div class="rec-label">✦ Recomendado para liderar</div>
+        <div class="card-badge">Cenário 2 — Completo</div>
+        <h3>Presença dominante<br>e construção de marca líder</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 5.000</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">Investimento mensal · 12 meses</div>
+        <ul class="plano-items">
+          <li>Tudo do Cenário 1</li>
+          <li>8 vídeos produzidos por mês — volume para dominar o feed</li>
+          <li>4 postagens por semana com mix de vídeo, foto e carrossel</li>
+          <li>Até 2 coberturas de eventos por mês inclusas</li>
+          <li>Até 3 landing pages para captura de leads e vendas</li>
+          <li>Tráfego de performance para ampliar os melhores conteúdos</li>
+          <li>Estratégia de parceiros e conteúdo colaborativo</li>
+          <li>Relatório quinzenal com insights e direcionamento</li>
+        </ul>
+        <div class="plano-note">
+          <div class="plano-note-label">Por que este plano faz sentido</div>
+          <div class="plano-note-value">Volume + consistência = autoridade de mercado</div>
+          <div class="plano-note-sub">Ser a marca de referência em ice bath no Brasil exige presença contínua e frequência que o mercado associe à The Smart ICE. O Cenário 2 foi desenhado exatamente para isso.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA
+════════════════════════════ -->
+<section class="section alt" id="contato">
+  <div class="cta-wrap">
+    <div class="cta-validade r">
+      <span class="validade-dot"></span>
+      Proposta válida por <strong>15 dias</strong>
+    </div>
+    <div class="section-num c r">Fechar parceria</div>
+    <h2 class="t-headline r d1" style="max-width:680px;margin:0 auto 20px;">
+      A The Smart ICE já tem o produto.<br>Agora precisa do time que conta a história.
+    </h2>
+    <p class="cp r d2">Laura, o que você construiu nos últimos cinco anos é real e transformador. O que falta é uma estrutura que faça isso chegar para quem ainda não te conhece — de forma consistente, estratégica e sem depender do seu tempo.</p>
+    <a href="https://wa.me/5500000000000" class="cta-main r d3">Quero começar a parceria</a>
+    <p class="cta-sub r d4">Respondemos em menos de 1 hora · Proposta confidencial</p>
+
+    <div class="proximos-passos r d4">
+      <div class="pp-title">O que acontece depois do sim</div>
+      <div class="pp-steps">
+        <div class="pp-step">
+          <div class="pp-step-num">01</div>
+          <div class="pp-step-name">Contrato</div>
+          <div class="pp-step-desc">Assinatura digital e formalização da parceria</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">02</div>
+          <div class="pp-step-name">Imersão</div>
+          <div class="pp-step-desc">Reunião de onboarding para mergulhar na marca e nos próximos eventos</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">03</div>
+          <div class="pp-step-name">Calendário</div>
+          <div class="pp-step-desc">Primeiro calendário editorial entregue em até 5 dias úteis</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">04</div>
+          <div class="pp-step-name">Produção</div>
+          <div class="pp-step-desc">Primeira produção de conteúdo e distribuição com tráfego ativa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alma.Convert · Lukana Marketing e Publicidade Ltda · Proposta de uso exclusivo e confidencial · The Smart ICE · Laura</p>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- ── TRACKER ── -->
+<script>
+(function(){
+  var WEBHOOK = "https://script.google.com/macros/s/AKfycbxQ2OJsIx3VWtCIJpVT5DMmiCtoNeK2vRRQypwF4fZTU2paSqxQA9UvUq5abSHYlffc/exec";
+  if(!WEBHOOK || WEBHOOK.indexOf("COLE_AQUI") > -1) return;
+  var ua  = navigator.userAgent || "";
+  var mob = /Mobi|Android|iPhone|iPad/i.test(ua);
+  var nav = (ua.match(/(Chrome|Safari|Firefox|Edge|OPR)\/[\d.]+/) || ["Desconhecido"])[0];
+  var ref = document.referrer || "direto";
+  fetch("https://ip-api.com/json/?fields=city,regionName&lang=pt-BR")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("The Smart ICE")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Marketing")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent(d.city || "—")
+        + "&estado="      + encodeURIComponent(d.regionName || "—");
+      new Image().src = src;
+    })
+    .catch(function(){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("The Smart ICE")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Marketing")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent("—")
+        + "&estado="      + encodeURIComponent("—");
+      new Image().src = src;
+    });
+})();
+</script>
+</body>
+</html>

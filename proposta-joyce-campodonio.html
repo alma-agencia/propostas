@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Drª Joyce Campodonio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PROPOSTA DRª JOYCE CAMPODONIO
+   Tráfego Performance · Bundle 2 Perfis
+   Design: Editorial · White · Orange
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.5;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 5.8rem); font-weight: 800;
+  line-height: .96; letter-spacing: -.045em; max-width: 920px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 520px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 1px solid var(--line-s);
+  background: var(--white);
+}
+.hero-pill .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
+}
+.hero-pill span { font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 1.4s forwards;
+}
+.hero-scroll span { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.hero-scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--orange), transparent); }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════ */
+section { scroll-snap-align: start; }
+.section-label {
+  font-size: .6rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+}
+.section-label::after { content:''; flex:1; height:1px; background: var(--line-s); }
+
+/* ═══════════════════════════════════════════
+   CONTEXTO
+═══════════════════════════════════════════ */
+.contexto {
+  padding: 120px 0;
+  background: var(--white);
+}
+.contexto-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.contexto-left h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+  line-height: 1.08; letter-spacing: -.03em;
+  margin-bottom: 32px;
+}
+.contexto-left h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+.contexto-left p {
+  font-size: clamp(.88rem, 1.4vw, 1rem); font-weight: 300;
+  color: var(--dim); line-height: 1.9; margin-bottom: 20px;
+}
+.contexto-right {
+  display: flex; flex-direction: column; gap: 0;
+  border-left: 2px solid var(--line-s); padding-left: 40px;
+}
+.ctx-item {
+  padding: 28px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 20px;
+}
+.ctx-item:last-child { border-bottom: none; }
+.ctx-num {
+  font-size: .6rem; font-weight: 700; letter-spacing: .12em; color: var(--orange);
+  min-width: 28px; margin-top: 4px;
+}
+.ctx-text strong { display: block; font-size: .92rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.ctx-text span { font-size: .84rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════
+   PERFIS
+═══════════════════════════════════════════ */
+.perfis {
+  padding: 100px 0;
+  background: var(--off);
+}
+.perfis-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px;
+}
+.perfil-card {
+  background: var(--white); padding: 48px 44px;
+}
+.perfil-card.destaque {
+  background: var(--ink); color: var(--white);
+}
+.perfil-handle {
+  font-size: .65rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.perfil-handle::before { content: '@'; }
+.perfil-card.destaque .perfil-handle { color: var(--orange); }
+.perfil-nome {
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 700;
+  line-height: 1.12; letter-spacing: -.02em; margin-bottom: 12px;
+}
+.perfil-card.destaque .perfil-nome { color: var(--white); }
+.perfil-desc {
+  font-size: .88rem; font-weight: 300; color: var(--muted); line-height: 1.75; margin-bottom: 36px;
+}
+.perfil-card.destaque .perfil-desc { color: rgba(255,255,255,.55); }
+.perfil-stats {
+  display: flex; gap: 32px; padding-top: 24px; border-top: 1px solid var(--line);
+}
+.perfil-card.destaque .perfil-stats { border-top-color: rgba(255,255,255,.1); }
+.stat-val { font-size: 1.4rem; font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
+.perfil-card.destaque .stat-val { color: var(--white); }
+.stat-lbl { font-size: .68rem; font-weight: 400; color: var(--muted); margin-top: 2px; }
+.perfil-card.destaque .stat-lbl { color: rgba(255,255,255,.45); }
+.perfil-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--orange); color: var(--black); padding: 5px 12px; margin-bottom: 28px;
+}
+
+/* ═══════════════════════════════════════════
+   ENTREGAS
+═══════════════════════════════════════════ */
+.entregas {
+  padding: 120px 0;
+  background: var(--white);
+}
+.entregas-intro {
+  max-width: 640px; margin-bottom: 72px;
+}
+.entregas-intro h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
+  line-height: 1.1; letter-spacing: -.03em; margin-bottom: 20px;
+}
+.entregas-intro h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+.entregas-intro p {
+  font-size: .94rem; font-weight: 300; color: var(--dim); line-height: 1.85;
+}
+.entrega-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.entrega-col {
+  background: var(--off); padding: 48px 44px;
+}
+.entrega-col-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 36px;
+  padding-bottom: 24px; border-bottom: 1px solid var(--line-s);
+}
+.entrega-col-dot { width: 8px; height: 8px; background: var(--orange); flex-shrink: 0; }
+.entrega-col-title { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+.entrega-items { display: flex; flex-direction: column; gap: 0; }
+.entrega-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.entrega-item:last-child { border-bottom: none; }
+.ei-icon {
+  width: 32px; height: 32px; background: var(--orange-l);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.ei-icon svg { width: 15px; height: 15px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ei-text strong { display: block; font-size: .88rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ei-text span { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.65; }
+
+/* ═══════════════════════════════════════════
+   PREÇOS
+═══════════════════════════════════════════ */
+.precos {
+  padding: 120px 0;
+  background: var(--ink);
+}
+.precos .section-label { color: var(--orange); }
+.precos .section-label::after { background: rgba(255,255,255,.1); }
+.precos-intro {
+  max-width: 600px; margin-bottom: 72px;
+}
+.precos-intro h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
+  line-height: 1.1; letter-spacing: -.03em; color: var(--white); margin-bottom: 16px;
+}
+.precos-intro h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+.precos-intro p {
+  font-size: .9rem; font-weight: 300; color: rgba(255,255,255,.45); line-height: 1.85;
+}
+.cards-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; align-items: start;
+}
+/* Card padrão */
+.card {
+  background: #1a1a1a; padding: 52px 48px;
+  display: flex; flex-direction: column;
+}
+/* Card destaque */
+.card.destaque {
+  background: var(--white); padding: 52px 48px;
+  position: relative;
+}
+.card-tag {
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+}
+.card.destaque .card-tag { color: var(--orange); }
+.card-titulo {
+  font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 700;
+  line-height: 1.1; letter-spacing: -.02em; color: var(--white); margin-bottom: 10px;
+}
+.card.destaque .card-titulo { color: var(--ink); }
+.card-sub {
+  font-size: .82rem; font-weight: 300; color: rgba(255,255,255,.4); margin-bottom: 40px; line-height: 1.7;
+}
+.card.destaque .card-sub { color: var(--muted); }
+.preco-wrap { margin-bottom: 12px; }
+.preco-riscado {
+  font-size: .82rem; font-weight: 300; color: rgba(255,255,255,.3);
+  text-decoration: line-through; margin-bottom: 6px;
+}
+.card.destaque .preco-riscado { color: var(--muted); }
+.preco-valor {
+  font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 800;
+  letter-spacing: -.04em; color: var(--white); line-height: 1;
+}
+.card.destaque .preco-valor { color: var(--ink); }
+.preco-valor sup { font-size: 1rem; font-weight: 500; vertical-align: top; margin-top: 8px; margin-right: 2px; }
+.preco-valor sub { font-size: .65rem; font-weight: 300; color: rgba(255,255,255,.4); vertical-align: baseline; }
+.card.destaque .preco-valor sub { color: var(--muted); }
+.preco-economia {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--orange); color: var(--black);
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 12px; margin-top: 16px; margin-bottom: 40px;
+}
+.card-divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 36px; }
+.card.destaque .card-divider { background: var(--line); }
+.card-items { list-style: none; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.card-items li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .84rem; font-weight: 300; color: rgba(255,255,255,.6); line-height: 1.55;
+}
+.card.destaque .card-items li { color: var(--dim); }
+.card-items li::before {
+  content: ''; width: 5px; height: 5px; background: var(--orange);
+  border-radius: 50%; flex-shrink: 0; margin-top: 7px;
+}
+.card-items li strong { color: var(--white); font-weight: 600; }
+.card.destaque .card-items li strong { color: var(--ink); }
+.card-perfis-breakdown {
+  background: rgba(249,115,22,.07); border: 1px solid rgba(249,115,22,.2);
+  padding: 20px 24px; margin-bottom: 32px;
+}
+.card-perfis-breakdown .bp-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 0;
+}
+.card-perfis-breakdown .bp-row:first-child { border-bottom: 1px solid rgba(249,115,22,.15); padding-bottom: 12px; margin-bottom: 4px; }
+.bp-handle { font-size: .72rem; font-weight: 500; color: var(--ink); }
+.bp-handle span { color: var(--orange); font-weight: 700; }
+.bp-preco { font-size: .72rem; font-weight: 600; color: var(--ink); }
+.bp-total-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px; margin-top: 4px; border-top: 1px solid rgba(249,115,22,.15);
+}
+.bp-total-row .bp-handle { font-size: .7rem; font-weight: 700; color: var(--ink); }
+.bp-total-row .bp-preco { font-size: .8rem; font-weight: 700; color: var(--orange); }
+.card-cta {
+  display: block; margin-top: 40px; padding: 16px;
+  background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none; text-align: center; transition: background .2s;
+}
+.card-cta:hover { background: var(--orange-d); }
+.card-cta-plain {
+  display: block; margin-top: 24px; padding: 14px;
+  border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5);
+  font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; text-align: center; transition: all .2s;
+}
+.card-cta-plain:hover { border-color: rgba(255,255,255,.35); color: rgba(255,255,255,.8); }
+
+/* ═══════════════════════════════════════════
+   TRANSIÇÃO
+═══════════════════════════════════════════ */
+.transicao {
+  background: var(--orange);
+  padding: 64px 0;
+  text-align: center;
+}
+.transicao-inner {
+  max-width: 680px; margin: 0 auto; padding: 0 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.transicao p {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 600;
+  line-height: 1.4; letter-spacing: -.01em; color: var(--black);
+}
+.transicao p em { font-style: italic; font-weight: 300; }
+.transicao-arrow {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--black), transparent);
+  opacity: .35;
+}
+
+/* ═══════════════════════════════════════════
+   RODAPÉ
+═══════════════════════════════════════════ */
+footer {
+  padding: 64px 0;
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;
+}
+.footer-brand { font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--white); }
+.footer-brand em { font-style: normal; font-weight: 300; color: rgba(255,255,255,.35); }
+.footer-copy { font-size: .72rem; font-weight: 300; color: rgba(255,255,255,.25); }
+
+/* ═══════════════════════════════════════════
+   MOBILE — 900px
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  html { scroll-snap-type: none; }
+  .contexto-grid { grid-template-columns: 1fr; gap: 56px; }
+  .contexto-right { border-left: none; padding-left: 0; border-top: 1px solid var(--line-s); padding-top: 40px; }
+  .perfis-grid { grid-template-columns: 1fr; gap: 2px; }
+  .entrega-grid { grid-template-columns: 1fr; gap: 2px; }
+  .cards-grid { grid-template-columns: 1fr; gap: 2px; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE — 600px
+═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .wrap { padding: 0 20px; }
+  .hero-inner { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+  .contexto { padding: 80px 0; }
+  .perfis { padding: 72px 0; }
+  .entregas { padding: 80px 0; }
+  .precos { padding: 80px 0; }
+  .perfil-card { padding: 36px 28px; }
+  .entrega-col { padding: 36px 28px; }
+  .card { padding: 40px 32px; }
+  .card.destaque { padding: 40px 32px; }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3.4rem); }
+  .hero-meta { gap: 12px; }
+  .perfil-stats { gap: 20px; }
+  .hero-scroll { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE — 400px
+═══════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 2rem; }
+  .hero-pill span { font-size: .65rem; }
+  .perfil-stats { flex-direction: column; gap: 16px; }
+  .card { padding: 32px 24px; }
+  .card.destaque { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma <em>/ Convert.AI</em></div>
+    <a href="https://wa.me/5575999999999" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Proposta exclusiva · Drª Joyce Campodonio</span>
+      <div class="sep"></div>
+      <span class="tag">Tráfego Performance</span>
+    </div>
+    <h1>
+      <span class="line1">Sua especialidade</span>
+      <span class="line2">para quem ainda não te encontrou.</span>
+    </h1>
+    <p class="hero-sub">
+      12 anos cuidando de mulheres, 20 mil seguidoras, uma clínica especializada.
+      A autoridade já está construída — o tráfego pago coloca ela diante de quem ainda não chegou até você.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-pill"><div class="dot"></div><span>Meta Ads</span></div>
+      <div class="hero-pill"><div class="dot"></div><span>2 Perfis gerenciados</span></div>
+      <div class="hero-pill"><div class="dot"></div><span>Feira de Santana · BA</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Ver proposta</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTEXTO
+══════════════════════════════════════════ -->
+<section class="contexto">
+  <div class="wrap">
+    <div class="contexto-grid">
+      <div class="contexto-left r">
+        <div class="section-label">O cenário</div>
+        <h2>Uma marca forte.<br><em>Uma clínica nova.</em><br>Um momento único.</h2>
+        <p>
+          Você já tem o que a maioria dos médicos passa anos tentando construir:
+          autoridade de conteúdo, base de seguidoras engajadas e reputação consolidada em Feira de Santana.
+        </p>
+        <p>
+          A Clínica Histeros é recente e precisa se tornar referência no imaginário local.
+          Tráfego pago é o caminho mais direto para isso — sem depender do alcance orgânico.
+        </p>
+        <p>
+          Como você já conta com equipe de marketing para produção de conteúdo, nossa atuação é focada:
+          estratégia e gestão de anúncios, complementando o que a sua equipe já faz.
+        </p>
+      </div>
+      <div class="contexto-right r d1">
+        <div class="ctx-item">
+          <span class="ctx-num">01</span>
+          <div class="ctx-text">
+            <strong>Perfil da médica já tem audiência</strong>
+            <span>20 mil seguidoras e 800+ posts de conteúdo especializado — o tráfego amplifica essa autoridade para fora dos seguidores.</span>
+          </div>
+        </div>
+        <div class="ctx-item">
+          <span class="ctx-num">02</span>
+          <div class="ctx-text">
+            <strong>Clínica em fase de posicionamento</strong>
+            <span>A Histeros abriu recentemente. Campanhas pagas constroem reconhecimento local de forma previsível e mensurável.</span>
+          </div>
+        </div>
+        <div class="ctx-item">
+          <span class="ctx-num">03</span>
+          <div class="ctx-text">
+            <strong>Equipe interna já produz conteúdo</strong>
+            <span>Adaptamos a entrega de criativos para trabalhar em conjunto com sua equipe — sem sobreposição, com sinergia.</span>
+          </div>
+        </div>
+        <div class="ctx-item">
+          <span class="ctx-num">04</span>
+          <div class="ctx-text">
+            <strong>Estratégia unificada para os dois perfis</strong>
+            <span>Médica e clínica no mesmo território, público-alvo parecido — uma gestão integrada gera mais eficiência e menor CPL.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PERFIS
+══════════════════════════════════════════ -->
+<section class="perfis">
+  <div class="wrap">
+    <div class="section-label r">Os dois perfis gerenciados</div>
+    <div class="perfis-grid r d1">
+
+      <!-- Perfil médica -->
+      <div class="perfil-card">
+        <div class="perfil-handle">drajoycecampodonio</div>
+        <h3 class="perfil-nome">Drª Joyce Campodonio</h3>
+        <p class="perfil-desc">
+          Ginecologia e Obstetrícia · Especialista em Histeroscopia · Pré-Natal de Alto Risco.
+          Perfil pessoal com autoridade consolidada, conteúdo especializado e base de seguidoras ativa.
+        </p>
+        <div class="perfil-stats">
+          <div>
+            <div class="stat-val">20,2K</div>
+            <div class="stat-lbl">seguidoras</div>
+          </div>
+          <div>
+            <div class="stat-val">804</div>
+            <div class="stat-lbl">publicações</div>
+          </div>
+          <div>
+            <div class="stat-val">12+</div>
+            <div class="stat-lbl">anos de carreira</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clínica -->
+      <div class="perfil-card destaque">
+        <div class="perfil-badge">Clínica em crescimento</div>
+        <div class="perfil-handle">clinica.histeros</div>
+        <h3 class="perfil-nome">Clínica Histeros</h3>
+        <p class="perfil-desc">
+          Especializada em Histeroscopia diagnóstica e cirúrgica. Cuidado integral feminino em todas as fases.
+          Perfil institucional em fase de posicionamento — momento ideal para tráfego pago.
+        </p>
+        <div class="perfil-stats">
+          <div>
+            <div class="stat-val">1,8K</div>
+            <div class="stat-lbl">seguidoras</div>
+          </div>
+          <div>
+            <div class="stat-val">30</div>
+            <div class="stat-lbl">publicações</div>
+          </div>
+          <div>
+            <div class="stat-val">FSA</div>
+            <div class="stat-lbl">Feira de Santana</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ENTREGAS
+══════════════════════════════════════════ -->
+<section class="entregas">
+  <div class="wrap">
+    <div class="entregas-intro r">
+      <div class="section-label">O que entregamos</div>
+      <h2>Serviço completo —<br><em>com uma adaptação para você.</em></h2>
+      <p>
+        Como você já conta com equipe de marketing para produção de conteúdo,
+        adaptamos o volume de criativos para complementar o que o seu time já faz —
+        sem sobreposição. Tudo o mais permanece igual ao serviço completo.
+      </p>
+    </div>
+    <div class="entrega-grid r d1">
+
+      <!-- Coluna: Formato padrão -->
+      <div class="entrega-col">
+        <div class="entrega-col-header">
+          <div class="entrega-col-dot"></div>
+          <div class="entrega-col-title">Formato padrão — por perfil</div>
+        </div>
+        <div class="entrega-items">
+          <div class="entrega-item">
+            <div class="ei-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong>Gestão completa de Meta Ads</strong>
+              <span>Criação, configuração e gerenciamento de campanhas no Facebook e Instagram.</span>
+            </div>
+          </div>
+          <div class="entrega-item">
+            <div class="ei-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h5"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong>10 a 12 criativos por mês</strong>
+              <span>Produção completa de peças — do briefing à entrega final, sem depender de equipe interna.</span>
+            </div>
+          </div>
+          <div class="entrega-item">
+            <div class="ei-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l4 4"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong>Segmentação e testes de público</strong>
+              <span>Mapeamento de audiências locais, lookalike e interesses para captação de novas pacientes.</span>
+            </div>
+          </div>
+          <div class="entrega-item">
+            <div class="ei-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong>Otimização contínua das campanhas</strong>
+              <span>Ajustes frequentes de lances, orçamento, criativos e públicos para maximizar resultado.</span>
+            </div>
+          </div>
+          <div class="entrega-item">
+            <div class="ei-icon">
+              <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong>Relatório mensal de performance</strong>
+              <span>Dados de alcance, cliques, CPL e conversões com análise e recomendações.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna: Sua condição -->
+      <div class="entrega-col" style="background: var(--ink); padding: 48px 44px;">
+        <div class="entrega-col-header" style="border-bottom-color: rgba(255,255,255,.1);">
+          <div class="entrega-col-dot"></div>
+          <div class="entrega-col-title" style="color: var(--white);">Sua condição — dois perfis</div>
+        </div>
+        <div class="entrega-items">
+          <div class="entrega-item" style="border-bottom-color: rgba(255,255,255,.07);">
+            <div class="ei-icon" style="background: rgba(249,115,22,.15);">
+              <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong style="color: var(--white);">Gestão completa de Meta Ads</strong>
+              <span style="color: rgba(255,255,255,.45);">Mantida integralmente nos dois perfis — @drajoycecampodonio e @clinica.histeros.</span>
+            </div>
+          </div>
+          <div class="entrega-item" style="border-bottom-color: rgba(255,255,255,.07); background: rgba(249,115,22,.06); margin: 0 -8px; padding: 18px 8px;">
+            <div class="ei-icon" style="background: var(--orange); flex-shrink:0;">
+              <svg viewBox="0 0 24 24" style="stroke: #000;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h5"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong style="color: var(--orange);">5 criativos por mês, por perfil</strong>
+              <span style="color: rgba(255,255,255,.55);">Adaptado para quem já tem equipe de mkt. Trabalhamos em conjunto — briefamos, revisamos e complementamos a produção interna.</span>
+            </div>
+          </div>
+          <div class="entrega-item" style="border-bottom-color: rgba(255,255,255,.07);">
+            <div class="ei-icon" style="background: rgba(249,115,22,.15);">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l4 4"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong style="color: var(--white);">Segmentação integrada entre os dois perfis</strong>
+              <span style="color: rgba(255,255,255,.45);">Mesmo território, mesmo público — estratégia coordenada entre médica e clínica.</span>
+            </div>
+          </div>
+          <div class="entrega-item" style="border-bottom-color: rgba(255,255,255,.07);">
+            <div class="ei-icon" style="background: rgba(249,115,22,.15);">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong style="color: var(--white);">Otimização contínua nas duas contas</strong>
+              <span style="color: rgba(255,255,255,.45);">Ajustes frequentes em ambos os perfis, com visão unificada de performance.</span>
+            </div>
+          </div>
+          <div class="entrega-item" style="border-bottom: none;">
+            <div class="ei-icon" style="background: rgba(249,115,22,.15);">
+              <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            </div>
+            <div class="ei-text">
+              <strong style="color: var(--white);">Relatório mensal unificado</strong>
+              <span style="color: rgba(255,255,255,.45);">Performance dos dois perfis em um único relatório — com recomendações cruzadas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TRANSIÇÃO
+══════════════════════════════════════════ -->
+<div class="transicao r">
+  <div class="transicao-inner">
+    <p>Fechar os dois perfis juntos desbloqueia<br><em>uma condição exclusiva de investimento.</em></p>
+    <div class="transicao-arrow"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PREÇOS
+══════════════════════════════════════════ -->
+<section class="precos">
+  <div class="wrap">
+    <div class="precos-intro r">
+      <div class="section-label">Investimento</div>
+      <h2>Condição especial<br><em>para os dois perfis.</em></h2>
+      <p>
+        A gestão individual de cada perfil é R$ 2.500/mês.
+        Fechando os dois juntos, aplicamos uma condição especial de bundle.
+      </p>
+    </div>
+    <div class="cards-grid r d1">
+
+      <!-- Card individual (ancoragem) -->
+      <div class="card">
+        <div class="card-tag">Gestão individual — por perfil</div>
+        <h3 class="card-titulo">Perfil único</h3>
+        <p class="card-sub">Para quem quiser começar com apenas um dos perfis e expandir depois.</p>
+        <div class="preco-wrap">
+          <div class="preco-valor"><sup>R$</sup>2.500<sub>/mês</sub></div>
+        </div>
+        <p style="font-size: .75rem; color: rgba(255,255,255,.3); margin-bottom: 32px; line-height: 1.6;">
+          Por perfil gerenciado · 5 criativos/mês
+        </p>
+        <div class="card-divider"></div>
+        <ul class="card-items">
+          <li><strong>Gestão Meta Ads</strong> (Facebook + Instagram)</li>
+          <li><strong>5 criativos/mês</strong> por perfil</li>
+          <li>Segmentação e testes de público</li>
+          <li>Otimização contínua de campanhas</li>
+          <li>Relatório mensal de performance</li>
+        </ul>
+        <a href="https://wa.me/5575999999999" class="card-cta-plain">Começar com 1 perfil</a>
+      </div>
+
+      <!-- Card bundle (destaque) -->
+      <div class="card destaque">
+        <div class="card-tag">Condição especial · Bundle completo</div>
+        <h3 class="card-titulo">Dois perfis gerenciados</h3>
+        <p class="card-sub">Drª Joyce Campodonio + Clínica Histeros — estratégia integrada.</p>
+
+        <div class="card-perfis-breakdown">
+          <div class="bp-row">
+            <span class="bp-handle"><span>@</span>drajoycecampodonio</span>
+            <span class="bp-preco">Incluso</span>
+          </div>
+          <div class="bp-row">
+            <span class="bp-handle"><span>@</span>clinica.histeros</span>
+            <span class="bp-preco">Incluso</span>
+          </div>
+          <div class="bp-total-row">
+            <span class="bp-handle">Total do bundle</span>
+            <span class="bp-preco">R$ 4.000/mês</span>
+          </div>
+        </div>
+
+        <div class="preco-wrap">
+          <div class="preco-riscado">R$ 5.000/mês (valor separado)</div>
+          <div class="preco-valor"><sup>R$</sup>4.000<sub>/mês</sub></div>
+        </div>
+        <div class="preco-economia">✦ Economia de R$ 1.000/mês · R$ 12.000/ano</div>
+
+        <div class="card-divider"></div>
+        <ul class="card-items">
+          <li><strong>Gestão Meta Ads</strong> nos dois perfis</li>
+          <li><strong>5 criativos/mês por perfil</strong> (10 no total)</li>
+          <li>Segmentação integrada e testes de público</li>
+          <li>Otimização contínua em ambas as contas</li>
+          <li>Relatório mensal unificado de performance</li>
+          <li>Alinhamento direto com sua equipe de mkt</li>
+        </ul>
+        <a href="https://wa.me/5575999999999" class="card-cta">Fechar o bundle agora</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">Alma <em>/ Convert.AI</em></div>
+      <div class="footer-copy">Proposta preparada exclusivamente para Drª Joyce Campodonio · 2026</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- ── TRACKER ── -->
+<script>
+(function(){
+  var WEBHOOK = "https://script.google.com/macros/s/AKfycbxQ2OJsIx3VWtCIJpVT5DMmiCtoNeK2vRRQypwF4fZTU2paSqxQA9UvUq5abSHYlffc/exec";
+  if(!WEBHOOK || WEBHOOK.indexOf("COLE_AQUI") > -1) return;
+  var ua  = navigator.userAgent || "";
+  var mob = /Mobi|Android|iPhone|iPad/i.test(ua);
+  var nav = (ua.match(/(Chrome|Safari|Firefox|Edge|OPR)\/[\d.]+/) || ["Desconhecido"])[0];
+  var ref = document.referrer || "direto";
+  fetch("https://ip-api.com/json/?fields=city,regionName&lang=pt-BR")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Drª Joyce Campodonio")
+        + "&proposta="    + encodeURIComponent("Tráfego Bundle 2 Perfis")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent(d.city || "—")
+        + "&estado="      + encodeURIComponent(d.regionName || "—");
+      new Image().src = src;
+    })
+    .catch(function(){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Drª Joyce Campodonio")
+        + "&proposta="    + encodeURIComponent("Tráfego Bundle 2 Perfis")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent("—")
+        + "&estado="      + encodeURIComponent("—");
+      new Image().src = src;
+    });
+})();
+</script>
+</body>
+</html>

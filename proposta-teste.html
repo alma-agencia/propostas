@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Teste de Deploy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root { --orange: #F97316; --ink: #1a1a1a; --f: 'Poppins', sans-serif; }
+body { font-family: var(--f); background: #fff; color: var(--ink); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.wrap { text-align: center; padding: 48px; }
+.tag { font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: 32px; display: block; }
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800; letter-spacing: -.04em; line-height: .95; margin-bottom: 24px; }
+h1 em { font-style: italic; font-weight: 300; color: var(--orange); }
+p { font-size: 1rem; font-weight: 300; color: #888; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); margin-right: 8px; animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Alma.Convert · Deploy test</span>
+  <h1>Deploy<br><em>funcionando.</em></h1>
+  <p><span class="dot"></span>Webhook ativo · GitHub → Hostinger</p>
+</div>
+</body>
+</html>
