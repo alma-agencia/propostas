@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Drª Luiza Portas</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PROPOSTA DRª LUIZA PORTAS
+   Conteúdo + Tráfego Performance · Ginecologia
+   Design: Editorial · White · Orange
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.5;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 5.8rem); font-weight: 800;
+  line-height: .96; letter-spacing: -.045em; max-width: 920px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 520px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(10rem, 22vw, 18rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* SECTION BASE */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section.dark { background: var(--ink); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+.section-num.c { justify-content:center; }
+.section-num.c::before, .section-num.c::after { content:''; width:20px; height:1px; background:var(--orange); opacity:.4; }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 540px; }
+
+/* PILARES */
+.pilares-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.pilar-cell { background: var(--white); padding: 52px 36px; transition: background .3s; }
+.pilar-cell:hover { background: var(--orange-l); }
+.pilar-icon { font-size: 2rem; margin-bottom: 28px; display: block; line-height: 1; color: var(--orange); }
+.pilar-cell h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -.02em; }
+.pilar-cell p  { font-size: .83rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.pilar-quote { background: var(--ink); padding: 52px 48px; text-align: center; }
+.pilar-quote p {
+  font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.65); max-width: 640px; margin: 0 auto; line-height: 1.75;
+}
+
+/* DIFERENCIAL */
+.dif-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.dif-side { padding: 56px 48px; }
+.dif-side.common { background: var(--off); }
+.dif-side.legado { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.1; margin-bottom: 20px; }
+.dif-side p { font-size: .85rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict {
+  background: var(--orange); padding: 28px 48px;
+  display: flex; align-items: center;
+}
+.dif-verdict p { font-size: .88rem; font-weight: 600; letter-spacing: .03em; color: var(--black); line-height: 1.6; }
+
+/* ESCOPO COMPLETO */
+.escopo-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  margin-bottom: 1px;
+}
+.escopo-col { padding: 40px 40px; background: var(--white); }
+.escopo-col.highlight { background: var(--orange-l); }
+.escopo-label {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.escopo-label::before { content:''; width:14px; height:1px; background:var(--dim); }
+.escopo-label.orange { color: var(--orange); }
+.escopo-label.orange::before { background: var(--orange); }
+.escopo-col h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -.02em; }
+.escopo-list { list-style: none; }
+.escopo-list li {
+  font-size: .8rem; font-weight: 300; color: var(--dim);
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+  display: flex; gap: 10px; align-items: flex-start; line-height: 1.55;
+}
+.escopo-list li:last-child { border-bottom: none; }
+.escopo-list li::before { content:'→'; color: var(--orange); flex-shrink:0; font-size:.78rem; margin-top:2px; }
+
+/* PLANOS */
+.planos-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  max-width: 720px; margin: 0 auto;
+}
+.plano-card { padding: 56px 48px; position: relative; }
+.plano-card.destaque { background: var(--white); border-top: 4px solid var(--orange); }
+
+.rec-label {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--black);
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 22px; white-space: nowrap;
+}
+
+.card-badge {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.destaque .card-badge { color: var(--orange); }
+.destaque .card-badge::before { content:''; width:14px; height:1px; background:var(--orange); opacity:.5; }
+
+.plano-card h3 {
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: .97; margin-bottom: 24px;
+}
+.destaque .plano-card h3 { color: var(--ink); }
+
+.price-row {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+}
+
+.price-val {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 800; letter-spacing: -.04em;
+}
+.destaque .price-val { color: var(--ink); }
+
+.price-per { font-size: .88rem; font-weight: 300; }
+.destaque .price-per { color: var(--muted); }
+
+.price-note {
+  font-size: .62rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.destaque .price-note { color: var(--muted); }
+
+/* breakdown de composição */
+.price-breakdown {
+  margin-bottom: 28px; border: 1px solid var(--line);
+}
+.pb-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 16px; border-bottom: 1px solid var(--line);
+  font-size: .78rem; font-weight: 300; color: var(--dim);
+}
+.pb-row:last-child { border-bottom: none; }
+.pb-row.total {
+  background: var(--ink); color: var(--white); font-weight: 700;
+  font-size: .85rem; letter-spacing: .02em;
+}
+.pb-row .pb-label { flex:1; }
+.pb-row .pb-val { font-weight: 600; color: var(--ink); }
+.pb-row.total .pb-val { color: var(--orange); }
+
+.plano-items { list-style: none; margin-bottom: 28px; }
+.plano-items li {
+  font-size: .8rem; font-weight: 300; padding: 10px 0;
+  border-bottom: 1px solid; display: flex; gap: 12px; align-items: flex-start;
+  line-height: 1.55;
+}
+.plano-items li:last-child { border-bottom: none; }
+.destaque .plano-items li { color: var(--dim); border-bottom-color: var(--line); }
+.plano-items li::before { content:'→'; flex-shrink:0; font-size:.8rem; margin-top:1px; }
+.destaque .plano-items li::before { color: var(--orange); }
+
+.excluido-note {
+  font-size: .72rem; font-weight: 300; color: var(--muted);
+  padding: 12px 16px; border: 1px solid var(--line);
+  background: var(--off); line-height: 1.65; margin-top: 4px;
+}
+.excluido-note strong { color: var(--dim); font-weight: 600; }
+
+/* PROXIMOS PASSOS */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:620px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:480px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+@media(max-width:900px){
+  .pilares-grid { grid-template-columns:1fr; }
+  .dif-grid { grid-template-columns:1fr; }
+  .escopo-grid { grid-template-columns:1fr; }
+  .hero-deco { display:none; }
+  .pp-steps { flex-direction:column; align-items:center; gap:24px; }
+  .pp-arrow { transform:rotate(90deg); padding:0; }
+  .rec-label { font-size:.5rem; }
+}
+@media(max-width:600px){
+  .wrap { padding:0 20px; }
+  .section { padding:80px 0; }
+  .plano-card, .dif-side, .escopo-col { padding:40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <span></span>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">Seu conteúdo já constrói autoridade.</span>
+      <span class="line2">Agora ele precisa de alcance.</span>
+    </h1>
+    <p class="hero-sub">A Drª Luiza já tem presença e conteúdo de qualidade no Instagram. O próximo passo é colocar verba inteligente por trás disso — e transformar autoridade em agendamentos reais, com pacientes que já estão procurando por uma ginecologista.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Conteúdo Semanal</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Tráfego Meta + Google</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Relatório Mensal</span>
+    </div>
+  </div>
+  <div class="hero-deco">↗</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — A OPORTUNIDADE
+════════════════════════════ -->
+<section class="section alt" id="visao">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — A oportunidade</div>
+      <h2 class="t-headline sh r d1">Conteúdo sem tráfego é autoridade parada.<br>Tráfego sem conteúdo é custo sem conversão.</h2>
+      <p class="t-body sp r d2">A Drª Luiza tem os dois lados certos: conteúdo consistente que constrói confiança e uma especialidade de alta procura. O que falta é a estrutura que une os dois — e coloca a ginecologista certa na frente da paciente certa, na hora certa.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-cell r d1">
+        <span class="pilar-icon">◆</span>
+        <h3>Alcance com intenção</h3>
+        <p>Não qualquer pessoa — quem pesquisa ativamente por ginecologista, compara avaliações e está pronta para agendar. Cada lead chega com intenção real de cuidar da própria saúde.</p>
+      </div>
+      <div class="pilar-cell r d2">
+        <span class="pilar-icon">◈</span>
+        <h3>ROI mensurável</h3>
+        <p>Custo por lead, taxa de conversão, custo real por agendamento. Você decide com dados — não com achismo. Visibilidade total de onde cada real investido vai parar.</p>
+      </div>
+      <div class="pilar-cell r d3">
+        <span class="pilar-icon">∞</span>
+        <h3>Conteúdo que converte</h3>
+        <p>O mesmo vídeo e card que constrói autoridade no orgânico serve de criativo para as campanhas — maximizando o que já é produzido e reduzindo o custo por resultado.</p>
+      </div>
+    </div>
+    <div class="pilar-quote r d4">
+      <p>"Na ginecologia, a paciente pesquisa, lê avaliações e compara muito antes de ligar. Quem aparece com conteúdo de qualidade e aparece com frequência nos anúncios é quem ela escolhe — antes mesmo do primeiro contato."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — O DIFERENCIAL
+════════════════════════════ -->
+<section class="section" id="diferencial">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — O diferencial</div>
+      <h2 class="t-headline sh r d1">Tráfego para saúde<br>é diferente do resto.</h2>
+      <p class="t-body sp r d2">Medicina tem regras específicas de comunicação — CFM, Meta Ads e Google têm restrições que agências genéricas não conhecem. A Alma tem playbook próprio para tráfego médico, desenvolvido com experiência real no setor de saúde.</p>
+    </div>
+    <div class="dif-grid r d2">
+      <div class="dif-side common">
+        <div class="dif-tag">O que agências genéricas fazem</div>
+        <h3>Anúncio sem<br>contexto médico</h3>
+        <p>Campanhas feitas sem conhecimento das restrições do CFM e das políticas específicas do Meta Ads e Google para saúde. Resultado: anúncios reprovados, conta em risco e leads que não convertem.</p>
+        <ul class="dif-items">
+          <li>Criativos que violam diretrizes do CFM sem saber</li>
+          <li>Anúncios rejeitados por violar políticas de saúde do Meta e Google</li>
+          <li>Segmentação ampla — atrai quem não tem intenção de consulta</li>
+          <li>Sem rastreamento real de custo por agendamento</li>
+          <li>Relatórios de vaidade: alcance e curtidas, sem conversão mensurável</li>
+        </ul>
+      </div>
+      <div class="dif-side legado">
+        <div class="dif-tag orange">Método Alma · Performance em Saúde</div>
+        <h3>Estrutura que respeita<br>as regras e converte</h3>
+        <p>Cada campanha é planejada dentro das diretrizes do CFM e das políticas de saúde do Meta Ads e Google. Criativos aprovados, conta protegida e leads com intenção real de agendar.</p>
+        <ul class="dif-items pos">
+          <li>Playbook exclusivo de tráfego para saúde — campanhas dentro das normas</li>
+          <li>Segmentação assertiva — públicos qualificados com real intenção de agendamento</li>
+          <li>Conteúdo da Drª Luiza usado como criativo nas campanhas — mais autenticidade, menos custo</li>
+          <li>Meta Ads (Instagram + Facebook) e Google Ads geridos em conjunto</li>
+          <li>Relatório mensal real: custo por lead, origem, e performance por canal</li>
+          <li>Time dedicado — não uma agência que divide atenção com 50 clientes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dif-verdict r d3">
+      <p>Conteúdo que já funciona no orgânico + tráfego pago com segmentação cirúrgica = agenda em movimento, sem depender só de indicação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — O QUE ESTÁ INCLUSO
+════════════════════════════ -->
+<section class="section alt" id="escopo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — Escopo completo</div>
+      <h2 class="t-headline sh r d1">Tudo que está na proposta.<br>Sem surpresas.</h2>
+      <p class="t-body sp r d2">Conteúdo e tráfego geridos de forma integrada — pelo mesmo time, com a mesma estratégia.</p>
+    </div>
+    <div class="escopo-grid r d2">
+      <div class="escopo-col">
+        <div class="escopo-label orange">Conteúdo — mantido</div>
+        <h3>Gestão de conteúdo Instagram</h3>
+        <ul class="escopo-list">
+          <li>1 vídeo por semana (Reels) — produção e edição</li>
+          <li>1 card estático por semana — design e copy</li>
+          <li>Calendário editorial alinhado com estratégia de tráfego</li>
+          <li>Conteúdo pronto para uso como criativo nas campanhas pagas</li>
+        </ul>
+      </div>
+      <div class="escopo-col highlight">
+        <div class="escopo-label orange">Tráfego — novo</div>
+        <h3>Gestão de campanhas pagas</h3>
+        <ul class="escopo-list">
+          <li>Gestão completa de Meta Ads (Instagram + Facebook)</li>
+          <li>Gestão completa de Google Ads (pesquisa e display)</li>
+          <li>Segmentação assertiva de acordo com o objetivo de campanha</li>
+          <li>Testes A/B e otimização contínua de performance</li>
+          <li>Relatório mensal com métricas reais e recomendações</li>
+          <li>Time dedicado: gestor de tráfego + estrategista + atendimento</li>
+        </ul>
+      </div>
+    </div>
+    <div class="excluido-note r d3">
+      <strong>Não está incluso nesta proposta:</strong> desenvolvimento de site institucional, criação de landing pages, implementação de Inteligência Artificial (IA) em qualquer modalidade, e integração com CRM. Esses serviços podem ser contratados separadamente mediante proposta específica.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     04 — INVESTIMENTO
+════════════════════════════ -->
+<section class="section" id="plano">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — Investimento</div>
+      <h2 class="t-headline sh r d1">Um pacote integrado,<br>um investimento claro.</h2>
+      <p class="t-body sp r d2">Conteúdo e tráfego pago geridos pelo mesmo time, com estratégia integrada e relatório único.</p>
+    </div>
+    <div class="planos-grid r d2">
+      <div class="plano-card destaque">
+        <div class="rec-label">✦ Proposta exclusiva · Drª Luiza Portas</div>
+        <div class="card-badge">Conteúdo + Tráfego Performance</div>
+        <h3>Autoridade e captação<br>em um único movimento.</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 2.500</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">Fidelização 12 meses · Reajuste anual pelo IPCA</div>
+        <div class="price-breakdown">
+          <div class="pb-row">
+            <span class="pb-label">Gestão de conteúdo (1 vídeo + 1 card/semana)</span>
+            <span class="pb-val">R$ 1.700</span>
+          </div>
+          <div class="pb-row">
+            <span class="pb-label">Gestão de tráfego pago (Meta Ads + Google Ads)</span>
+            <span class="pb-val">R$ 800</span>
+          </div>
+          <div class="pb-row total">
+            <span class="pb-label">Total mensal</span>
+            <span class="pb-val">R$ 2.500</span>
+          </div>
+        </div>
+        <ul class="plano-items">
+          <li>Conteúdo semanal: 1 Reel + 1 card, produzidos e publicados</li>
+          <li>Gestão completa Meta Ads (Instagram + Facebook) e Google Ads</li>
+          <li>Segmentação assertiva de acordo com o objetivo de campanha</li>
+          <li>Testes A/B e otimização contínua de performance mês a mês</li>
+          <li>Análise e relatório mensal de resultados com métricas reais</li>
+          <li>Time dedicado — gestor de tráfego, estrategista e atendimento exclusivo</li>
+          <li><strong>Playbook de tráfego para saúde</strong> — campanhas dentro das diretrizes do CFM e políticas Meta/Google</li>
+        </ul>
+        <div class="excluido-note">
+          <strong>Obs.:</strong> a verba de mídia (investimento nos anúncios) é aportada diretamente pela Drª Luiza nas plataformas. Não está incluída na mensalidade acima.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     05 — FECHAMENTO + PRÓXIMOS PASSOS
+════════════════════════════ -->
+<section class="section alt" id="fechamento">
+  <div class="wrap">
+    <div class="cta-wrap r d1">
+      <h2 class="t-headline">Conteúdo que posiciona.<br>Tráfego que capta.<br>Agenda que cresce.</h2>
+      <p class="cp">A Drª Luiza já fez a parte mais difícil: construiu presença e autoridade com conteúdo consistente. O que falta é transformar essa autoridade em pacientes agendando — e é exatamente isso que o tráfego pago, gerido da forma certa, entrega.</p>
+    </div>
+    <div class="proximos-passos r d2">
+      <div class="pp-title">O que acontece depois do sim</div>
+      <div class="pp-steps">
+        <div class="pp-step">
+          <div class="pp-step-num">01</div>
+          <div class="pp-step-name">Aditivo</div>
+          <div class="pp-step-desc">Assinatura do aditivo ao contrato formalizando o novo escopo</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">02</div>
+          <div class="pp-step-name">Briefing</div>
+          <div class="pp-step-desc">Reunião de alinhamento de estratégia de tráfego e públicos</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">03</div>
+          <div class="pp-step-name">Setup</div>
+          <div class="pp-step-desc">Configuração das contas de anúncio, pixels e rastreamento</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">04</div>
+          <div class="pp-step-name">Campanhas no ar</div>
+          <div class="pp-step-desc">Tráfego rodando e primeiros leads chegando em até 7 dias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alma.Convert · Lukana Marketing e Publicidade Ltda · Proposta de uso exclusivo e confidencial · Drª Luiza Portas</p>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- ── TRACKER ── -->
+<script>
+(function(){
+  var WEBHOOK = "https://script.google.com/macros/s/AKfycbxQ2OJsIx3VWtCIJpVT5DMmiCtoNeK2vRRQypwF4fZTU2paSqxQA9UvUq5abSHYlffc/exec";
+  if(!WEBHOOK || WEBHOOK.indexOf("COLE_AQUI") > -1) return;
+  var ua  = navigator.userAgent || "";
+  var mob = /Mobi|Android|iPhone|iPad/i.test(ua);
+  var nav = (ua.match(/(Chrome|Safari|Firefox|Edge|OPR)\/[\d.]+/) || ["Desconhecido"])[0];
+  var ref = document.referrer || "direto";
+  fetch("https://ip-api.com/json/?fields=city,regionName&lang=pt-BR")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Drª Luiza Portas")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Tráfego Performance")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent(d.city || "—")
+        + "&estado="      + encodeURIComponent(d.regionName || "—");
+      new Image().src = src;
+    })
+    .catch(function(){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Drª Luiza Portas")
+        + "&proposta="    + encodeURIComponent("Conteúdo + Tráfego Performance")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent("—")
+        + "&estado="      + encodeURIComponent("—");
+      new Image().src = src;
+    });
+})();
+</script>
+
+</body>
+</html>
