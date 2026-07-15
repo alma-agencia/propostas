@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Portfólio & Cases</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PORTFÓLIO & CASES
+   Data-first · Proof before pitch
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.10s} .d2{transition-delay:.20s}
+.d3{transition-delay:.30s} .d4{transition-delay:.40s}
+.d5{transition-delay:.50s} .d6{transition-delay:.60s}
+
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-tag { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ══ HERO ══ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden; padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0; width:100%; height:100%; z-index:1; opacity:.4;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0; width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 6rem); font-weight: 800;
+  line-height: .94; letter-spacing: -.05em; max-width: 860px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; color: var(--ink); }
+.hero h1 .line3 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 520px; line-height: 1.9; margin-bottom: 52px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(10rem, 20vw, 16rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.045);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+
+/* ══ SECTION BASE ══ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section.dark { background: var(--ink); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+.section-num.light { color: rgba(255,255,255,.35); }
+.section-num.light::before { background: rgba(255,255,255,.2); }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 540px; }
+
+/* ══ NÚMEROS MACRO ══ */
+.numeros-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.numero-cell { background: var(--white); padding: 52px 36px; }
+.numero-val {
+  font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800; letter-spacing: -.04em;
+  color: var(--orange); line-height: 1; margin-bottom: 12px; display: block;
+}
+.numero-label { font-size: .78rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; letter-spacing: -.01em; }
+.numero-context { font-size: .72rem; font-weight: 300; color: var(--muted); line-height: 1.65; }
+
+/* ══ CLIENTES GRID ══ */
+.clientes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.cliente-card { background: var(--white); padding: 36px 36px; transition: background .25s; }
+.cliente-card:hover { background: var(--orange-l); }
+.cliente-domain {
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--orange);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.cliente-domain::before { content:'↗'; font-size:.65rem; }
+.cliente-name { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; letter-spacing: -.02em; }
+.cliente-tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--dim); display: flex; align-items: center; gap: 6px;
+}
+.cliente-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink:0; }
+
+/* ══ CASES ══ */
+.case-block { margin-bottom: 1px; }
+.case-head {
+  background: var(--ink); padding: 52px 56px;
+  display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start;
+}
+.case-head-left {}
+.case-eyebrow {
+  font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.case-eyebrow::before { content:''; width:16px; height:1px; background:var(--orange); }
+.case-head h3 {
+  font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 800; color: var(--white);
+  letter-spacing: -.04em; line-height: 1; margin-bottom: 20px;
+}
+.case-head p {
+  font-size: .85rem; font-weight: 300; color: rgba(255,255,255,.5);
+  line-height: 1.85; max-width: 520px;
+}
+.case-metrics-inline {
+  display: flex; flex-direction: column; gap: 20px; align-items: flex-end; flex-shrink:0;
+}
+.cmi {
+  text-align: right;
+}
+.cmi-val { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; color: var(--orange); letter-spacing: -.04em; line-height: 1; }
+.cmi-label { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-top: 4px; }
+
+.case-body {
+  background: var(--white); border: 1px solid var(--line); border-top: none;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.case-col { padding: 48px 56px; border-right: 1px solid var(--line); }
+.case-col:last-child { border-right: none; }
+.case-col-label {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+}
+.case-col-label::before { content:''; width:12px; height:1px; background:var(--dim); }
+.case-col-label.orange { color: var(--orange); }
+.case-col-label.orange::before { background: var(--orange); }
+.case-col h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -.02em; }
+.case-col p { font-size: .82rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 20px; }
+.case-items { list-style: none; }
+.case-items li {
+  font-size: .78rem; font-weight: 300; color: var(--dim);
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+  display: flex; gap: 10px; align-items: flex-start; line-height: 1.55;
+}
+.case-items li:last-child { border-bottom: none; }
+.case-items li::before { content:'→'; color: var(--orange); flex-shrink:0; font-size:.72rem; margin-top: 2px; }
+
+.case-metrics-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-top: none;
+}
+.case-metrics-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
+.cm { background: var(--off); padding: 32px 28px; }
+.cm-val { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--orange); letter-spacing: -.04em; line-height: 1; margin-bottom: 8px; display: block; }
+.cm-label { font-size: .7rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.cm-note { font-size: .65rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+.case-quote {
+  background: var(--orange); padding: 32px 56px;
+  display: flex; align-items: center; gap: 24px;
+  border: 1px solid var(--orange); border-top: none;
+}
+.case-quote p { font-size: .88rem; font-weight: 500; color: var(--ink); line-height: 1.7; flex: 1; }
+.case-quote cite { font-size: .68rem; font-weight: 700; letter-spacing: .08em; color: rgba(0,0,0,.55); text-transform: uppercase; flex-shrink:0; font-style: normal; }
+
+/* ══ CTA ══ */
+.cta-section { text-align: center; }
+.cta-section h2 { max-width: 680px; margin: 0 auto 20px; }
+.cta-section p { color: var(--muted); max-width: 520px; margin: 0 auto 48px; font-size: .92rem; line-height: 1.85; font-weight: 300; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 12px; padding: 18px 52px;
+  background: var(--orange); color: var(--ink);
+  font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; transition: background .25s, transform .2s;
+}
+.cta-btn:hover { background: var(--orange-d); color: var(--white); transform: translateY(-2px); }
+.cta-btn::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top: 16px; font-size: .68rem; color: var(--dim); letter-spacing: .05em; }
+
+footer { border-top: 1px solid var(--line); padding: 40px 32px; text-align: center; }
+footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacing: .05em; }
+
+@media(max-width:900px){
+  .numeros-grid { grid-template-columns: repeat(2,1fr); }
+  .clientes-grid { grid-template-columns: repeat(2,1fr); }
+  .case-head { grid-template-columns: 1fr; gap: 32px; }
+  .case-metrics-inline { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+  .cmi { text-align: left; }
+  .case-body { grid-template-columns: 1fr; }
+  .case-col { border-right: none; border-bottom: 1px solid var(--line); }
+  .case-col:last-child { border-bottom: none; }
+  .case-metrics-grid { grid-template-columns: repeat(2,1fr); }
+  .case-quote { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero-deco { display: none; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .section { padding: 80px 0; }
+  .case-head { padding: 36px 28px; }
+  .case-col { padding: 36px 28px; }
+  .case-quote { padding: 28px; }
+  .numeros-grid { grid-template-columns: 1fr 1fr; }
+  .clientes-grid { grid-template-columns: 1fr; }
+  .case-metrics-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <span class="nav-tag">Portfólio · 2026</span>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Cases documentados · Dados reais</span>
+    </div>
+    <h1>
+      <span class="line1">Resultado não é</span>
+      <span class="line2">promessa.</span>
+      <span class="line3">É dado.</span>
+    </h1>
+    <p class="hero-sub">Antes de qualquer reunião, os números falam. Aqui estão os cases reais da Alma — com estratégia, contexto e métricas auditáveis. Nada de estimativas ou cases genéricos.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Tráfego Pago</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">IA Comercial</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Conteúdo</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">6 estados · 2 países</span>
+    </div>
+  </div>
+  <div class="hero-deco">↗</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Ver cases</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — NÚMEROS
+════════════════════════════ -->
+<section class="section alt" id="numeros">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — Os números</div>
+      <h2 class="t-headline sh r d1">O que nossos clientes<br>têm em comum:</h2>
+      <p class="t-body sp r d2">Resultados documentados, estratégias replicáveis e dados que não precisam de interpretação favorável.</p>
+    </div>
+    <div class="numeros-grid r d2">
+      <div class="numero-cell">
+        <span class="numero-val">R$900K+</span>
+        <div class="numero-label">Faturamento gerado</div>
+        <div class="numero-context">Receita diretamente atribuída às campanhas geridas pela Alma em 2026</div>
+      </div>
+      <div class="numero-cell">
+        <span class="numero-val">8.300+</span>
+        <div class="numero-label">Leads e conversas qualificadas</div>
+        <div class="numero-context">Volume gerado com segmentação real — não leads genéricos sem intenção</div>
+      </div>
+      <div class="numero-cell">
+        <span class="numero-val">20×</span>
+        <div class="numero-label">ROI documentado</div>
+        <div class="numero-context">Retorno sobre investimento em tráfego auditado mensalmente com dados reais da conta</div>
+      </div>
+      <div class="numero-cell">
+        <span class="numero-val">10×</span>
+        <div class="numero-label">Multiplicação de conversão</div>
+        <div class="numero-context">Taxa de conversão de 0,5% para 5% em 60 dias com IA comercial — ASX Brasil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — CLIENTES
+════════════════════════════ -->
+<section class="section" id="clientes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — Quem confia na Alma</div>
+      <h2 class="t-headline sh r d1">B2B. B2C. Do interior<br>da Bahia ao exterior.</h2>
+      <p class="t-body sp r d2">Empresas de segmentos distintos, regiões distintas — com o mesmo padrão de exigência por resultado mensurável.</p>
+    </div>
+    <div class="clientes-grid r d2">
+      <div class="cliente-card">
+        <div class="cliente-domain">labvitalab.com.br</div>
+        <div class="cliente-name">Grupo Vitalab</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Saúde · Laboratório Clínico · Bahia</div>
+      </div>
+      <div class="cliente-card">
+        <div class="cliente-domain">tempogeracao.com.br</div>
+        <div class="cliente-name">Tempo Geração</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Energia Solar por Assinatura · SP · Bahia</div>
+      </div>
+      <div class="cliente-card">
+        <div class="cliente-domain">asx.com.br</div>
+        <div class="cliente-name">ASX Brasil</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Tech · B2B · Brasil · Colômbia · Espanha</div>
+      </div>
+      <div class="cliente-card">
+        <div class="cliente-domain">keromaispaescongelados.com.br</div>
+        <div class="cliente-name">Kero Mais</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Alimentação · Distribuição · Goiânia</div>
+      </div>
+      <div class="cliente-card">
+        <div class="cliente-domain">ilhamed.com.br</div>
+        <div class="cliente-name">Ilha Med</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Saúde · Clínica Médica · Espírito Santo</div>
+      </div>
+      <div class="cliente-card">
+        <div class="cliente-domain">spkdistribuidora.com.br</div>
+        <div class="cliente-name">SPK Distribuidora</div>
+        <div class="cliente-tag"><span class="cliente-dot"></span>Distribuição · B2B · Goiânia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — CASES
+════════════════════════════ -->
+<section class="section alt" id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — Cases em destaque</div>
+      <h2 class="t-headline sh r d1">O problema, a estratégia<br>e o que aconteceu.</h2>
+      <p class="t-body sp r d2">Sem omitir o contexto, sem inflar os números. Cada case começa pelo problema real que o cliente trazia.</p>
+    </div>
+
+    <!-- ── CASE 1: VITALAB ── -->
+    <div class="case-block r d1">
+      <div class="case-head">
+        <div class="case-head-left">
+          <div class="case-eyebrow">Case 01 · Tráfego B2C · Saúde</div>
+          <h3>Grupo Vitalab<br>Laboratório Clínico</h3>
+          <p>Nicho com restrições severas no Meta Ads. Segmentação geográfica hiperlocal entre Feira de Santana e bairros de Salvador. CPA 45% abaixo do benchmark de mercado (R$8–20/conversa) — mantido por 7 meses consecutivos.</p>
+        </div>
+        <div class="case-metrics-inline">
+          <div class="cmi">
+            <div class="cmi-val">R$667K</div>
+            <div class="cmi-label">Faturamento gerado</div>
+          </div>
+          <div class="cmi">
+            <div class="cmi-val">20×</div>
+            <div class="cmi-label">ROI sobre o investimento</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="case-col-label">O problema</div>
+          <h4>Leads chegando, agenda parada.</h4>
+          <p>O laboratório tentava anúncios mas esbarrava nas restrições de saúde do Meta Ads. Campanhas genéricas geravam alcance sem conversão. Sem segmentação geográfica precisa, o orçamento se dispersava por um público sem intenção de agendamento.</p>
+          <ul class="case-items">
+            <li>Criativos reprovados por violar políticas de saúde da plataforma</li>
+            <li>Segmentação ampla — CPA imprevisível e volátil</li>
+            <li>Sem distinção entre público de Feira de Santana e Salvador</li>
+            <li>Relatório de vaidade: alcance alto, agendamentos baixos</li>
+          </ul>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label orange">A estratégia</div>
+          <h4>Arquitetura em 3 camadas, criativos dentro das regras.</h4>
+          <p>Campanhas separadas por temperatura de público (RMKT quente, frio FSA, frio Salvador). Criativos desenvolvidos dentro das diretrizes do CFM e do Meta Ads. Otimização por CPA real de conversa, não por alcance.</p>
+          <ul class="case-items">
+            <li>RMKT CBO (R$50/dia) — engajamentos IG 90 dias · CPA 30–50% menor</li>
+            <li>Frio Feira de Santana — raio 17km, 3 adsets segmentados</li>
+            <li>Frio Salvador — segmentação por bairro (Itapuã e Mata de São João)</li>
+            <li>Campanha São João 2026 — CPA R$3,72 · 2º menor do semestre</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-metrics-grid">
+        <div class="cm">
+          <span class="cm-val">7.640</span>
+          <div class="cm-label">Conversas iniciadas</div>
+          <div class="cm-note">WhatsApp · Jan–Jul 2026</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">R$4,36</span>
+          <div class="cm-label">CPA médio</div>
+          <div class="cm-note">Meta: R$5,00 · Benchmark: R$8–20</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">60%</span>
+          <div class="cm-label">Taxa de agendamento</div>
+          <div class="cm-note">4.584 agendamentos de 7.640 conversas</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">R$9,10</span>
+          <div class="cm-label">Custo por paciente atendido</div>
+          <div class="cm-note">Ticket médio R$182/visita</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CASE 2: TEMPO GERAÇÃO ── -->
+    <div class="case-block r d2" style="margin-top: 2px;">
+      <div class="case-head">
+        <div class="case-head-left">
+          <div class="case-eyebrow">Case 02 · Tráfego B2B+B2C · Energia</div>
+          <h3>Tempo Geração<br>Energia Solar por Assinatura</h3>
+          <p>Produto com LTV médio de R$21 mil por contrato. Sem canal digital estruturado — 100% de captação por indicação. Dois públicos completamente distintos sendo tratados como um só, sem funil de qualificação.</p>
+        </div>
+        <div class="case-metrics-inline">
+          <div class="cmi">
+            <div class="cmi-val">103×</div>
+            <div class="cmi-label">ROAS LTV pico</div>
+          </div>
+          <div class="cmi">
+            <div class="cmi-val">R$247K</div>
+            <div class="cmi-label">LTV em contratos</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="case-col-label">O problema</div>
+          <h4>Produto sólido. Canal digital inexistente.</h4>
+          <p>Tentativas anteriores de anúncios geravam leads genéricos com baixa conversão. Sem separação de persona, o mesmo criativo tentava alcançar o morador com conta alta e o empresário com múltiplas unidades — e não convertia nenhum dos dois com eficiência.</p>
+          <ul class="case-items">
+            <li>Captação exclusiva por indicação — sem previsibilidade</li>
+            <li>Dois compradores distintos sem campanhas distintas</li>
+            <li>Sem funil pós-lead: todos os contatos recebiam o mesmo tratamento</li>
+            <li>Produto com oferta de planos escalonados sem critério de apresentação por perfil</li>
+          </ul>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label orange">A estratégia</div>
+          <h4>Persona primeiro. Campanha separada. Oferta certa por momento.</h4>
+          <p>Mapeamento de dois perfis distintos com campanhas, criativos e abordagens diferentes. Formulário de qualificação que chegava ao atendimento com contexto. Otimização pelo LTV real dos contratos, não pelo CPL.</p>
+          <ul class="case-items">
+            <li>Persona Residencial — LAL 1% + Público Investidor · Plano 25% · 36 meses</li>
+            <li>Persona Empresarial — ADV+ Advantage+ · empresários Bahia · ESG como ângulo</li>
+            <li>Funil de qualificação integrado ao atendimento — lead chegava com perfil definido</li>
+            <li>4 planos apresentados por estágio de decisão, não por pressão de conversão</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-metrics-grid">
+        <div class="cm">
+          <span class="cm-val">637+</span>
+          <div class="cm-label">Leads qualificados</div>
+          <div class="cm-note">Fev–Jun 2026 · segmentados por persona</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">R$13,88</span>
+          <div class="cm-label">CPL médio</div>
+          <div class="cm-note">Estável ao longo de toda a operação</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">25+</span>
+          <div class="cm-label">Contratos fechados</div>
+          <div class="cm-note">Receita recorrente de 12–36 meses</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">65%</span>
+          <div class="cm-label">Principal canal de aquisição</div>
+          <div class="cm-note">Da receita recorrente da usina</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CASE 3: ASX ── -->
+    <div class="case-block r d3" style="margin-top: 2px;">
+      <div class="case-head">
+        <div class="case-head-left">
+          <div class="case-eyebrow">Case 03 · IA Comercial · B2B Tech</div>
+          <h3>ASX Brasil<br>IA no processo de vendas</h3>
+          <p>Empresa com operação em Brasil, Colômbia e Espanha. Time comercial 100% manual, sem padronização de abordagem. Leads chegavam e esfriavam antes do primeiro contato qualificado — e ninguém sabia exatamente o que estava funcionando.</p>
+        </div>
+        <div class="case-metrics-inline">
+          <div class="cmi">
+            <div class="cmi-val">10×</div>
+            <div class="cmi-label">Mais conversões</div>
+          </div>
+          <div class="cmi">
+            <div class="cmi-val">60 dias</div>
+            <div class="cmi-label">Para transformar a operação</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="case-col-label">O problema</div>
+          <h4>0,5% de conversão com R$1.500/mês em tráfego.</h4>
+          <p>O problema não era o orçamento — era o que acontecia depois do clique. Leads chegavam ao time comercial sem qualificação, sem contexto e sem padronização de abordagem. A taxa de aproveitamento das oportunidades era de 0,5%. O "lead esquecido" era comum.</p>
+          <ul class="case-items">
+            <li>Sem recepção imediata — leads esfriavam antes do primeiro contato</li>
+            <li>Time comercial sem critério de priorização de oportunidades</li>
+            <li>Abordagem não padronizada — cada vendedor inventava o próprio script</li>
+            <li>Follow-up manual e irregular — leads perdidos por falta de reengajamento</li>
+          </ul>
+        </div>
+        <div class="case-col">
+          <div class="case-col-label orange">A estratégia</div>
+          <h4>IA na entrada do funil. Vendedor no momento certo.</h4>
+          <p>Implantação de agentes inteligentes para recepção imediata, qualificação estruturada e priorização de oportunidades. O vendedor passou a entrar na conversa com contexto completo — mais tarde no processo, mas em momento decisivo.</p>
+          <ul class="case-items">
+            <li>Agente de IA faz a recepção e qualificação — 24h, sem espera</li>
+            <li>Rotinas de follow-up automático eliminam o "lead esquecido"</li>
+            <li>Resumo estruturado entregue ao vendedor antes do primeiro contato humano</li>
+            <li>Previsibilidade de pipeline — primeiro vez que as vendas ficaram mensuráveis</li>
+          </ul>
+        </div>
+      </div>
+      <div class="case-metrics-grid cols3">
+        <div class="cm">
+          <span class="cm-val">0,5% → 5%</span>
+          <div class="cm-label">Taxa de conversão</div>
+          <div class="cm-note">Em 60 dias · sem aumentar orçamento de tráfego</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">R$1.500</span>
+          <div class="cm-label">Investimento mensal em tráfego</div>
+          <div class="cm-note">ROI "altamente positivo já no 2º mês" — CEO ASX</div>
+        </div>
+        <div class="cm">
+          <span class="cm-val">R$4.000+</span>
+          <div class="cm-label">Ticket mínimo por contrato</div>
+          <div class="cm-note">~200 leads/mês · múltiplos contratos/mês no 2º mês</div>
+        </div>
+      </div>
+      <div class="case-quote">
+        <p>"A Convert.AI, da agência Alma, revolucionou nossa operação comercial. Em apenas 2 meses, conseguimos transformar o processo de atendimento com agentes inteligentes, qualificando melhor os leads e aumentando significativamente as vendas. A previsibilidade das vendas nunca esteve tão clara."</p>
+        <cite>Sarom Soares<br>CEO · ASX Brasil</cite>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     04 — CTA
+════════════════════════════ -->
+<section class="section" id="conversa">
+  <div class="wrap">
+    <div class="cta-section r d1">
+      <h2 class="t-headline">Esses dados poderiam ser<br>sobre a sua empresa.</h2>
+      <p>Cada case começou com uma conversa de 30 minutos. Se quiser entender o que é possível para o seu negócio, é só marcar uma reunião — sem compromisso, sem pitch genérico.</p>
+      <a class="cta-btn" href="https://wa.me/557531999201?text=Olá!+Acessei+o+portfólio+da+Alma+e+gostaria+de+entender+o+que+é+possível+para+meu+negócio." target="_blank">Agendar uma conversa</a>
+      <div class="cta-sub">30 minutos · sem compromisso · sem pitch genérico</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alma.Convert · Lukana Marketing e Publicidade Ltda · BA | GO | SP | TO | ES · info@almaagenciadigital.com.br</p>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.10});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- ── TRACKER ── -->
+<script>
+(function(){
+  var WEBHOOK = "https://script.google.com/macros/s/AKfycbxQ2OJsIx3VWtCIJpVT5DMmiCtoNeK2vRRQypwF4fZTU2paSqxQA9UvUq5abSHYlffc/exec";
+  if(!WEBHOOK || WEBHOOK.indexOf("COLE_AQUI") > -1) return;
+  var ua  = navigator.userAgent || "";
+  var mob = /Mobi|Android|iPhone|iPad/i.test(ua);
+  var nav = (ua.match(/(Chrome|Safari|Firefox|Edge|OPR)\/[\d.]+/) || ["Desconhecido"])[0];
+  var ref = document.referrer || "direto";
+  fetch("https://ip-api.com/json/?fields=city,regionName&lang=pt-BR")
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var src = WEBHOOK
+        + "?cliente="     + encodeURIComponent("Portfólio Alma")
+        + "&proposta="    + encodeURIComponent("Portfolio & Cases")
+        + "&dispositivo=" + encodeURIComponent(mob ? "mobile" : "desktop")
+        + "&navegador="   + encodeURIComponent(nav)
+        + "&origem="      + encodeURIComponent(ref)
+        + "&cidade="      + encodeURIComponent(d.city || "—")
+        + "&estado="      + encodeURIComponent(d.regionName || "—");
+      new Image().src = src;
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
