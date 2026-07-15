@@ -287,8 +287,8 @@ footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacin
 @media(max-width:900px){
   .numeros-grid { grid-template-columns: repeat(2,1fr); }
   .clientes-grid { grid-template-columns: repeat(2,1fr); }
-  .case-head { grid-template-columns: 1fr; gap: 32px; }
-  .case-metrics-inline { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+  .case-head { grid-template-columns: 1fr; gap: 28px; }
+  .case-metrics-inline { flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 20px; }
   .cmi { text-align: left; }
   .case-body { grid-template-columns: 1fr; }
   .case-col { border-right: none; border-bottom: 1px solid var(--line); }
@@ -298,14 +298,40 @@ footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacin
   .hero-deco { display: none; }
 }
 @media(max-width:600px){
-  .wrap { padding: 0 20px; }
-  .section { padding: 80px 0; }
-  .case-head { padding: 36px 28px; }
-  .case-col { padding: 36px 28px; }
-  .case-quote { padding: 28px; }
+  .wrap { padding: 0 16px; }
+  .section { padding: 60px 0; }
+  .section-head { margin-bottom: 36px; }
+
+  /* hero */
+  .hero { padding: 96px 0 60px; }
+  .hero-inner { padding: 0 20px; }
+  .hero-eyebrow { margin-bottom: 36px; flex-wrap: wrap; gap: 10px; }
+  .hero-meta { gap: 8px; }
+  .m-sep { display: none; }
+
+  /* números */
   .numeros-grid { grid-template-columns: 1fr 1fr; }
+  .numero-cell { padding: 28px 18px; }
+
+  /* clientes — 1 col, screenshot com altura máxima */
   .clientes-grid { grid-template-columns: 1fr; }
+  .cliente-shot { max-height: 200px; object-fit: cover; object-position: top; }
+  .cliente-info { padding: 16px 18px 18px; }
+
+  /* cases */
+  .case-head { padding: 28px 20px; }
+  .case-head h3 { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .case-col { padding: 28px 20px; }
+  .case-quote { padding: 24px 20px; flex-direction: column; gap: 10px; }
   .case-metrics-grid { grid-template-columns: 1fr 1fr; }
+  .cm { padding: 22px 16px; }
+  .cmi-val { font-size: clamp(1.4rem, 6vw, 2rem); }
+
+  /* cta */
+  .cta-section h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+  .cta-btn { padding: 16px 32px; width: 100%; justify-content: center; }
+
+  footer { padding: 28px 20px; }
 }
 </style>
 </head>
