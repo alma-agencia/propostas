@@ -173,16 +173,25 @@ p.sp  { color: var(--muted); max-width: 540px; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
   background: var(--line); border: 1px solid var(--line);
 }
-.cliente-card { background: var(--white); padding: 36px 36px; transition: background .25s; }
+.cliente-card { background: var(--white); transition: background .25s; overflow: hidden; }
 .cliente-card:hover { background: var(--orange-l); }
-.cliente-domain {
-  font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--orange);
-  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+.cliente-card:hover .cliente-shot { opacity: .88; }
+.cliente-shot {
+  width: 100%; height: 180px; object-fit: cover; object-position: top;
+  display: block; border-bottom: 1px solid var(--line);
+  transition: opacity .3s; background: var(--off);
+  filter: saturate(.85);
 }
-.cliente-domain::before { content:'↗'; font-size:.65rem; }
-.cliente-name { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; letter-spacing: -.02em; }
+.cliente-card:hover .cliente-shot { filter: saturate(1.05); }
+.cliente-info { padding: 28px 30px; }
+.cliente-domain {
+  font-size: .68rem; font-weight: 700; letter-spacing: .04em; color: var(--orange);
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.cliente-domain::before { content:'↗'; font-size:.62rem; }
+.cliente-name { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; letter-spacing: -.02em; }
 .cliente-tag {
-  font-size: .6rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
   color: var(--dim); display: flex; align-items: center; gap: 6px;
 }
 .cliente-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink:0; }
@@ -278,6 +287,7 @@ footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacin
 @media(max-width:900px){
   .numeros-grid { grid-template-columns: repeat(2,1fr); }
   .clientes-grid { grid-template-columns: repeat(2,1fr); }
+  .cliente-shot { height: 150px; }
   .case-head { grid-template-columns: 1fr; gap: 32px; }
   .case-metrics-inline { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
   .cmi { text-align: left; }
@@ -391,34 +401,52 @@ footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacin
     </div>
     <div class="clientes-grid r d2">
       <div class="cliente-card">
-        <div class="cliente-domain">labvitalab.com.br</div>
-        <div class="cliente-name">Grupo Vitalab</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Saúde · Laboratório Clínico · Bahia</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://labvitalab.com.br" alt="Grupo Vitalab" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">labvitalab.com.br</div>
+          <div class="cliente-name">Grupo Vitalab</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>Saúde · Laboratório Clínico · Bahia</div>
+        </div>
       </div>
       <div class="cliente-card">
-        <div class="cliente-domain">tempogeracao.com.br</div>
-        <div class="cliente-name">Tempo Geração</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Energia Solar por Assinatura · SP · Bahia</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://tempogeracao.com.br" alt="Tempo Geração" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">tempogeracao.com.br</div>
+          <div class="cliente-name">Tempo Geração</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>Energia Solar por Assinatura · Bahia · SP</div>
+        </div>
       </div>
       <div class="cliente-card">
-        <div class="cliente-domain">asx.com.br</div>
-        <div class="cliente-name">ASX Brasil</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Tech · B2B · Brasil · Colômbia · Espanha</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://asx.com.br" alt="ASX Iluminação" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">asx.com.br</div>
+          <div class="cliente-name">ASX Iluminação</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>LED Automotivo · Brasil · Colômbia · Espanha</div>
+        </div>
       </div>
       <div class="cliente-card">
-        <div class="cliente-domain">keromaispaescongelados.com.br</div>
-        <div class="cliente-name">Kero Mais</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Alimentação · Distribuição · Goiânia</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://keromaispaescongelados.com.br" alt="Kero Mais" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">keromaispaescongelados.com.br</div>
+          <div class="cliente-name">Kero Mais</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>Alimentação · Distribuição · Goiânia</div>
+        </div>
       </div>
       <div class="cliente-card">
-        <div class="cliente-domain">ilhamed.com.br</div>
-        <div class="cliente-name">Ilha Med</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Saúde · Clínica Médica · Espírito Santo</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://ilhamed.com.br" alt="Ilha Med" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">ilhamed.com.br</div>
+          <div class="cliente-name">Ilha Med</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>Produtos Hospitalares · Espírito Santo</div>
+        </div>
       </div>
       <div class="cliente-card">
-        <div class="cliente-domain">spkdistribuidora.com.br</div>
-        <div class="cliente-name">SPK Distribuidora</div>
-        <div class="cliente-tag"><span class="cliente-dot"></span>Distribuição · B2B · Goiânia</div>
+        <img class="cliente-shot" src="https://image.thum.io/get/width/800/crop/450/https://spkdistribuidora.com.br" alt="SPK Distribuidora" loading="lazy">
+        <div class="cliente-info">
+          <div class="cliente-domain">spkdistribuidora.com.br</div>
+          <div class="cliente-name">SPK Distribuidora</div>
+          <div class="cliente-tag"><span class="cliente-dot"></span>Autopeças · Distribuição B2B · Goiânia</div>
+        </div>
       </div>
     </div>
   </div>
@@ -573,9 +601,9 @@ footer p { font-size: .68rem; font-weight: 300; color: var(--dim); letter-spacin
     <div class="case-block r d3" style="margin-top: 2px;">
       <div class="case-head">
         <div class="case-head-left">
-          <div class="case-eyebrow">Case 03 · IA Comercial · B2B Tech</div>
-          <h3>ASX Brasil<br>IA no processo de vendas</h3>
-          <p>Empresa com operação em Brasil, Colômbia e Espanha. Time comercial 100% manual, sem padronização de abordagem. Leads chegavam e esfriavam antes do primeiro contato qualificado — e ninguém sabia exatamente o que estava funcionando.</p>
+          <div class="case-eyebrow">Case 03 · IA Comercial · LED Automotivo</div>
+          <h3>ASX Iluminação<br>IA no processo de vendas</h3>
+          <p>Fábrica de LEDs automotivos com operação em Brasil, Colômbia e Espanha. Time comercial 100% manual, sem padronização de abordagem. Leads chegavam e esfriavam antes do primeiro contato qualificado — e ninguém sabia exatamente o que estava funcionando.</p>
         </div>
         <div class="case-metrics-inline">
           <div class="cmi">
