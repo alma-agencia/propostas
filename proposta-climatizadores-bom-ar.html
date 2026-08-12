@@ -127,8 +127,12 @@ h1 .line2{color:var(--orange);font-style:italic;font-weight:300;animation-delay:
 .mk-bar{display:flex;align-items:center;gap:8px;padding:12px 18px;background:var(--white);border-bottom:1px solid var(--line)}
 .mk-dot{width:9px;height:9px;border-radius:50%;background:#dfe3dd}
 .mk-url{margin-left:12px;font-size:.62rem;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.mk-pane{display:none;padding:28px}
-.mk-pane.active{display:block}
+/* Painéis empilhados na mesma célula do grid: a altura passa a ser sempre a do
+   painel mais alto, então trocar de aba não muda o tamanho da página. Sem isso,
+   a rotação empurrava as seções de baixo e o leitor perdia o ponto da rolagem. */
+.mk-panes{display:grid}
+.mk-pane{grid-area:1 / 1;padding:28px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .3s}
+.mk-pane.active{visibility:visible;opacity:1;pointer-events:auto}
 .mk-h{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:20px}
 .mk-h h5{font-size:1.15rem;font-weight:700;color:var(--tx);letter-spacing:-.02em}
 .mk-h p{font-size:.72rem;font-weight:400;color:var(--tx2);margin-top:3px;line-height:1.5}
@@ -279,7 +283,14 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   .pp-step{max-width:280px}
   .mk-kpis{grid-template-columns:repeat(2,1fr)}
   .mk-2col,.mk-split,.mk-strips{grid-template-columns:1fr}
-  .mk-tab{min-width:120px;font-size:.56rem;padding:15px 12px}
+  /* Abas empilhadas no toque: alvo grande, sem rolagem horizontal e sem
+     precisar acertar um botão estreito com o polegar. */
+  .mk-tabs{flex-direction:column;overflow-x:visible}
+  .mk-tab{flex:none;width:100%;min-width:0;text-align:left;padding:16px 20px;
+          font-size:.6rem;border-right:none;border-bottom:1px solid var(--line)}
+  .mk-tab:last-child{border-bottom:1px solid var(--line)}
+  .mk-tab.active{background:var(--orange-l)}
+  .mk-tab .prog{height:2px}
   .exp p{min-height:0}
 }
 /* ── 600px ── */
@@ -516,7 +527,7 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
     <div class="r d1" id="mkWrap">
       <div class="mk-hint">
         <span class="mk-hint-dot"></span>
-        <span id="mkHint">Três telas · alternando sozinho — <b>clique numa aba</b> para navegar</span>
+        <span id="mkHint">Três telas do painel · <b>clique nas abas</b> para comparar</span>
         <span class="mk-count" id="mkCount">1 / 3</span>
       </div>
       <div class="mk-tabs">
@@ -530,6 +541,8 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
           <span class="mk-dot"></span><span class="mk-dot"></span><span class="mk-dot"></span>
           <span class="mk-url">painel.almaconvert.com.br / bom-ar</span>
         </div>
+
+        <div class="mk-panes">
 
         <!-- PANE 1 -->
         <div class="mk-pane active" id="mk1">
@@ -682,6 +695,8 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
           </div>
         </div>
 
+        </div><!-- /mk-panes -->
+
       </div>
     </div>
   </div>
@@ -819,15 +834,23 @@ var navIo = new IntersectionObserver(function(entries){
 }, { threshold: [0, .75, 1] });
 navIo.observe(hero);
 
-/* ── Abas do painel: rotação automática a cada 2s ── */
+/* ── Abas do painel ──────────────────────────────────────────────────────────
+   A rotação existe só para revelar que há três telas. Ela roda UM ciclo e para.
+   Em telas de toque não roda: sem hover não há como pausar, e o movimento
+   atrapalha quem está rolando a página. */
 (function(){
-  var DUR   = 2000;
+  var DUR   = 2200;
   var wrap  = document.getElementById('mkWrap');
   var tabs  = Array.prototype.slice.call(document.querySelectorAll('.mk-tab'));
   var panes = Array.prototype.slice.call(document.querySelectorAll('.mk-pane'));
   var hint  = document.getElementById('mkHint');
   var count = document.getElementById('mkCount');
-  var i = 0, timer = null, auto = true, started = false;
+
+  var toque   = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  var semAnim = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var auto    = !toque && !semAnim;
+
+  var i = 0, timer = null, voltas = 0, started = false;
 
   function show(n){
     i = n;
@@ -837,41 +860,78 @@ navIo.observe(hero);
     if(auto){
       var bar = tabs[n].querySelector('.prog');
       bar.style.animation = 'none';
-      void bar.offsetWidth;           // força reflow para reiniciar a animação
+      void bar.offsetWidth;              // força reflow para reiniciar a animação
       bar.style.animation = 'mkprog ' + DUR + 'ms linear forwards';
     }
   }
 
-  function play(){ if(!auto) return; clearInterval(timer); timer = setInterval(function(){ show((i+1)%tabs.length); }, DUR); }
-  function pause(){ clearInterval(timer); }
+  function pause(){ clearInterval(timer); timer = null; }
 
   function stopAuto(){
     auto = false; pause();
     wrap.classList.remove('auto');
     tabs.forEach(function(t){ t.querySelector('.prog').style.animation = 'none'; });
-    hint.innerHTML = 'Três telas · <b>clique nas abas</b> para comparar';
+    hint.innerHTML = manualHint();
   }
 
+  function manualHint(){
+    return toque
+      ? 'Três telas do painel · <b>toque nas abas</b> para navegar'
+      : 'Três telas do painel · <b>clique nas abas</b> para comparar';
+  }
+
+  function play(){
+    if(!auto) return;
+    pause();
+    timer = setInterval(function(){
+      var prox = (i + 1) % tabs.length;
+      show(prox);
+      if(prox === 0){            // completou uma volta: mostrou as três, encerra
+        voltas++;
+        stopAuto();
+      }
+    }, DUR);
+  }
+
+  // Qualquer interação encerra a rotação na hora — clique e também toque,
+  // que em iOS pode não disparar click se o dedo desliza um pouco.
   tabs.forEach(function(btn, k){
-    btn.addEventListener('click', function(){ stopAuto(); show(k); btn.blur(); });
+    function escolher(ev){ ev.preventDefault(); stopAuto(); show(k); btn.blur(); }
+    btn.addEventListener('click', escolher);
+    btn.addEventListener('touchend', escolher, { passive: false });
   });
 
-  // pausa enquanto o leitor está com o mouse em cima, para dar tempo de ler
-  wrap.addEventListener('mouseenter', function(){ if(auto){ pause(); tabs[i].querySelector('.prog').style.animationPlayState='paused'; } });
-  wrap.addEventListener('mouseleave', function(){ if(auto){ tabs[i].querySelector('.prog').style.animationPlayState='running'; play(); } });
-
-  // só começa a girar quando o painel entra na tela
-  var startIo = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting && !started && auto){
-        started = true;
-        wrap.classList.add('auto');
-        show(0);
-        play();
-      }
+  if(auto){
+    // pausa enquanto o mouse está sobre o painel, para dar tempo de ler
+    wrap.addEventListener('mouseenter', function(){
+      if(!auto) return;
+      pause();
+      tabs[i].querySelector('.prog').style.animationPlayState = 'paused';
     });
-  }, { threshold: .25 });
-  startIo.observe(wrap);
+    wrap.addEventListener('mouseleave', function(){
+      if(!auto) return;
+      tabs[i].querySelector('.prog').style.animationPlayState = 'running';
+      play();
+    });
+  }
+
+  if(!auto){
+    hint.innerHTML = manualHint();
+    show(0);
+  } else {
+    // só começa a girar quando o painel entra na tela
+    var startIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && !started && auto){
+          started = true;
+          wrap.classList.add('auto');
+          show(0);
+          play();
+        }
+      });
+    }, { threshold: .25 });
+    startIo.observe(wrap);
+  }
 })();
 </script>
 
