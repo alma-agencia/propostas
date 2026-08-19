@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · AREV Health e Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PROPOSTA AREV HEALTH E WELLNESS
+   Tráfego Pago + Direção Estratégica de Comunicação
+   Design: Editorial · White · Orange
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); color: var(--white); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey { position: absolute; inset:0; width:100%; height:100%; z-index:1; opacity:.45; }
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner { position: relative; z-index:2; width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800;
+  line-height: .98; letter-spacing: -.045em; max-width: 940px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 620px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%{opacity:1;transform:translateY(0);} 60%{opacity:0;transform:translateY(16px);}
+  61%{opacity:0;transform:translateY(0);} 100%{opacity:1;transform:translateY(0);}
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(9rem, 20vw, 16rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   TESE
+═══════════════════════════════════════════ */
+.tese { background: var(--ink); padding: 110px 0; }
+.tese .eyebrow { color: var(--orange); }
+.eyebrow { font-size:.6rem; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--orange); margin-bottom:22px; }
+.tese h2 {
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem); font-weight: 700; line-height: 1.25;
+  letter-spacing: -.03em; color: var(--white); max-width: 860px; margin-bottom: 26px;
+}
+.tese h2 em { font-style: italic; font-weight: 300; color: var(--orange); }
+.tese p { font-size: .95rem; font-weight: 300; color: rgba(255,255,255,.5); max-width: 700px; line-height: 1.9; }
+
+/* ═══════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+.section-num.c { justify-content:center; }
+.section-num.c::before, .section-num.c::after { content:''; width:20px; height:1px; background:var(--orange); opacity:.4; }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 620px; font-size: clamp(.9rem,1.5vw,1.02rem); font-weight:300; line-height:1.85; }
+
+/* ═══════════════════════════════════════════
+   DIAGNÓSTICO — 3 CARDS
+═══════════════════════════════════════════ */
+.diag-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.diag-card { background: var(--white); padding: 52px 36px; transition: background .3s; }
+.diag-card:hover { background: var(--orange-l); }
+.diag-num { font-size: clamp(2.2rem,4vw,3rem); font-weight: 800; color: var(--orange); letter-spacing:-.05em; line-height:1; margin-bottom: 24px; display:block; }
+.diag-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -.02em; line-height:1.25; }
+.diag-card p  { font-size: .83rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.diag-quote { background: var(--ink); border-top: 3px solid var(--orange); padding: 52px 48px; text-align: center; }
+.diag-quote p {
+  font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.62); max-width: 720px; margin: 0 auto 14px; line-height: 1.75;
+}
+.diag-quote span { font-size:.6rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color: rgba(249,115,22,.75); }
+
+/* ═══════════════════════════════════════════
+   DIFERENCIAL — COMPARATIVO
+═══════════════════════════════════════════ */
+.dif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.dif-side { padding: 56px 48px; }
+.dif-side.common { background: var(--off); }
+.dif-side.legado { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.35rem, 2.4vw, 1.85rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.14; margin-bottom: 26px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 11px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px; line-height:1.65;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict { background: var(--orange); padding: 30px 48px; display: flex; align-items: center; }
+.dif-verdict p { font-size: .9rem; font-weight: 600; letter-spacing: .02em; color: var(--black); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   PILARES EDITORIAIS — 6 CÉLULAS
+═══════════════════════════════════════════ */
+.pilares-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-bottom: 1px;
+}
+.pilar-cell { background: var(--white); padding: 46px 34px; transition: background .3s; }
+.pilar-cell:hover { background: var(--orange-l); }
+.pilar-tag { font-size: .55rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: block; }
+.pilar-cell h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.02em; line-height:1.3; }
+.pilar-cell p  { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.prod-features {
+  background: var(--ink); padding: 46px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 56px;
+  border: 1px solid var(--line);
+}
+.prod-features .pf-title {
+  grid-column: 1 / -1; font-size:.58rem; font-weight:700; letter-spacing:.22em;
+  text-transform:uppercase; color: var(--orange); margin-bottom: 8px;
+}
+.prod-feature {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .81rem; font-weight: 300; color: rgba(255,255,255,.52); line-height: 1.7;
+}
+.prod-feature::before { content:'→'; color: var(--orange); flex-shrink:0; margin-top:1px; }
+
+/* ═══════════════════════════════════════════
+   MOTOR DA COMUNIDADE — 4 ETAPAS
+═══════════════════════════════════════════ */
+.motor-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.motor-cell { background: var(--white); padding: 46px 30px; position: relative; transition: background .3s; }
+.motor-cell:hover { background: var(--orange-l); }
+.motor-cell.last { background: var(--ink); }
+.motor-cell.last:hover { background: var(--ink); }
+.motor-step {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.62rem; font-weight:700; letter-spacing:.06em; margin-bottom:22px;
+}
+.motor-cell h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; letter-spacing:-.02em; }
+.motor-cell p { font-size: .79rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+.motor-cell.last h3 { color: var(--white); }
+.motor-cell.last p { color: rgba(255,255,255,.5); }
+.motor-quote {
+  border: 1px solid var(--line); border-top: 3px solid var(--orange);
+  background: var(--white); padding: 44px 48px; margin-top: 1px; text-align:center;
+}
+.motor-quote p { font-size: clamp(.98rem,1.9vw,1.18rem); font-weight: 400; font-style: italic; color: var(--dim); max-width: 760px; margin: 0 auto; line-height: 1.8; }
+.motor-quote strong { font-style: normal; font-weight: 600; color: var(--ink); }
+
+/* ═══════════════════════════════════════════
+   INDICADORES
+═══════════════════════════════════════════ */
+.kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.kpi-cell { background: var(--white); padding: 44px 28px; transition: background .3s; }
+.kpi-cell:hover { background: var(--orange-l); }
+.kpi-tag { font-size:.54rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color: var(--orange); margin-bottom:16px; display:block; }
+.kpi-cell h3 { font-size: .95rem; font-weight: 700; margin-bottom: 12px; letter-spacing:-.01em; line-height:1.3; }
+.kpi-cell p { font-size: .78rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+.kpi-note { border:1px solid var(--line); border-left: 3px solid var(--orange); background: var(--white); padding: 28px 34px; margin-top: 24px; }
+.kpi-note p { font-size: .84rem; font-weight: 300; color: var(--dim); line-height: 1.85; }
+.kpi-note strong { font-weight: 600; color: var(--ink); }
+
+/* ═══════════════════════════════════════════
+   TRANSIÇÃO
+═══════════════════════════════════════════ */
+.transicao { background: var(--orange); padding: 84px 32px; text-align: center; }
+.transicao p { font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 600; color: var(--black); max-width: 820px; margin: 0 auto; line-height: 1.5; letter-spacing:-.02em; }
+.transicao p em { font-style: italic; font-weight: 300; }
+.transicao-arrow { margin: 34px auto 0; width: 1px; height: 42px; background: rgba(0,0,0,.25); position: relative; }
+.transicao-arrow::after { content:'▾'; position:absolute; bottom:-14px; left:50%; transform:translateX(-50%); color: rgba(0,0,0,.35); font-size:.8rem; }
+
+/* ═══════════════════════════════════════════
+   PLANOS — ANCORAGEM
+═══════════════════════════════════════════ */
+.planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.plano-card { padding: 56px 48px; position: relative; }
+.plano-card.standard { background: var(--ink); }
+.plano-card.destaque { background: var(--white); border-top: 4px solid var(--orange); }
+.rec-label {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--black);
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 22px; white-space: nowrap;
+}
+.card-badge { font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.standard .card-badge { color: rgba(255,255,255,.35); }
+.standard .card-badge::before { content:''; width:14px; height:1px; background:rgba(255,255,255,.2); }
+.destaque .card-badge { color: var(--orange); }
+.destaque .card-badge::before { content:''; width:14px; height:1px; background:var(--orange); opacity:.5; }
+.plano-card h3 { font-size: clamp(1.35rem, 2.5vw, 1.85rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.08; margin-bottom: 24px; }
+.standard h3 { color: var(--white); }
+.destaque h3 { color: var(--ink); }
+.price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.price-val { font-size: clamp(2.1rem, 3.6vw, 3rem); font-weight: 800; letter-spacing: -.04em; }
+.standard .price-val { color: var(--white); }
+.destaque .price-val { color: var(--ink); }
+.price-per { font-size: .88rem; font-weight: 300; }
+.standard .price-per { color: rgba(255,255,255,.35); }
+.destaque .price-per { color: var(--muted); }
+.price-note { font-size: .62rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 28px; }
+.standard .price-note { color: rgba(255,255,255,.22); }
+.destaque .price-note { color: var(--muted); }
+.plano-items { list-style: none; margin-bottom: 26px; }
+.plano-items li {
+  font-size: .8rem; font-weight: 300; padding: 10px 0;
+  border-bottom: 1px solid; display: flex; gap: 12px; align-items: flex-start; line-height: 1.6;
+}
+.plano-items li:last-child { border-bottom: none; }
+.standard .plano-items li { color: rgba(255,255,255,.5); border-bottom-color: rgba(255,255,255,.07); }
+.destaque .plano-items li { color: var(--dim); border-bottom-color: var(--line); }
+.plano-items li::before { content:'→'; flex-shrink:0; font-size:.8rem; margin-top:2px; }
+.standard .plano-items li::before { color: rgba(255,255,255,.2); }
+.destaque .plano-items li::before { color: var(--orange); }
+.plano-items li strong { font-weight: 600; color: var(--ink); }
+.plano-foot { font-size: .74rem; font-weight: 300; line-height: 1.7; }
+.standard .plano-foot { color: rgba(255,255,255,.3); }
+.desc-bonus-strip { border: 1px solid rgba(249,115,22,.3); background: rgba(249,115,22,.06); padding: 18px 22px; margin-top: 8px; }
+.desc-bonus-label {
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.desc-bonus-label::before { content:'✦'; font-size:.4rem; }
+.desc-bonus-value { font-size: .88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.desc-bonus-value s { font-weight: 400; color: var(--subtle); }
+.desc-bonus-sub { font-size: .72rem; font-weight: 300; color: var(--dim); line-height: 1.6; }
+.addon { margin-top: 26px; border: 1px solid var(--line-s); background: var(--off); padding: 22px 24px; }
+.addon-label { font-size:.52rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color: var(--dim); margin-bottom:12px; }
+.addon-head { font-size:.88rem; font-weight:700; color: var(--ink); margin-bottom:8px; line-height:1.45; }
+.addon-head span { color: var(--orange); }
+.addon p { font-size:.76rem; font-weight:300; color: var(--dim); line-height:1.75; }
+
+/* ─── CTA ─── */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:680px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:560px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+.cta-validade {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border:1px solid rgba(249,115,22,.3);
+  border-radius:99px; font-size:.65rem; font-weight:500; letter-spacing:.08em;
+  color:rgba(249,115,22,.85); margin-bottom:20px;
+}
+.validade-dot { width:6px; height:6px; border-radius:50%; background:var(--orange); animation: pulse-dot 1.8s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
+.cta-main {
+  display:inline-flex; align-items:center; gap:12px; padding:18px 48px;
+  background:var(--orange); color:var(--black);
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; transition:background .25s, transform .2s;
+}
+.cta-main:hover { background:var(--orange-d); color:var(--white); transform:translateY(-2px); }
+.cta-main::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top:16px; font-size:.68rem; color:var(--dim); letter-spacing:.05em; }
+
+/* ─── PRÓXIMOS PASSOS ─── */
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:960px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+/* ═══════════════════════════════════════════
+   MOBILE · TABLET ≤ 900px
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .diag-grid, .planos-grid, .dif-grid { grid-template-columns:1fr; }
+  .pilares-grid { grid-template-columns: 1fr; }
+  .motor-grid   { grid-template-columns: repeat(2,1fr); }
+  .kpi-grid     { grid-template-columns: repeat(2,1fr); }
+  .prod-features { grid-template-columns:1fr; gap:12px; }
+
+  .hero { padding: 100px 0 80px; }
+  .hero-deco { display:none; }
+  .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); margin-bottom:28px; }
+  .hero-eyebrow { margin-bottom:32px; }
+  .hero-sub { max-width:100%; margin-bottom:36px; }
+  .hero-meta { gap:12px; }
+  .scroll-indicator { bottom:32px; left:20px; }
+
+  .tese { padding: 80px 0; }
+  .section { padding:80px 0; }
+  .section-head { margin-bottom:52px; }
+
+  .diag-card { padding:40px 28px; }
+  .diag-quote { padding:44px 28px; }
+  .dif-side { padding:44px 32px; }
+  .dif-verdict { padding:24px 32px; }
+  .pilar-cell { padding:38px 26px; }
+  .prod-features { padding:38px 28px; }
+  .motor-cell { padding:38px 26px; }
+  .motor-quote { padding:36px 28px; }
+  .kpi-cell { padding:36px 24px; }
+
+  .plano-card { padding:48px 36px; }
+  .plano-card.destaque { margin-top:12px; }
+  .rec-label { font-size:.5rem; }
+
+  .cta-wrap { padding:0 24px; }
+  .pp-steps { flex-direction:column; align-items:center; gap:20px; }
+  .pp-arrow { transform:rotate(90deg); padding:0; }
+  .proximos-passos { margin-top:48px; padding-top:36px; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE · PHONE ≤ 600px
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+  .nav-inner { padding:0 20px; }
+  .nav-logo { font-size:.8rem; }
+  .nav-cta { padding:8px 16px; font-size:.65rem; letter-spacing:.04em; }
+
+  .wrap { padding:0 20px; }
+
+  .hero { padding:88px 0 64px; }
+  .hero-inner { padding:0 20px; }
+  .hero h1 { font-size:clamp(1.9rem, 8vw, 2.6rem); letter-spacing:-.035em; line-height:1.02; }
+  .hero-eyebrow { gap:10px; margin-bottom:24px; }
+  .hero-eyebrow .tag { font-size:.55rem; }
+  .hero-sub { font-size:.88rem; line-height:1.8; margin-bottom:28px; }
+  .hero-meta { gap:8px; }
+  .hero-meta .m-sep { display:none; }
+  .hero-meta .m-tag { font-size:.57rem; padding:5px 12px; }
+  .scroll-indicator { display:none; }
+
+  .tese { padding:60px 0; }
+  .tese h2 { font-size:clamp(1.3rem,5.5vw,1.8rem); }
+  .tese p { font-size:.87rem; }
+
+  .section { padding:60px 0; }
+  .section-head { margin-bottom:40px; }
+  .t-headline { font-size:clamp(1.75rem, 6.5vw, 2.4rem); }
+  p.sp { max-width:100%; font-size:.9rem; }
+
+  .pilares-grid, .motor-grid, .kpi-grid { grid-template-columns:1fr; }
+
+  .diag-card { padding:32px 20px; }
+  .diag-quote { padding:36px 20px; }
+  .dif-side { padding:36px 20px; }
+  .dif-side h3 { font-size:1.4rem; }
+  .dif-verdict { padding:20px 20px; }
+  .dif-verdict p { font-size:.82rem; }
+  .pilar-cell { padding:32px 20px; }
+  .prod-features { padding:32px 20px; gap:10px; }
+  .prod-feature { font-size:.79rem; }
+  .motor-cell { padding:32px 20px; }
+  .motor-quote { padding:32px 20px; }
+  .kpi-cell { padding:32px 20px; }
+  .kpi-note { padding:24px 20px; }
+
+  .plano-card { padding:40px 22px; }
+  .plano-card.destaque { margin-top:8px; }
+  .price-val { font-size:2.3rem; }
+  .desc-bonus-strip { padding:16px 18px; }
+  .desc-bonus-value { font-size:.82rem; }
+  .desc-bonus-sub { font-size:.68rem; }
+  .addon { padding:18px 18px; }
+  .addon-head { font-size:.83rem; }
+  .plano-items li { font-size:.78rem; }
+
+  .transicao { padding:60px 24px; }
+  .cta-wrap { padding:0 20px; }
+  .cta-wrap h2 { font-size:clamp(1.6rem, 6vw, 2.2rem); }
+  .cta-wrap .cp { font-size:.85rem; }
+  .cta-main { display:flex; width:100%; justify-content:center; padding:18px 20px; font-size:.7rem; letter-spacing:.08em; }
+
+  .proximos-passos { margin-top:40px; padding-top:28px; }
+  .pp-step { min-width:100%; padding:0; }
+  .pp-step-desc { font-size:.7rem; }
+
+  footer { padding:32px 20px; }
+  footer p { font-size:.62rem; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE · SMALL PHONE ≤ 400px
+═══════════════════════════════════════════ */
+@media(max-width:400px){
+  .hero { padding:80px 0 56px; }
+  .hero h1 { font-size:clamp(1.6rem, 9vw, 2rem); }
+  .section { padding:48px 0; }
+  .wrap { padding:0 16px; }
+  .t-headline { font-size:clamp(1.55rem, 7vw, 2rem); }
+  .diag-card, .pilar-cell, .motor-cell, .kpi-cell { padding:28px 18px; }
+  .dif-side, .prod-features { padding:28px 18px; }
+  .plano-card { padding:32px 18px; }
+  .diag-quote, .motor-quote { padding:28px 18px; }
+  .transicao { padding:48px 18px; }
+  .section-head { margin-bottom:32px; }
+  .nav-cta { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <a href="#contato" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-deco">AREV</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · AREV Health e Wellness · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">Não é sobre vender consulta.</span>
+      <span class="line2">É sobre construir comunidade.</span>
+    </h1>
+    <p class="hero-sub">
+      Duas portas para o mesmo cuidado: a Health, no individual, e a Wellness, no coletivo. Esta proposta assume a terceira frente — a comunicação que semeia as duas e leva a tese da AREV para as mulheres certas.
+    </p>
+    <div class="hero-meta">
+      <span class="m-tag">Tráfego pago · Meta Ads</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Direção estratégica de comunicação</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">São Paulo · Online</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <div class="scroll-label">Role</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TESE
+════════════════════════════ -->
+<section class="tese">
+  <div class="wrap">
+    <div class="eyebrow">A leitura da reunião</div>
+    <h2>
+      Vocês não pediram mais leads. Pediram que alguém entendesse <em>o que a AREV está construindo</em> antes de sugerir o que publicar.
+    </h2>
+    <p>
+      Os materiais de marca da AREV já respondem quase tudo. A tese está escrita: corpo, mente e vida integrados, com a vida como porta de entrada. A Health cuida disso no individual, a Wellness no coletivo. E há uma terceira frente escrita ali que ainda não tem dono — <em>"o conteúdo é onde ela é semeada"</em>. É essa frente que esta proposta assume.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — DIAGNÓSTICO
+════════════════════════════ -->
+<section class="section" id="diagnostico">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — O diagnóstico</div>
+      <h2 class="t-headline sh r d1">A tese já está escrita.<br>O que falta é ela chegar inteira.</h2>
+      <p class="sp r d2">Três travas aparecem quando uma marca de saúde constrói profundidade antes de construir audiência. Nenhuma delas se resolve com mais volume de post.</p>
+    </div>
+
+    <div class="diag-grid">
+      <div class="diag-card r">
+        <span class="diag-num">01</span>
+        <h3>Duas portas dividindo a mesma voz</h3>
+        <p>Health e Wellness são duas entradas para o mesmo cuidado, e o lead escolhe entre elas. Sem separação editorial clara, o conteúdo clínico abafa o do movimento — e a mulher que entraria pela Wellness não encontra a porta dela.</p>
+      </div>
+      <div class="diag-card r d1">
+        <span class="diag-num">02</span>
+        <h3>O Programa Integrado não se explica sozinho</h3>
+        <p>É o que a AREV vende: 60 dias, quatro consultas entre a Dra. Mariana e a Verônica, investigação que começa na vida e chega ao exame. Quem lê a filosofia se identifica. Quem precisa decidir ainda não sabe o que recebe, quanto dura e por que é diferente. Clareza de oferta é comunicação — não é venda.</p>
+      </div>
+      <div class="diag-card r d2">
+        <span class="diag-num">03</span>
+        <h3>Alcance sem direção quebra a indicação</h3>
+        <p>Publicar com consistência, sem tese central, forma audiência genérica. E a AREV cresce por indicação — que só nasce de expectativa bem alinhada. Comunicação imprecisa não atrasa a venda: ela desliga o motor de crescimento da marca.</p>
+      </div>
+    </div>
+
+    <div class="diag-quote r">
+      <p>"A Health é onde a transformação acontece no individual, a Wellness é onde ela acontece no coletivo, o conteúdo é onde ela é semeada."</p>
+      <span>Está escrito no material de marca de vocês. A terceira parte ainda não tem quem cuide.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — O QUE NÃO VAMOS FAZER
+════════════════════════════ -->
+<section class="section alt" id="diferencial">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — O que muda nesta parceria</div>
+      <h2 class="t-headline sh r d1">A receita de bolo de conversão<br>não serve para o que a AREV é.</h2>
+      <p class="sp r d2">Vocês já viveram a esteira: o mesmo playbook aplicado a clínica, e-commerce e infoproduto. A diferença desta proposta está menos no que entregamos e mais no que nos recusamos a entregar.</p>
+    </div>
+
+    <div class="dif-grid r">
+      <div class="dif-side common">
+        <div class="dif-tag">O modelo padrão de agência</div>
+        <h3>Vender consulta o mais rápido possível</h3>
+        <ul class="dif-items">
+          <li>Campanha genérica com promessa de "X leads por mês"</li>
+          <li>Calendário montado sem entender a tese de corpo, mente e vida</li>
+          <li>Antes e depois, escassez e alarme em pauta de saúde</li>
+          <li>Discurso de dor e culpa para acelerar a decisão</li>
+          <li>CPL como única prova de trabalho no relatório</li>
+          <li>O mesmo funil que já rodou em outros dez clientes</li>
+        </ul>
+      </div>
+      <div class="dif-side legado">
+        <div class="dif-tag orange">A direção que esta proposta entrega</div>
+        <h3>Construir a marca que torna a consulta consequência</h3>
+        <ul class="dif-items pos">
+          <li>Tese de comunicação escrita a partir de corpo, mente e vida</li>
+          <li>Separação editorial entre AREV Health e AREV Wellness</li>
+          <li>Elevação na entrada, profundidade na jornada — nunca alarme</li>
+          <li>Clareza de oferta: o Programa Integrado explicado, não anunciado</li>
+          <li>Roteiros e direcionais — vocês seguem produzindo, com direção</li>
+          <li>Mídia paga como distribuição da tese, não como balcão de venda</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dif-verdict r d1">
+      <p>Vocês continuam donas da estética, da edição e da voz. A Alma assume a estratégia, a distribuição e a leitura do que está funcionando.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — LINHA EDITORIAL DOS PILARES
+════════════════════════════ -->
+<section class="section" id="pilares">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — A linha editorial</div>
+      <h2 class="t-headline sh r d1">Corpo, mente e vida.<br>Três destinos, uma porta de entrada.</h2>
+      <p class="sp r d2">O maior ativo estratégico da AREV não é a consulta, nem o conteúdo, nem a estética — é a tese. Ela já organiza o atendimento. A partir daqui organiza também a comunicação: três territórios, cada um com papel próprio na jornada, e uma regra de entrada que nunca muda.</p>
+    </div>
+
+    <div class="pilares-grid">
+      <div class="pilar-cell r">
+        <span class="pilar-tag">Vida · a porta</span>
+        <h3>Por onde toda comunicação entra</h3>
+        <p>Ambiente, rotina, relações, escolhas do dia a dia, forma de viver. É por aqui que a AREV entra — energia, ritmo, sono, clareza — e é o que separa a marca da medicina que entra pelo exame. A autoridade clínica aparece na textura, nunca como alarme.</p>
+      </div>
+      <div class="pilar-cell r d1">
+        <span class="pilar-tag">Mente · a ponte</span>
+        <h3>Entre saber e sustentar</h3>
+        <p>Estresse, ansiedade, fadiga mental, relação com a comida, dificuldade de manter hábitos. O território de maior identificação — e o que mais gera compartilhamento, indicação e pauta natural para convidados nos encontros da Wellness.</p>
+      </div>
+      <div class="pilar-cell r d2">
+        <span class="pilar-tag">Corpo · o destino</span>
+        <h3>Onde a Health se prova</h3>
+        <p>Hormônios, metabolismo, sono, composição corporal, exames. Entra como destino de igual peso, nunca como moeda de troca do cuidado. É aqui que o Programa Integrado é explicado — o que é, quanto dura, o que a mulher recebe e por que é diferente.</p>
+      </div>
+    </div>
+
+    <div class="prod-features r d1">
+      <div class="pf-title">O que a Alma entrega todo mês nessa frente</div>
+      <div class="prod-feature">Tese de comunicação e os três territórios documentados</div>
+      <div class="prod-feature">Calendário mensal separando AREV Health e AREV Wellness</div>
+      <div class="prod-feature">Roteiros de vídeo e direcionais de arte — a produção segue com vocês</div>
+      <div class="prod-feature">Argumentação e jornada de decisão do Programa Integrado</div>
+      <div class="prod-feature">Pauta, estrutura e convidado dos encontros do mês</div>
+      <div class="prod-feature">Reunião estratégica quinzenal com a Dra. Mariana e a Verônica</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     04 — MOTOR DA COMUNIDADE
+════════════════════════════ -->
+<section class="section alt" id="comunidade">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — O motor do movimento</div>
+      <h2 class="t-headline sh r d1">A Wellness é a porta larga.<br>O Programa Integrado é onde aprofunda.</h2>
+      <p class="sp r d2">A Wellness já tem os formatos certos: encontros online e presenciais, comunidade, experiências e jornadas. O que falta é um motor que traga a mulher certa para dentro deles de forma previsível — e um caminho claro para quem quiser ir mais fundo.</p>
+    </div>
+
+    <div class="motor-grid">
+      <div class="motor-cell r">
+        <div class="motor-step">01</div>
+        <h3>Atrair</h3>
+        <p>Mídia paga distribuindo o melhor conteúdo de vocês para mulheres que já se cuidam e querem ir mais longe. O objetivo é alcance qualificado — não clique barato.</p>
+      </div>
+      <div class="motor-cell r d1">
+        <div class="motor-step">02</div>
+        <h3>Converter em presença</h3>
+        <p>Landing page dos encontros e do movimento. A mulher entra na comunidade e na próxima experiência — não em uma lista fria que ninguém vai abrir.</p>
+      </div>
+      <div class="motor-cell r d2">
+        <div class="motor-step">03</div>
+        <h3>Sustentar</h3>
+        <p>Encontros mensais com convidado, conteúdo e comunidade funcionando como ritual. Os formatos existem a serviço do movimento — nunca como peças soltas.</p>
+      </div>
+      <div class="motor-cell last r d3">
+        <div class="motor-step">04</div>
+        <h3>Aprofundar</h3>
+        <p>Quem quer o cuidado individual chega ao Programa Integrado já sabendo o que é. A decisão vem do vínculo e da clareza — não da oferta empurrada.</p>
+      </div>
+    </div>
+
+    <div class="motor-quote r d1">
+      <p>"<strong>Mulheres que já se cuidam e querem ir mais longe. Não chegam pela doença, chegam pela vontade de viver com mais energia, ritmo e presença.</strong>" Essa frase não é só posicionamento — é a segmentação. É ela que decide quem a mídia alcança e quem ela deixa passar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     05 — INDICADORES
+════════════════════════════ -->
+<section class="section" id="indicadores">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">05 — Como o resultado é medido</div>
+      <h2 class="t-headline sh r d1">Se o objetivo é marca e comunidade,<br>CPL não pode ser a única nota.</h2>
+      <p class="sp r d2">Vocês foram claras: o foco não é converter mais rápido, é crescer a marca e o movimento. Então o painel muda. Estes são os quatro indicadores que passam a conduzir a leitura mensal.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-cell r">
+        <span class="kpi-tag">Indicador 01</span>
+        <h3>Entrada no movimento</h3>
+        <p>Mulheres novas na comunidade e presença recorrente nos encontros. É o número que diz, sem rodeio, se o movimento está crescendo.</p>
+      </div>
+      <div class="kpi-cell r d1">
+        <span class="kpi-tag">Indicador 02</span>
+        <h3>Alcance qualificado</h3>
+        <p>Quantas mulheres do perfil certo — 30 a 45, grandes centros, que investem por escolha e não por desespero — foram alcançadas, e a que custo.</p>
+      </div>
+      <div class="kpi-cell r d2">
+        <span class="kpi-tag">Indicador 03</span>
+        <h3>Retenção de audiência</h3>
+        <p>Quem volta, salva, compartilha e responde. É o sinal mais honesto de que a tese está sendo entendida e não só vista.</p>
+      </div>
+      <div class="kpi-cell r d3">
+        <span class="kpi-tag">Indicador 04</span>
+        <h3>Programa como consequência</h3>
+        <p>Entradas no Programa Integrado vindas do movimento, acompanhadas de perto — sem virar meta de campanha nem pressionar a linha editorial.</p>
+      </div>
+    </div>
+
+    <div class="kpi-note r d1">
+      <p><strong>Nenhum indicador substitui o outro.</strong> A leitura é feita em reunião, com contexto e com vocês na conversa — não em um PDF automático enviado no dia 30. E existe um quinto indicador que não cabe em painel: a indicação. Ela nasce de expectativa bem alinhada, ou seja, de comunicação precisa. Quando um número cai, a pergunta é o que a comunicação deixou de dizer — não qual criativo trocar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     TRANSIÇÃO
+════════════════════════════ -->
+<section class="transicao">
+  <p>Marca não se constrói com campanha. Constrói-se com <em>uma mesma ideia, repetida com precisão, para as pessoas certas</em> — mês após mês.</p>
+  <div class="transicao-arrow"></div>
+</section>
+
+<!-- ════════════════════════════
+     06 — INVESTIMENTO
+════════════════════════════ -->
+<section class="section" id="investimento">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">06 — Investimento</div>
+      <h2 class="t-headline sh r d1">Dois caminhos possíveis.<br>Só um constrói a marca junto.</h2>
+      <p class="sp r d2">O Plano A resolve a mídia. O Plano B resolve a comunicação — e usa a mídia como distribuição dela. O valor do Plano B já considera que a produção de vídeos e artes continua com vocês; é isso que o mantém neste patamar.</p>
+    </div>
+
+    <div class="planos-grid r">
+      <!-- PLANO A -->
+      <div class="plano-card standard">
+        <div class="card-badge">Plano A</div>
+        <h3>Tráfego Performance</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 2.500</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">Gestão de mídia · Sem direção editorial</div>
+        <ul class="plano-items">
+          <li>Gestão de Meta Ads — Instagram e Facebook</li>
+          <li>Campanhas de captação para o Programa Integrado</li>
+          <li>Configuração de pixel, eventos e rastreamento</li>
+          <li>Criativos montados a partir do conteúdo que vocês já produzem</li>
+          <li>Relatório mensal de mídia</li>
+          <li>Reunião mensal de resultados</li>
+        </ul>
+        <p class="plano-foot">A estratégia de comunicação, a linha editorial e a construção da comunidade seguem inteiramente com vocês.</p>
+      </div>
+
+      <!-- PLANO B -->
+      <div class="plano-card destaque">
+        <div class="rec-label">Recomendado para a AREV</div>
+        <div class="card-badge">Plano B</div>
+        <h3>Tráfego + Direção Estratégica de Comunicação</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 4.000</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">Mídia + estratégia + motor de comunidade · Produção segue com vocês</div>
+        <ul class="plano-items">
+          <li><strong>Tudo do Plano A</strong>, com a mídia orientada por estratégia</li>
+          <li>Tese de comunicação e os territórios de corpo, mente e vida</li>
+          <li>Calendário editorial mensal — AREV Health e AREV Wellness separados</li>
+          <li>Clareza de oferta do Programa Integrado: argumentação, página e jornada de decisão</li>
+          <li>Roteiros de vídeo e direcionais de arte para a produção de vocês</li>
+          <li>Pauta, estrutura e curadoria de convidados dos encontros</li>
+          <li>Campanhas de crescimento de movimento e de marca</li>
+          <li>Painel com os quatro indicadores de comunidade e mídia</li>
+          <li>Reunião estratégica quinzenal com a Dra. Mariana e a Verônica</li>
+        </ul>
+
+        <div class="desc-bonus-strip">
+          <div class="desc-bonus-label">Incluso no Plano B</div>
+          <div class="desc-bonus-value">Landing page do movimento AREV Wellness — <s>R$ 2.500</s></div>
+          <div class="desc-bonus-sub">Página de entrada da comunidade e dos encontros, com captura integrada ao WhatsApp e ao tráfego. Construída no primeiro mês, sem custo adicional.</div>
+        </div>
+
+        <div class="addon">
+          <div class="addon-label">Módulo opcional</div>
+          <div class="addon-head">Produção de vídeos e design — <span>+ R$ 1.000/mês</span></div>
+          <p>O valor acima considera que a produção continua com vocês, como foi conversado. Se em algum momento fizer sentido tirar isso da rotina de vocês, a Alma assume a edição dos vídeos e a criação das artes seguindo a mesma direção editorial — e o plano passa a R$ 5.000/mês.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA
+════════════════════════════ -->
+<section class="section alt" id="contato">
+  <div class="cta-wrap">
+    <div class="cta-validade r">
+      <span class="validade-dot"></span>
+      Proposta válida até <strong>03 de setembro de 2026</strong>
+    </div>
+    <div class="section-num c r">Fechar proposta</div>
+    <h2 class="t-headline r d1" style="max-width:680px;margin:0 auto 20px;">
+      Vocês já sabem o que a AREV é.<br>Esta proposta faz o mercado saber.
+    </h2>
+    <p class="cp r d2">Tese, persona, tom de voz e oferta — está tudo escrito nos materiais de vocês, com uma clareza que a maioria das marcas de saúde não tem. O que falta é a camada que transforma isso em comunicação distribuída, e a mídia que a leva para as mulheres certas.</p>
+    <a href="https://wa.me/557531999201?text=Ol%C3%A1%2C%20somos%20da%20AREV%20e%20queremos%20fechar%20a%20proposta." class="cta-main r d3" target="_blank" rel="noopener">Quero fechar o Plano B</a>
+    <p class="cta-sub r d4">Respondemos em menos de 1 hora · Proposta confidencial</p>
+
+    <div class="proximos-passos r d4">
+      <div class="pp-title">O que acontece depois do sim</div>
+      <div class="pp-steps">
+        <div class="pp-step">
+          <div class="pp-step-num">01</div>
+          <div class="pp-step-name">Contrato</div>
+          <div class="pp-step-desc">Assinatura digital e formalização da parceria</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">02</div>
+          <div class="pp-step-name">Imersão</div>
+          <div class="pp-step-desc">Leitura dos materiais de marca com a Dra. Mariana e a Verônica, e o que já foi testado</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">03</div>
+          <div class="pp-step-name">Tese e territórios</div>
+          <div class="pp-step-desc">Documento de comunicação e os três territórios validados com vocês</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">04</div>
+          <div class="pp-step-name">Primeiro ciclo</div>
+          <div class="pp-step-desc">Landing page no ar, campanhas ativas e o primeiro encontro com estrutura da Alma</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alma.Convert · Lukana Marketing e Publicidade Ltda · Proposta de uso exclusivo e confidencial · AREV Health e Wellness</p>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle='rgba(26,26,26,'+(a*ALPHAS[p.s])+')';ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(function(b){b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle='rgba(249,115,22,'+(b.life*.5)+')';ctx.fill();return b.life>0;});
+    particles.forEach(function(p){
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(function(o){const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},function(_,i){
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  if(!nav || !hero) return;
+  const io = new IntersectionObserver(function(entries){
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
