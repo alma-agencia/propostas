@@ -116,6 +116,8 @@ h1 .line2{color:var(--orange);font-style:italic;font-weight:300;animation-delay:
 .ty.soma b{color:var(--orange)}
 .ty.risco b{text-decoration:line-through;color:var(--subtle)}
 .step.escuro .ty.risco b,.step.final .ty.risco b{color:rgba(255,255,255,.3)}
+/* a soma riscada continua em laranja: é a âncora sendo cortada, não um item secundário */
+.ty.soma.risco b,.step.escuro .ty.soma.risco b,.step.final .ty.soma.risco b{color:var(--orange);opacity:.6;text-decoration:line-through}
 
 /* oferta */
 .of{display:grid;grid-template-columns:.85fr 1.15fr;gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -447,7 +449,7 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
     <div class="tally r d1">
       <div class="ty risco"><span>Aquisição</span><b>R$ 2.500</b></div>
       <div class="ty risco"><span>Conteúdo</span><b>R$ 3.500</b></div>
-      <div class="ty soma"><span>Somadas</span><b>R$ 6.000/mês</b></div>
+      <div class="ty soma risco"><span>Somadas</span><b>R$ 6.000/mês</b></div>
     </div>
 
     <div class="of dest r d1">
@@ -455,7 +457,7 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
         <div class="of-nome">Operação Completa</div>
         <div class="of-de">R$ 6.000<span class="of-mes">/mês</span></div>
         <div class="of-valor">R$ 5.000<span class="of-mes">/mês</span></div>
-        <div class="of-econ">R$ 1.000 a menos por mês · R$ 12.000 em 12 meses</div>
+        <div class="of-econ">Economia de R$ 12.000 em 12 meses.</div>
         <div class="of-obs">E ainda entram IA, sistema de gestão e integração — que não existiam em nenhuma das duas frentes contratadas separadamente.</div>
       </div>
       <div class="of-r">
@@ -532,7 +534,7 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
     </div>
 
     <div class="acum r d2">
-      <div class="acum-t">Somando tudo, no primeiro ano</div>
+      <div class="acum-t">Somando tudo, quanto você economizará no primeiro ano?</div>
       <div class="acum-linha"><span>Operação completa em vez das duas frentes separadas</span><b>R$ 12.000</b></div>
       <div class="acum-linha"><span>Implantação bonificada — valor único</span><b>R$ 15.000</b></div>
       <div class="acum-linha"><span>Desconto nas três primeiras mensalidades</span><b>R$ 4.500</b></div>
