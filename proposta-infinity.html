@@ -126,6 +126,9 @@ h1 .line2{color:var(--orange);font-style:italic;font-weight:300;animation-delay:
 .step.escuro .of-l,.step.final .of-l{background:#221f1c}
 .step.escuro .of-r,.step.final .of-r{background:var(--ink)}
 .of-nome{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.of-de{font-size:1.25rem;font-weight:400;color:var(--subtle);text-decoration:line-through;margin-bottom:8px}
+.step.escuro .of-de,.step.final .of-de{color:rgba(255,255,255,.3)}
+.of-econ{font-size:.82rem;font-weight:700;color:var(--orange);margin-top:16px;line-height:1.7}
 .of-valor{font-size:clamp(2.3rem,4.2vw,3.4rem);font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--ink)}
 .step.escuro .of-valor,.step.final .of-valor{color:var(--white)}
 .of-mes{font-size:.9rem;font-weight:300;color:var(--muted)}
@@ -164,6 +167,15 @@ h1 .line2{color:var(--orange);font-style:italic;font-weight:300;animation-delay:
 .cr.desc b{color:var(--orange)}
 .nota{background:var(--off);border:1px solid var(--line);padding:24px 40px;font-size:.82rem;font-weight:300;color:var(--dim);line-height:1.8;margin-top:36px}
 .nota strong{font-weight:600;color:var(--ink)}
+/* vantagem acumulada */
+.acum{margin-top:36px;border:1px solid rgba(249,115,22,.3);background:rgba(249,115,22,.07);padding:30px 34px}
+.acum-t{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+.acum-linha{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:13px 0;border-top:1px solid rgba(255,255,255,.1);font-size:.83rem;font-weight:300;color:rgba(255,255,255,.6)}
+.acum-linha b{font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap}
+.acum-total{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:8px;padding-top:18px;border-top:2px solid rgba(249,115,22,.4)}
+.acum-total span{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.acum-total b{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;letter-spacing:-.035em;color:var(--orange);white-space:nowrap}
+
 /* custos fora da mensalidade */
 .fora{margin-top:36px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);padding:30px 34px}
 .fora-t{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
@@ -213,7 +225,8 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   .jor-punch{padding:28px 24px}
   .tally{flex-direction:column}
   .of-l,.of-r,.cd{padding:32px 24px}
-  .step-nota,.nota,.fora{padding:24px 22px}
+  .step-nota,.nota,.fora,.acum{padding:24px 22px}
+  .acum-linha,.acum-total{flex-direction:column;gap:4px}
   .transicao{padding:60px 24px}
   .cta-sec{padding:90px 0}
   .cta-main{display:flex;width:100%;justify-content:center;padding:20px 24px}
@@ -440,8 +453,10 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
     <div class="of dest r d1">
       <div class="of-l">
         <div class="of-nome">Operação Completa</div>
+        <div class="of-de">R$ 6.000<span class="of-mes">/mês</span></div>
         <div class="of-valor">R$ 5.000<span class="of-mes">/mês</span></div>
-        <div class="of-obs">Tudo das duas frentes, mais IA, sistema e integração — por R$ 1.000 a menos do que as partes somadas.</div>
+        <div class="of-econ">R$ 1.000 a menos por mês · R$ 12.000 em 12 meses</div>
+        <div class="of-obs">E ainda entram IA, sistema de gestão e integração — que não existiam em nenhuma das duas frentes contratadas separadamente.</div>
       </div>
       <div class="of-r">
         <ul class="of-list">
@@ -514,6 +529,14 @@ footer p{font-size:.68rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
       <div class="cr desc"><span>Outubro</span><b>R$ 3.500</b></div>
       <div class="cr desc"><span>Novembro</span><b>R$ 3.500</b></div>
       <div class="cr"><span>Dezembro em diante</span><b>R$ 5.000</b></div>
+    </div>
+
+    <div class="acum r d2">
+      <div class="acum-t">Somando tudo, no primeiro ano</div>
+      <div class="acum-linha"><span>Operação completa em vez das duas frentes separadas</span><b>R$ 12.000</b></div>
+      <div class="acum-linha"><span>Implantação bonificada — valor único</span><b>R$ 15.000</b></div>
+      <div class="acum-linha"><span>Desconto nas três primeiras mensalidades</span><b>R$ 4.500</b></div>
+      <div class="acum-total"><span>Vantagem total no primeiro ano</span><b>R$ 31.500</b></div>
     </div>
 
     <div class="fora r d2">
