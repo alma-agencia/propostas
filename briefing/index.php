@@ -1,4 +1,5 @@
 <?php
+// ─── Formulário de briefing — renderizado a partir do mapa do tipo ───────────
 declare(strict_types=1);
 require __DIR__ . '/lib.php';
 
@@ -16,22 +17,24 @@ if ($reg === null) {
     .c{max-width:460px;text-align:center}.c h1{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin:0 0 12px}
     .c p{font-weight:300;line-height:1.8;color:#555;font-size:.92rem}
     .b{font-weight:800;letter-spacing:-.03em;margin-bottom:28px}.b i{font-style:italic;font-weight:300;color:#888}</style>
-    <script>window.__BRIEFING__={token:<?= json_encode($token) ?>};</script>
-</head><body><div class="c"><div class="b">Alma<i>.Convert</i></div>
+    </head><body><div class="c"><div class="b">Alma<i>.Convert</i></div>
     <h1>Este link não é válido</h1>
     <p>Pode ter sido digitado com algum caractere a menos, ou o briefing ainda não foi criado.
     Fale com a gente no grupo de trabalho que reenviamos o endereço certo.</p>
     </div></body></html><?php
     exit;
 }
+
+$tipo        = tipo_do($reg);
+$mapa        = campos_do_tipo($tipo);
 $nomeCliente = (string)($reg['nome'] ?? '');
-?>
-<!DOCTYPE html>
+$totalObrig  = count(chaves_obrigatorias($tipo));
+?><!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briefing de Tráfego Pago<?= $nomeCliente ? " — " . e($nomeCliente) : "" ?> — Alma.Convert</title>
+<title>Briefing<?= $nomeCliente ? " — " . e($nomeCliente) : "" ?> — Alma.Convert</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -137,7 +140,7 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
   textarea{overflow:visible!important}
 }
 </style>
-<script>window.__BRIEFING__={token:<?= json_encode($token) ?>};</script>
+<script>window.__BRIEFING__={token:<?= json_encode($token) ?>,obrig:<?= (int)$totalObrig ?>};</script>
 </head>
 <body>
 
@@ -153,9 +156,9 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
   <div class="wrap">
     <div class="brand">Alma<i>.Convert</i><small>Agência Digital</small></div>
     <div class="rule"></div>
-    <h1 class="doc-title">Briefing de Tráfego Pago</h1>
+    <h1 class="doc-title">Briefing de <?= e(strtolower(nome_do_tipo($tipo))) ?></h1>
     <?php if ($nomeCliente): ?><p class="doc-cli"><?= e($nomeCliente) ?></p><?php endif; ?>
-    <p class="doc-sub">Quanto mais específica a resposta, melhor a campanha. Não precisa preencher tudo de uma vez — o formulário guarda sozinho o que você já escreveu.</p>
+    <p class="doc-sub">Quanto mais específica a resposta, melhor o trabalho. Não precisa preencher tudo de uma vez — o formulário guarda sozinho o que você já escreveu.</p>
   </div>
 </header>
 
@@ -165,152 +168,45 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
     <b>Suas respostas são salvas sozinhas.</b> Pode fechar a página e voltar quando quiser, de qualquer aparelho, usando este mesmo link. Não existe botão de enviar — assim que terminar, é só avisar no grupo.
   </div>
 
-  <h2 class="group">Confirmações de dados</h2>
+<?php foreach ($mapa as $bloco):
+    $campos = $bloco['campos'] ?? [];
+    if (($bloco['tipo'] ?? '') === 'grupo' && !$campos): ?>
+      <h2 class="group"><?= e($bloco['titulo']) ?></h2>
+      <?php continue;
+    endif;
+    if (!$campos) continue;
+    $temOpc = false;
+    foreach ($campos as $c) { if (!empty($c['opt'])) { $temOpc = true; break; } }
+?>
+  <?php if (($bloco['tipo'] ?? '') === 'grupo'): ?><h2 class="group"><?= e($bloco['titulo']) ?></h2><?php endif; ?>
   <section class="blk">
-    <div class="row"><div class="lab"><span>Nome da empresa</span></div><div class="fld"><input type="text" data-k="emp_nome" placeholder="Razão social ou nome fantasia"></div></div>
-    <div class="row"><div class="lab"><span>Tipo de empresa</span></div><div class="fld"><input type="text" data-k="emp_tipo" placeholder="Indústria, comércio, serviço, e-commerce…"></div></div>
-    <div class="row"><div class="lab"><span>Nicho</span></div><div class="fld"><input type="text" data-k="emp_nicho" placeholder="Em que mercado a empresa atua"></div></div>
-    <div class="row"><div class="lab"><span>Localização</span></div><div class="fld"><input type="text" data-k="emp_local" placeholder="Cidade e estado"></div></div>
-    <div class="row"><div class="lab"><span>Área de entrega</span></div><div class="fld"><input type="text" data-k="emp_area" placeholder="Bairro, cidade, estado, região ou todo o Brasil"></div></div>
-    <div class="row"><div class="lab"><span>Site da empresa</span></div><div class="fld"><input type="text" data-k="emp_site" placeholder="https://"></div></div>
-    <div class="row"><div class="lab"><span>Outros sites ou páginas</span><em>que devem ser usados nas campanhas</em></div><div class="fld"><textarea data-k="emp_outros" placeholder="Landing pages, catálogo, loja, WhatsApp Business…"></textarea></div></div>
-    <div class="row"><div class="lab"><span>E-mails para relatórios</span><em>e notificações do trabalho</em></div><div class="fld"><textarea data-k="emp_emails" placeholder="Pode listar mais de um, separados por vírgula"></textarea></div></div>
+    <?php if (($bloco['tipo'] ?? '') === 'secao'): ?>
+      <div class="blk-h">
+        <h3><?= e($bloco['titulo']) ?><?= $temOpc ? ' <span class="opt">opcional</span>' : '' ?></h3>
+        <?php if (!empty($bloco['nota'])): ?><p><?= e($bloco['nota']) ?></p><?php endif; ?>
+      </div>
+    <?php endif; ?>
+    <?php foreach ($campos as $c):
+      $attr = 'data-k="' . e($c['k']) . '"' . (!empty($c['opt']) ? ' data-opt="1"' : '');
+      $ph   = e($c['ph'] ?? ''); ?>
+      <div class="row">
+        <div class="lab"><span><?= e($c['label']) ?></span><?= !empty($c['hint']) ? '<em>' . e($c['hint']) . '</em>' : '' ?></div>
+        <div class="fld">
+          <?php if (($c['tag'] ?? 'textarea') === 'input'): ?>
+            <input type="text" <?= $attr ?> placeholder="<?= $ph ?>">
+          <?php else: ?>
+            <textarea <?= $attr ?> placeholder="<?= $ph ?>"></textarea>
+          <?php endif; ?>
+        </div>
+      </div>
+    <?php endforeach; ?>
   </section>
-
-  <h2 class="group">Sobre o negócio</h2>
-
-  <section class="blk">
-    <div class="blk-h"><h3>1. Principal produto ou serviço</h3></div>
-    <div class="row"><div class="lab"><span>Qual o principal produto ou solução?</span></div><div class="fld"><textarea data-k="p_principal" placeholder="O que representa a maior parte do faturamento"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Qual o valor desse produto ou serviço?</span></div><div class="fld"><textarea data-k="p_valor" placeholder="Faixa de preço, ticket, ou como é orçado"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Existem outros produtos que merecem destaque?</span></div><div class="fld"><textarea data-k="p_outros" placeholder="Linhas secundárias que também vale anunciar"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Qual o raio de entrega deste produto?</span></div><div class="fld"><textarea data-k="p_raio" placeholder="Até onde vocês atendem ou entregam"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Há alguma restrição?</span><em>serviço não fornecido que queira excluir dos anúncios</em></div><div class="fld"><textarea data-k="p_restr" placeholder="O que NÃO deve ser anunciado, para não gerar pedido que vocês não atendem"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>2. Público-alvo</h3></div>
-    <div class="row"><div class="lab"><span>Qual seu público-alvo?</span></div><div class="fld"><textarea data-k="pa_quem" placeholder="Quem compra de vocês hoje"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Principais dores</span><em>se houver mais de um produto com dores diferentes, detalhe no quadro do fim do briefing</em></div><div class="fld"><textarea data-k="pa_dores" placeholder="O problema que leva a pessoa a procurar vocês"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Principais objeções</span></div><div class="fld"><textarea data-k="pa_obj" placeholder="O que faz a pessoa hesitar, adiar ou desistir da compra"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Gênero</span></div><div class="fld"><input type="text" data-k="pa_gen" placeholder="Predominante, ou ambos"></div></div>
-    <div class="row"><div class="lab"><span>Idade</span></div><div class="fld"><input type="text" data-k="pa_idade" placeholder="Faixa aproximada"></div></div>
-    <div class="row"><div class="lab"><span>Formação acadêmica</span></div><div class="fld"><input type="text" data-k="pa_form" placeholder="Se for relevante para o público"></div></div>
-    <div class="row"><div class="lab"><span>Classe social</span></div><div class="fld"><input type="text" data-k="pa_classe" placeholder="Poder aquisitivo do público"></div></div>
-    <div class="row"><div class="lab"><span>Interesses</span></div><div class="fld"><textarea data-k="pa_int" placeholder="Hábitos, assuntos e comportamentos do público"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Se fosse seu cliente ideal, como pesquisaria no Google para comprar seu produto?</span></div><div class="fld"><textarea data-k="pa_google" placeholder="Escreva as buscas com as palavras que o cliente usaria, não as suas"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>3. Concorrentes</h3><p>3.1 Quais são seus concorrentes?</p></div>
-    <div class="row"><div class="lab"><span>Concorrentes diretos</span></div><div class="fld"><textarea data-k="c_dir" placeholder="Nome e site ou Instagram de cada um"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Concorrentes indiretos</span></div><div class="fld"><textarea data-k="c_ind" placeholder="Quem resolve o mesmo problema de outro jeito"></textarea></div></div>
-  </section>
-  <section class="blk">
-    <div class="blk-h"><h3>3.2 Posicionamento no mercado</h3></div>
-    <div class="row"><div class="lab"><span>Quais seus diferenciais em comparação com os concorrentes?</span></div><div class="fld"><textarea data-k="c_dif" placeholder="Por que alguém escolheria vocês e não eles"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Quais seus pontos fracos em relação aos concorrentes?</span></div><div class="fld"><textarea data-k="c_fracos" placeholder="Resposta honesta aqui evita campanha que promete o que não se entrega"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Possui títulos ou feitos que podemos usar para destacar a marca?</span></div><div class="fld"><textarea data-k="c_titulos" placeholder="Tempo de mercado, prêmios, certificações, número de clientes, avaliações"></textarea></div></div>
-  </section>
-
-  <h2 class="group">Informações comerciais</h2>
-
-  <section class="blk">
-    <div class="blk-h"><h3>4. Processo comercial</h3></div>
-    <div class="row"><div class="lab"><span>Quais as formas de aquisição de clientes?</span></div><div class="fld"><textarea data-k="pc_aq" placeholder="Indicação, anúncio, representante, feira, loja física…"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Qual a jornada de compra padrão?</span></div><div class="fld"><textarea data-k="pc_jornada" placeholder="Do primeiro contato até o fechamento — e quanto tempo costuma levar"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Quais os principais canais de atendimento?</span></div><div class="fld"><textarea data-k="pc_canais" placeholder="WhatsApp, telefone, e-mail, presencial…"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Trabalha com algum tipo de estratégia inbound?</span></div><div class="fld"><textarea data-k="pc_inbound" placeholder="Conteúdo, e-mail, materiais ricos, newsletter"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Faz vendas diretas pelo site?</span></div><div class="fld"><input type="text" data-k="pc_site" placeholder="Sim ou não — e como funciona"></div></div>
-    <div class="row"><div class="lab"><span>Faz vendas pelo WhatsApp?</span></div><div class="fld"><input type="text" data-k="pc_wpp" placeholder="Sim ou não — e quem atende"></div></div>
-    <div class="row"><div class="lab"><span>Utiliza CRM? Qual?</span></div><div class="fld"><input type="text" data-k="pc_crm" placeholder="Nome da ferramenta, ou como os contatos são organizados hoje"></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>5. Capacidade de atendimento</h3><p>É esta resposta que define até onde a campanha pode crescer. Gerar mais contato do que o time consegue atender só transforma verba em lead frio.</p></div>
-    <div class="row"><div class="lab"><span>Quantos contatos novos o time consegue atender por dia, com qualidade?</span></div><div class="fld"><input type="text" data-k="cap_dia" placeholder="Número aproximado, sendo realista"></div></div>
-    <div class="row"><div class="lab"><span>Em quanto tempo vocês costumam responder um contato novo?</span></div><div class="fld"><input type="text" data-k="cap_tempo" placeholder="Minutos, horas ou no dia seguinte — resposta honesta ajuda mais"></div></div>
-    <div class="row"><div class="lab"><span>Quem atende os contatos que chegam?</span></div><div class="fld"><textarea data-k="cap_quem" placeholder="Nome e função de quem responde. Se for mais de uma pessoa, como se dividem?"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Qual o horário de atendimento?</span><em>e o que acontece com quem chama fora dele</em></div><div class="fld"><textarea data-k="cap_horario" placeholder="Dias, horários, e se alguém retorna no dia seguinte"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>6. Sazonalidade e histórico</h3></div>
-    <div class="row"><div class="lab"><span>Quais meses são mais fortes e quais são mais fracos?</span></div><div class="fld"><textarea data-k="saz_meses" placeholder="Isso muda a distribuição da verba ao longo do ano"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Há datas, feiras ou eventos que puxam a demanda?</span></div><div class="fld"><textarea data-k="saz_datas" placeholder="Feiras do setor, datas comerciais, período de obra, início de safra"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Dos contatos que não fecharam, qual foi o motivo mais comum?</span></div><div class="fld"><textarea data-k="saz_perda" placeholder="Preço, prazo, demora na resposta, não era o perfil, sumiu — esse diagnóstico só vocês têm"></textarea></div></div>
-  </section>
-
-  <h2 class="group">Presença digital</h2>
-
-  <section class="blk">
-    <div class="blk-h"><h3>7. Principal rede social</h3></div>
-    <div class="row"><div class="lab"><span>Nome da rede social</span></div><div class="fld"><input type="text" data-k="rs_nome" placeholder="Qual rede concentra o público de vocês, e o @"></div></div>
-    <div class="row"><div class="lab"><span>Qual a frequência de postagens?</span></div><div class="fld"><input type="text" data-k="rs_freq" placeholder="Quantas vezes por semana"></div></div>
-    <div class="row"><div class="lab"><span>Quem é o responsável?</span></div><div class="fld"><input type="text" data-k="rs_resp" placeholder="Pessoa interna, agência ou freelancer"></div></div>
-    <div class="row"><div class="lab"><span>Consegue gerar vendas orgânicas?</span></div><div class="fld"><textarea data-k="rs_org" placeholder="A rede já traz cliente hoje, mesmo sem anúncio?"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Pode ser utilizado como canal de aquisição?</span></div><div class="fld"><textarea data-k="rs_aq" placeholder="Há disposição de usar o perfil para captar, e não só para presença"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>8. Google Meu Negócio</h3></div>
-    <div class="row"><div class="lab"><span>O GMN da empresa é</span></div><div class="fld"><input type="text" data-k="g_perfil" placeholder="Link do perfil, ou nome exato cadastrado"></div></div>
-    <div class="row"><div class="lab"><span>A empresa utiliza?</span></div><div class="fld"><textarea data-k="g_usa" placeholder="Está atualizado, com fotos, horário e produtos?"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Existe programa de incentivo a avaliações?</span></div><div class="fld"><textarea data-k="g_aval" placeholder="Vocês pedem avaliação ao cliente de alguma forma?"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>9. Material disponível para os criativos</h3><p>O anúncio é feito com o que existe. Saber o que já há em mãos evita campanha travada esperando foto.</p></div>
-    <div class="row"><div class="lab"><span>Que material vocês já têm?</span></div><div class="fld"><textarea data-k="mat_tem" placeholder="Fotos de produto, de obra ou instalação, vídeos, depoimentos, catálogo, logotipo em alta"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Há clientes ou casos que podemos mostrar?</span></div><div class="fld"><textarea data-k="mat_cases" placeholder="Trabalhos dos quais vocês se orgulham, e se há autorização para citar o nome"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Existe algo que não pode ser mostrado ou dito?</span><em>diferente da restrição de serviço — aqui é sobre imagem e comunicação</em></div><div class="fld"><textarea data-k="mat_restr" placeholder="Clientes que não autorizam aparecer, áreas internas, comparações que não quer fazer, promessas que não quer assumir"></textarea></div></div>
-  </section>
-
-  <h2 class="group">Anúncios online</h2>
-
-  <section class="blk">
-    <div class="blk-h"><h3>10. Experiências anteriores</h3></div>
-    <div class="row"><div class="lab"><span>Já anunciou antes? Qual a experiência e os resultados?</span></div><div class="fld"><textarea data-k="a_antes" placeholder="O que funcionou e o que decepcionou — os dois lados ajudam"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Quais mídias utilizavam?</span></div><div class="fld"><input type="text" data-k="a_midias" placeholder="Meta, Google, TikTok, YouTube…"></div></div>
-    <div class="row"><div class="lab"><span>Quem realizou os Ads?</span></div><div class="fld"><input type="text" data-k="a_quem" placeholder="Agência, freelancer, equipe interna, você mesmo"></div></div>
-    <div class="row"><div class="lab"><span>Quanto investiram em média?</span></div><div class="fld"><input type="text" data-k="a_invest" placeholder="Por mês"></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>11. Faturamento <span class="opt">opcional</span></h3><p>Estes números calibram a verba e a meta, e ficam entre nós. Se preferir não informar agora, tudo bem — dá para seguir sem eles e tratar em conversa.</p></div>
-    <div class="row"><div class="lab"><span>Qual a média de faturamento mensal?</span></div><div class="fld"><input type="text" data-k="f_fat" data-opt="1" placeholder="Aproximado já ajuda"></div></div>
-    <div class="row"><div class="lab"><span>Qual o ticket médio?</span></div><div class="fld"><input type="text" data-k="f_ticket" data-opt="1" placeholder="Valor médio de uma venda"></div></div>
-    <div class="row"><div class="lab"><span>Qual o custo máximo aceitável para conquistar um cliente?</span><em>é este número que define se a campanha está indo bem ou mal</em></div><div class="fld"><input type="text" data-k="f_cpa" data-opt="1" placeholder="Quanto pode custar uma venda e ainda valer a pena"></div></div>
-    <div class="row"><div class="lab"><span>Existem metas de vendas a serem atingidas?</span></div><div class="fld"><textarea data-k="f_metas" data-opt="1" placeholder="Meta de faturamento, de volume ou de novos clientes"></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>Nova fase</h3><p>O que passa a valer a partir de agora.</p></div>
-    <div class="row"><div class="lab"><span>Quanto pretende investir?</span></div><div class="fld"><input type="text" data-k="n_invest" placeholder="Verba mensal de mídia, paga direto à plataforma"></div></div>
-    <div class="row"><div class="lab"><span>Quais mídias podemos usar?</span></div><div class="fld"><input type="text" data-k="n_midias" placeholder="Meta, Google, e outras que fizerem sentido"></div></div>
-    <div class="row"><div class="lab"><span>Qual o principal objetivo a ser atingido com as campanhas?</span></div><div class="fld"><textarea data-k="n_obj" placeholder="Um só objetivo principal — é ele que define toda a estratégia"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Quais os objetivos secundários?</span></div><div class="fld"><textarea data-k="n_obj2" placeholder="O que também seria bom conquistar, sem competir com o principal"></textarea></div></div>
-    <div class="row"><div class="lab"><span>Sendo realista, o que precisa acontecer ao final de 6 meses para considerar que a parceria deu certo?</span></div><div class="fld"><textarea data-k="n_6m" placeholder="Se possível, em número. É esta resposta que vamos perseguir."></textarea></div></div>
-  </section>
-
-  <section class="blk">
-    <div class="blk-h"><h3>Dores por tipo de serviço ou produto</h3><p>Preencha apenas se houver produtos com dores diferentes entre si.</p></div>
-    <div class="dores">
-      <div class="dh"><div>Serviço / produto</div><div>Dores</div></div>
-      <div class="dr"><div class="c"><input type="text" data-k="d1p" placeholder="Produto 1"></div><div class="c"><textarea data-k="d1d" placeholder="Dores específicas deste produto"></textarea></div></div>
-      <div class="dr"><div class="c"><input type="text" data-k="d2p" placeholder="Produto 2"></div><div class="c"><textarea data-k="d2d" placeholder=""></textarea></div></div>
-      <div class="dr"><div class="c"><input type="text" data-k="d3p" placeholder="Produto 3"></div><div class="c"><textarea data-k="d3d" placeholder=""></textarea></div></div>
-      <div class="dr"><div class="c"><input type="text" data-k="d4p" placeholder="Produto 4"></div><div class="c"><textarea data-k="d4d" placeholder=""></textarea></div></div>
-      <div class="dr"><div class="c"><input type="text" data-k="d5p" placeholder="Produto 5"></div><div class="c"><textarea data-k="d5d" placeholder=""></textarea></div></div>
-    </div>
-  </section>
+<?php endforeach; ?>
 
   <div class="actions" id="acts">
     <h3>Tudo salvo</h3>
     <p>Não é preciso enviar nada. O que você escreveu já está guardado com a gente. Se quiser uma cópia para você, gere o PDF.</p>
-    <div class="btns">
-      <button id="bPdf">Salvar em PDF</button>
-    </div>
+    <div class="btns"><button id="bPdf">Salvar em PDF</button></div>
     <div class="msg" id="msg"></div>
   </div>
 </main>

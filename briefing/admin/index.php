@@ -11,12 +11,17 @@ $acao  = $_POST['acao'] ?? ($_GET['acao'] ?? '');
 // ── criar ──
 if ($acao === 'criar' && ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     $nome = trim((string)($_POST['nome'] ?? ''));
+    $tipoNovo = (string)($_POST['tipo'] ?? '');
+    $defs = tipos();
     if ($nome === '') {
         $aviso = 'Informe o nome do cliente.';
+    } elseif (!isset($defs[$tipoNovo]) || empty($defs[$tipoNovo]['ativo'])) {
+        $aviso = 'Escolha um tipo de briefing disponível.';
     } else {
         $token = novo_token($nome);
         gravar($token, [
             'nome'          => mb_substr($nome, 0, 120),
+            'tipo'          => $tipoNovo,
             'criado_em'     => date('c'),
             'atualizado_em' => date('c'),
             'respostas'     => ['emp_nome' => mb_substr($nome, 0, 120)],
@@ -72,7 +77,11 @@ h1{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-top:22px}
 .card-b{padding:20px}
 form.novo{display:flex;gap:10px;flex-wrap:wrap}
 input[type=text]{flex:1;min-width:220px;font-family:var(--f);font-size:.88rem;padding:12px 14px;border:1px solid var(--line);border-radius:7px;outline:0}
-input[type=text]:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(249,115,22,.16)}
+input[type=text]:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(249,115,22,.16)}
+select{font-family:var(--f);font-size:.85rem;padding:12px 14px;border:1px solid var(--line);border-radius:7px;outline:0;background:#fff;color:var(--ink);min-width:220px}
+.dica{margin-top:12px;font-size:.78rem;font-weight:300;color:var(--dim);line-height:1.6}
+.tipo{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--dim);font-size:.66rem;font-weight:600}
+.tipo-topo{margin-top:6px;font-size:.66rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
 button{font-family:var(--f);font-size:.76rem;font-weight:600;padding:12px 20px;border-radius:7px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;transition:.18s}
 button:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
 button.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
@@ -111,11 +120,12 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
     <div class="brand">Alma<i>.Convert</i><small>Agência Digital</small></div>
     <?php if ($vendo): ?>
       <h1><?= e($vendo['nome'] ?? 'Briefing') ?></h1>
+      <p class="tipo-topo"><?= e(nome_do_tipo(tipo_do($vendo))) ?></p>
       <p class="sub">
         <?php
           $r = $vendo['respostas'] ?? [];
           $n = count(array_filter($r, fn($v) => trim((string)$v) !== ''));
-          echo $n . ' de 75 campos respondidos';
+          echo $n . ' de ' . total_campos(tipo_do($vendo)) . ' campos respondidos';
           if (!empty($vendo['atualizado_em'])) {
               echo ' · última atualização em ' . e(date('d/m/Y \à\s H:i', strtotime((string)$vendo['atualizado_em'])));
           }
@@ -148,7 +158,7 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
   </div>
 
   <?php
-  $mapa = require dirname(__DIR__) . '/campos.php';
+  $mapa = campos_do_tipo(tipo_do($vendo));
   $resp = $vendo['respostas'] ?? [];
   foreach ($mapa as $bloco):
       if ($bloco['tipo'] === 'grupo' && empty($bloco['campos'])):
@@ -188,8 +198,16 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
       <form class="novo" method="post">
         <input type="hidden" name="acao" value="criar">
         <input type="text" name="nome" placeholder="Nome do cliente — ex.: Climatizadores Bom Ar" required>
+        <select name="tipo" id="selTipo" required>
+          <?php foreach (tipos() as $id => $t): ?>
+            <option value="<?= e($id) ?>" data-resumo="<?= e($t['resumo']) ?>" <?= empty($t['ativo']) ? 'disabled' : '' ?>>
+              <?= e($t['nome']) ?><?= empty($t['ativo']) ? ' — em breve' : '' ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
         <button type="submit">Criar link</button>
       </form>
+      <p class="dica" id="dicaTipo"></p>
     </div>
   </div>
 
@@ -200,14 +218,15 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
       <div class="vazio">Nenhum briefing ainda. Crie o primeiro acima.</div>
     <?php else: ?>
       <table>
-        <thead><tr><th>Cliente</th><th>Preenchimento</th><th>Última atualização</th><th></th></tr></thead>
+        <thead><tr><th>Cliente</th><th>Tipo</th><th>Preenchimento</th><th>Última atualização</th><th></th></tr></thead>
         <tbody>
         <?php foreach ($lista as $b):
           $n = (int)$b['respondidos'];
-          $cls = $n === 0 ? 'z' : ($n >= 60 ? 'v' : 'm'); ?>
+          $tot = max(1, (int)$b['total']); $cls = $n === 0 ? 'z' : ($n >= $tot * 0.8 ? 'v' : 'm'); ?>
           <tr>
             <td class="nome"><?= e($b['nome']) ?></td>
-            <td><span class="pill <?= $cls ?>"><?= $n ?> de 75</span></td>
+            <td><span class="tipo"><?= e($b['tipo_nome']) ?></span></td>
+            <td><span class="pill <?= $cls ?>"><?= $n ?> de <?= (int)$b['total'] ?></span></td>
             <td><?= $b['atualizado'] ? e(date('d/m/Y H:i', strtotime((string)$b['atualizado']))) : '—' ?></td>
             <td>
               <div class="acoes">
@@ -233,6 +252,12 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
 <footer>Alma.Convert · Agência Digital — painel interno</footer>
 
 <script>
+(function(){
+  var sel=document.getElementById('selTipo'), dica=document.getElementById('dicaTipo');
+  if(!sel||!dica) return;
+  function mostra(){ var o=sel.options[sel.selectedIndex]; dica.textContent=o?o.dataset.resumo||'':''; }
+  sel.addEventListener('change',mostra); mostra();
+})();
 function copiar(url, btn){
   navigator.clipboard.writeText(url).then(function(){
     var t=btn.textContent; btn.textContent='Copiado'; setTimeout(function(){ btn.textContent=t; },1500);

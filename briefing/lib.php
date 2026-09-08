@@ -52,9 +52,13 @@ function listar(): array {
     foreach (glob(DIR_DADOS . '/*.json') ?: [] as $f) {
         $d = json_decode((string)@file_get_contents($f), true);
         if (!is_array($d)) continue;
+        $tipo = tipo_do($d);
         $out[] = [
             'token'       => basename($f, '.json'),
             'nome'        => $d['nome'] ?? '(sem nome)',
+            'tipo'        => $tipo,
+            'tipo_nome'   => nome_do_tipo($tipo),
+            'total'       => total_campos($tipo),
             'criado_em'   => $d['criado_em'] ?? null,
             'atualizado'  => $d['atualizado_em'] ?? null,
             'respondidos' => is_array($d['respostas'] ?? null) ? count(array_filter($d['respostas'], fn($v) => trim((string)$v) !== '')) : 0,
@@ -62,6 +66,55 @@ function listar(): array {
     }
     usort($out, fn($a, $b) => strcmp((string)$b['atualizado'], (string)$a['atualizado']));
     return $out;
+}
+
+/** Registro de tipos. */
+function tipos(): array {
+    static $t = null;
+    if ($t === null) { $t = require __DIR__ . '/tipos.php'; }
+    return $t;
+}
+
+/** Tipo de um registro. Briefings antigos, sem o campo, são de tráfego. */
+function tipo_do(array $reg): string {
+    $t = (string)($reg['tipo'] ?? 'trafego');
+    return isset(tipos()[$t]) ? $t : 'trafego';
+}
+
+function nome_do_tipo(string $t): string {
+    return tipos()[$t]['nome'] ?? $t;
+}
+
+/**
+ * Mapa de campos de um tipo, já com o bloco "Resultado esperado" ao final.
+ * O bloco comum é acrescentado aqui, e não em cada arquivo, para que nenhum
+ * tipo novo possa esquecer dele.
+ */
+function campos_do_tipo(string $t): array {
+    $def = tipos()[$t] ?? null;
+    if (!$def || empty($def['arquivo'])) return [];
+    $p = __DIR__ . '/campos/' . $def['arquivo'];
+    if (!is_file($p)) return [];
+    $base = require $p;
+    $fim  = require __DIR__ . '/campos/_resultado.php';
+    return array_merge(is_array($base) ? $base : [], $fim);
+}
+
+/** Só as chaves obrigatórias — usadas para a barra de progresso. */
+function chaves_obrigatorias(string $t): array {
+    $out = [];
+    foreach (campos_do_tipo($t) as $b) {
+        foreach ($b['campos'] ?? [] as $c) {
+            if (empty($c['opt'])) $out[] = $c['k'];
+        }
+    }
+    return $out;
+}
+
+function total_campos(string $t): int {
+    $n = 0;
+    foreach (campos_do_tipo($t) as $b) { $n += count($b['campos'] ?? []); }
+    return $n;
 }
 
 function base_url(): string {
