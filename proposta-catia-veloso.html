@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Cátia Veloso · MariaQuitéria · Caroline Veloso</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   ALMA — PROPOSTA CÁTIA VELOSO / MARIAQUITÉRIA / CAROLINE VELOSO
+   Produção de Conteúdo + Estratégia Editorial Integrada
+   Design: Editorial · White · Orange
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --black:   #000000;
+  --dark:    #0d0d0d;
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #888888;
+  --subtle:  #bbbbbb;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.09);
+  --line-s:  rgba(16,24,40,0.15);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --orange-d:#EA6C0A;
+  --f: 'Poppins', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--f); background: var(--white); color: var(--ink);
+  -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6;
+}
+
+.t-headline { font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+.t-body     { font-size: clamp(.9rem, 1.5vw, 1.05rem); font-weight: 300; line-height: 1.85; }
+
+/* ── Reveal ── */
+.r { opacity:0; transform:translateY(28px); transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.12s} .d2{transition-delay:.24s}
+.d3{transition-delay:.36s} .d4{transition-delay:.48s}
+.d5{transition-delay:.60s}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 18px 0; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); transition: opacity .4s;
+}
+nav.hidden { opacity: 0; pointer-events: none; }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo { font-size: .9rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+.nav-logo em { font-style:normal; font-weight:300; color: var(--muted); }
+.nav-cta {
+  padding: 9px 24px; background: var(--orange); color: var(--black);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--orange-d); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  background: var(--white);
+  border-bottom: 3px solid var(--orange);
+  overflow: hidden;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  padding: 120px 0 100px;
+}
+#journey {
+  position: absolute; inset:0;
+  width:100%; height:100%; z-index:1; opacity:.45;
+}
+.hero::before {
+  content:''; position: absolute; top:0; right:0;
+  width: 40vw; height: 100%;
+  background: linear-gradient(135deg, transparent 35%, rgba(249,115,22,.05) 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-inner {
+  position: relative; z-index:2;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 52px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .8s cubic-bezier(.16,1,.3,1) .3s forwards;
+}
+.hero-eyebrow .tag {
+  font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow .sep { width: 32px; height: 1px; background: var(--orange); opacity: .4; }
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 800;
+  line-height: .98; letter-spacing: -.045em; max-width: 900px; margin-bottom: 40px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+.hero h1 .line1 { display: block; color: var(--ink); }
+.hero h1 .line2 { display: block; font-style: italic; font-weight: 300; color: var(--orange); }
+.hero-sub {
+  font-size: clamp(.88rem, 1.5vw, 1.02rem); font-weight: 300;
+  color: var(--muted); max-width: 600px; line-height: 1.9; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .9s forwards;
+}
+.hero-meta .m-tag {
+  font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--line-s); padding: 6px 16px;
+}
+.hero-meta .m-sep { width: 1px; height: 16px; background: var(--line-s); }
+.scroll-indicator {
+  position: absolute; bottom: 48px; left: 32px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  opacity: 0; animation: fadeIn 1s ease 1.4s forwards;
+}
+@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.scroll-mouse {
+  width: 26px; height: 42px; border: 1.5px solid rgba(16,24,40,.18);
+  border-radius: 13px; position: relative; display: flex; justify-content: center;
+}
+.scroll-wheel {
+  width: 3px; height: 7px; background: var(--orange); border-radius: 2px;
+  position: absolute; top: 7px;
+  animation: scrollWheel 2.2s cubic-bezier(.37,0,.63,1) 1.8s infinite;
+}
+@keyframes scrollWheel {
+  0%   { opacity:1; transform:translateY(0); }
+  60%  { opacity:0; transform:translateY(16px); }
+  61%  { opacity:0; transform:translateY(0); }
+  100% { opacity:1; transform:translateY(0); }
+}
+.scroll-label { font-size: .5rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--dim); }
+.hero-deco {
+  position: absolute; right: 4vw; top: 50%; transform: translateY(-50%);
+  font-size: clamp(9rem, 20vw, 16rem); font-weight: 800; line-height: 1;
+  letter-spacing: -.06em; color: rgba(249,115,22,.055);
+  pointer-events: none; user-select: none; font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════ */
+.section { padding: 120px 0; border-top: 1px solid var(--line); }
+.section.alt { background: var(--off); }
+.section-head { margin-bottom: 72px; }
+.section-num {
+  font-size: .58rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+}
+.section-num::before { content:''; width:20px; height:1px; background:var(--dim); }
+.section-num.c { justify-content:center; }
+.section-num.c::before, .section-num.c::after { content:''; width:20px; height:1px; background:var(--orange); opacity:.4; }
+h2.sh { margin-bottom: 20px; }
+p.sp  { color: var(--muted); max-width: 560px; }
+
+/* ═══════════════════════════════════════════
+   PILARES / PERFIS
+═══════════════════════════════════════════ */
+.pilares-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.pilar-cell { background: var(--white); padding: 52px 36px; transition: background .3s; }
+.pilar-cell:hover { background: var(--orange-l); }
+.pilar-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 18px; display: block;
+}
+.pilar-icon { font-size: 2rem; margin-bottom: 20px; display: block; line-height: 1; color: var(--orange); }
+.pilar-cell h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; letter-spacing: -.02em; }
+.pilar-cell p  { font-size: .83rem; font-weight: 300; color: var(--muted); line-height: 1.82; }
+.pilar-quote {
+  background: var(--ink); padding: 52px 48px; text-align: center;
+}
+.pilar-quote p {
+  font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.65); max-width: 680px; margin: 0 auto; line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════
+   DIFERENCIAL
+═══════════════════════════════════════════ */
+.dif-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.dif-side { padding: 56px 48px; }
+.dif-side.common { background: var(--off); }
+.dif-side.legado { background: var(--white); }
+.dif-tag {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.dif-tag::before { content:''; width:16px; height:1px; background:var(--dim); }
+.dif-tag.orange { color: var(--orange); }
+.dif-tag.orange::before { background: var(--orange); }
+.dif-side h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; letter-spacing:-.03em; line-height: 1.1; margin-bottom: 20px; }
+.dif-side p { font-size: .85rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 24px; }
+.dif-items { list-style: none; }
+.dif-items li {
+  font-size: .8rem; font-weight: 300; color: var(--muted);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.dif-items li:last-child { border-bottom: none; }
+.dif-items li::before { content:'×'; color: var(--subtle); flex-shrink:0; font-size:.75rem; margin-top:2px; }
+.dif-items.pos li::before { content:'→'; color: var(--orange); }
+.dif-verdict {
+  background: var(--orange); padding: 28px 48px;
+  display: flex; align-items: center;
+}
+.dif-verdict p { font-size: .88rem; font-weight: 600; letter-spacing: .03em; color: var(--black); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   PRODUÇÃO — O QUE ENTRA
+═══════════════════════════════════════════ */
+.prod-cards {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); margin-bottom: 1px;
+}
+.prod-card { background: var(--white); padding: 44px 36px; transition: background .3s; }
+.prod-card:hover { background: var(--orange-l); }
+.prod-card-icon { font-size: 2rem; color: var(--orange); margin-bottom: 22px; display: block; line-height: 1; }
+.prod-card h3 { font-size: .95rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 12px; }
+.prod-card p  { font-size: .8rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
+
+.prod-features {
+  background: var(--ink); padding: 44px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 56px;
+  border: 1px solid var(--line);
+}
+.prod-feature {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .8rem; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.65;
+}
+.prod-feature::before { content:'→'; color: var(--orange); flex-shrink:0; margin-top:1px; }
+
+/* ═══════════════════════════════════════════
+   EQUIPE DO PROJETO
+═══════════════════════════════════════════ */
+.equipe-grid {
+  display: grid; grid-template-columns: repeat(6,1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.equipe-cell { background: var(--white); padding: 36px 22px; text-align: center; transition: background .3s; }
+.equipe-cell:hover { background: var(--orange-l); }
+.equipe-num { font-size: .62rem; font-weight: 700; letter-spacing: .18em; color: var(--orange); margin-bottom: 16px; display:block; }
+.equipe-cell h4 { font-size: .85rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; line-height: 1.3; }
+.equipe-cell p { font-size: .72rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   PLANOS — DOIS CARDS (ANCORAGEM)
+═══════════════════════════════════════════ */
+.planos-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.plano-card { padding: 56px 48px; position: relative; }
+.plano-card.standard { background: var(--ink); }
+.plano-card.destaque { background: var(--white); border-top: 4px solid var(--orange); }
+
+.rec-label {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: var(--black);
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  padding: 5px 22px; white-space: nowrap;
+}
+.card-badge {
+  font-size: .55rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.standard .card-badge { color: rgba(255,255,255,.35); }
+.standard .card-badge::before { content:''; width:14px; height:1px; background:rgba(255,255,255,.2); }
+.destaque .card-badge { color: var(--orange); }
+.destaque .card-badge::before { content:''; width:14px; height:1px; background:var(--orange); opacity:.5; }
+
+.plano-card h3 {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800;
+  letter-spacing: -.04em; line-height: 1.05; margin-bottom: 24px;
+}
+.standard .plano-card h3 { color: var(--white); }
+.destaque .plano-card h3 { color: var(--ink); }
+
+.price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.price-old {
+  font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 400;
+  text-decoration: line-through; align-self: center;
+}
+.standard .price-old { color: rgba(255,255,255,.28); }
+.destaque .price-old { color: var(--subtle); }
+.price-val { font-size: clamp(2.1rem, 3.6vw, 3rem); font-weight: 800; letter-spacing: -.04em; }
+.standard .price-val { color: var(--white); }
+.destaque .price-val { color: var(--ink); }
+.price-per { font-size: .88rem; font-weight: 300; }
+.standard .price-per { color: rgba(255,255,255,.35); }
+.destaque .price-per { color: var(--muted); }
+.price-note {
+  font-size: .62rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.standard .price-note { color: rgba(255,255,255,.2); }
+.destaque .price-note { color: var(--muted); }
+
+.plano-items { list-style: none; margin-bottom: 28px; }
+.plano-items li {
+  font-size: .8rem; font-weight: 300; padding: 10px 0;
+  border-bottom: 1px solid; display: flex; gap: 12px; align-items: flex-start;
+  line-height: 1.55;
+}
+.plano-items li:last-child { border-bottom: none; }
+.standard .plano-items li { color: rgba(255,255,255,.5); border-bottom-color: rgba(255,255,255,.07); }
+.destaque .plano-items li { color: var(--dim); border-bottom-color: var(--line); }
+.plano-items li::before { content:'→'; flex-shrink:0; font-size:.8rem; margin-top:1px; }
+.standard .plano-items li::before { color: rgba(255,255,255,.2); }
+.destaque .plano-items li::before { color: var(--orange); }
+
+.desc-bonus-strip {
+  border: 1px solid rgba(249,115,22,.3);
+  background: rgba(249,115,22,.06);
+  padding: 18px 22px; margin-top: 8px;
+}
+.desc-bonus-label {
+  font-size: .52rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.desc-bonus-label::before { content:'✦'; font-size:.4rem; }
+.desc-bonus-value { font-size: .88rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.desc-bonus-sub { font-size: .72rem; font-weight: 300; color: var(--dim); line-height: 1.5; }
+
+/* ─── CTA ─── */
+.cta-wrap { text-align:center; padding:0 32px; }
+.cta-wrap h2 { max-width:640px; margin:0 auto 20px; }
+.cta-wrap .cp { color:var(--muted); max-width:500px; margin:0 auto 40px; font-size:.92rem; line-height:1.85; font-weight:300; }
+.cta-validade {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border:1px solid rgba(249,115,22,.3);
+  border-radius:99px; font-size:.65rem; font-weight:500; letter-spacing:.08em;
+  color:rgba(249,115,22,.8); margin-bottom:20px;
+}
+.validade-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--orange);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.7);} }
+.cta-main {
+  display:inline-flex; align-items:center; gap:12px; padding:18px 48px;
+  background:var(--orange); color:var(--black);
+  font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  text-decoration:none; transition:background .25s, transform .2s;
+}
+.cta-main:hover { background:var(--orange-d); color:var(--white); transform:translateY(-2px); }
+.cta-main::after { content:'→'; margin-left:2px; }
+.cta-sub { margin-top:16px; font-size:.68rem; color:var(--dim); letter-spacing:.05em; }
+
+/* ─── PRÓXIMOS PASSOS ─── */
+.proximos-passos { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.pp-title { font-size:.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); margin-bottom:36px; }
+.pp-steps { display:flex; align-items:flex-start; justify-content:center; gap:0; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+.pp-step { flex:1; min-width:160px; text-align:center; padding:0 12px; }
+.pp-step-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  border:1.5px solid var(--orange); color:var(--orange);
+  font-size:.65rem; font-weight:700; letter-spacing:.06em; margin-bottom:14px;
+}
+.pp-step-name { font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.pp-step-desc { font-size:.72rem; color:var(--muted); line-height:1.65; font-weight:300; }
+.pp-arrow { padding-top:12px; color:var(--orange); font-size:1.1rem; opacity:.4; flex-shrink:0; align-self:flex-start; }
+
+footer { border-top:1px solid var(--line); padding:40px 32px; text-align:center; }
+footer p { font-size:.68rem; font-weight:300; color:var(--dim); letter-spacing:.05em; }
+
+/* ═══════════════════════════════════════════
+   MOBILE · TABLET ≤ 900px
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .pilares-grid, .planos-grid, .prod-cards { grid-template-columns:1fr; }
+  .equipe-grid { grid-template-columns: repeat(3,1fr); }
+  .dif-grid { grid-template-columns:1fr; }
+  .prod-features { grid-template-columns:1fr; gap:12px; }
+
+  .hero { padding: 100px 0 80px; }
+  .hero-deco { display:none; }
+  .hero h1 { font-size: clamp(2rem, 7vw, 3.2rem); margin-bottom:28px; }
+  .hero-eyebrow { margin-bottom:32px; }
+  .hero-sub { max-width:100%; margin-bottom:36px; }
+  .hero-meta { gap:12px; }
+  .scroll-indicator { bottom:32px; left:20px; }
+
+  .section { padding:80px 0; }
+  .section-head { margin-bottom:52px; }
+
+  .pilar-cell { padding:40px 28px; }
+  .pilar-quote { padding:44px 28px; }
+
+  .dif-side { padding:44px 32px; }
+  .dif-verdict { padding:24px 32px; }
+
+  .prod-card { padding:36px 28px; }
+  .prod-features { padding:36px 28px; }
+  .equipe-cell { padding:32px 20px; }
+
+  .plano-card { padding:48px 36px; }
+  .plano-card.destaque { margin-top:12px; }
+  .rec-label { font-size:.5rem; }
+
+  .cta-wrap { padding:0 24px; }
+
+  .pp-steps { flex-direction:column; align-items:center; gap:20px; }
+  .pp-arrow { transform:rotate(90deg); padding:0; }
+  .proximos-passos { margin-top:48px; padding-top:36px; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE · PHONE ≤ 600px
+═══════════════════════════════════════════ */
+@media(max-width:600px){
+  .nav-inner { padding:0 20px; }
+  .nav-logo { font-size:.8rem; }
+  .nav-cta { padding:8px 16px; font-size:.65rem; letter-spacing:.04em; }
+
+  .wrap { padding:0 20px; }
+
+  .hero { padding:88px 0 64px; }
+  .hero-inner { padding:0 20px; }
+  .hero h1 { font-size:clamp(1.9rem, 8vw, 2.6rem); letter-spacing:-.035em; line-height:1.02; }
+  .hero-eyebrow { gap:10px; margin-bottom:24px; }
+  .hero-eyebrow .tag { font-size:.55rem; }
+  .hero-sub { font-size:.88rem; line-height:1.8; margin-bottom:28px; }
+  .hero-meta { gap:8px; }
+  .hero-meta .m-sep { display:none; }
+  .hero-meta .m-tag { font-size:.57rem; padding:5px 12px; }
+  .scroll-indicator { display:none; }
+
+  .section { padding:60px 0; }
+  .section-head { margin-bottom:40px; }
+  .t-headline { font-size:clamp(1.75rem, 6.5vw, 2.4rem); }
+  .t-body { font-size:.9rem; }
+  p.sp { max-width:100%; }
+
+  .pilar-cell { padding:32px 20px; }
+  .pilar-icon { font-size:1.6rem; margin-bottom:18px; }
+  .pilar-cell h3 { font-size:1rem; }
+  .pilar-quote { padding:36px 20px; }
+
+  .dif-side { padding:36px 20px; }
+  .dif-side h3 { font-size:1.5rem; }
+  .dif-verdict { padding:20px 20px; }
+  .dif-verdict p { font-size:.82rem; }
+
+  .prod-card { padding:32px 20px; }
+  .prod-features { padding:32px 20px; gap:10px; }
+  .prod-feature { font-size:.78rem; }
+  .equipe-grid { grid-template-columns: 1fr 1fr; }
+  .equipe-cell { padding:28px 16px; }
+
+  .plano-card { padding:40px 22px; }
+  .plano-card.destaque { margin-top:8px; }
+  .price-val { font-size:2.3rem; }
+  .desc-bonus-strip { padding:16px 18px; }
+  .desc-bonus-value { font-size:.82rem; }
+  .desc-bonus-sub { font-size:.68rem; }
+  .plano-items li { font-size:.78rem; }
+
+  .cta-wrap { padding:0 20px; }
+  .cta-wrap h2 { font-size:clamp(1.6rem, 6vw, 2.2rem); }
+  .cta-wrap .cp { font-size:.85rem; }
+  .cta-main {
+    display:flex; width:100%; justify-content:center;
+    padding:18px 20px; font-size:.7rem; letter-spacing:.08em;
+  }
+
+  .proximos-passos { margin-top:40px; padding-top:28px; }
+  .pp-step { min-width:100%; padding:0; }
+  .pp-step-desc { font-size:.7rem; }
+
+  footer { padding:32px 20px; }
+  footer p { font-size:.62rem; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE · SMALL PHONE ≤ 400px
+═══════════════════════════════════════════ */
+@media(max-width:400px){
+  .hero { padding:80px 0 56px; }
+  .hero h1 { font-size:clamp(1.6rem, 9vw, 2rem); }
+  .section { padding:48px 0; }
+  .t-headline { font-size:clamp(1.55rem, 7vw, 2rem); }
+  .pilar-cell, .prod-card { padding:28px 18px; }
+  .dif-side, .prod-features { padding:28px 18px; }
+  .equipe-cell { padding:24px 14px; }
+  .plano-card { padding:32px 18px; }
+  .pilar-quote { padding:28px 18px; }
+  .section-head { margin-bottom:32px; }
+  .nav-cta { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Alma<em>.Convert</em></div>
+    <a href="#contato" class="nav-cta">Fechar proposta</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="journey"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="tag">Alma.Convert</span>
+      <span class="sep"></span>
+      <span class="tag">Proposta exclusiva · Cátia Veloso · MariaQuitéria · Caroline Veloso · 2026</span>
+    </div>
+    <h1>
+      <span class="line1">Autoridade, vocês já têm.</span>
+      <span class="line2">Presença conectada nas redes é o que a Alma entrega.</span>
+    </h1>
+    <p class="hero-sub">Cátia Veloso, MariaQuitéria e Caroline Veloso ocupam papéis diferentes — especialista, marca e sócia — mas constroem a mesma reputação de mercado. Esta proposta integra os três perfis em uma única estratégia editorial, preservando a essência e o objetivo de cada um, para transformar presença em autoridade reconhecida.</p>
+    <div class="hero-meta">
+      <span class="m-tag">Produção de Conteúdo</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Estratégia Editorial Integrada</span>
+      <span class="m-sep"></span>
+      <span class="m-tag">Autoridade & Posicionamento</span>
+    </div>
+  </div>
+  <div class="hero-deco">✦</div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     01 — A OPORTUNIDADE
+════════════════════════════ -->
+<section class="section alt" id="visao">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">01 — A oportunidade</div>
+      <h2 class="t-headline sh r d1">Três perfis publicando sozinhos<br>constroem três audiências pequenas.</h2>
+      <p class="t-body sp r d2">Cátia, MariaQuitéria e Caroline falam para o mesmo mercado — compliance, integridade e governança — mas cada uma a partir de um lugar diferente. Sem uma linha editorial que os conecte, cada perfil cresce isolado e mais devagar. Com integração, os três se reforçam: quem vê um, é naturalmente levado a conhecer os outros dois.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-cell r d1">
+        <span class="pilar-tag">@catiapveloso</span>
+        <span class="pilar-icon">◆</span>
+        <h3>A voz da especialista</h3>
+        <p>Perfil pessoal de Cátia Veloso, referência nacional em compliance. Aqui a autoridade é construída em primeira pessoa: bastidores, posicionamento e a leitura de quem vive o mercado por dentro.</p>
+      </div>
+      <div class="pilar-cell r d2">
+        <span class="pilar-tag">@mariaquiteria.compliance</span>
+        <span class="pilar-icon">◈</span>
+        <h3>A marca institucional</h3>
+        <p>Perfil da consultoria MariaQuitéria. Aqui o papel é diferente: mostrar os serviços, a metodologia e a prova social que sustentam a decisão de contratar — sem perder o tom humano da marca.</p>
+      </div>
+      <div class="pilar-cell r d3">
+        <span class="pilar-tag">@carolineveloso</span>
+        <span class="pilar-icon">∞</span>
+        <h3>O olhar jurídico complementar</h3>
+        <p>Perfil pessoal de Caroline Veloso, sócia e advogada. Um ângulo de autoridade próprio — direito público, governança e desenvolvimento institucional — que dialoga com os outros dois sem repeti-los.</p>
+      </div>
+    </div>
+    <div class="pilar-quote r d4">
+      <p>Três objetivos diferentes. Uma mesma reputação sendo construída. O papel da linha editorial é fazer essa conexão aparecer para quem segue qualquer um dos três perfis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     02 — O DIAGNÓSTICO
+════════════════════════════ -->
+<section class="section" id="diferencial">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">02 — O diagnóstico</div>
+      <h2 class="t-headline sh r d1">Sem conexão editorial,<br>cada perfil compete pela mesma atenção.</h2>
+      <p class="t-body sp r d2">Quando três perfis do mesmo universo publicam sem um fio condutor, a audiência não entende como eles se relacionam — e a agência acaba produzindo três estratégias isoladas em vez de uma autoridade conjunta.</p>
+    </div>
+    <div class="dif-grid r d2">
+      <div class="dif-side common">
+        <div class="dif-tag">O que acontece sem integração</div>
+        <h3>Três perfis,<br>três estratégias soltas</h3>
+        <p>Cada perfil publica no seu ritmo, sem relação aparente com os outros dois. A audiência de um não sabe que os outros existem. Pautas se repetem ou, pior, competem entre si pela mesma atenção.</p>
+        <ul class="dif-items">
+          <li>Sem conexão perceptível entre os três perfis para quem segue</li>
+          <li>Risco de repetir mensagem ou perder oportunidade de reforço cruzado</li>
+          <li>Cada perfil cresce sozinho, no ritmo de um perfil isolado</li>
+          <li>Calendários e aprovações tratados como três projetos separados</li>
+          <li>A essência de cada persona se perde quando o conteúdo é genérico</li>
+        </ul>
+      </div>
+      <div class="dif-side legado">
+        <div class="dif-tag orange">Método Jornada · Alma</div>
+        <h3>Uma linha editorial<br>que conecta sem diluir</h3>
+        <p>O Método Jornada da Alma organiza os três perfis dentro de uma mesma narrativa de autoridade — cada um com sua função clara, suas pautas próprias, mas conversando entre si de forma estratégica.</p>
+        <ul class="dif-items pos">
+          <li>Pautas planejadas em conjunto, cada perfil com seu papel definido</li>
+          <li>Reforço cruzado natural entre os três perfis, sem repetição de mensagem</li>
+          <li>Cada persona preserva sua essência, seu tom e seu objetivo específico</li>
+          <li>Um único calendário editorial integrado, com fluxo de aprovação unificado</li>
+          <li>Presença que soma — o conjunto comunica mais do que as três partes isoladas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dif-verdict r d3">
+      <p>O objetivo não é produzir mais conteúdo. É fazer os três perfis parecerem um ecossistema de autoridade — não três contas concorrendo entre si por atenção.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     03 — A PRODUÇÃO
+════════════════════════════ -->
+<section class="section alt" id="producao">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">03 — Como a produção funciona</div>
+      <h2 class="t-headline sh r d1">Estratégia, roteiro e edição por nós.<br>A gravação, com a autenticidade de vocês.</h2>
+      <p class="t-body sp r d2">Cátia grava os conteúdos com orientação de roteiro, enquadramento e pauta preparados pela Alma — o que mantém a autenticidade da voz dela intacta. Da edição à publicação, toda a produção é conduzida pela nossa equipe.</p>
+    </div>
+    <div class="prod-cards">
+      <div class="prod-card r d1">
+        <span class="prod-card-icon">◎</span>
+        <h3>Calendário Editorial Integrado</h3>
+        <p>Um único planejamento mensal que organiza as pautas dos três perfis, define o papel de cada um em cada tema e evita repetição ou concorrência de mensagem entre eles.</p>
+      </div>
+      <div class="prod-card r d2">
+        <span class="prod-card-icon">◈</span>
+        <h3>Roteiro e Direção de Gravação</h3>
+        <p>Roteiro, enquadramento e orientação de fala preparados antes de cada gravação — para que a gravação feita por Cátia já saia alinhada à linha editorial e pronta para produção.</p>
+      </div>
+      <div class="prod-card r d3">
+        <span class="prod-card-icon">◆</span>
+        <h3>Produção e Publicação Completa</h3>
+        <p>Edição, copywriting, design de carrossel e agendamento nos três perfis — do bruto ao publicado, com identidade visual coerente entre os três perfis.</p>
+      </div>
+    </div>
+    <div class="prod-features r d4">
+      <div class="prod-feature">Pautas cruzadas planejadas entre os três perfis a cada ciclo mensal</div>
+      <div class="prod-feature">Copy e legenda calibrados no tom de cada persona</div>
+      <div class="prod-feature">Identidade visual conectada, mas com variação por perfil</div>
+      <div class="prod-feature">Edição profissional completa de vídeos, cards e carrosséis</div>
+      <div class="prod-feature">Agendamento e publicação nos três perfis</div>
+      <div class="prod-feature">Relatório mensal de performance e crescimento dos três perfis</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     04 — RITMO SEMANAL DE CONTEÚDO
+════════════════════════════ -->
+<section class="section" id="ritmo">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">04 — Ritmo semanal de conteúdo</div>
+      <h2 class="t-headline sh r d1">Cada perfil no seu ritmo.<br>Conectados pelos conteúdos em collab.</h2>
+      <p class="t-body sp r d2">O calendário semanal mantém a identidade de cada perfil e usa os vídeos em collab como o ponto de conexão entre eles — a mesma cadência de uma produção individual, com a força de uma estratégia integrada.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-cell r d1">
+        <span class="pilar-tag">@catiapveloso</span>
+        <span class="pilar-icon">◆</span>
+        <h3>Cátia Veloso</h3>
+        <p>1 vídeo com o tema dela<br>1 carrossel<br>1 vídeo em collab com MariaQuitéria</p>
+      </div>
+      <div class="pilar-cell r d2">
+        <span class="pilar-tag">@mariaquiteria.compliance</span>
+        <span class="pilar-icon">◈</span>
+        <h3>MariaQuitéria</h3>
+        <p>1 vídeo em collab com Caroline<br>1 conteúdo em carrossel<br>1 vídeo em collab com Cátia</p>
+      </div>
+      <div class="pilar-cell r d3">
+        <span class="pilar-tag">@carolineveloso</span>
+        <span class="pilar-icon">∞</span>
+        <h3>Caroline Veloso</h3>
+        <p>1 vídeo em collab com MariaQuitéria<br>1 card ou carrossel<br>1 vídeo com o tema dela</p>
+      </div>
+    </div>
+    <div class="pilar-quote r d4">
+      <p>7 conteúdos por semana — 4 vídeos e 3 cards ou carrosséis — sendo 2 vídeos em collab que conectam os 3 perfis. Cada perfil mantém cerca de 12 publicações por mês, o mesmo ritmo de uma produção individual.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     05 — EQUIPE DO PROJETO
+════════════════════════════ -->
+<section class="section alt" id="equipe">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">05 — Equipe dedicada ao projeto</div>
+      <h2 class="t-headline sh r d1">Um time completo cuidando<br>dos três perfis como um só.</h2>
+      <p class="t-body sp r d2">A integração editorial exige mais coordenação do que três projetos soltos. Por isso, esta é a equipe da Alma dedicada a manter os três perfis conectados, dentro do padrão de qualidade e do prazo combinado.</p>
+    </div>
+    <div class="equipe-grid r d2">
+      <div class="equipe-cell">
+        <span class="equipe-num">01</span>
+        <h4>Estrategista Editorial</h4>
+        <p>Planejamento integrado das pautas</p>
+      </div>
+      <div class="equipe-cell">
+        <span class="equipe-num">02</span>
+        <h4>Redator de Copy</h4>
+        <p>Voz de cada persona nas legendas</p>
+      </div>
+      <div class="equipe-cell">
+        <span class="equipe-num">03</span>
+        <h4>Editor de Vídeo</h4>
+        <p>Finalização de todo o material</p>
+      </div>
+      <div class="equipe-cell">
+        <span class="equipe-num">04</span>
+        <h4>Designer de Conteúdo</h4>
+        <p>Carrosséis e identidade visual</p>
+      </div>
+      <div class="equipe-cell">
+        <span class="equipe-num">05</span>
+        <h4>Gestora de Projeto</h4>
+        <p>Aprovação, prazo e publicação</p>
+      </div>
+      <div class="equipe-cell">
+        <span class="equipe-num">06</span>
+        <h4>Gestor de Tráfego Pago</h4>
+        <p>Impulsionamento dos melhores conteúdos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     05 — INVESTIMENTO (ANCORAGEM)
+════════════════════════════ -->
+<section class="section alt" id="plano">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-num r">06 — Investimento</div>
+      <h2 class="t-headline sh r d1">Três produções separadas<br>custam mais do que uma integrada.</h2>
+      <p class="t-body sp r d2">O valor de referência da Alma para produção de conteúdo é de R$ 3.500/mês por perfil. Para três perfis produzidos de forma independente, o investimento seria R$ 10.500/mês. A proposta abaixo integra os três em uma única operação editorial — com desconto aplicado sobre o valor total.</p>
+    </div>
+    <div class="planos-grid r d2">
+
+      <!-- REFERÊNCIA: 3 PERFIS SEPARADOS -->
+      <div class="plano-card standard">
+        <div class="card-badge">Referência · Produção Individual</div>
+        <h3>Os 3 perfis produzidos<br>de forma independente</h3>
+        <div class="price-row">
+          <span class="price-val">R$ 10.500</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">3 perfis × R$ 3.500/mês</div>
+        <ul class="plano-items">
+          <li>12 conteúdos/mês por perfil — 36 conteúdos no total</li>
+          <li>Pautas e produção planejadas separadamente</li>
+          <li>Sem linha editorial conectando os três perfis</li>
+          <li>Três calendários e três fluxos de aprovação distintos</li>
+        </ul>
+      </div>
+
+      <!-- MÉTODO JORNADA INTEGRADO (DESTAQUE) -->
+      <div class="plano-card destaque">
+        <div class="rec-label">Recomendado</div>
+        <div class="card-badge">Método Jornada · Produção Integrada</div>
+        <h3>Os 3 perfis conectados<br>em uma única estratégia</h3>
+        <div class="price-row">
+          <span class="price-old">R$ 10.500</span>
+          <span class="price-val">R$ 8.400</span>
+          <span class="price-per">/mês</span>
+        </div>
+        <div class="price-note">20% de desconto · Fidelização 12 meses</div>
+        <ul class="plano-items">
+          <li>Cadência semanal de 4 vídeos + 3 cards ou carrosséis, com collabs cruzados entre os perfis</li>
+          <li>12 publicações/mês por perfil — o mesmo volume de uma produção separada</li>
+          <li>Vídeos em collab conectam os perfis sem repetir mensagem</li>
+          <li>Cada perfil mantém sua essência, seu tom e seu objetivo</li>
+          <li>Roteiro de gravação + edição e publicação completas</li>
+          <li>Impulsionamento (tráfego pago) dos melhores conteúdos para ampliar alcance</li>
+          <li>Relatório mensal consolidado dos 3 perfis</li>
+        </ul>
+        <div class="desc-bonus-strip">
+          <div class="desc-bonus-label">✦ Método Jornada Alma</div>
+          <div class="desc-bonus-value">Expertise de integração editorial aplicada aos 3 perfis</div>
+          <div class="desc-bonus-sub">A metodologia que conecta personas diferentes em uma única autoridade de mercado — sem diluir a essência de nenhuma delas.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════
+     CTA
+════════════════════════════ -->
+<section class="section" id="contato">
+  <div class="cta-wrap">
+    <div class="cta-validade r">
+      <span class="validade-dot"></span>
+      Proposta válida por <strong>15 dias</strong>
+    </div>
+    <div class="section-num c r">Fechar contrato</div>
+    <h2 class="t-headline r d1" style="max-width:640px;margin:0 auto 20px;">
+      Três vozes. Uma autoridade<br>construída junto.
+    </h2>
+    <p class="cp r d2">Cátia, MariaQuitéria e Caroline já têm a credibilidade, a trajetória e o mercado. O que esta proposta entrega é a estrutura editorial que conecta os três perfis — para que cada conteúdo publicado reforce a autoridade do conjunto, não apenas de um perfil isolado.</p>
+    <span class="cta-main r d3">Quero fechar o plano</span>
+    <p class="cta-sub r d4">Respondemos em menos de 1 hora · Proposta confidencial</p>
+
+    <div class="proximos-passos r d4">
+      <div class="pp-title">O que acontece depois do sim</div>
+      <div class="pp-steps">
+        <div class="pp-step">
+          <div class="pp-step-num">01</div>
+          <div class="pp-step-name">Contrato</div>
+          <div class="pp-step-desc">Assinatura digital e formalização da parceria</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">02</div>
+          <div class="pp-step-name">Onboarding</div>
+          <div class="pp-step-desc">Imersão nos 3 perfis, personas e objetivos de cada uma</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">03</div>
+          <div class="pp-step-name">Linha Editorial</div>
+          <div class="pp-step-desc">Construção do calendário integrado do Método Jornada</div>
+        </div>
+        <div class="pp-arrow">→</div>
+        <div class="pp-step">
+          <div class="pp-step-num">04</div>
+          <div class="pp-step-name">Primeiro mês ativo</div>
+          <div class="pp-step-desc">Conteúdo no ar nos 3 perfis em até 7 dias úteis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alma.Convert · Lukana Marketing e Publicidade Ltda · Proposta de uso exclusivo e confidencial · Cátia Veloso / MariaQuitéria / Caroline Veloso</p>
+</footer>
+
+<!-- ── CANVAS PARTICLES ── -->
+<script>
+(function(){
+  const canvas = document.getElementById('journey');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, particles = [], burst = [], frame = 0, cycleOffset = 0;
+  const N = 90, SIZES = [.8,1.4,2.2], ALPHAS = [.18,.28,.38];
+  function resize(){ W=canvas.width=canvas.offsetWidth||innerWidth; H=canvas.height=canvas.offsetHeight||innerHeight; cx=W/2; cy=H/2; }
+  window.addEventListener('resize', resize); resize();
+  function origins(){const j=cycleOffset*.04;return[{x:W*(.13+j),y:H*(.5-j*.5)},{x:W*(.5+j*.2),y:H*(.11+j*.3)},{x:W*(.87-j),y:H*(.5+j*.3)}];}
+  function nvec(x,y,s,t){const f=.0016,a=Math.sin(x*f+s+t*.35)*Math.PI*2+Math.cos(y*f-s+t*.28)*Math.PI;return{vx:Math.cos(a),vy:Math.sin(a)};}
+  function triggerBurst(){burst=Array.from({length:90},()=>{const a=Math.random()*Math.PI*2,sp=1.5+Math.random()*5;return{x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,sz:.4+Math.random()*2};});}
+  function _dot(p,a){ctx.beginPath();ctx.arc(p.x,p.y,SIZES[p.s],0,Math.PI*2);ctx.fillStyle=`rgba(26,26,26,${a*ALPHAS[p.s]})`;ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    burst=burst.filter(b=>{b.x+=b.vx;b.y+=b.vy;b.vx*=.96;b.vy*=.96;b.life-=.018;
+      ctx.beginPath();ctx.arc(b.x,b.y,b.sz,0,Math.PI*2);ctx.fillStyle=`rgba(249,115,22,${b.life*.5})`;ctx.fill();return b.life>0;});
+    particles.forEach(p=>{
+      const nv=nvec(p.x,p.y,p.seed,frame*.008);
+      p.x+=nv.vx*.55*p.spd; p.y+=nv.vy*.55*p.spd;
+      const ors=origins(); let closest=Infinity,target=ors[0];
+      ors.forEach(o=>{const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<closest){closest=d;target=o;}});
+      if(closest>260){p.x+=(target.x-p.x)*.003; p.y+=(target.y-p.y)*.003;}
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      _dot(p,1);
+    });
+    frame++;
+    if(frame%420===0){cycleOffset=(cycleOffset+1)%3; triggerBurst();}
+    requestAnimationFrame(draw);
+  }
+  const ors=origins();
+  particles=Array.from({length:N},(_,i)=>{
+    const o=ors[i%3]; const spread=120;
+    return{x:o.x+(Math.random()-.5)*spread, y:o.y+(Math.random()-.5)*spread,
+      s:Math.floor(Math.random()*3), seed:Math.random()*10, spd:.6+Math.random()*.8};
+  });
+  draw();
+})();
+</script>
+
+<!-- ── NAV HIDE ON HERO ── -->
+<script>
+(function(){
+  const nav = document.getElementById('main-nav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries=>{
+    nav.classList.toggle('hidden', entries[0].isIntersecting);
+  },{threshold:.15});
+  io.observe(hero);
+})();
+</script>
+
+<!-- ── REVEAL ── -->
+<script>
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+  },{threshold:.12});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

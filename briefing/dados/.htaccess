@@ -1,0 +1,7 @@
+# Os briefings preenchidos vivem nesta pasta.
+# Nenhum acesso direto pelo navegador — só o api.php e o painel leem daqui.
+Require all denied
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+</IfModule>
