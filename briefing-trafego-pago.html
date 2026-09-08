@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego Pago — Alma.Convert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a1a; --mid:#333333; --dim:#555555; --muted:#888888;
+  --line:rgba(16,24,40,.09); --lav:#f5f5f5; --lav-d:#EA6C0A; --lav-l:#FFF4ED; --orange-d:#EA6C0A;
+  --bg:#ffffff; --off:#fbfbfb; --ok:#12805c; --warn:#9a6700; --orange:#F97316;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f);background:var(--off);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+/* ── TOPO ── */
+header.top{background:var(--bg);border-bottom:1px solid var(--line);padding:34px 0 26px}
+.brand{font-size:1.7rem;font-weight:800;letter-spacing:-.03em}
+.brand i{font-style:italic;font-weight:300;color:var(--muted)}
+.brand small{display:block;font-size:.55rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.rule{height:1px;background:var(--ink);margin:20px 0 0}
+.doc-title{margin-top:26px;font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:700;letter-spacing:-.02em}
+.doc-sub{margin-top:8px;font-size:.92rem;font-weight:300;color:var(--dim);max-width:640px}
+
+/* ── BARRA FIXA ── */
+.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:920px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.prog{flex:1;min-width:150px;height:5px;background:var(--lav);border-radius:99px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--orange);transition:width .35s}
+.prog-t{font-size:.7rem;font-weight:600;color:var(--dim);white-space:nowrap}
+.saved{font-size:.68rem;font-weight:500;color:var(--ok);white-space:nowrap;opacity:0;transition:opacity .3s}
+.saved.on{opacity:1}
+
+/* ── AVISOS ── */
+.note{margin:22px 0;padding:16px 18px;border-radius:8px;font-size:.84rem;font-weight:300;line-height:1.7}
+.note b{font-weight:600}
+.note.info{background:var(--lav-l);border-left:3px solid var(--orange);color:var(--mid)}
+.note.read{background:#fff8e6;border-left:3px solid var(--warn);color:#6b4e00}
+
+/* ── SEÇÕES ── */
+.group{margin:44px 0 10px;font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
+section.blk{background:var(--bg);border:1px solid var(--line);border-radius:10px;margin:16px 0 26px;overflow:hidden}
+.blk-h{padding:16px 20px;border-bottom:1px solid var(--line);background:var(--bg)}
+.blk-h h3{font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.opt{display:inline-block;margin-left:8px;padding:3px 9px;border-radius:99px;background:var(--lav);color:var(--orange-d);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;vertical-align:middle}
+.blk-h p{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:3px}
+
+.row{display:grid;grid-template-columns:270px 1fr;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row .lab{background:var(--lav);padding:16px 18px;font-size:.85rem;font-weight:500;color:var(--ink);display:flex;align-items:center}
+.row .lab span{display:block}
+.row .lab em{display:block;font-style:normal;font-weight:400;font-size:.74rem;color:#b5651a;margin-top:4px;line-height:1.5}
+.row .fld{padding:10px 14px;display:flex;align-items:center}
+textarea,input[type=text]{width:100%;border:0;outline:0;font-family:var(--f);font-size:.9rem;font-weight:400;color:var(--ink);background:transparent;resize:vertical;line-height:1.65;padding:6px 4px;border-radius:6px}
+textarea::placeholder,input::placeholder{color:#bbbbbb;font-weight:300}
+textarea:focus,input:focus{background:var(--lav-l);box-shadow:0 0 0 2px rgba(249,115,22,.22)}
+textarea{min-height:46px;overflow:hidden}
+
+/* ── DORES ── */
+.dores{padding:6px 0}
+.dores .dh{display:grid;grid-template-columns:270px 1fr;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.dores .dh div{padding:10px 18px}
+.dr{display:grid;grid-template-columns:270px 1fr;border-top:1px solid var(--line)}
+.dr .c{padding:10px 14px}
+.dr .c:first-child{background:var(--lav)}
+
+/* ── AÇÕES ── */
+.actions{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:28px 24px;margin:32px 0 60px}
+.actions h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.actions p{font-size:.85rem;font-weight:300;color:var(--dim);line-height:1.7;margin-bottom:20px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button{font-family:var(--f);font-size:.78rem;font-weight:600;letter-spacing:.02em;padding:13px 22px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;transition:.18s}
+button:hover{border-color:var(--orange);color:var(--orange-d)}
+button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+button.primary:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.out{margin-top:20px;display:none}
+.out.on{display:block}
+.out textarea{width:100%;border:1px solid var(--line);border-radius:7px;padding:12px;font-size:.76rem;min-height:96px;background:var(--off);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mid)}
+.msg{margin-top:12px;font-size:.8rem;font-weight:500}
+.msg.ok{color:var(--ok)} .msg.warn{color:var(--warn)}
+
+footer{border-top:1px solid var(--line);padding:26px 24px 50px;text-align:center}
+footer p{font-size:.7rem;font-weight:300;color:var(--muted);letter-spacing:.03em}
+
+/* ── LEITURA ── */
+body.readonly textarea,body.readonly input{background:transparent!important;box-shadow:none!important;color:var(--ink)}
+body.readonly .row .fld{align-items:flex-start}
+body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6px 4px}
+
+@media(max-width:760px){
+  .row,.dr,.dores .dh{grid-template-columns:1fr}
+  .row .lab{padding:12px 16px}
+  .dores .dh div:last-child{display:none}
+  .dr .c:first-child{border-bottom:1px solid var(--line)}
+}
+@media print{
+  .bar,.actions,.note.info,footer,.doc-sub{display:none!important}
+  body{background:#fff}
+  section.blk{break-inside:avoid;border-radius:0}
+  .row{break-inside:avoid}
+  textarea{overflow:visible!important}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="prog"><i id="pi"></i></div>
+    <div class="prog-t" id="pt">0% preenchido</div>
+    <div class="saved" id="sv">salvo automaticamente</div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Alma<i>.Convert</i><small>Agência Digital</small></div>
+    <div class="rule"></div>
+    <h1 class="doc-title">Briefing de Tráfego Pago</h1>
+    <p class="doc-sub">Quanto mais específica a resposta, melhor a campanha. Não precisa preencher tudo de uma vez — o formulário guarda sozinho o que você já escreveu.</p>
+  </div>
+</header>
+
+<main class="wrap" id="form">
+
+  <div class="note info" id="hint">
+    <b>Como funciona.</b> Suas respostas ficam salvas neste navegador enquanto você preenche, então pode fechar a aba e voltar depois. Ao terminar, clique em <b>Gerar link de envio</b> no fim da página e mande o link no grupo de trabalho.
+  </div>
+
+  <h2 class="group">Confirmações de dados</h2>
+  <section class="blk">
+    <div class="row"><div class="lab"><span>Nome da empresa</span></div><div class="fld"><input type="text" data-k="emp_nome" placeholder="Razão social ou nome fantasia"></div></div>
+    <div class="row"><div class="lab"><span>Tipo de empresa</span></div><div class="fld"><input type="text" data-k="emp_tipo" placeholder="Indústria, comércio, serviço, e-commerce…"></div></div>
+    <div class="row"><div class="lab"><span>Nicho</span></div><div class="fld"><input type="text" data-k="emp_nicho" placeholder="Em que mercado a empresa atua"></div></div>
+    <div class="row"><div class="lab"><span>Localização</span></div><div class="fld"><input type="text" data-k="emp_local" placeholder="Cidade e estado"></div></div>
+    <div class="row"><div class="lab"><span>Área de entrega</span></div><div class="fld"><input type="text" data-k="emp_area" placeholder="Bairro, cidade, estado, região ou todo o Brasil"></div></div>
+    <div class="row"><div class="lab"><span>Site da empresa</span></div><div class="fld"><input type="text" data-k="emp_site" placeholder="https://"></div></div>
+    <div class="row"><div class="lab"><span>Outros sites ou páginas</span><em>que devem ser usados nas campanhas</em></div><div class="fld"><textarea data-k="emp_outros" placeholder="Landing pages, catálogo, loja, WhatsApp Business…"></textarea></div></div>
+    <div class="row"><div class="lab"><span>E-mails para relatórios</span><em>e notificações do trabalho</em></div><div class="fld"><textarea data-k="emp_emails" placeholder="Pode listar mais de um, separados por vírgula"></textarea></div></div>
+  </section>
+
+  <h2 class="group">Sobre o negócio</h2>
+
+  <section class="blk">
+    <div class="blk-h"><h3>1. Principal produto ou serviço</h3></div>
+    <div class="row"><div class="lab"><span>Qual o principal produto ou solução?</span></div><div class="fld"><textarea data-k="p_principal" placeholder="O que representa a maior parte do faturamento"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Qual o valor desse produto ou serviço?</span></div><div class="fld"><textarea data-k="p_valor" placeholder="Faixa de preço, ticket, ou como é orçado"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Existem outros produtos que merecem destaque?</span></div><div class="fld"><textarea data-k="p_outros" placeholder="Linhas secundárias que também vale anunciar"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Qual o raio de entrega deste produto?</span></div><div class="fld"><textarea data-k="p_raio" placeholder="Até onde vocês atendem ou entregam"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Há alguma restrição?</span><em>serviço não fornecido que queira excluir dos anúncios</em></div><div class="fld"><textarea data-k="p_restr" placeholder="O que NÃO deve ser anunciado, para não gerar pedido que vocês não atendem"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>2. Público-alvo</h3></div>
+    <div class="row"><div class="lab"><span>Qual seu público-alvo?</span></div><div class="fld"><textarea data-k="pa_quem" placeholder="Quem compra de vocês hoje"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Principais dores</span><em>se houver mais de um produto com dores diferentes, detalhe no quadro do fim do briefing</em></div><div class="fld"><textarea data-k="pa_dores" placeholder="O problema que leva a pessoa a procurar vocês"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Principais objeções</span></div><div class="fld"><textarea data-k="pa_obj" placeholder="O que faz a pessoa hesitar, adiar ou desistir da compra"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Gênero</span></div><div class="fld"><input type="text" data-k="pa_gen" placeholder="Predominante, ou ambos"></div></div>
+    <div class="row"><div class="lab"><span>Idade</span></div><div class="fld"><input type="text" data-k="pa_idade" placeholder="Faixa aproximada"></div></div>
+    <div class="row"><div class="lab"><span>Formação acadêmica</span></div><div class="fld"><input type="text" data-k="pa_form" placeholder="Se for relevante para o público"></div></div>
+    <div class="row"><div class="lab"><span>Classe social</span></div><div class="fld"><input type="text" data-k="pa_classe" placeholder="Poder aquisitivo do público"></div></div>
+    <div class="row"><div class="lab"><span>Interesses</span></div><div class="fld"><textarea data-k="pa_int" placeholder="Hábitos, assuntos e comportamentos do público"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Se fosse seu cliente ideal, como pesquisaria no Google para comprar seu produto?</span></div><div class="fld"><textarea data-k="pa_google" placeholder="Escreva as buscas com as palavras que o cliente usaria, não as suas"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>3. Concorrentes</h3><p>3.1 Quais são seus concorrentes?</p></div>
+    <div class="row"><div class="lab"><span>Concorrentes diretos</span></div><div class="fld"><textarea data-k="c_dir" placeholder="Nome e site ou Instagram de cada um"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Concorrentes indiretos</span></div><div class="fld"><textarea data-k="c_ind" placeholder="Quem resolve o mesmo problema de outro jeito"></textarea></div></div>
+  </section>
+  <section class="blk">
+    <div class="blk-h"><h3>3.2 Posicionamento no mercado</h3></div>
+    <div class="row"><div class="lab"><span>Quais seus diferenciais em comparação com os concorrentes?</span></div><div class="fld"><textarea data-k="c_dif" placeholder="Por que alguém escolheria vocês e não eles"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Quais seus pontos fracos em relação aos concorrentes?</span></div><div class="fld"><textarea data-k="c_fracos" placeholder="Resposta honesta aqui evita campanha que promete o que não se entrega"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Possui títulos ou feitos que podemos usar para destacar a marca?</span></div><div class="fld"><textarea data-k="c_titulos" placeholder="Tempo de mercado, prêmios, certificações, número de clientes, avaliações"></textarea></div></div>
+  </section>
+
+  <h2 class="group">Informações comerciais</h2>
+
+  <section class="blk">
+    <div class="blk-h"><h3>4. Processo comercial</h3></div>
+    <div class="row"><div class="lab"><span>Quais as formas de aquisição de clientes?</span></div><div class="fld"><textarea data-k="pc_aq" placeholder="Indicação, anúncio, representante, feira, loja física…"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Qual a jornada de compra padrão?</span></div><div class="fld"><textarea data-k="pc_jornada" placeholder="Do primeiro contato até o fechamento — e quanto tempo costuma levar"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Quais os principais canais de atendimento?</span></div><div class="fld"><textarea data-k="pc_canais" placeholder="WhatsApp, telefone, e-mail, presencial…"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Trabalha com algum tipo de estratégia inbound?</span></div><div class="fld"><textarea data-k="pc_inbound" placeholder="Conteúdo, e-mail, materiais ricos, newsletter"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Faz vendas diretas pelo site?</span></div><div class="fld"><input type="text" data-k="pc_site" placeholder="Sim ou não — e como funciona"></div></div>
+    <div class="row"><div class="lab"><span>Faz vendas pelo WhatsApp?</span></div><div class="fld"><input type="text" data-k="pc_wpp" placeholder="Sim ou não — e quem atende"></div></div>
+    <div class="row"><div class="lab"><span>Utiliza CRM? Qual?</span></div><div class="fld"><input type="text" data-k="pc_crm" placeholder="Nome da ferramenta, ou como os contatos são organizados hoje"></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>5. Capacidade de atendimento</h3><p>É esta resposta que define até onde a campanha pode crescer. Gerar mais contato do que o time consegue atender só transforma verba em lead frio.</p></div>
+    <div class="row"><div class="lab"><span>Quantos contatos novos o time consegue atender por dia, com qualidade?</span></div><div class="fld"><input type="text" data-k="cap_dia" placeholder="Número aproximado, sendo realista"></div></div>
+    <div class="row"><div class="lab"><span>Em quanto tempo vocês costumam responder um contato novo?</span></div><div class="fld"><input type="text" data-k="cap_tempo" placeholder="Minutos, horas ou no dia seguinte — resposta honesta ajuda mais"></div></div>
+    <div class="row"><div class="lab"><span>Quem atende os contatos que chegam?</span></div><div class="fld"><textarea data-k="cap_quem" placeholder="Nome e função de quem responde. Se for mais de uma pessoa, como se dividem?"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Qual o horário de atendimento?</span><em>e o que acontece com quem chama fora dele</em></div><div class="fld"><textarea data-k="cap_horario" placeholder="Dias, horários, e se alguém retorna no dia seguinte"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>6. Sazonalidade e histórico</h3></div>
+    <div class="row"><div class="lab"><span>Quais meses são mais fortes e quais são mais fracos?</span></div><div class="fld"><textarea data-k="saz_meses" placeholder="Isso muda a distribuição da verba ao longo do ano"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Há datas, feiras ou eventos que puxam a demanda?</span></div><div class="fld"><textarea data-k="saz_datas" placeholder="Feiras do setor, datas comerciais, período de obra, início de safra"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Dos contatos que não fecharam, qual foi o motivo mais comum?</span></div><div class="fld"><textarea data-k="saz_perda" placeholder="Preço, prazo, demora na resposta, não era o perfil, sumiu — esse diagnóstico só vocês têm"></textarea></div></div>
+  </section>
+
+  <h2 class="group">Presença digital</h2>
+
+  <section class="blk">
+    <div class="blk-h"><h3>7. Principal rede social</h3></div>
+    <div class="row"><div class="lab"><span>Nome da rede social</span></div><div class="fld"><input type="text" data-k="rs_nome" placeholder="Qual rede concentra o público de vocês, e o @"></div></div>
+    <div class="row"><div class="lab"><span>Qual a frequência de postagens?</span></div><div class="fld"><input type="text" data-k="rs_freq" placeholder="Quantas vezes por semana"></div></div>
+    <div class="row"><div class="lab"><span>Quem é o responsável?</span></div><div class="fld"><input type="text" data-k="rs_resp" placeholder="Pessoa interna, agência ou freelancer"></div></div>
+    <div class="row"><div class="lab"><span>Consegue gerar vendas orgânicas?</span></div><div class="fld"><textarea data-k="rs_org" placeholder="A rede já traz cliente hoje, mesmo sem anúncio?"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Pode ser utilizado como canal de aquisição?</span></div><div class="fld"><textarea data-k="rs_aq" placeholder="Há disposição de usar o perfil para captar, e não só para presença"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>8. Google Meu Negócio</h3></div>
+    <div class="row"><div class="lab"><span>O GMN da empresa é</span></div><div class="fld"><input type="text" data-k="g_perfil" placeholder="Link do perfil, ou nome exato cadastrado"></div></div>
+    <div class="row"><div class="lab"><span>A empresa utiliza?</span></div><div class="fld"><textarea data-k="g_usa" placeholder="Está atualizado, com fotos, horário e produtos?"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Existe programa de incentivo a avaliações?</span></div><div class="fld"><textarea data-k="g_aval" placeholder="Vocês pedem avaliação ao cliente de alguma forma?"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>9. Material disponível para os criativos</h3><p>O anúncio é feito com o que existe. Saber o que já há em mãos evita campanha travada esperando foto.</p></div>
+    <div class="row"><div class="lab"><span>Que material vocês já têm?</span></div><div class="fld"><textarea data-k="mat_tem" placeholder="Fotos de produto, de obra ou instalação, vídeos, depoimentos, catálogo, logotipo em alta"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Há clientes ou casos que podemos mostrar?</span></div><div class="fld"><textarea data-k="mat_cases" placeholder="Trabalhos dos quais vocês se orgulham, e se há autorização para citar o nome"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Existe algo que não pode ser mostrado ou dito?</span><em>diferente da restrição de serviço — aqui é sobre imagem e comunicação</em></div><div class="fld"><textarea data-k="mat_restr" placeholder="Clientes que não autorizam aparecer, áreas internas, comparações que não quer fazer, promessas que não quer assumir"></textarea></div></div>
+  </section>
+
+  <h2 class="group">Anúncios online</h2>
+
+  <section class="blk">
+    <div class="blk-h"><h3>10. Experiências anteriores</h3></div>
+    <div class="row"><div class="lab"><span>Já anunciou antes? Qual a experiência e os resultados?</span></div><div class="fld"><textarea data-k="a_antes" placeholder="O que funcionou e o que decepcionou — os dois lados ajudam"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Quais mídias utilizavam?</span></div><div class="fld"><input type="text" data-k="a_midias" placeholder="Meta, Google, TikTok, YouTube…"></div></div>
+    <div class="row"><div class="lab"><span>Quem realizou os Ads?</span></div><div class="fld"><input type="text" data-k="a_quem" placeholder="Agência, freelancer, equipe interna, você mesmo"></div></div>
+    <div class="row"><div class="lab"><span>Quanto investiram em média?</span></div><div class="fld"><input type="text" data-k="a_invest" placeholder="Por mês"></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>11. Faturamento <span class="opt">opcional</span></h3><p>Estes números calibram a verba e a meta, e ficam entre nós. Se preferir não informar agora, tudo bem — dá para seguir sem eles e tratar em conversa.</p></div>
+    <div class="row"><div class="lab"><span>Qual a média de faturamento mensal?</span></div><div class="fld"><input type="text" data-k="f_fat" data-opt="1" placeholder="Aproximado já ajuda"></div></div>
+    <div class="row"><div class="lab"><span>Qual o ticket médio?</span></div><div class="fld"><input type="text" data-k="f_ticket" data-opt="1" placeholder="Valor médio de uma venda"></div></div>
+    <div class="row"><div class="lab"><span>Qual o custo máximo aceitável para conquistar um cliente?</span><em>é este número que define se a campanha está indo bem ou mal</em></div><div class="fld"><input type="text" data-k="f_cpa" data-opt="1" placeholder="Quanto pode custar uma venda e ainda valer a pena"></div></div>
+    <div class="row"><div class="lab"><span>Existem metas de vendas a serem atingidas?</span></div><div class="fld"><textarea data-k="f_metas" data-opt="1" placeholder="Meta de faturamento, de volume ou de novos clientes"></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>Nova fase</h3><p>O que passa a valer a partir de agora.</p></div>
+    <div class="row"><div class="lab"><span>Quanto pretende investir?</span></div><div class="fld"><input type="text" data-k="n_invest" placeholder="Verba mensal de mídia, paga direto à plataforma"></div></div>
+    <div class="row"><div class="lab"><span>Quais mídias podemos usar?</span></div><div class="fld"><input type="text" data-k="n_midias" placeholder="Meta, Google, e outras que fizerem sentido"></div></div>
+    <div class="row"><div class="lab"><span>Qual o principal objetivo a ser atingido com as campanhas?</span></div><div class="fld"><textarea data-k="n_obj" placeholder="Um só objetivo principal — é ele que define toda a estratégia"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Quais os objetivos secundários?</span></div><div class="fld"><textarea data-k="n_obj2" placeholder="O que também seria bom conquistar, sem competir com o principal"></textarea></div></div>
+    <div class="row"><div class="lab"><span>Sendo realista, o que precisa acontecer ao final de 6 meses para considerar que a parceria deu certo?</span></div><div class="fld"><textarea data-k="n_6m" placeholder="Se possível, em número. É esta resposta que vamos perseguir."></textarea></div></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-h"><h3>Dores por tipo de serviço ou produto</h3><p>Preencha apenas se houver produtos com dores diferentes entre si.</p></div>
+    <div class="dores">
+      <div class="dh"><div>Serviço / produto</div><div>Dores</div></div>
+      <div class="dr"><div class="c"><input type="text" data-k="d1p" placeholder="Produto 1"></div><div class="c"><textarea data-k="d1d" placeholder="Dores específicas deste produto"></textarea></div></div>
+      <div class="dr"><div class="c"><input type="text" data-k="d2p" placeholder="Produto 2"></div><div class="c"><textarea data-k="d2d" placeholder=""></textarea></div></div>
+      <div class="dr"><div class="c"><input type="text" data-k="d3p" placeholder="Produto 3"></div><div class="c"><textarea data-k="d3d" placeholder=""></textarea></div></div>
+      <div class="dr"><div class="c"><input type="text" data-k="d4p" placeholder="Produto 4"></div><div class="c"><textarea data-k="d4d" placeholder=""></textarea></div></div>
+      <div class="dr"><div class="c"><input type="text" data-k="d5p" placeholder="Produto 5"></div><div class="c"><textarea data-k="d5d" placeholder=""></textarea></div></div>
+    </div>
+  </section>
+
+  <div class="actions" id="acts">
+    <h3>Terminou?</h3>
+    <p>Gere o link abaixo e envie no grupo de trabalho. Ele carrega todas as suas respostas — não é preciso anexar mais nada.</p>
+    <div class="btns">
+      <button class="primary" id="bLink">Gerar link de envio</button>
+      <button id="bPdf">Salvar em PDF</button>
+      <button id="bFile">Baixar arquivo</button>
+      <button id="bOpen">Abrir arquivo recebido</button>
+      <button id="bClear">Limpar tudo</button>
+    </div>
+    <input type="file" id="fInput" accept=".json,application/json" style="display:none">
+    <div class="out" id="out">
+      <textarea id="outT" readonly></textarea>
+      <div class="btns" style="margin-top:10px">
+        <button class="primary" id="bCopy">Copiar link</button>
+      </div>
+      <div class="msg" id="msg"></div>
+    </div>
+  </div>
+</main>
+
+<footer><p>Alma.Convert · Agência Digital — documento confidencial</p></footer>
+
+<script>
+(function(){
+  var KEY='alma_briefing_trafego_v1';
+  var els=[].slice.call(document.querySelectorAll('[data-k]'));
+  var bar=document.getElementById('pi'), ptxt=document.getElementById('pt'), sv=document.getElementById('sv');
+
+  function autosize(t){ if(t.tagName==='TEXTAREA'){ t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'; } }
+  function collect(){ var o={}; els.forEach(function(e){ if(e.value.trim()) o[e.dataset.k]=e.value; }); return o; }
+  function apply(o){ els.forEach(function(e){ if(o[e.dataset.k]!=null){ e.value=o[e.dataset.k]; autosize(e); } }); }
+
+  function progress(){
+    var obg=els.filter(function(e){ return !e.dataset.opt; });
+    var n=obg.filter(function(e){return e.value.trim();}).length;
+    var p=obg.length?Math.round(n/obg.length*100):0;
+    bar.style.width=p+'%';
+    ptxt.textContent = p>=100 ? 'tudo respondido' : p+'% preenchido';
+  }
+
+  var svT;
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify(collect())); sv.classList.add('on');
+      clearTimeout(svT); svT=setTimeout(function(){ sv.classList.remove('on'); },1400);
+    }catch(e){ /* navegador sem storage — o link de envio continua funcionando */ }
+  }
+  function load(){ try{ var r=localStorage.getItem(KEY); if(r) apply(JSON.parse(r)); }catch(e){} }
+
+  // ── codificação para o link ────────────────────────────────────────────────
+  function b64u(bytes){ var s=''; bytes.forEach(function(b){ s+=String.fromCharCode(b); });
+    return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+  function unb64u(str){ str=str.replace(/-/g,'+').replace(/_/g,'/');
+    while(str.length%4) str+='='; var bin=atob(str), a=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return a; }
+
+  async function encode(obj){
+    var raw=new TextEncoder().encode(JSON.stringify(obj));
+    if(typeof CompressionStream!=='undefined'){
+      try{
+        var cs=new CompressionStream('deflate-raw');
+        var buf=await new Response(new Blob([raw]).stream().pipeThrough(cs)).arrayBuffer();
+        return 'z'+b64u(new Uint8Array(buf));
+      }catch(e){}
+    }
+    return 'p'+b64u(raw);
+  }
+  async function decode(str){
+    var tag=str[0], body=unb64u(str.slice(1));
+    if(tag==='z'){
+      var ds=new DecompressionStream('deflate-raw');
+      var buf=await new Response(new Blob([body]).stream().pipeThrough(ds)).arrayBuffer();
+      return JSON.parse(new TextDecoder().decode(buf));
+    }
+    return JSON.parse(new TextDecoder().decode(body));
+  }
+
+  function baixarArquivo(){
+    var blob=new Blob([JSON.stringify(collect(),null,2)],{type:'application/json'});
+    var nome=(collect().emp_nome||'briefing').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='briefing-'+nome+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  }
+
+  // ── modo leitura ──────────────────────────────────────────────────────────
+  function entrarLeitura(dados){
+    document.body.classList.add('readonly');
+    apply(dados);
+    els.forEach(function(e){
+      e.setAttribute('readonly','readonly');
+      if(!e.value.trim()){
+        var d=document.createElement('div'); d.className='vazio'; d.textContent='— não respondido';
+        e.parentNode.replaceChild(d,e);
+      }
+    });
+    var hint=document.getElementById('hint');
+    hint.className='note read';
+    hint.innerHTML='<b>Modo leitura.</b> Estas são as respostas enviadas pelo cliente. Use <b>Salvar em PDF</b> para arquivar. Editar aqui não altera nada do lado de quem preencheu.';
+    var acts=document.getElementById('acts');
+    acts.querySelector('h3').textContent='Respostas recebidas';
+    acts.querySelector('p').textContent='Documento em modo leitura.';
+    document.getElementById('bLink').style.display='none';
+    document.getElementById('bClear').style.display='none';
+    document.getElementById('bFile').style.display='none';
+    document.getElementById('bOpen').style.display='none';
+    progress();
+  }
+
+  async function leitura(){
+    var h=location.hash.slice(1);
+    if(!h) return false;
+    var dados;
+    try{ dados=await decode(h); }catch(e){ return false; }
+    entrarLeitura(dados);
+    return true;
+  }
+
+  // ── ligação ───────────────────────────────────────────────────────────────
+  (async function init(){
+    if(await leitura()) return;
+    load(); progress();
+    els.forEach(function(e){
+      autosize(e);
+      e.addEventListener('input',function(){ autosize(e); progress(); save(); });
+    });
+  })();
+
+  document.getElementById('bLink').addEventListener('click', async function(){
+    var dados=collect();
+    if(!Object.keys(dados).length){ alert('Preencha ao menos uma resposta antes de gerar o link.'); return; }
+    var cod=await encode(dados);
+    var url=location.origin+location.pathname+'#'+cod;
+    var out=document.getElementById('out'), msg=document.getElementById('msg');
+    out.classList.add('on');
+    if(url.length>7500){
+      document.getElementById('outT').value=url;
+      msg.className='msg warn';
+      msg.textContent='O link ficou longo ('+url.length.toLocaleString('pt-BR')+' caracteres) e alguns aplicativos podem cortá-lo. Se isso acontecer, use o botão Baixar arquivo e envie o arquivo no grupo.';
+    }else{
+      document.getElementById('outT').value=url;
+      msg.className='msg ok';
+      msg.textContent='Link pronto. Copie e envie no grupo de trabalho.';
+    }
+    document.getElementById('outT').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  document.getElementById('bCopy').addEventListener('click',function(){
+    var t=document.getElementById('outT'); t.select();
+    navigator.clipboard.writeText(t.value).then(function(){
+      var m=document.getElementById('msg'); m.className='msg ok'; m.textContent='Link copiado.';
+    }).catch(function(){ document.execCommand('copy'); });
+  });
+
+  document.getElementById('bPdf').addEventListener('click',function(){
+    els.forEach(function(e){ autosize(e); }); window.print();
+  });
+  document.getElementById('bFile').addEventListener('click', baixarArquivo);
+
+  // abrir o arquivo que o cliente enviou no grupo — caminho de leitura sem link
+  document.getElementById('bOpen').addEventListener('click',function(){
+    document.getElementById('fInput').click();
+  });
+  document.getElementById('fInput').addEventListener('change',function(ev){
+    var f=ev.target.files&&ev.target.files[0]; if(!f) return;
+    var fr=new FileReader();
+    fr.onload=function(){
+      var dados;
+      try{ dados=JSON.parse(fr.result); }
+      catch(e){ alert('Não consegui ler este arquivo. Ele precisa ser o .json gerado pelo próprio formulário.'); return; }
+      if(!dados || typeof dados!=='object' || Array.isArray(dados)){ alert('Arquivo em formato inesperado.'); return; }
+      entrarLeitura(dados);
+      window.scrollTo({top:0,behavior:'smooth'});
+    };
+    fr.readAsText(f);
+  });
+  // arrastar o arquivo direto na página
+  ['dragover','drop'].forEach(function(t){
+    document.addEventListener(t,function(e){ e.preventDefault(); });
+  });
+  document.addEventListener('drop',function(e){
+    if(document.body.classList.contains('readonly')) return;
+    var f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
+    if(!f||!/\.json$/i.test(f.name)) return;
+    var fr=new FileReader();
+    fr.onload=function(){
+      try{ entrarLeitura(JSON.parse(fr.result)); window.scrollTo({top:0,behavior:'smooth'}); }catch(err){}
+    };
+    fr.readAsText(f);
+  });
+  document.getElementById('bClear').addEventListener('click',function(){
+    if(!confirm('Isso apaga todas as respostas deste navegador. Continuar?')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    els.forEach(function(e){ e.value=''; autosize(e); }); progress();
+  });
+})();
+</script>
+</body>
+</html>
