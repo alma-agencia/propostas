@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page — Dra. Luiza Mazzafera | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000;--ink:#1a1a1a;--mid:#333;--dim:#555;--muted:#888;--subtle:#bbb;
+  --off:#f5f5f5;--white:#fff;--line:rgba(16,24,40,.09);--line-s:rgba(16,24,40,.15);
+  --orange:#F97316;--orange-l:#FFF4ED;--orange-d:#EA6C0A;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+.section{padding:104px 0;border-top:1px solid var(--line)}
+.section.alt{background:var(--off)}
+.section-head{margin-bottom:56px}
+.eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h2{font-size:clamp(1.8rem,3.6vw,2.9rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+h2 em{font-style:italic;font-weight:300;color:var(--orange)}
+.lead{font-size:clamp(.9rem,1.5vw,1.02rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:620px;margin-top:22px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rgba(255,255,255,.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transition:opacity .4s}
+nav.hidden{opacity:0;pointer-events:none}
+.nav-in{max-width:1000px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.logo span{font-weight:300;font-style:italic;color:var(--muted)}
+.nav-cta{background:var(--orange);color:var(--black);padding:10px 20px;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--orange-d)}
+
+.hero{min-height:88vh;display:flex;align-items:center;position:relative;border-bottom:3px solid var(--orange);padding:130px 0 80px}
+.hero-deco{position:absolute;right:-1%;top:50%;transform:translateY(-50%);font-size:19rem;font-weight:900;color:rgba(249,115,22,.05);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.hero-in{position:relative;z-index:2}
+.hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:28px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+h1{font-size:clamp(2.6rem,6vw,5rem);font-weight:800;line-height:.98;letter-spacing:-.045em}
+h1 span{display:block;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l1{color:var(--ink);animation-delay:.25s}
+h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s}
+.hero-sub{font-size:clamp(.92rem,1.5vw,1.08rem);font-weight:300;line-height:1.8;color:var(--dim);max-width:560px;margin-top:32px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .55s forwards}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:42px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-meta span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line-s);padding:9px 15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.tc{background:var(--white);padding:44px 32px;transition:background .3s}
+.tc:hover{background:var(--orange-l)}
+.tc-n{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.tc h4{font-size:1.06rem;font-weight:700;letter-spacing:-.02em;line-height:1.3;margin-bottom:12px}
+.tc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim)}
+
+.quote{background:var(--ink);border-top:3px solid var(--orange);padding:48px 42px;margin-top:1px}
+.quote p{font-size:clamp(1rem,2vw,1.32rem);font-weight:300;font-style:italic;line-height:1.6;color:rgba(255,255,255,.72)}
+.quote strong{color:var(--white);font-weight:600;font-style:normal}
+
+.ent{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.ei{background:var(--white);padding:30px 30px;display:flex;gap:14px}
+.ei .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.6}
+.ei b{display:block;font-size:.92rem;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.ei span{font-size:.83rem;font-weight:300;line-height:1.75;color:var(--dim)}
+.fora{margin-top:28px;padding:24px 28px;background:var(--off);border-left:3px solid var(--subtle);font-size:.84rem;font-weight:300;line-height:1.8;color:var(--mid)}
+.fora b{font-weight:600;color:var(--ink)}
+
+.etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.et{background:var(--white);padding:32px 24px}
+.et-n{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--orange);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;margin-bottom:16px}
+.et b{display:block;font-size:.9rem;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.et span{font-size:.8rem;font-weight:300;line-height:1.75;color:var(--dim)}
+
+.transicao{background:var(--orange);padding:70px 32px;text-align:center}
+.transicao p{font-size:clamp(1.05rem,2.4vw,1.5rem);font-weight:600;color:var(--black);line-height:1.5;max-width:720px;margin:0 auto}
+.transicao em{font-style:italic;font-weight:300}
+
+.preco{border:1px solid var(--line);border-top:3px solid var(--orange);background:var(--white);padding:52px 44px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.pl .pt{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.pl h3{font-size:1.35rem;font-weight:700;letter-spacing:-.025em;margin-bottom:10px}
+.pl p{font-size:.86rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:420px}
+.pr{text-align:right}
+.pv{font-size:clamp(2.4rem,4.4vw,3.4rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+.pp{font-size:.82rem;font-weight:300;color:var(--muted);margin-top:12px;line-height:1.6}
+.pp b{font-weight:600;color:var(--orange-d)}
+
+.cta-sec{padding:104px 0;text-align:center;border-top:1px solid var(--line)}
+.cta-h{font-size:clamp(1.7rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:20px}
+.cta-h em{font-style:italic;font-weight:300;color:var(--orange)}
+.cta-sub{font-size:.92rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:480px;margin:0 auto 44px}
+.cta-static{display:inline-block;background:var(--orange);color:var(--black);padding:19px 42px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.validade{margin-top:44px;display:inline-flex;align-items:center;gap:10px;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-s);padding:10px 18px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center}
+footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
+
+@media(max-width:900px){
+  .tres{grid-template-columns:1fr}
+  .ent{grid-template-columns:1fr}
+  .etapas{grid-template-columns:1fr 1fr}
+  .preco{grid-template-columns:1fr;gap:32px}
+  .pr{text-align:left}
+  .hero-deco{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .section{padding:72px 0}
+  .section-head{margin-bottom:40px}
+  .tc,.ei,.et{padding:30px 22px}
+  .quote{padding:36px 24px}
+  .preco{padding:38px 24px}
+  .transicao{padding:56px 22px}
+  .cta-sec{padding:72px 0}
+  .etapas{grid-template-columns:1fr}
+  .cta-static{width:100%;padding:18px 22px}
+}
+@media(max-width:400px){
+  .wrap{padding:0 16px}
+  .section{padding:60px 0}
+  .hero-meta span{font-size:.55rem;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo">Alma<span>.Convert</span></div>
+    <a href="#investimento" class="nav-cta">Ver investimento</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-deco">LP</div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Proposta de landing page · Dra. Luiza Mazzafera</div>
+    <h1>
+      <span class="l1">Um perfil apresenta.</span>
+      <span class="l2">Uma página agenda.</span>
+    </h1>
+    <p class="hero-sub">Uma página única, feita para uma coisa só: transformar quem demonstrou interesse em consulta marcada. Sem menu, sem dispersão, sem caminho alternativo.</p>
+    <div class="hero-meta">
+      <span>Página única</span>
+      <span>Foco em agendamento</span>
+      <span>Entrega em 10 dias úteis</span>
+      <span>Projeto avulso</span>
+    </div>
+  </div>
+</header>
+
+<!-- POR QUE -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O que muda</div>
+      <h2>O interesse existe.<br><em>Falta um lugar para ele virar agenda.</em></h2>
+      <p class="lead">Quem descobre a senhora hoje precisa juntar as peças sozinho: entender o que a senhora trata, decidir se é o caso dela e ainda descobrir como marcar. Cada etapa dessas perde gente pelo caminho.</p>
+    </div>
+
+    <div class="tres r d1">
+      <div class="tc">
+        <div class="tc-n">01</div>
+        <h4>O perfil não foi feito para converter</h4>
+        <p>Rede social entrega conteúdo em ordem cronológica. Quem chega hoje não vê a publicação que explicava exatamente a dúvida dela — vê a última que a senhora postou.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-n">02</div>
+        <h4>A dúvida chega sem contexto</h4>
+        <p>Sem uma página que responda o básico antes, a conversa começa do zero: o que trata, como funciona, onde atende, quanto tempo dura. Isso consome o tempo de quem atende.</p>
+      </div>
+      <div class="tc">
+        <div class="tc-n">03</div>
+        <h4>Quem procura pelo nome não encontra</h4>
+        <p>Depois da indicação de uma amiga ou de ver um conteúdo, muita gente busca o nome no Google antes de decidir. Sem uma página própria, o resultado dessa busca não está sob o seu controle.</p>
+      </div>
+    </div>
+
+    <div class="quote r d2">
+      <p>A página não substitui o conteúdo nem o anúncio. Ela é o <strong>lugar onde os dois desembocam</strong> — e onde a decisão de marcar realmente acontece.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O que está incluso</div>
+      <h2>O que a senhora recebe.</h2>
+      <p class="lead">Página no ar, pronta para receber tráfego, com tudo o que é preciso para medir se está funcionando.</p>
+    </div>
+
+    <div class="ent r d1">
+      <div class="ei"><span class="mk">→</span><span><b>Página única, escrita para converter</b>Estrutura e texto pensados para levar a uma ação só: marcar consulta. Não é texto institucional adaptado.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Apresentação e credenciais</b>Formação, registro profissional e experiência organizados de um jeito que constrói confiança sem parecer currículo.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Dúvidas frequentes respondidas</b>As perguntas que hoje chegam pelo WhatsApp resolvidas na própria página, encurtando a conversa.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Botão de WhatsApp com mensagem pronta</b>A pessoa chega na conversa já dizendo de onde veio e o que quer — quem atende ganha contexto de graça.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Localização, horários e como chegar</b>Endereço com mapa e as informações práticas que decidem se a pessoa marca ou adia.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Feita para celular primeiro</b>É de onde vem quase todo o acesso. A página é construída e testada nessa ordem.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Velocidade de carregamento</b>Página leve. Cada segundo a mais de espera custa visitante, sobretudo em conexão de celular.</span></div>
+      <div class="ei"><span class="mk">→</span><span><b>Medição instalada</b>Pixel e eventos configurados para saber quantos chegaram e quantos clicaram para marcar. Sem isso, não há como otimizar nada.</span></div>
+    </div>
+
+    <div class="fora r d2">
+      <b>O que fica por conta da clínica.</b> Domínio e hospedagem são contratados no nome da senhora, direto na plataforma — orientamos na escolha e cuidamos da configuração, mas as mensalidades desses serviços não entram neste valor. Fotos próprias, se houver interesse em usá-las, também são à parte.
+    </div>
+  </div>
+</section>
+
+<!-- ETAPAS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Como funciona</div>
+      <h2>Do aceite ao ar,<br><em>em até 10 dias úteis.</em></h2>
+      <p class="lead">O prazo começa a contar quando recebermos as informações e os acessos. É a única parte que depende da senhora.</p>
+    </div>
+    <div class="etapas r d1">
+      <div class="et"><div class="et-n">1</div><b>Conversa inicial</b><span>Trinta minutos para entender o que a senhora quer que a página resolva e quais dúvidas mais aparecem.</span></div>
+      <div class="et"><div class="et-n">2</div><b>Estrutura e texto</b><span>Montamos a sequência da página e escrevemos o conteúdo. A senhora aprova antes de virar layout.</span></div>
+      <div class="et"><div class="et-n">3</div><b>Desenho e montagem</b><span>Página construída, testada no celular e no computador, com a medição instalada.</span></div>
+      <div class="et"><div class="et-n">4</div><b>Publicação</b><span>Página no ar no endereço definido, com uma rodada de ajustes finais inclusa.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="transicao">
+  <p>Um projeto, uma entrega. <em>Sem mensalidade nova.</em></p>
+</div>
+
+<!-- INVESTIMENTO -->
+<section class="section" id="investimento">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Investimento</div>
+      <h2>Projeto fechado.</h2>
+    </div>
+    <div class="preco r d1">
+      <div class="pl">
+        <div class="pt">Landing page de agendamento</div>
+        <h3>Pagamento único, parcelado</h3>
+        <p>Serviço avulso, sem alterar nada do contrato que já temos. Entrega em até 10 dias úteis a partir do recebimento das informações.</p>
+      </div>
+      <div class="pr">
+        <div class="pv">R$ 1.500</div>
+        <div class="pp"><b>em 2x de R$ 750</b><br>sem mensalidade e sem fidelidade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="cta-h">O caminho até a senhora<br><em>pode ser mais curto.</em></h2>
+      <p class="cta-sub">Se fizer sentido, marcamos a conversa inicial e começamos ainda esta semana.</p>
+      <div class="cta-static">Aprovar a proposta</div>
+      <div class="validade"><span class="dot"></span>Validade da proposta: 15 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Alma.Convert · Agência Digital — Proposta para Dra. Luiza Mazzafera</p></footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+  var nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  var ho=new IntersectionObserver(function(es){
+    es.forEach(function(e){ nav.classList.toggle('hidden', e.isIntersecting && e.intersectionRatio>.75); });
+  },{threshold:[.75]});
+  if(hero) ho.observe(hero);
+})();
+</script>
+</body>
+</html>
