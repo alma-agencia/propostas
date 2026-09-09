@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- Favicon provisório da Alma.Convert. Substituir por um arquivo próprio
-       mantendo o mesmo nome e caminho: /proposta/favicon.svg -->
-  <rect width="32" height="32" rx="7" fill="#1a1a1a"/>
-  <path d="M16.0 7.6 L21.9 22.6 h-3.4 l-1.15 -3.1 h-5.0 l-1.15 3.1 H7.8 Z
-           M14.35 16.7 h3.3 L16.0 12.2 Z"
-        fill="#ffffff"/>
-  <circle cx="24.4" cy="21.0" r="2.2" fill="#F97316"/>
-</svg>
