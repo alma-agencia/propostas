@@ -11,6 +11,8 @@ if ($reg === null) {
     ?><!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Briefing não encontrado</title>
+<link rel="icon" type="image/svg+xml" href="/proposta/favicon.svg">
+<link rel="apple-touch-icon" href="/proposta/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
     <style>body{font-family:'Poppins',sans-serif;background:#fbfbfb;color:#1a1a1a;display:flex;min-height:100vh;
     align-items:center;justify-content:center;padding:24px;margin:0}
