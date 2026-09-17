@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial · Personalizar.te | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000;--ink:#1a1a1a;--mid:#333;--dim:#555;--muted:#888;--subtle:#bbb;
+  --off:#f5f5f5;--white:#fff;--line:rgba(16,24,40,.09);--line-s:rgba(16,24,40,.15);
+  --orange:#F97316;--orange-l:#FFF4ED;--orange-d:#EA6C0A;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:var(--f);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+.section{padding:104px 0;border-top:1px solid var(--line)}
+.section.alt{background:var(--off)}
+.section-head{margin-bottom:54px}
+.eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+h2 em{font-style:italic;font-weight:300;color:var(--orange)}
+.lead{font-size:clamp(.9rem,1.5vw,1.03rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:680px;margin-top:22px}
+p.txt{font-size:clamp(.88rem,1.45vw,1rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:700px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:17px 0;background:rgba(255,255,255,.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transition:opacity .4s}
+nav.hidden{opacity:0;pointer-events:none}
+.nav-in{max-width:1060px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.logo span{font-weight:300;font-style:italic;color:var(--muted)}
+.nav-cta{background:var(--orange);color:var(--black);padding:10px 20px;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--orange-d)}
+
+.hero{min-height:94vh;display:flex;align-items:center;position:relative;border-bottom:3px solid var(--orange);padding:130px 0 80px}
+.hero-deco{position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-size:18rem;font-weight:900;color:rgba(249,115,22,.05);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.hero-in{position:relative;z-index:2}
+.hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:30px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+h1{font-size:clamp(2.3rem,5.6vw,4.8rem);font-weight:800;line-height:.99;letter-spacing:-.045em}
+h1 span{display:block;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l1{color:var(--ink);animation-delay:.25s}
+h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s}
+.hero-sub{font-size:clamp(.94rem,1.6vw,1.1rem);font-weight:300;line-height:1.8;color:var(--dim);max-width:630px;margin-top:34px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .55s forwards}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-meta span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line-s);padding:9px 15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* jornada */
+.jor{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.jc{background:var(--white);padding:40px 32px;transition:background .3s}
+.jc:hover{background:var(--orange-l)}
+.jc .n{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.jc h4{font-size:1.14rem;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+.jc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim)}
+
+/* páginas de plano */
+.pg{min-height:100vh;display:flex;align-items:center;border-top:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:always;padding:90px 0}
+.pg.escuro{background:var(--ink);border-top-color:rgba(255,255,255,.12)}
+.pg-num{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.pg h3{font-size:clamp(1.85rem,3.9vw,2.9rem);font-weight:700;line-height:1.08;letter-spacing:-.035em;margin-bottom:18px}
+.pg.escuro h3{color:var(--white)}
+.pg h3 em{font-style:italic;font-weight:300;color:var(--orange)}
+.pg-lead{font-size:clamp(.9rem,1.5vw,1.02rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:560px}
+.pg.escuro .pg-lead{color:rgba(255,255,255,.6)}
+.pg-grid{display:grid;grid-template-columns:1fr 330px;gap:52px;align-items:start;width:100%}
+.pg-itens{margin-top:26px}
+.pgi{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:.85rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.pgi:first-child{border-top:0}
+.pg.escuro .pgi{border-top-color:rgba(255,255,255,.11);color:rgba(255,255,255,.6)}
+.pgi .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+.pgi b{font-weight:600;color:var(--ink)}
+.pg.escuro .pgi b{color:var(--white)}
+.pg-box{border:1px solid var(--line);border-top:3px solid var(--orange);padding:34px 30px;background:var(--white)}
+.pg.escuro .pg-box{background:#232323;border-color:rgba(255,255,255,.12);border-top-color:var(--orange)}
+.pg-box .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pg-box .val{font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1}
+.pg.escuro .pg-box .val{color:var(--white)}
+.pg-box .per{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:9px}
+.pg-box .selo{display:inline-block;margin-top:18px;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--orange);color:var(--black);padding:8px 13px}
+.pg-box .obs{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;font-weight:300;line-height:1.65;color:var(--dim)}
+.pg.escuro .pg-box .obs{border-top-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.pg-obj{margin-top:26px;padding:20px 24px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:400;line-height:1.75;color:var(--mid);max-width:560px}
+.pg.escuro .pg-obj{background:rgba(249,115,22,.12);color:rgba(255,255,255,.82)}
+.pg-obj b{font-weight:700;color:var(--ink)}
+.pg.escuro .pg-obj b{color:var(--orange)}
+
+/* indicadores */
+.kpis{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.kp{background:var(--white);padding:13px 14px;flex:1 1 118px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.04em;color:var(--dim)}
+.pg.escuro .kpis{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.13)}
+.pg.escuro .kp{background:#232323;color:rgba(255,255,255,.65)}
+
+/* funil */
+.funil{margin-top:46px;display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13)}
+.fn{background:var(--ink);padding:16px 22px;font-size:.84rem;font-weight:400;color:rgba(255,255,255,.72);text-align:center}
+.fn.forte{background:#232323;color:var(--white);font-weight:600}
+.fn.topo{background:var(--orange);color:var(--black);font-weight:700}
+
+/* fluxo */
+.fluxo{display:flex;flex-wrap:wrap;gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);margin-top:44px}
+.fx{background:var(--ink);padding:19px 14px;flex:1 1 118px;text-align:center}
+.fx b{display:block;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.fx.forte{background:#232323}
+.fx.forte b{color:var(--white)}
+
+/* resumo / comparativo */
+.tbl{border:1px solid var(--line);background:var(--white);overflow:hidden}
+.tr{display:grid;grid-template-columns:52px 1fr 180px 130px;border-top:1px solid var(--line);align-items:center}
+.tr:first-child{border-top:0}
+.tr.hd{background:var(--off)}
+.tr.hd div{font-size:.56rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:15px 16px}
+.tr.dest{background:var(--orange-l)}
+.tr>div{padding:19px 16px;font-size:.85rem;font-weight:300;line-height:1.6;color:var(--dim)}
+.tr .num{font-weight:800;color:var(--orange);font-size:.85rem}
+.tr .nm{font-weight:600;color:var(--ink);font-size:.93rem;letter-spacing:-.015em}
+.tr .nm small{display:block;font-weight:300;font-size:.78rem;color:var(--dim);margin-top:4px;letter-spacing:0}
+.tr .vl{font-weight:800;color:var(--ink);font-size:1.05rem;letter-spacing:-.03em;text-align:right}
+
+/* dois planos mesmo valor */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+.vc{background:var(--white);padding:34px 30px}
+.vc .tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;background:var(--off);color:var(--muted);margin-bottom:18px}
+.vc .big{font-size:clamp(1rem,1.9vw,1.24rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--ink)}
+.vc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim);margin-top:15px}
+
+.nota{padding:26px 30px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:20px}
+.nota:last-child{margin-bottom:0}
+.nota b{font-weight:600;color:var(--ink)}
+
+.norte{background:var(--ink);padding:100px 0}
+.norte .eyebrow{color:var(--orange)}
+.norte h2{color:var(--white)}
+.norte p{font-size:clamp(.92rem,1.6vw,1.06rem);font-weight:300;line-height:1.85;color:rgba(255,255,255,.6);max-width:760px;margin-top:22px}
+.norte .punch{margin-top:44px;padding:34px 38px;background:var(--orange)}
+.norte .punch p{font-size:clamp(1rem,2.1vw,1.4rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--black);max-width:880px;margin:0}
+.norte .punch em{font-style:italic;font-weight:300}
+
+.cta-sec{padding:100px 0;text-align:center;border-top:1px solid var(--line)}
+.cta-h{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:22px}
+.cta-h em{font-style:italic;font-weight:300;color:var(--orange)}
+.cta-sub{font-size:.94rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:540px;margin:0 auto 46px}
+.cta-static{display:inline-block;background:var(--orange);color:var(--black);padding:19px 44px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.validade{margin-top:44px;display:inline-flex;align-items:center;gap:10px;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-s);padding:10px 18px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center}
+footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
+
+@media(max-width:900px){
+  html{scroll-snap-type:none}
+  .pg{min-height:auto;padding:70px 0}
+  .pg-grid{grid-template-columns:1fr;gap:32px}
+  .jor,.vs{grid-template-columns:1fr}
+  .tr{grid-template-columns:1fr}
+  .tr.hd{display:none}
+  .tr>div{padding:8px 18px}
+  .tr>div:first-child{padding-top:20px}
+  .tr>div:last-child{padding-bottom:22px;text-align:left}
+  .hero-deco{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .section{padding:70px 0}
+  .section-head{margin-bottom:38px}
+  .jc,.vc,.pg-box{padding:28px 22px}
+  .nota,.norte .punch,.pg-obj{padding:24px 22px}
+  .norte{padding:70px 0}
+  .cta-sec{padding:70px 0}
+  .pg{padding:56px 0}
+  .cta-static{width:100%;padding:18px 22px}
+  .fx,.kp{flex:1 1 100%}
+}
+@media(max-width:400px){
+  .wrap{padding:0 16px}
+  .section{padding:58px 0}
+  .hero-meta span{font-size:.55rem;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo">Alma<span>.Convert</span></div>
+    <a href="#investimento" class="nav-cta">Ver as opções</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-deco">P.te</div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Proposta comercial · Personalizar.te</div>
+    <h1>
+      <span class="l1">Quatro caminhos.</span>
+      <span class="l2">Um mesmo destino.</span>
+    </h1>
+    <p class="hero-sub">Transformar as redes sociais da Personalizar.te num canal que gera relacionamento, demanda e venda. O que muda entre as opções não é o objetivo — é por onde se começa e quanto se investe para chegar lá.</p>
+    <div class="hero-meta">
+      <span>Metodologia Jornada®</span>
+      <span>Conteúdo</span>
+      <span>Tráfego</span>
+      <span>Performance</span>
+    </div>
+  </div>
+</header>
+
+<!-- O DESAFIO -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O desafio</div>
+      <h2>Presença digital<br><em>como canal de venda.</em></h2>
+      <p class="lead">A Personalizar.te tem a oportunidade de fortalecer sua presença digital, ampliar o reconhecimento da marca e transformar as redes sociais em um canal cada vez mais relevante para relacionamento, geração de demanda e vendas.</p>
+    </div>
+    <p class="txt r d1">A partir da nossa conversa, estruturamos quatro possibilidades de atuação, de acordo com o momento e o nível de investimento desejado pela marca. Elas não são versões melhores e piores da mesma coisa — cada uma resolve um problema diferente, e é essa escolha que define o ponto de partida.</p>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Metodologia Jornada® · Agência Alma</div>
+      <h2>Primeiro relacionamento.<br><em>Depois oferta.</em></h2>
+      <p class="lead">A frente de conteúdo é estruturada em três movimentos. A ordem importa: não se vende para uma audiência que ainda não sabe quem você é.</p>
+    </div>
+    <div class="jor r d1">
+      <div class="jc">
+        <div class="n">01 · Conexão</div>
+        <h4>Gerar identificação</h4>
+        <p>Conteúdos pensados para aproximar a Personalizar.te das pessoas que queremos alcançar — falando do que elas vivem antes de falar do que vendemos.</p>
+      </div>
+      <div class="jc">
+        <div class="n">02 · Gratidão</div>
+        <h4>Entregar valor</h4>
+        <p>Conteúdos relevantes, úteis, inspiracionais e compartilháveis, que façam a audiência perceber valor em acompanhar a marca todos os dias.</p>
+      </div>
+      <div class="jc">
+        <div class="n">03 · Reciprocidade</div>
+        <h4>Converter relacionamento</h4>
+        <p>Transformar progressivamente relacionamento e confiança em interesse pelos produtos e serviços da Personalizar.te.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 01 -->
+<section class="pg" id="investimento">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 01 de 04</div>
+        <h3>Posicionamento e<br><em>marketing de conteúdo.</em></h3>
+        <p class="pg-lead">Construir e fortalecer a presença digital da Personalizar.te por meio de uma estratégia recorrente de conteúdo, estruturada pela Jornada®.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>12 publicações por mês</b> — 3 por semana, entre vídeos, cards e carrosséis</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Planejamento estratégico mensal</b> e construção da linha editorial</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Desenvolvimento de pautas</b> e produção recorrente de conteúdo</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Legendas e direcionamentos</b> de publicação</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Acompanhamento das métricas</b> e evolução da comunicação</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Tráfego de distribuição</b> pode ser incorporado num segundo momento, para potencializar o que já responder bem no orgânico</span></div>
+        </div>
+        <div class="pg-obj"><b>Objetivo:</b> fazer com que mais pessoas conheçam, acompanhem, se relacionem e se lembrem da Personalizar.te.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Posicionamento + conteúdo</div>
+        <div class="val">R$ 3.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">Sem gestão de campanhas de aquisição. A frente de performance não está incluída.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 02 -->
+<section class="pg escuro">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 02 de 04</div>
+        <h3>Tráfego pago e<br><em>geração de leads.</em></h3>
+        <p class="pg-lead">Aqui a Alma não assume a produção recorrente de conteúdo. A atuação se concentra na estratégia, gestão e otimização de mídia paga, usando os materiais disponibilizados pela Personalizar.te.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Alcance e distribuição</b> — ampliação da presença da marca e das principais mensagens, ofertas e produtos para públicos estratégicos</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Performance</b> — campanhas direcionadas para geração de leads e oportunidades comerciais</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Estruturação, gestão e otimização</b> contínua das campanhas</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Leads encaminhados</b> para o atendimento comercial da Personalizar.te, responsável pela negociação e pelo fechamento</span></div>
+        </div>
+        <div class="kpis">
+          <div class="kp">Leads gerados</div>
+          <div class="kp">Custo por lead</div>
+          <div class="kp">Qualidade das oportunidades</div>
+          <div class="kp">Evolução das campanhas</div>
+        </div>
+        <div class="pg-obj"><b>Objetivo:</b> transformar mídia paga em uma fonte recorrente de novas oportunidades comerciais.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Tráfego + performance</div>
+        <div class="val">R$ 2.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">A produção dos materiais usados nas campanhas fica com a Personalizar.te.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 03 -->
+<section class="pg">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 03 de 04 · Operação completa</div>
+        <h3>Conteúdo, tráfego<br><em>e performance.</em></h3>
+        <p class="pg-lead">As duas frentes numa única estratégia. A Alma assume a construção da presença digital e a gestão de mídia para distribuição, aquisição e performance.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo da Proposta 01</b> — posicionamento, Jornada® e 12 publicações por mês</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo da Proposta 02</b> — campanhas de alcance, distribuição e geração de leads</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Frente de distribuição</b> — mídia levando os melhores conteúdos a mais pessoas dentro dos públicos estratégicos</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Frente de performance</b> — campanhas de aquisição rodando em paralelo, alimentadas por quem já teve contato com o conteúdo</span></div>
+        </div>
+        <div class="pg-obj"><b>Objetivo:</b> construir uma operação em que marca e performance cresçam juntas — o conteúdo fortalece posicionamento e confiança, o tráfego amplia a distribuição e cria caminhos mais diretos para a aquisição.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Operação integrada</div>
+        <div class="val">R$ 5.000</div>
+        <div class="per">por mês</div>
+        <span class="selo">Economia de R$ 1.000/mês</span>
+        <div class="obs">As duas frentes contratadas separadamente somam R$ 6.000. Juntas, R$ 5.000 — R$ 12.000 de diferença no ano.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNIL DA PROPOSTA 03 -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">Como a Proposta 03 funciona na prática</div>
+      <h2>Cada pessoa<br><em>no seu momento.</em></h2>
+      <p>Conteúdo e mídia trabalhando juntos permitem falar de forma diferente com quem nunca ouviu falar da marca e com quem já está quase comprando — em vez de tratar todo mundo como se fosse a mesma pessoa.</p>
+    </div>
+    <div class="funil r d1">
+      <div class="fn topo">Pessoas que ainda não conhecem a Personalizar.te</div>
+      <div class="fn">Pessoas que já tiveram contato com os conteúdos</div>
+      <div class="fn">Pessoas que interagiram e demonstraram interesse</div>
+      <div class="fn">Potenciais clientes</div>
+      <div class="fn forte">Leads para o atendimento comercial</div>
+    </div>
+    <div class="fluxo r d2">
+      <div class="fx"><b>Conteúdo</b></div>
+      <div class="fx"><b>Atenção</b></div>
+      <div class="fx"><b>Relacionamento</b></div>
+      <div class="fx forte"><b>Tráfego</b></div>
+      <div class="fx"><b>Lead</b></div>
+      <div class="fx"><b>Atendimento</b></div>
+      <div class="fx forte"><b>Venda</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 04 -->
+<section class="pg escuro">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 04 de 04 · Ponto de partida</div>
+        <h3>Conteúdo<br><em>essencial.</em></h3>
+        <p class="pg-lead">A mesma estratégia da Proposta 01, com cadência reduzida. Para começar a construir a presença digital agora, com um investimento menor, e aumentar o ritmo quando fizer sentido.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>8 publicações por mês</b> — 2 por semana, entre vídeos, cards e carrosséis</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Mesma metodologia Jornada®</b> — conexão, gratidão e reciprocidade</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Planejamento mensal, linha editorial e pautas</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Legendas e direcionamentos</b> de publicação</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Acompanhamento das métricas</b> e evolução da comunicação</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Migração para a Proposta 01</b> a qualquer momento, sem recomeçar nada</span></div>
+        </div>
+        <div class="pg-obj"><b>Objetivo:</b> começar. Consistência menor é muito melhor do que presença nenhuma — e a estratégia construída aqui continua valendo quando a cadência aumentar.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Conteúdo essencial</div>
+        <div class="val">R$ 2.500</div>
+        <div class="per">por mês</div>
+        <span class="selo">Menor investimento</span>
+        <div class="obs">Mesma estratégia e mesma equipe da Proposta 01, com 8 publicações em vez de 12.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOIS PLANOS, MESMO VALOR -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Atenção a esta escolha</div>
+      <h2>Dois planos custam R$ 2.500.<br><em>Eles fazem coisas opostas.</em></h2>
+      <p class="lead">A Proposta 02 e a Proposta 04 têm o mesmo valor — e é aí que a decisão fica interessante, porque elas resolvem problemas diferentes. Vale escolher pelo que falta hoje, não pelo preço.</p>
+    </div>
+    <div class="vs r d1">
+      <div class="vc">
+        <span class="tag">Proposta 04 · Conteúdo essencial</span>
+        <div class="big">Constrói o ativo</div>
+        <p>Cria o que a marca ainda não tem: presença, audiência e relacionamento. O efeito é cumulativo — cada mês soma ao anterior, e o que foi publicado continua trabalhando depois.</p>
+        <p><b style="color:var(--ink);font-weight:600">Escolha esta se</b> o perfil ainda não sustenta a marca e não há material pronto para anunciar.</p>
+      </div>
+      <div class="vc">
+        <span class="tag">Proposta 02 · Tráfego e performance</span>
+        <div class="big">Acelera o que já existe</div>
+        <p>Usa o material que a marca já tem para alcançar mais gente e gerar oportunidades agora. O efeito é imediato, mas não é cumulativo — quando a mídia para, o alcance para junto.</p>
+        <p><b style="color:var(--ink);font-weight:600">Escolha esta se</b> já existe material bom, oferta clara e alguém pronto para atender os leads que chegarem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Resumo das possibilidades</div>
+      <h2>As quatro,<br><em>lado a lado.</em></h2>
+    </div>
+    <div class="tbl r d1">
+      <div class="tr hd">
+        <div>Nº</div><div>Proposta</div><div>Para quê</div><div style="text-align:right">Mensal</div>
+      </div>
+      <div class="tr">
+        <div class="num">01</div>
+        <div class="nm">Posicionamento + Conteúdo<small>12 publicações por mês</small></div>
+        <div>Construir presença, relacionamento e audiência</div>
+        <div class="vl">R$ 3.500</div>
+      </div>
+      <div class="tr">
+        <div class="num">02</div>
+        <div class="nm">Tráfego Pago + Performance<small>Sem produção de conteúdo</small></div>
+        <div>Ampliar alcance e gerar leads para a operação comercial</div>
+        <div class="vl">R$ 2.500</div>
+      </div>
+      <div class="tr dest">
+        <div class="num">03</div>
+        <div class="nm">Conteúdo + Tráfego + Performance<small>Operação integrada · economia de R$ 1.000/mês</small></div>
+        <div>Trabalhar posicionamento, audiência, aquisição e vendas juntos</div>
+        <div class="vl">R$ 5.000</div>
+      </div>
+      <div class="tr">
+        <div class="num">04</div>
+        <div class="nm">Conteúdo Essencial<small>8 publicações por mês</small></div>
+        <div>Começar a construir presença com investimento menor</div>
+        <div class="vl">R$ 2.500</div>
+      </div>
+    </div>
+    <div class="nota r d2" style="margin-top:28px"><b>A verba de mídia é separada.</b> Nas propostas que incluem tráfego, o investimento em anúncios é definido em conjunto e pago diretamente à plataforma, em nome da Personalizar.te. Os valores acima remuneram estratégia, produção e gestão — não a mídia.</div>
+  </div>
+</section>
+
+<!-- NOSSA VISÃO -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">Nossa visão</div>
+      <h2>Marketing conectado<br><em>ao momento do negócio.</em></h2>
+      <p>As quatro propostas partem de necessidades diferentes, mas compartilham o mesmo princípio. Podemos construir uma presença digital forte. Podemos acelerar a aquisição através de mídia. Podemos integrar as duas frentes. Ou podemos começar menor, e crescer a partir do que der resultado.</p>
+      <div class="punch r d1">
+        <p>A escolha define o ponto de partida. <em>A estratégia será construída para fazer a marca avançar a partir dele.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="cta-h">O melhor plano<br><em>é o que começa.</em></h2>
+      <p class="cta-sub">Escolhida a proposta, começamos pelo planejamento estratégico e pela construção da linha editorial.</p>
+      <div class="cta-static">Aprovar a proposta</div>
+      <div class="validade"><span class="dot"></span>Validade da proposta: 15 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Alma.Convert · Agência Digital — Proposta comercial para Personalizar.te</p></footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+  var nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  var ho=new IntersectionObserver(function(es){
+    es.forEach(function(e){ nav.classList.toggle('hidden', e.isIntersecting && e.intersectionRatio>.75); });
+  },{threshold:[.75]});
+  if(hero) ho.observe(hero);
+})();
+</script>
+</body>
+</html>
