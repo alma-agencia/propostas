@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Estratégica · Tiago Freitas | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000;--ink:#1a1a1a;--mid:#333;--dim:#555;--muted:#888;--subtle:#bbb;
+  --off:#f5f5f5;--white:#fff;--line:rgba(16,24,40,.09);--line-s:rgba(16,24,40,.15);
+  --orange:#F97316;--orange-l:#FFF4ED;--orange-d:#EA6C0A;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:var(--f);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+.section{padding:108px 0;border-top:1px solid var(--line)}
+.section.alt{background:var(--off)}
+.section-head{margin-bottom:56px}
+.eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+h2 em{font-style:italic;font-weight:300;color:var(--orange)}
+.lead{font-size:clamp(.9rem,1.5vw,1.03rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:680px;margin-top:22px}
+p.txt{font-size:clamp(.88rem,1.45vw,1rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:700px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:17px 0;background:rgba(255,255,255,.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transition:opacity .4s}
+nav.hidden{opacity:0;pointer-events:none}
+.nav-in{max-width:1060px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.logo span{font-weight:300;font-style:italic;color:var(--muted)}
+.nav-cta{background:var(--orange);color:var(--black);padding:10px 20px;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--orange-d)}
+
+.hero{min-height:94vh;display:flex;align-items:center;position:relative;border-bottom:3px solid var(--orange);padding:130px 0 80px}
+.hero-deco{position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-size:19rem;font-weight:900;color:rgba(249,115,22,.05);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.hero-in{position:relative;z-index:2}
+.hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:30px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+h1{font-size:clamp(2.3rem,5.6vw,4.8rem);font-weight:800;line-height:.99;letter-spacing:-.045em}
+h1 span{display:block;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l1{color:var(--ink);animation-delay:.25s}
+h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s}
+.hero-sub{font-size:clamp(.94rem,1.6vw,1.1rem);font-weight:300;line-height:1.8;color:var(--dim);max-width:630px;margin-top:34px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .55s forwards}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-meta span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line-s);padding:9px 15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* cards genéricos 2 ou 3 col */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cd{background:var(--white);padding:38px 32px}
+.cd .n{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.cd h4{font-size:1.14rem;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+.cd p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim)}
+.cd.escuro{background:var(--ink)}
+.cd.escuro h4{color:var(--white)}
+.cd.escuro p{color:rgba(255,255,255,.58)}
+
+/* etapas do território */
+.etapa{display:grid;grid-template-columns:128px 1fr;border-top:1px solid var(--line)}
+.etapa .en{background:var(--off);padding:32px 24px;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+.etapa .eb{padding:32px 36px}
+.etapa h4{font-size:1.16rem;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+.etapa p{font-size:.87rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:720px}
+.etapa ul{margin-top:16px;list-style:none}
+.etapa li{position:relative;padding-left:18px;font-size:.85rem;font-weight:300;line-height:1.75;color:var(--dim);margin-bottom:5px}
+.etapa li::before{content:'→';position:absolute;left:0;color:var(--orange);font-weight:700}
+
+/* produção — bloco escuro com contraste */
+.prod{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);margin-top:46px}
+.pr{background:var(--ink);padding:34px 30px}
+.pr.forte{background:#232323}
+.pr .n{font-size:.55rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.pr h4{font-size:1.08rem;font-weight:700;letter-spacing:-.02em;color:var(--white);margin-bottom:11px}
+.pr p{font-size:.85rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.58)}
+
+/* comparativo amador x profissional */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.vc{background:var(--white);padding:36px 32px}
+.vc.nova{background:var(--ink)}
+.vc .tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;background:var(--off);color:var(--muted);margin-bottom:20px}
+.vc.nova .tag{background:var(--orange);color:var(--black)}
+.vc .big{font-size:clamp(1rem,1.9vw,1.28rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--ink)}
+.vc.nova .big{color:var(--white)}
+.vc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim);margin-top:16px}
+.vc.nova p{color:rgba(255,255,255,.55)}
+
+/* esteira */
+.esteira{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line)}
+.es{background:var(--white);padding:24px 22px;flex:1 1 180px}
+.es .q{font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.es b{display:block;font-size:.98rem;font-weight:700;letter-spacing:-.02em;margin-bottom:7px}
+.es span{font-size:.79rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.es.futuro{background:var(--orange-l)}
+
+/* lista alma */
+.constroi{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.ci{background:var(--white);padding:22px 28px;display:flex;gap:12px;font-size:.86rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.ci .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+
+/* páginas de plano */
+.pg{min-height:100vh;display:flex;align-items:center;border-top:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:always;padding:90px 0}
+.pg.escuro{background:var(--ink);border-top-color:rgba(255,255,255,.12)}
+.pg-num{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.pg h3{font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.035em;margin-bottom:18px}
+.pg.escuro h3{color:var(--white)}
+.pg h3 em{font-style:italic;font-weight:300;color:var(--orange)}
+.pg-lead{font-size:clamp(.9rem,1.5vw,1.02rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:560px}
+.pg.escuro .pg-lead{color:rgba(255,255,255,.6)}
+.pg-grid{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:start;width:100%}
+.pg-itens{margin-top:28px}
+.pgi{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.86rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.pgi:first-child{border-top:0}
+.pg.escuro .pgi{border-top-color:rgba(255,255,255,.11);color:rgba(255,255,255,.6)}
+.pgi .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+.pgi b{font-weight:600;color:var(--ink)}
+.pg.escuro .pgi b{color:var(--white)}
+.pg-box{border:1px solid var(--line);border-top:3px solid var(--orange);padding:36px 32px;background:var(--white)}
+.pg.escuro .pg-box{background:#232323;border-color:rgba(255,255,255,.12);border-top-color:var(--orange)}
+.pg-box .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pg-box .val{font-size:clamp(2.3rem,4.2vw,3.1rem);font-weight:800;letter-spacing:-.045em;line-height:1}
+.pg.escuro .pg-box .val{color:var(--white)}
+.pg-box .per{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:9px}
+.pg-box .selo{display:inline-block;margin-top:18px;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--orange);color:var(--black);padding:8px 13px}
+.pg-box .obs{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;font-weight:300;line-height:1.65;color:var(--dim)}
+.pg.escuro .pg-box .obs{border-top-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+
+/* regras de interação */
+.regras{border:1px solid var(--line);border-top:3px solid var(--orange);background:var(--white);padding:34px 34px;margin-top:44px}
+.regras .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.regras h4{font-size:1.16rem;font-weight:700;letter-spacing:-.025em;margin-bottom:14px}
+.regras .rl{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:.86rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.regras .rl:first-of-type{border-top:0}
+.regras .rl .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+.regras .rl b{font-weight:600;color:var(--ink)}
+
+/* time dedicado */
+.time{margin-top:1px;background:var(--ink);border:1px solid var(--ink);padding:40px 36px}
+.time .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.time .cnt{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.time .cnt b{font-size:clamp(2.4rem,4.6vw,3.4rem);font-weight:800;letter-spacing:-.05em;color:var(--orange);line-height:1}
+.time .cnt span{font-size:clamp(1rem,1.9vw,1.24rem);font-weight:600;letter-spacing:-.02em;color:var(--white)}
+.time .sub{font-size:.85rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.55);max-width:680px}
+.papeis{display:flex;flex-wrap:wrap;gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);margin-top:26px}
+.pp{background:#232323;padding:18px 16px;flex:1 1 140px;text-align:center}
+.pp b{display:block;font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:5px}
+.pp span{font-size:.68rem;font-weight:300;line-height:1.55;color:rgba(255,255,255,.5)}
+.time .plus{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);font-size:.85rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,.62)}
+.time .plus b{font-weight:600;color:var(--white)}
+
+.nota{padding:26px 30px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:20px}
+.nota:last-child{margin-bottom:0}
+.nota b{font-weight:600;color:var(--ink)}
+
+.norte{background:var(--ink);padding:104px 0}
+.norte .eyebrow{color:var(--orange)}
+.norte h2{color:var(--white)}
+.norte p{font-size:clamp(.92rem,1.6vw,1.06rem);font-weight:300;line-height:1.85;color:rgba(255,255,255,.6);max-width:760px;margin-top:22px}
+.norte .punch{margin-top:44px;padding:34px 38px;background:var(--orange)}
+.norte .punch p{font-size:clamp(1rem,2.1vw,1.4rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--black);max-width:880px;margin:0}
+.norte .punch em{font-style:italic;font-weight:300}
+
+.cta-sec{padding:104px 0;text-align:center;border-top:1px solid var(--line)}
+.cta-h{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:22px}
+.cta-h em{font-style:italic;font-weight:300;color:var(--orange)}
+.cta-sub{font-size:.94rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:540px;margin:0 auto 46px}
+.cta-static{display:inline-block;background:var(--orange);color:var(--black);padding:19px 44px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.validade{margin-top:44px;display:inline-flex;align-items:center;gap:10px;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-s);padding:10px 18px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center}
+footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
+
+@media(max-width:900px){
+  html{scroll-snap-type:none}
+  .pg{min-height:auto;padding:70px 0}
+  .pg-grid{grid-template-columns:1fr;gap:34px}
+  .g2,.g3,.vs,.prod,.constroi{grid-template-columns:1fr}
+  .etapa{grid-template-columns:1fr}
+  .etapa .en{padding:18px 24px}
+  .hero-deco{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .section{padding:72px 0}
+  .section-head{margin-bottom:40px}
+  .cd,.vc,.pr,.ci,.pg-box,.regras,.time{padding:28px 22px}
+  .pp{flex:1 1 100%}
+  .etapa .eb{padding:24px 22px}
+  .nota,.norte .punch{padding:24px 22px}
+  .norte{padding:72px 0}
+  .cta-sec{padding:72px 0}
+  .pg{padding:56px 0}
+  .cta-static{width:100%;padding:18px 22px}
+  .es{flex:1 1 100%}
+}
+@media(max-width:400px){
+  .wrap{padding:0 16px}
+  .section{padding:60px 0}
+  .hero-meta span{font-size:.55rem;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo">Alma<span>.Convert</span></div>
+    <a href="#investimento" class="nav-cta">Ver investimento</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-deco">TF</div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Proposta estratégica · Tiago Freitas</div>
+    <h1>
+      <span class="l1">A autoridade já existe.</span>
+      <span class="l2">Fora da sala de aula, ninguém viu.</span>
+    </h1>
+    <p class="hero-sub">Anos de formação, docência e domínio técnico construídos com rigor. O que falta não é conteúdo para dizer — é um lugar onde o que já é dito alcance mais gente do que cabe numa sala.</p>
+    <div class="hero-meta">
+      <span>Posicionamento técnico</span>
+      <span>Produção profissional</span>
+      <span>Palestras</span>
+      <span>Esteira digital</span>
+    </div>
+  </div>
+</header>
+
+<!-- PONTO DE PARTIDA -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O ponto de partida</div>
+      <h2>Perfil fechado,<br><em>zero publicações.</em></h2>
+      <p class="lead">Não é atraso. É uma folha em branco — e folha em branco tem uma vantagem que quem já postou por anos não tem: nada a corrigir, nada a apagar, nenhuma percepção errada já formada sobre quem você é.</p>
+    </div>
+    <div class="g3 r d1">
+      <div class="cd">
+        <div class="n">O que existe</div>
+        <h4>Repertório técnico</h4>
+        <p>Formação, docência universitária e atuação no serviço público. A matéria-prima do conteúdo já foi construída — ela só nunca foi publicada.</p>
+      </div>
+      <div class="cd">
+        <div class="n">O que falta</div>
+        <h4>Distribuição</h4>
+        <p>Nenhuma audiência própria, nenhum histórico de publicação, nenhum acervo que trabalhe por você enquanto você não está falando.</p>
+      </div>
+      <div class="cd">
+        <div class="n">O que se ganha</div>
+        <h4>Nenhum passivo</h4>
+        <p>Cada decisão de posicionamento é tomada do zero, com intenção. Não existe conteúdo antigo desalinhado para gerenciar depois.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERRITÓRIO -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O primeiro trabalho</div>
+      <h2>Definir o território<br><em>antes de ocupá-lo.</em></h2>
+      <p class="lead">O direito histórico é um recorte em construção — e isso não é um problema a resolver antes de começar. É o primeiro trabalho, e ele se faz publicando. O conteúdo é o instrumento que testa o território, não a consequência de já tê-lo definido.</p>
+    </div>
+    <div class="r d1" style="background:var(--white);border:1px solid var(--line)">
+      <div class="etapa" style="border-top:0">
+        <div class="en">Etapa 01</div>
+        <div class="eb">
+          <h4>Delimitação do recorte</h4>
+          <p>Que perguntas você responde melhor do que a maioria. Onde o histórico ilumina o jurídico de um jeito que o debate corrente não alcança. Qual conversa passa a ser sua.</p>
+          <ul>
+            <li>Mapeamento dos temas de maior domínio e maior interesse público</li>
+            <li>Definição das linhas editoriais e do vocabulário da marca pessoal</li>
+            <li>Identificação do público que procura esse recorte — e de quem já o disputa</li>
+          </ul>
+        </div>
+      </div>
+      <div class="etapa">
+        <div class="en">Etapa 02</div>
+        <div class="eb">
+          <h4>Teste em público</h4>
+          <p>Publicar com constância para descobrir, com dado e não com palpite, quais temas geram identificação, quais provocam pergunta e quais passam batido. O recorte se estreita com evidência.</p>
+          <ul>
+            <li>Rotina de 3 publicações por semana, com formatos alternados</li>
+            <li>Leitura mensal do que respondeu melhor e ajuste da linha editorial</li>
+            <li>Construção do acervo — conteúdo que continua trabalhando depois de publicado</li>
+          </ul>
+        </div>
+      </div>
+      <div class="etapa">
+        <div class="en">Etapa 03</div>
+        <div class="eb">
+          <h4>Consolidação da autoridade</h4>
+          <p>Quando o recorte está claro e o acervo é consistente, o perfil deixa de ser um canal de publicação e passa a ser uma credencial — algo que se mostra a quem contrata, convida ou pesquisa seu nome.</p>
+          <ul>
+            <li>Peças de referência, usadas como material de apresentação</li>
+            <li>Consistência visual e editorial reconhecível em qualquer publicação</li>
+            <li>Base pronta para sustentar as ofertas da etapa seguinte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUÇÃO PROFISSIONAL -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">O diferencial</div>
+      <h2>Em conteúdo técnico,<br><em>a produção é argumento.</em></h2>
+      <p>Quando alguém fala de direito e de história, o público julga a credibilidade antes de julgar o conteúdo. Enquadramento, luz, áudio, ritmo e tipografia não são acabamento — são a primeira prova de seriedade que o espectador recebe, e ela chega antes da primeira frase.</p>
+    </div>
+    <div class="prod r d1">
+      <div class="pr forte">
+        <div class="n">Captação</div>
+        <h4>Equipe em campo</h4>
+        <p>Captação com equipe dedicada, câmera, iluminação e áudio profissionais. Nada gravado no improviso do celular — porque improviso aparece, e aparece justamente onde o assunto pede rigor.</p>
+      </div>
+      <div class="pr">
+        <div class="n">Direção</div>
+        <h4>Roteiro e condução</h4>
+        <p>Roteiro construído antes da gravação e direção durante. Quem domina o tema nem sempre domina a câmera — a condução existe para que o repertório apareça inteiro.</p>
+      </div>
+      <div class="pr">
+        <div class="n">Pós-produção</div>
+        <h4>Edição com intenção</h4>
+        <p>Corte, ritmo, legendas, apoio gráfico e tratamento de imagem. Conteúdo denso precisa de edição que segure a atenção sem simplificar o argumento.</p>
+      </div>
+      <div class="pr forte">
+        <div class="n">Identidade</div>
+        <h4>Sistema visual próprio</h4>
+        <p>Paleta, tipografia e templates que tornam qualquer peça reconhecível como sua. Consistência visual é o que faz repertório virar marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMADOR X PROFISSIONAL -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Por que isso pesa aqui</div>
+      <h2>O mesmo conteúdo,<br><em>dois resultados.</em></h2>
+    </div>
+    <div class="vs r d1">
+      <div class="vc">
+        <span class="tag">Produção improvisada</span>
+        <div class="big">O espectador ouve alguém falando sobre o assunto</div>
+        <p>O conteúdo pode estar certo, mas a forma sugere hobby. Em tema técnico, isso reduz a autoridade em vez de construí-la — e autoridade reduzida é exatamente o que impede o convite para a palestra.</p>
+      </div>
+      <div class="vc nova">
+        <span class="tag">Produção profissional</span>
+        <div class="big">O espectador vê uma referência no assunto</div>
+        <p>A forma confirma o conteúdo em vez de contradizê-lo. É a diferença entre um perfil que informa e um perfil que credencia — e é o segundo que sustenta palestra, curso e comunidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTEIRA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Para onde isso leva</div>
+      <h2>Da audiência<br><em>à monetização.</em></h2>
+      <p class="lead">A ordem importa. Palestra se contrata de quem já é reconhecido; curso se vende para quem já acompanha; comunidade se sustenta com quem já confia. Cada etapa depende da anterior — e todas dependem do acervo construído desde o primeiro mês.</p>
+    </div>
+    <div class="esteira r d1">
+      <div class="es">
+        <div class="q">Base</div>
+        <b>Autoridade pública</b>
+        <span>O acervo que faz alguém encontrar seu nome e reconhecer competência antes de falar com você.</span>
+      </div>
+      <div class="es">
+        <div class="q">Agora</div>
+        <b>Palestras</b>
+        <span>O produto mais imediato: quem convida precisa ver material que justifique o convite e a remuneração.</span>
+      </div>
+      <div class="es futuro">
+        <div class="q">Depois</div>
+        <b>Cursos</b>
+        <span>Conhecimento estruturado, vendido para uma audiência que já conhece seu método de explicar.</span>
+      </div>
+      <div class="es futuro">
+        <div class="q">Depois</div>
+        <b>Comunidade</b>
+        <span>Receita recorrente, sustentada por relacionamento contínuo em vez de venda avulsa.</span>
+      </div>
+    </div>
+    <div class="nota r d2" style="margin-top:28px"><b>Cursos e comunidade são horizonte, não escopo deste contrato.</b> Esta proposta constrói a base que os torna possíveis — posicionamento, audiência e acervo. A estruturação dos produtos digitais entra como escopo próprio quando a base estiver madura.</div>
+  </div>
+</section>
+
+<!-- O QUE A ALMA CONDUZ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O que a Alma conduz</div>
+      <h2>A estrutura<br><em>à disposição.</em></h2>
+      <p class="lead">A operação inteira fica do nosso lado. O que se espera de você é o repertório e o tempo de gravação — o resto é conduzido por quem faz isso todo dia.</p>
+    </div>
+    <div class="constroi r d1">
+      <div class="ci"><span class="mk">→</span><span>Estratégia de posicionamento e definição do recorte</span></div>
+      <div class="ci"><span class="mk">→</span><span>Planejamento mensal e linha editorial</span></div>
+      <div class="ci"><span class="mk">→</span><span>Pesquisa e definição de pautas</span></div>
+      <div class="ci"><span class="mk">→</span><span>Roteiro dos vídeos e direção na gravação</span></div>
+      <div class="ci"><span class="mk">→</span><span>Captação com equipe, câmera, luz e áudio profissionais</span></div>
+      <div class="ci"><span class="mk">→</span><span>Edição, legendagem e apoio gráfico</span></div>
+      <div class="ci"><span class="mk">→</span><span>Identidade visual do perfil — paleta, tipografia e templates</span></div>
+      <div class="ci"><span class="mk">→</span><span>Copywriting das legendas e chamadas</span></div>
+      <div class="ci"><span class="mk">→</span><span>Publicação e gestão do calendário</span></div>
+      <div class="ci"><span class="mk">→</span><span>Leitura mensal de desempenho e ajuste da estratégia</span></div>
+    </div>
+
+    <div class="time r d2">
+      <div class="lab">Time dedicado ao projeto</div>
+      <div class="cnt"><b>6</b><span>especialistas — os mesmos nos dois planos</span></div>
+      <p class="sub">Não é uma pessoa fazendo tudo. Cada etapa da produção fica com quem faz aquilo todo dia — é isso que sustenta o padrão de qualidade mês após mês, e não só na primeira entrega.</p>
+      <div class="papeis">
+        <div class="pp"><b>Estrategista</b><span>Posicionamento, recorte e linha editorial</span></div>
+        <div class="pp"><b>Copywriter</b><span>Roteiros, legendas e chamadas</span></div>
+        <div class="pp"><b>Videomaker</b><span>Captação, luz, áudio e direção</span></div>
+        <div class="pp"><b>Editor</b><span>Corte, ritmo, legendagem e finalização</span></div>
+        <div class="pp"><b>Designer</b><span>Identidade visual, cards e carrosséis</span></div>
+        <div class="pp"><b>Social media</b><span>Calendário, publicação e relacionamento</span></div>
+      </div>
+      <p class="plus"><b>O time não muda entre os planos — a atribuição, sim.</b> No Plano 02 a dedicação ao projeto é maior, com a operação de monitoramento e interação diária somada às atribuições de todo mês.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 01 -->
+<section class="pg" id="investimento">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Plano 01 de 02</div>
+        <h3>Estratégia<br><em>e produção.</em></h3>
+        <p class="pg-lead">A construção do posicionamento e a operação completa de conteúdo, com produção profissional do roteiro à publicação.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>12 publicações por mês</b> — 3 por semana, entre vídeos, cards e carrosséis</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>1 captação mensal</b> com equipe, câmera, iluminação e áudio profissionais</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Roteiro e direção</b> de todos os vídeos</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Identidade visual do perfil</b> — paleta, tipografia e templates</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Planejamento, pautas e linha editorial</b> revistos todo mês</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Publicação, gestão do calendário</b> e leitura mensal de desempenho</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>6 especialistas dedicados</b> — estrategista, copywriter, videomaker, editor, designer e social media</span></div>
+        </div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Estratégia e produção</div>
+        <div class="val">R$ 3.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">A interação no perfil — comentários e mensagens diretas — permanece sob responsabilidade do Tiago.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 02 -->
+<section class="pg escuro">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Plano 02 de 02 · Social media full</div>
+        <h3>Estratégia, produção<br><em>e presença diária.</em></h3>
+        <p class="pg-lead">Tudo do plano anterior, mais o acompanhamento do perfil no dia a dia — monitoramento e resposta a comentários e mensagens diretas, dentro de critérios definidos com você.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo do Plano 01</b>, com os mesmos 6 especialistas</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Atribuição ampliada do time</b> — dedicação maior ao seu projeto, com a operação diária somada às entregas do mês</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Monitoramento diário</b> de comentários e mensagens diretas</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Resposta ativa</b> ao que estiver dentro dos critérios acordados</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Triagem e encaminhamento</b> do que exigir sua palavra</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Leitura do que a audiência pergunta</b>, devolvida como pauta</span></div>
+        </div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Com social media full</div>
+        <div class="val">R$ 4.000</div>
+        <div class="per">por mês</div>
+        <span class="selo">Perfil acompanhado</span>
+        <div class="obs">A rotina de interação é desenhada junto com você, respeitando sua disponibilidade e sua atuação profissional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGRAS DE INTERAÇÃO -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Como a interação funciona</div>
+      <h2>Ninguém fala<br><em>no seu lugar.</em></h2>
+      <p class="lead">Perfil de autoridade técnica não comporta resposta automática nem opinião emitida por terceiro. Por isso a operação de interação trabalha com uma fronteira definida antes de começar, e ela é sua.</p>
+    </div>
+    <div class="regras r d1">
+      <div class="lab">A fronteira, combinada com você</div>
+      <h4>O que respondemos e o que encaminhamos</h4>
+      <div class="rl"><span class="mk">→</span><span><b>Respondido pela equipe:</b> agradecimentos, dúvidas sobre o conteúdo já publicado, pedidos de referência de material, informações de contato e agenda, e qualquer assunto previamente acordado com você.</span></div>
+      <div class="rl"><span class="mk">→</span><span><b>Sempre encaminhado:</b> consultas técnicas, pedidos de orientação jurídica, questões particulares de terceiros e qualquer tema que exija sua interpretação. Nesses casos a equipe apenas acolhe e aguarda seu direcionamento.</span></div>
+      <div class="rl"><span class="mk">→</span><span><b>Nunca emitido sem você:</b> posição sobre caso concreto, opinião sobre tema sensível, comentário sobre pessoas ou instituições, e qualquer conteúdo que possa ser lido como manifestação sua.</span></div>
+      <div class="rl"><span class="mk">→</span><span><b>Revisto sempre que necessário:</b> os critérios são registrados por escrito no início e ajustados conforme o perfil cresce e novos tipos de mensagem aparecem.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDIÇÕES -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="r">
+      <div class="nota"><b>O local de gravação precisa ser definido antes do início.</b> A escolha do espaço determina o tamanho e a composição da equipe dedicada ao projeto, os equipamentos de luz e áudio necessários e a duração de cada diária de captação. Por isso ele é organizado previamente, junto com você, antes da primeira gravação — é o que permite dimensionar o time corretamente e manter a constância da produção.</div>
+      <div class="nota"><b>Os valores acima remuneram estratégia, produção e gestão.</b> Eventual investimento em mídia paga, caso seja incorporado à estratégia mais adiante, é definido em conjunto e pago diretamente à plataforma.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NORTE -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">Nosso norte</div>
+      <h2>Não é sobre<br><em>ganhar seguidores.</em></h2>
+      <p>É sobre construir uma credencial pública que trabalhe quando você não está na sala. Um acervo que quem for te convidar para uma palestra encontre, assista e use como razão para convidar.</p>
+      <div class="punch r d1">
+        <p>O repertório que hoje alcança uma turma por semestre <em>pode alcançar quem nunca vai sentar naquela sala.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="cta-h">O conteúdo já existe.<br><em>Falta publicá-lo.</em></h2>
+      <p class="cta-sub">Aprovando, começamos pela definição do recorte e pela organização do espaço de gravação.</p>
+      <div class="cta-static">Aprovar a proposta</div>
+      <div class="validade"><span class="dot"></span>Validade da proposta: 15 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Alma.Convert · Agência Digital — Proposta estratégica para Tiago Freitas</p></footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+  var nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  var ho=new IntersectionObserver(function(es){
+    es.forEach(function(e){ nav.classList.toggle('hidden', e.isIntersecting && e.intersectionRatio>.75); });
+  },{threshold:[.75]});
+  if(hero) ho.observe(hero);
+})();
+</script>
+</body>
+</html>
