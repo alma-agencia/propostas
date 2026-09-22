@@ -135,6 +135,12 @@ h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s
 .pg-obj b{font-weight:700;color:var(--ink)}
 .pg.escuro .pg-obj b{color:var(--orange)}
 
+.ponte{padding:58px 0;text-align:center;border-top:1px solid var(--line);background:var(--off)}
+.ponte .soma{font-size:clamp(1.25rem,2.6vw,1.7rem);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.ponte .soma .op{color:var(--muted);font-weight:300;padding:0 6px}
+.ponte .soma b{color:var(--orange-d)}
+.ponte p{font-size:.85rem;font-weight:300;color:var(--dim);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+
 .kpis{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
 .kp{background:var(--white);padding:13px 14px;flex:1 1 130px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.03em;color:var(--dim)}
 .pg.escuro .kpis{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.13)}
@@ -142,7 +148,7 @@ h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s
 
 /* comparativo */
 .tbl{border:1px solid var(--line);background:var(--white)}
-.tr{display:grid;grid-template-columns:1fr 150px 150px;border-top:1px solid var(--line);align-items:center}
+.tr{display:grid;grid-template-columns:1fr 118px 118px 118px;border-top:1px solid var(--line);align-items:center}
 .tr:first-child{border-top:0}
 .tr.hd{background:var(--ink)}
 .tr.hd div{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:16px 18px;text-align:center}
@@ -196,7 +202,7 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   .pg-grid{grid-template-columns:1fr;gap:32px}
   .nums{grid-template-columns:1fr 1fr}
   .ordem,.honesto{grid-template-columns:1fr}
-  .tr{grid-template-columns:1fr 90px 90px}
+  .tr{grid-template-columns:1fr 84px 84px 84px}
   .hero-deco{display:none}
 }
 @media(max-width:600px){
@@ -213,8 +219,8 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   .cta-static{width:100%;padding:18px 22px}
   .cd,.kp{flex:1 1 100%}
   .nums{grid-template-columns:1fr}
-  .tr{grid-template-columns:1fr 70px 70px}
-  .tr>div{padding:12px 12px;font-size:.78rem}
+  .tr{grid-template-columns:1fr 58px 58px 58px}
+  .tr>div{padding:12px 8px;font-size:.72rem}
 }
 @media(max-width:400px){
   .wrap{padding:0 16px}
@@ -416,17 +422,59 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   </div>
 </section>
 
-<!-- PLANO 02 -->
+<!-- PLANO 02 · CONTEÚDO -->
+<section class="pg">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Fase 02 · presença e conteúdo</div>
+        <h3>Presença digital<br><em>e conteúdo.</em></h3>
+        <p class="pg-lead">Nosso plano de base: publicação constante, identidade única e o sistema finalmente mostrado no perfil — com tráfego simples para ampliar o alcance do que é produzido.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Produção de conteúdo</b> — 12 publicações por mês, mostrando o sistema, explicando a operação e respondendo objeções reais</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Identidade visual unificada</b> — encerrar a convivência de duas linguagens no feed</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Calendário editorial</b> — pauta mensal alinhada ao momento de quem acompanha o perfil</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Tráfego simples</b> — impulsionamento das publicações para ampliar alcance, sem gestão de campanha de captação</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Relatório mensal</b> — desempenho do perfil e das publicações</span></div>
+        </div>
+        <div class="kpis">
+          <div class="kp">Publicações por mês</div>
+          <div class="kp">Alcance</div>
+          <div class="kp">Engajamento</div>
+          <div class="kp">Consistência de marca</div>
+        </div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Conteúdo e presença digital</div>
+        <div class="val">R$ 3.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">Sem CRM, qualificação de leads ou gestão de campanha de captação — isso é o que a Fase 01 cobre.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PONTE: SOMA -->
+<section class="ponte">
+  <div class="wrap">
+    <div class="r">
+      <div class="soma">R$ 2.500 <span class="op">+</span> R$ 3.500 <span class="op">=</span> <b>R$ 6.000</b></div>
+      <p>Fase 01 e Fase 02 contratadas em separado somam seis mil reais por mês. Na condição especial a seguir, as duas frentes operam juntas — com um ritmo de conteúdo maior do que qualquer uma das duas sozinha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 03 · CONDIÇÃO ESPECIAL -->
 <section class="pg escuro">
   <div class="wrap">
     <div class="pg-grid">
       <div class="r">
-        <div class="pg-num">Operação completa · recomendado</div>
+        <div class="pg-num">Condição especial · recomendado</div>
         <h3>Aquisição, conteúdo<br><em>e estrutura.</em></h3>
-        <p class="pg-lead">A mesma operação de aquisição, somada à construção da presença digital e ao reparo dos ativos que a auditoria apontou.</p>
+        <p class="pg-lead">A mesma operação de aquisição, somada à construção da presença digital e ao reparo dos ativos que a auditoria apontou — com uma cadência de conteúdo maior que a da Fase 02.</p>
         <div class="pg-itens">
           <div class="pgi"><span class="mk">→</span><span><b>Tudo da Fase 01</b> — campanhas, landing page, CRM, qualificação e relatório</span></div>
-          <div class="pgi"><span class="mk">→</span><span><b>12 publicações por mês</b> — conteúdo que mostra o produto, explica a operação e responde as objeções reais dos leads</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>2 publicações por semana + 4 vídeos por mês</b> — conteúdo que mostra o produto, explica a operação e responde as objeções reais dos leads</span></div>
           <div class="pgi"><span class="mk">→</span><span><b>Identidade visual unificada</b> — encerrar a convivência de duas linguagens no feed</span></div>
           <div class="pgi"><span class="mk">→</span><span><b>Ajustes de estrutura</b> — reorganização do site, texto fora das imagens e páginas por segmento para as campanhas de busca</span></div>
           <div class="pgi"><span class="mk">→</span><span><b>Construção da prova social</b> — roteiro e produção de cases e depoimentos com clientes reais da 3Soft</span></div>
@@ -438,7 +486,7 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
         <div class="val">R$ 4.000</div>
         <div class="per">por mês</div>
         <span class="selo">Economia de R$ 2.000/mês</span>
-        <div class="obs">As duas frentes contratadas em separado somam R$ 6.000. Integradas, R$ 4.000.</div>
+        <div class="obs">Fase 01 e Fase 02 contratadas em separado somam R$ 6.000. Integradas nesta condição, R$ 4.000.</div>
       </div>
     </div>
   </div>
@@ -452,18 +500,18 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
       <h2>O que cada<br><em>fase resolve.</em></h2>
     </div>
     <div class="tbl r d1">
-      <div class="tr hd"><div>Entrega</div><div>Fase 01</div><div>Completa</div></div>
-      <div class="tr"><div>Campanhas no Google Ads e no Instagram</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>Landing page com formulário de captura</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>CRM com origem, etapa e histórico</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>Processo de qualificação de leads</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>Vídeo e design para as campanhas</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>Relatório mensal com custo por lead</div><div class="s">✓</div><div class="s">✓</div></div>
-      <div class="tr"><div>12 publicações por mês no perfil</div><div class="n">—</div><div class="s">✓</div></div>
-      <div class="tr"><div>Identidade visual unificada</div><div class="n">—</div><div class="s">✓</div></div>
-      <div class="tr"><div>Ajustes de estrutura do site</div><div class="n">—</div><div class="s">✓</div></div>
-      <div class="tr"><div>Cases e depoimentos de clientes reais</div><div class="n">—</div><div class="s">✓</div></div>
-      <div class="tr tot"><div>Investimento mensal</div><div>R$ 2.500</div><div>R$ 4.000</div></div>
+      <div class="tr hd"><div>Entrega</div><div>Fase 01</div><div>Fase 02</div><div>Completa</div></div>
+      <div class="tr"><div>Campanhas no Google Ads e no Instagram</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Landing page com formulário de captura</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>CRM com origem, etapa e histórico</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Processo de qualificação de leads</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Vídeo e design para as campanhas</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Relatório mensal com custo por lead</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Produção de conteúdo para o perfil</div><div class="n">—</div><div class="s">12 posts/mês</div><div class="s">2/sem + 4 vídeos</div></div>
+      <div class="tr"><div>Identidade visual unificada</div><div class="n">—</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Ajustes de estrutura do site</div><div class="n">—</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Cases e depoimentos de clientes reais</div><div class="n">—</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr tot"><div>Investimento mensal</div><div>R$ 2.500</div><div>R$ 3.500</div><div>R$ 4.000</div></div>
     </div>
     <div class="nota r d2" style="margin-top:28px"><b>A verba de mídia é separada.</b> O investimento em anúncios no Google e no Instagram é definido em conjunto e pago diretamente às plataformas, em nome da 3Soft. Os valores acima remuneram estratégia, produção e gestão — não a mídia.</div>
   </div>
