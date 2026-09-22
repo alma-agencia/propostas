@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial · 3Soft Sistemas | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000;--ink:#1a1a1a;--mid:#333;--dim:#555;--muted:#888;--subtle:#bbb;
+  --off:#f5f5f5;--white:#fff;--line:rgba(16,24,40,.09);--line-s:rgba(16,24,40,.15);
+  --orange:#F97316;--orange-l:#FFF4ED;--orange-d:#EA6C0A;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:var(--f);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+.section{padding:104px 0;border-top:1px solid var(--line)}
+.section.alt{background:var(--off)}
+.section-head{margin-bottom:54px}
+.eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+h2 em{font-style:italic;font-weight:300;color:var(--orange)}
+.lead{font-size:clamp(.9rem,1.5vw,1.03rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:690px;margin-top:22px}
+p.txt{font-size:clamp(.88rem,1.45vw,1rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:710px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:17px 0;background:rgba(255,255,255,.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transition:opacity .4s}
+nav.hidden{opacity:0;pointer-events:none}
+.nav-in{max-width:1060px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.logo span{font-weight:300;font-style:italic;color:var(--muted)}
+.nav-cta{background:var(--orange);color:var(--black);padding:10px 20px;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--orange-d)}
+
+.hero{min-height:94vh;display:flex;align-items:center;position:relative;border-bottom:3px solid var(--orange);padding:130px 0 80px}
+.hero-deco{position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-size:17rem;font-weight:900;color:rgba(249,115,22,.05);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.hero-in{position:relative;z-index:2}
+.hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:30px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+h1{font-size:clamp(2.2rem,5.2vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.045em}
+h1 span{display:block;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l1{color:var(--ink);animation-delay:.25s}
+h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s}
+.hero-sub{font-size:clamp(.94rem,1.6vw,1.1rem);font-weight:300;line-height:1.8;color:var(--dim);max-width:640px;margin-top:34px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .55s forwards}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-meta span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line-s);padding:9px 15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* auditoria */
+.aud{border:1px solid var(--line);background:var(--white)}
+.aud-hd{background:var(--ink);padding:22px 28px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+.aud-hd b{font-size:.92rem;font-weight:700;letter-spacing:-.01em;color:var(--white)}
+.aud-hd span{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.al{display:grid;grid-template-columns:30px 1fr;gap:0;border-top:1px solid var(--line)}
+.al:first-of-type{border-top:0}
+.al .ic{background:var(--off);display:flex;align-items:flex-start;justify-content:center;padding-top:22px;font-size:.8rem;font-weight:800;color:var(--orange)}
+.al .bd{padding:20px 26px}
+.al h5{font-size:.95rem;font-weight:700;letter-spacing:-.02em;margin-bottom:7px}
+.al p{font-size:.85rem;font-weight:300;line-height:1.78;color:var(--dim);max-width:760px}
+.al p b{font-weight:600;color:var(--ink)}
+
+/* números frios */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.nm{background:var(--white);padding:32px 22px}
+.nm .v{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--ink)}
+.nm .v.alerta{color:var(--orange-d)}
+.nm .l{font-size:.75rem;font-weight:300;line-height:1.65;color:var(--dim);margin-top:11px}
+
+/* o buraco */
+.buraco{background:var(--ink);border-top:3px solid var(--orange);padding:38px 40px;margin-top:1px}
+.buraco .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.buraco h4{font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.025em;color:var(--white);margin-bottom:16px;line-height:1.3}
+.buraco p{font-size:.92rem;font-weight:300;line-height:1.82;color:rgba(255,255,255,.66);max-width:820px}
+.buraco p+p{margin-top:14px}
+.buraco b{font-weight:600;color:var(--white)}
+
+/* cadeia quebrada */
+.cad{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+.cd{background:var(--white);padding:22px 16px;flex:1 1 150px;text-align:center}
+.cd b{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+.cd span{font-size:.72rem;font-weight:300;line-height:1.55;color:var(--muted)}
+.cd.quebra{background:var(--orange-l)}
+.cd.quebra b{color:var(--orange-d)}
+.cd.morto{background:var(--off)}
+.cd.morto b{color:var(--subtle)}
+.cd.morto span{color:var(--subtle)}
+
+/* ordem */
+.ordem{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.oc{background:var(--white);padding:36px 32px}
+.oc.nossa{background:var(--ink)}
+.oc .tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;background:var(--off);color:var(--muted);margin-bottom:20px}
+.oc.nossa .tag{background:var(--orange);color:var(--black)}
+.oc .big{font-size:clamp(1rem,1.9vw,1.24rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--ink)}
+.oc.nossa .big{color:var(--white)}
+.oc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim);margin-top:16px}
+.oc.nossa p{color:rgba(255,255,255,.58)}
+
+/* páginas de plano */
+.pg{min-height:100vh;display:flex;align-items:center;border-top:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:always;padding:90px 0}
+.pg.escuro{background:var(--ink);border-top-color:rgba(255,255,255,.12)}
+.pg-num{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.pg h3{font-size:clamp(1.85rem,3.9vw,2.9rem);font-weight:700;line-height:1.08;letter-spacing:-.035em;margin-bottom:18px}
+.pg.escuro h3{color:var(--white)}
+.pg h3 em{font-style:italic;font-weight:300;color:var(--orange)}
+.pg-lead{font-size:clamp(.9rem,1.5vw,1.02rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:560px}
+.pg.escuro .pg-lead{color:rgba(255,255,255,.6)}
+.pg-grid{display:grid;grid-template-columns:1fr 330px;gap:52px;align-items:start;width:100%}
+.pg-itens{margin-top:26px}
+.pgi{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:.85rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.pgi:first-child{border-top:0}
+.pg.escuro .pgi{border-top-color:rgba(255,255,255,.11);color:rgba(255,255,255,.6)}
+.pgi .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+.pgi b{font-weight:600;color:var(--ink)}
+.pg.escuro .pgi b{color:var(--white)}
+.pg-box{border:1px solid var(--line);border-top:3px solid var(--orange);padding:34px 30px;background:var(--white)}
+.pg.escuro .pg-box{background:#232323;border-color:rgba(255,255,255,.12);border-top-color:var(--orange)}
+.pg-box .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pg-box .val{font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1}
+.pg.escuro .pg-box .val{color:var(--white)}
+.pg-box .per{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:9px}
+.pg-box .selo{display:inline-block;margin-top:18px;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--orange);color:var(--black);padding:8px 13px}
+.pg-box .obs{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;font-weight:300;line-height:1.65;color:var(--dim)}
+.pg.escuro .pg-box .obs{border-top-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.pg-obj{margin-top:26px;padding:20px 24px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:400;line-height:1.75;color:var(--mid);max-width:560px}
+.pg.escuro .pg-obj{background:rgba(249,115,22,.12);color:rgba(255,255,255,.82)}
+.pg-obj b{font-weight:700;color:var(--ink)}
+.pg.escuro .pg-obj b{color:var(--orange)}
+
+.kpis{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.kp{background:var(--white);padding:13px 14px;flex:1 1 130px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.03em;color:var(--dim)}
+.pg.escuro .kpis{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.13)}
+.pg.escuro .kp{background:#232323;color:rgba(255,255,255,.65)}
+
+/* comparativo */
+.tbl{border:1px solid var(--line);background:var(--white)}
+.tr{display:grid;grid-template-columns:1fr 150px 150px;border-top:1px solid var(--line);align-items:center}
+.tr:first-child{border-top:0}
+.tr.hd{background:var(--ink)}
+.tr.hd div{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:16px 18px;text-align:center}
+.tr.hd div:first-child{text-align:left;color:var(--white)}
+.tr>div{padding:15px 18px;font-size:.85rem;font-weight:300;color:var(--dim);text-align:center}
+.tr>div:first-child{text-align:left;font-weight:400;color:var(--ink)}
+.tr .s{color:var(--orange-d);font-weight:800}
+.tr .n{color:var(--subtle);font-weight:600}
+.tr.tot{background:var(--orange-l)}
+.tr.tot>div{font-weight:800;color:var(--ink);font-size:1rem;letter-spacing:-.02em}
+.tr.tot>div:first-child{font-size:.85rem;font-weight:600}
+
+/* nao prometemos */
+.honesto{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.hc{background:var(--white);padding:30px 28px}
+.hc .t{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+.hc.nao .t{color:var(--muted)}
+.hc.sim .t{color:var(--orange)}
+.hc .li{display:flex;gap:11px;padding:9px 0;border-top:1px solid var(--line);font-size:.85rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.hc .li:first-of-type{border-top:0}
+.hc .mk{flex-shrink:0;font-weight:700;line-height:1.7}
+.hc.nao .mk{color:var(--subtle)}
+.hc.sim .mk{color:var(--orange)}
+
+.nota{padding:26px 30px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:20px}
+.nota:last-child{margin-bottom:0}
+.nota b{font-weight:600;color:var(--ink)}
+
+.norte{background:var(--ink);padding:100px 0}
+.norte .eyebrow{color:var(--orange)}
+.norte h2{color:var(--white)}
+.norte p{font-size:clamp(.92rem,1.6vw,1.06rem);font-weight:300;line-height:1.85;color:rgba(255,255,255,.6);max-width:770px;margin-top:22px}
+.norte .punch{margin-top:44px;padding:34px 38px;background:var(--orange)}
+.norte .punch p{font-size:clamp(1rem,2.1vw,1.38rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--black);max-width:880px;margin:0}
+.norte .punch em{font-style:italic;font-weight:300}
+
+.cta-sec{padding:100px 0;text-align:center;border-top:1px solid var(--line)}
+.cta-h{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:22px}
+.cta-h em{font-style:italic;font-weight:300;color:var(--orange)}
+.cta-sub{font-size:.94rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:560px;margin:0 auto 46px}
+.cta-static{display:inline-block;background:var(--orange);color:var(--black);padding:19px 44px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.validade{margin-top:44px;display:inline-flex;align-items:center;gap:10px;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-s);padding:10px 18px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center}
+footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
+
+@media(max-width:900px){
+  html{scroll-snap-type:none}
+  .pg{min-height:auto;padding:70px 0}
+  .pg-grid{grid-template-columns:1fr;gap:32px}
+  .nums{grid-template-columns:1fr 1fr}
+  .ordem,.honesto{grid-template-columns:1fr}
+  .tr{grid-template-columns:1fr 90px 90px}
+  .hero-deco{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .section{padding:70px 0}
+  .section-head{margin-bottom:38px}
+  .nm,.oc,.hc,.pg-box{padding:26px 20px}
+  .al .bd{padding:18px 20px}
+  .buraco,.nota,.norte .punch,.pg-obj{padding:24px 22px}
+  .aud-hd{padding:18px 20px}
+  .norte{padding:70px 0}
+  .cta-sec{padding:70px 0}
+  .pg{padding:56px 0}
+  .cta-static{width:100%;padding:18px 22px}
+  .cd,.kp{flex:1 1 100%}
+  .nums{grid-template-columns:1fr}
+  .tr{grid-template-columns:1fr 70px 70px}
+  .tr>div{padding:12px 12px;font-size:.78rem}
+}
+@media(max-width:400px){
+  .wrap{padding:0 16px}
+  .section{padding:58px 0}
+  .hero-meta span{font-size:.55rem;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo">Alma<span>.Convert</span></div>
+    <a href="#investimento" class="nav-cta">Ver investimento</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-deco">3S</div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Proposta comercial · 3Soft Sistemas</div>
+    <h1>
+      <span class="l1">Vinte e cinco anos de empresas atendidas.</span>
+      <span class="l2">A prova que convence o próximo cliente já existe.</span>
+    </h1>
+    <p class="hero-sub">Cada empresa que o ERP Horus organizou nesses 25 anos é um argumento de venda pronto. Reunir essas histórias, mostrar o sistema funcionando e registrar quem demonstra interesse é o caminho mais curto entre o que a 3Soft já construiu e o próximo contrato.</p>
+    <div class="hero-meta">
+      <span>25 anos de mercado</span>
+      <span>Prova social</span>
+      <span>Funil e CRM</span>
+      <span>Google Ads + Instagram</span>
+    </div>
+  </div>
+</header>
+
+<!-- AUDITORIA -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Ponto de partida · auditoria dos ativos</div>
+      <h2>O que separa a 3Soft<br><em>de usar esse ativo.</em></h2>
+      <p class="lead">Esta proposta não começa com opinião sobre marketing. Começa com o que está publicado hoje no site e no perfil da 3Soft — conferível item por item — para mostrar exatamente onde estão as oportunidades que ainda não foram exploradas.</p>
+    </div>
+
+    <div class="nums r d1">
+      <div class="nm"><div class="v">25</div><div class="l">anos de mercado declarados no perfil</div></div>
+      <div class="nm"><div class="v alerta">0</div><div class="l">clientes nomeados no site ou no perfil</div></div>
+      <div class="nm"><div class="v alerta">0</div><div class="l">formulários de captura no site inteiro</div></div>
+      <div class="nm"><div class="v">238</div><div class="l">seguidores no Instagram</div></div>
+    </div>
+
+    <div class="aud r d2" style="margin-top:44px">
+      <div class="aud-hd"><b>Site · 3soft.com.br</b><span>Página única · WordPress</span></div>
+
+      <div class="al"><div class="ic">01</div><div class="bd">
+        <h5>Nove botões, um só destino: o WhatsApp</h5>
+        <p>Todos os CTAs da página são o mesmo — <b>"Solicite um orçamento"</b>, apontando para o mesmo número de WhatsApp. Não existe formulário, não existe captura de e-mail, não existe nenhuma outra porta de entrada.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">02</div><div class="bd">
+        <h5>Nenhum cliente com nome</h5>
+        <p>Vinte e cinco anos de operação e zero prova social publicada: nenhuma empresa citada, nenhum depoimento, nenhum case. A seção <b>"Confira alguns exemplos que fizemos sob demanda"</b> entrega quatro imagens sem uma linha de texto explicando o que foi feito, para quem, e o que mudou.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">03</div><div class="bd">
+        <h5>Um ERP sem nenhuma tela do ERP</h5>
+        <p>A página descreve dezenas de funcionalidades e não mostra o produto uma única vez. Sem demonstração, sem captura de tela legendada, sem vídeo. <b>Quem avalia um sistema de gestão precisa enxergá-lo antes de agendar uma conversa</b> — e aqui não há como.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">04</div><div class="bd">
+        <h5>O conteúdo está preso dentro de imagens</h5>
+        <p>As seções "Para quem é o ERP Horus" e os exemplos sob demanda são compostas quase inteiramente por imagens sem texto alternativo. <b>O Google não lê o que está dentro de uma imagem</b> — e boa parte do argumento da 3Soft está exatamente ali.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">05</div><div class="bd">
+        <h5>Uma página só, para muitos públicos diferentes</h5>
+        <p>Indústria, varejo, distribuidora e prestador de serviço chegam todos na mesma home. Para campanhas de busca isso é limitante: <b>quem procura "ERP para indústria" e quem procura "sistema para PDV" precisam de destinos diferentes</b>, com a linguagem da sua operação.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">06</div><div class="bd">
+        <h5>Linguagem de funcionalidade, não de consequência</h5>
+        <p>O texto descreve o que o sistema faz — <i>"gerir todos os títulos a pagar ou receber em uma única tela"</i> — mas não nomeia o que a empresa deixa de perder ao fazer isso. <b>Quem compra ERP está fugindo de um problema</b>, e o problema não é citado em nenhum momento.</p>
+      </div></div>
+    </div>
+
+    <div class="aud r d3" style="margin-top:34px">
+      <div class="aud-hd"><b>Instagram · @3softsistemas</b><span>238 seguidores · 76 seguindo</span></div>
+
+      <div class="al"><div class="ic">07</div><div class="bd">
+        <h5>Duas identidades visuais convivendo no mesmo feed</h5>
+        <p>O grid mistura duas fases distintas: uma azul-escura com fundo de ondas e outra clara, em azul e branco. <b>Quem abre o perfil não consegue dizer qual é a cara da 3Soft</b> — e identidade indefinida é o oposto de autoridade.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">08</div><div class="bd">
+        <h5>Banco de imagens no lugar da empresa</h5>
+        <p>Executivos sorrindo em escritórios que não são os da 3Soft, uma mulher com expressão de frustração, uma atendente genérica de loja. <b>Nenhuma foto da equipe, do escritório, de um cliente ou do produto.</b> A empresa é invisível no próprio perfil.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">09</div><div class="bd">
+        <h5>Um perfil de software que nunca mostra o software</h5>
+        <p>Até o mockup de tablet exibe o logotipo, e não a tela do sistema. <b>Não há uma simulação, um fluxo real, um antes e depois.</b> O maior argumento de venda de um ERP — ver ele funcionando — não foi usado nenhuma vez.</p>
+      </div></div>
+
+      <div class="al"><div class="ic">10</div><div class="bd">
+        <h5>Prova social simulada em vez de prova social real</h5>
+        <p>Há uma peça que reproduz a aparência de um e-mail elogiando o suporte. A intenção está certa — a execução mostra o tamanho da lacuna: <b>com 25 anos de mercado, o depoimento precisou ser encenado em vez de solicitado a um cliente.</b></p>
+      </div></div>
+
+      <div class="al"><div class="ic">11</div><div class="bd">
+        <h5>Todo post é anúncio</h5>
+        <p>Cem por cento das peças são cards de oferta, com telefone e site carimbados no rodapé — informação que o Instagram não torna clicável. <b>Não existe conteúdo que ensine, explique ou ajude</b>, que é justamente o que faz alguém seguir um perfil de tecnologia.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- O BURACO -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">A consequência disso tudo</div>
+      <h2>O lead chega<br><em>e desaparece.</em></h2>
+      <p class="lead">Somando as onze observações, o que aparece não é um problema de comunicação. É um problema de operação comercial: não existe processo que transforme interesse em oportunidade registrada.</p>
+    </div>
+
+    <div class="cad r d1">
+      <div class="cd"><b>Atração</b><span>Alguém encontra a 3Soft</span></div>
+      <div class="cd quebra"><b>Conversão</b><span>Não há formulário — só WhatsApp</span></div>
+      <div class="cd quebra"><b>Registro</b><span>O contato não fica em lugar nenhum</span></div>
+      <div class="cd morto"><b>Qualificação</b><span>Não existe</span></div>
+      <div class="cd morto"><b>Retomada</b><span>Não existe</span></div>
+    </div>
+
+    <div class="buraco r d2">
+      <div class="lab">O que isso significa na prática</div>
+      <h4>Hoje é impossível responder três perguntas básicas do comercial.</h4>
+      <p><b>Quantas pessoas demonstraram interesse no mês passado?</b> Não há como saber — conversas de WhatsApp não são um registro consultável, e nada distingue o cliente que voltou do curioso que sumiu.</p>
+      <p><b>De onde veio cada um deles?</b> Um contato que chega no WhatsApp não carrega origem. Não dá para dizer se veio de busca, de indicação ou de uma campanha — e sem isso não existe decisão de investimento, só palpite.</p>
+      <p><b>O que aconteceu com quem não fechou?</b> Sem base própria, quem pediu orçamento e adiou está perdido. Em software de gestão, <b>a decisão costuma levar meses</b> — e é exatamente esse intervalo que hoje não tem ninguém cuidando.</p>
+    </div>
+  </div>
+</section>
+
+<!-- A ORDEM -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Por onde começar</div>
+      <h2>Na ordem inversa<br><em>do que se costuma vender.</em></h2>
+      <p class="lead">O caminho comum seria refazer a marca, produzir conteúdo por meses e esperar a audiência crescer. Não é o que propomos aqui.</p>
+    </div>
+    <div class="ordem r d1">
+      <div class="oc">
+        <span class="tag">O caminho comum</span>
+        <div class="big">Marca primeiro, resultado depois</div>
+        <p>Investimento alto na largada, prazo longo até o primeiro sinal e nenhum número objetivo para avaliar se está funcionando nos primeiros meses. Exige confiança antes de qualquer evidência.</p>
+      </div>
+      <div class="oc nossa">
+        <span class="tag">O que propomos</span>
+        <div class="big">Estrutura mínima, medição desde o primeiro mês</div>
+        <p>Começar pelo que é rastreável: campanha, clique, formulário, lead registrado, qualificação. Números conferíveis todo mês. Conteúdo entra depois — quando já houver dado mostrando qual dor faz o lead avançar.</p>
+      </div>
+    </div>
+    <p class="txt r d2" style="margin-top:34px">Há um motivo técnico para essa ordem, e não apenas comercial: <b style="color:var(--ink);font-weight:600">conteúdo produzido sem dado é conteúdo produzido no escuro.</b> Depois de alguns meses de campanha sabemos quais termos as pessoas buscam, quais objeções aparecem na qualificação e qual módulo do Horus puxa mais interesse. A frente de conteúdo da segunda fase nasce dessas respostas — em vez de tentar adivinhá-las.</p>
+  </div>
+</section>
+
+<!-- PLANO 01 -->
+<section class="pg" id="investimento">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Fase 01 · ponto de partida</div>
+        <h3>Aquisição<br><em>e qualificação.</em></h3>
+        <p class="pg-lead">Construir a estrutura mínima para que interesse vire oportunidade registrada — e para que cada real investido em mídia tenha origem rastreada.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Gestão de campanhas no Google Ads</b> — captura de quem já está procurando sistema de gestão, no momento da busca</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Gestão de campanhas no Instagram</b> — alcance de quem ainda não procura, atraído pela dor que o Horus resolve</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Landing page de campanha</b> com formulário — a porta de entrada que hoje não existe</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>CRM implantado</b> — etapas do funil, origem do lead, histórico e responsável por cada oportunidade</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Processo de qualificação</b> — critérios definidos com vocês para separar quem tem perfil de quem só está pesquisando</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Produção de vídeo e design</b> para as campanhas — criativos próprios, não banco de imagem</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Rastreamento e relatório mensal</b> — origem, volume, custo por lead e o que cada campanha entregou</span></div>
+        </div>
+        <div class="kpis">
+          <div class="kp">Leads registrados</div>
+          <div class="kp">Custo por lead</div>
+          <div class="kp">Origem de cada oportunidade</div>
+          <div class="kp">Taxa de qualificação</div>
+        </div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Aquisição e qualificação</div>
+        <div class="val">R$ 2.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">Sem produção recorrente de conteúdo para o perfil. Os criativos produzidos aqui servem às campanhas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANO 02 -->
+<section class="pg escuro">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Operação completa · recomendado</div>
+        <h3>Aquisição, conteúdo<br><em>e estrutura.</em></h3>
+        <p class="pg-lead">A mesma operação de aquisição, somada à construção da presença digital e ao reparo dos ativos que a auditoria apontou.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo da Fase 01</b> — campanhas, landing page, CRM, qualificação e relatório</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>12 publicações por mês</b> — conteúdo que mostra o produto, explica a operação e responde as objeções reais dos leads</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Identidade visual unificada</b> — encerrar a convivência de duas linguagens no feed</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Ajustes de estrutura</b> — reorganização do site, texto fora das imagens e páginas por segmento para as campanhas de busca</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Construção da prova social</b> — roteiro e produção de cases e depoimentos com clientes reais da 3Soft</span></div>
+        </div>
+        <div class="pg-obj"><b>Por que somar conteúdo reduz o custo de aquisição:</b> quando o lead chega a um perfil que mostra o sistema funcionando e clientes reais falando dele, parte da objeção já foi respondida antes do primeiro contato. A mídia continua trazendo o mesmo volume — o que muda é quantos avançam.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Operação completa</div>
+        <div class="val">R$ 4.000</div>
+        <div class="per">por mês</div>
+        <span class="selo">Economia de R$ 2.000/mês</span>
+        <div class="obs">As duas frentes contratadas em separado somam R$ 6.000. Integradas, R$ 4.000.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Lado a lado</div>
+      <h2>O que cada<br><em>fase resolve.</em></h2>
+    </div>
+    <div class="tbl r d1">
+      <div class="tr hd"><div>Entrega</div><div>Fase 01</div><div>Completa</div></div>
+      <div class="tr"><div>Campanhas no Google Ads e no Instagram</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Landing page com formulário de captura</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>CRM com origem, etapa e histórico</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Processo de qualificação de leads</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Vídeo e design para as campanhas</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Relatório mensal com custo por lead</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>12 publicações por mês no perfil</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Identidade visual unificada</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Ajustes de estrutura do site</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Cases e depoimentos de clientes reais</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr tot"><div>Investimento mensal</div><div>R$ 2.500</div><div>R$ 4.000</div></div>
+    </div>
+    <div class="nota r d2" style="margin-top:28px"><b>A verba de mídia é separada.</b> O investimento em anúncios no Google e no Instagram é definido em conjunto e pago diretamente às plataformas, em nome da 3Soft. Os valores acima remuneram estratégia, produção e gestão — não a mídia.</div>
+  </div>
+</section>
+
+<!-- O QUE NAO PROMETEMOS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Para não haver dúvida</div>
+      <h2>O que prometemos<br><em>e o que não.</em></h2>
+      <p class="lead">Software de gestão tem ciclo de decisão longo, ticket alto e envolve mais de uma pessoa aprovando. Qualquer proposta que garanta volume de vendas nesse cenário está chutando.</p>
+    </div>
+    <div class="honesto r d1">
+      <div class="hc nao">
+        <div class="t">Não prometemos</div>
+        <div class="li"><span class="mk">✕</span><span>Número de vendas, de contratos fechados ou de faturamento</span></div>
+        <div class="li"><span class="mk">✕</span><span>Custo por lead definido antes de existir histórico de campanha</span></div>
+        <div class="li"><span class="mk">✕</span><span>Prazo para o primeiro fechamento — isso depende do ciclo de decisão de cada empresa</span></div>
+        <div class="li"><span class="mk">✕</span><span>Crescimento de seguidores como indicador de resultado</span></div>
+      </div>
+      <div class="hc sim">
+        <div class="t">Prometemos</div>
+        <div class="li"><span class="mk">→</span><span>Uma porta de entrada que registra quem demonstrou interesse</span></div>
+        <div class="li"><span class="mk">→</span><span>Origem rastreada de cada oportunidade, campanha por campanha</span></div>
+        <div class="li"><span class="mk">→</span><span>Relatório mensal com os números reais, inclusive quando forem ruins</span></div>
+        <div class="li"><span class="mk">→</span><span>Ajuste contínuo a partir do que o dado mostrar, não do que supomos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NORTE -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">Nosso norte</div>
+      <h2>O problema da 3Soft<br><em>não é o software.</em></h2>
+      <p>O ERP Horus faz gestão de estoque, financeiro, fiscal, produção, logística e PDV, é modular, integrável e customizável. Isso está pronto e sustenta 25 anos de operação.</p>
+      <p>O que falta é tudo o que acontece antes de alguém virar cliente: ver o produto, encontrar quem já usa, registrar o interesse e ser retomado quando a decisão amadurecer.</p>
+      <div class="punch r d1">
+        <p>Vinte e cinco anos de clientes atendidos são o maior ativo da 3Soft — <em>e transformá-lo em prova pública é o trabalho que começa agora.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="cta-h">Começar pequeno,<br><em>medindo desde o primeiro mês.</em></h2>
+      <p class="cta-sub">Aprovando, começamos pela landing page de captura e pela implantação do CRM — a estrutura que faz o investimento em mídia ter para onde ir.</p>
+      <div class="cta-static">Aprovar a proposta</div>
+      <div class="validade"><span class="dot"></span>Validade da proposta: 15 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Alma.Convert · Agência Digital — Proposta comercial para 3Soft Sistemas</p></footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+  var nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  var ho=new IntersectionObserver(function(es){
+    es.forEach(function(e){ nav.classList.toggle('hidden', e.isIntersecting && e.intersectionRatio>.75); });
+  },{threshold:[.75]});
+  if(hero) ho.observe(hero);
+})();
+</script>
+</body>
+</html>
