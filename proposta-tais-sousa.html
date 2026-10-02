@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial · Teacher Taís Sousa | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000;--ink:#1a1a1a;--mid:#333;--dim:#555;--muted:#888;--subtle:#bbb;
+  --off:#f5f5f5;--white:#fff;--line:rgba(16,24,40,.09);--line-s:rgba(16,24,40,.15);
+  --orange:#F97316;--orange-l:#FFF4ED;--orange-d:#EA6C0A;
+  --f:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:var(--f);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+.section{padding:104px 0;border-top:1px solid var(--line)}
+.section.alt{background:var(--off)}
+.section-head{margin-bottom:54px}
+.eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+h2 em{font-style:italic;font-weight:300;color:var(--orange)}
+.lead{font-size:clamp(.9rem,1.5vw,1.03rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:690px;margin-top:22px}
+p.txt{font-size:clamp(.88rem,1.45vw,1rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:710px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:17px 0;background:rgba(255,255,255,.93);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transition:opacity .4s}
+nav.hidden{opacity:0;pointer-events:none}
+.nav-in{max-width:1060px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-.03em}
+.logo span{font-weight:300;font-style:italic;color:var(--muted)}
+.nav-cta{background:var(--orange);color:var(--black);padding:10px 20px;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--orange-d)}
+
+.hero{min-height:94vh;display:flex;align-items:center;position:relative;border-bottom:3px solid var(--orange);padding:130px 0 80px}
+.hero-deco{position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-size:17rem;font-weight:900;color:rgba(249,115,22,.05);letter-spacing:-.06em;pointer-events:none;line-height:1}
+.hero-in{position:relative;z-index:2}
+.hero-eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange);margin-bottom:30px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .1s forwards}
+h1{font-size:clamp(2.2rem,5.2vw,4.5rem);font-weight:800;line-height:1;letter-spacing:-.045em}
+h1 span{display:block;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+h1 .l1{color:var(--ink);animation-delay:.25s}
+h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s}
+.hero-sub{font-size:clamp(.94rem,1.6vw,1.1rem);font-weight:300;line-height:1.8;color:var(--dim);max-width:640px;margin-top:34px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .55s forwards}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:44px;opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .7s forwards}
+.hero-meta span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line-s);padding:9px 15px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.r.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* frentes / ordem */
+.ordem{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.oc{background:var(--white);padding:36px 32px}
+.oc.nossa{background:var(--ink)}
+.oc .tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;background:var(--off);color:var(--muted);margin-bottom:20px}
+.oc.nossa .tag{background:var(--orange);color:var(--black)}
+.oc .big{font-size:clamp(1rem,1.9vw,1.24rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--ink)}
+.oc.nossa .big{color:var(--white)}
+.oc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim);margin-top:16px}
+.oc.nossa p{color:rgba(255,255,255,.58)}
+
+/* metodologia jornada — 3 cards */
+.jorn{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.jc{background:var(--white);padding:34px 28px}
+.jc .tag{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;background:var(--orange-l);color:var(--orange-d);margin-bottom:18px}
+.jc h4{font-size:1.02rem;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.jc p{font-size:.84rem;font-weight:300;line-height:1.78;color:var(--dim)}
+.jc .quote{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.82rem;font-weight:500;font-style:italic;color:var(--orange-d);line-height:1.6}
+
+/* pilares — 4 col scorecard */
+.pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pil{background:var(--white);padding:26px 20px}
+.pil .n{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.pil h5{font-size:.92rem;font-weight:700;letter-spacing:-.015em;margin-bottom:8px}
+.pil p{font-size:.78rem;font-weight:300;line-height:1.6;color:var(--dim)}
+
+/* auditoria-like numbered list reusado para "como funciona" */
+.aud{border:1px solid var(--line);background:var(--white)}
+.aud-hd{background:var(--ink);padding:22px 28px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+.aud-hd b{font-size:.92rem;font-weight:700;letter-spacing:-.01em;color:var(--white)}
+.aud-hd span{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.al{display:grid;grid-template-columns:30px 1fr;gap:0;border-top:1px solid var(--line)}
+.al:first-of-type{border-top:0}
+.al .ic{background:var(--off);display:flex;align-items:flex-start;justify-content:center;padding-top:22px;font-size:.8rem;font-weight:800;color:var(--orange)}
+.al .bd{padding:20px 26px}
+.al h5{font-size:.95rem;font-weight:700;letter-spacing:-.02em;margin-bottom:7px}
+.al p{font-size:.85rem;font-weight:300;line-height:1.78;color:var(--dim);max-width:760px}
+.al p b{font-weight:600;color:var(--ink)}
+
+/* cadeia / fluxo */
+.cad{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+.cd{background:var(--white);padding:20px 14px;flex:1 1 140px;text-align:center}
+.cd b{display:block;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:5px}
+.cd span{font-size:.7rem;font-weight:300;line-height:1.5;color:var(--muted)}
+.cd.alvo{background:var(--orange-l)}
+.cd.alvo b{color:var(--orange-d)}
+
+/* bloco escuro narrativo */
+.buraco{background:var(--ink);border-top:3px solid var(--orange);padding:38px 40px;margin-top:1px}
+.buraco .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.buraco h4{font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.025em;color:var(--white);margin-bottom:16px;line-height:1.3}
+.buraco p{font-size:.92rem;font-weight:300;line-height:1.82;color:rgba(255,255,255,.66);max-width:820px}
+.buraco p+p{margin-top:14px}
+.buraco b{font-weight:600;color:var(--white)}
+
+/* páginas de plano */
+.pg{min-height:100vh;display:flex;align-items:center;border-top:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:always;padding:90px 0}
+.pg.escuro{background:var(--ink);border-top-color:rgba(255,255,255,.12)}
+.pg-num{font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.pg h3{font-size:clamp(1.85rem,3.9vw,2.9rem);font-weight:700;line-height:1.08;letter-spacing:-.035em;margin-bottom:18px}
+.pg.escuro h3{color:var(--white)}
+.pg h3 em{font-style:italic;font-weight:300;color:var(--orange)}
+.pg-lead{font-size:clamp(.9rem,1.5vw,1.02rem);font-weight:300;line-height:1.85;color:var(--dim);max-width:560px}
+.pg.escuro .pg-lead{color:rgba(255,255,255,.6)}
+.pg-grid{display:grid;grid-template-columns:1fr 330px;gap:52px;align-items:start;width:100%}
+.pg-itens{margin-top:26px}
+.pgi{display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:.85rem;font-weight:300;line-height:1.7;color:var(--dim)}
+.pgi:first-child{border-top:0}
+.pg.escuro .pgi{border-top-color:rgba(255,255,255,.11);color:rgba(255,255,255,.6)}
+.pgi .mk{color:var(--orange);font-weight:700;flex-shrink:0;line-height:1.7}
+.pgi b{font-weight:600;color:var(--ink)}
+.pg.escuro .pgi b{color:var(--white)}
+.pg-box{border:1px solid var(--line);border-top:3px solid var(--orange);padding:34px 30px;background:var(--white)}
+.pg.escuro .pg-box{background:#232323;border-color:rgba(255,255,255,.12);border-top-color:var(--orange)}
+.pg-box .lab{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pg-box .depor{font-size:.84rem;font-weight:400;color:var(--muted);margin-bottom:8px}
+.pg-box .depor s{color:var(--subtle);text-decoration:line-through;margin:0 4px}
+.pg.escuro .pg-box .depor{color:rgba(255,255,255,.45)}
+.pg.escuro .pg-box .depor s{color:rgba(255,255,255,.3)}
+.pg-box .val{font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1}
+.pg.escuro .pg-box .val{color:var(--white)}
+.pg-box .per{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:9px}
+.pg-box .selo{display:inline-block;margin-top:18px;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--orange);color:var(--black);padding:8px 13px}
+.pg-box .obs{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;font-weight:300;line-height:1.65;color:var(--dim)}
+.pg.escuro .pg-box .obs{border-top-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.pg-obj{margin-top:26px;padding:20px 24px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:400;line-height:1.75;color:var(--mid);max-width:560px}
+.pg.escuro .pg-obj{background:rgba(249,115,22,.12);color:rgba(255,255,255,.82)}
+.pg-obj b{font-weight:700;color:var(--ink)}
+.pg.escuro .pg-obj b{color:var(--orange)}
+
+.ponte{padding:58px 0;text-align:center;border-top:1px solid var(--line);background:var(--off)}
+.ponte .soma{font-size:clamp(1.25rem,2.6vw,1.7rem);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.ponte .soma .op{color:var(--muted);font-weight:300;padding:0 6px}
+.ponte .soma b{color:var(--orange-d)}
+.ponte p{font-size:.85rem;font-weight:300;color:var(--dim);margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+.kpis{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.kp{background:var(--white);padding:13px 14px;flex:1 1 130px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.03em;color:var(--dim)}
+.pg.escuro .kpis{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.13)}
+.pg.escuro .kp{background:#232323;color:rgba(255,255,255,.65)}
+
+/* lista simples (perguntas) */
+.perg{margin-top:30px;border:1px solid var(--line);background:var(--white)}
+.pg-q{display:flex;gap:12px;padding:16px 22px;border-top:1px solid var(--line);font-size:.88rem;font-weight:400;line-height:1.7;color:var(--mid)}
+.pg-q:first-child{border-top:0}
+.pg-q .mk{color:var(--orange);font-weight:700;flex-shrink:0}
+
+/* comparativo */
+.tbl{border:1px solid var(--line);background:var(--white)}
+.tr{display:grid;grid-template-columns:1fr 118px 118px 118px;border-top:1px solid var(--line);align-items:center}
+.tr:first-child{border-top:0}
+.tr.hd{background:var(--ink)}
+.tr.hd div{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:16px 18px;text-align:center}
+.tr.hd div:first-child{text-align:left;color:var(--white)}
+.tr>div{padding:15px 18px;font-size:.85rem;font-weight:300;color:var(--dim);text-align:center}
+.tr>div:first-child{text-align:left;font-weight:400;color:var(--ink)}
+.tr .s{color:var(--orange-d);font-weight:800}
+.tr .n{color:var(--subtle);font-weight:600}
+.tr.tot{background:var(--orange-l)}
+.tr.tot>div{font-weight:800;color:var(--ink);font-size:1rem;letter-spacing:-.02em}
+.tr.tot>div:first-child{font-size:.85rem;font-weight:600}
+
+.nota{padding:26px 30px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:300;line-height:1.8;color:var(--mid);margin-bottom:20px}
+.nota:last-child{margin-bottom:0}
+.nota b{font-weight:600;color:var(--ink)}
+
+.norte{background:var(--ink);padding:100px 0}
+.norte .eyebrow{color:var(--orange)}
+.norte h2{color:var(--white)}
+.norte p{font-size:clamp(.92rem,1.6vw,1.06rem);font-weight:300;line-height:1.85;color:rgba(255,255,255,.6);max-width:770px;margin-top:22px}
+.norte .punch{margin-top:44px;padding:34px 38px;background:var(--orange)}
+.norte .punch p{font-size:clamp(1rem,2.1vw,1.38rem);font-weight:600;letter-spacing:-.02em;line-height:1.5;color:var(--black);max-width:880px;margin:0}
+.norte .punch em{font-style:italic;font-weight:300}
+
+.cta-sec{padding:100px 0;text-align:center;border-top:1px solid var(--line)}
+.cta-h{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:22px}
+.cta-h em{font-style:italic;font-weight:300;color:var(--orange)}
+.cta-sub{font-size:.94rem;font-weight:300;line-height:1.8;color:var(--dim);max-width:560px;margin:0 auto 46px}
+.cta-static{display:inline-block;background:var(--orange);color:var(--black);padding:19px 44px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.validade{margin-top:44px;display:inline-flex;align-items:center;gap:10px;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-s);padding:10px 18px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+footer{border-top:1px solid var(--line);padding:34px 32px;text-align:center}
+footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
+
+@media(max-width:900px){
+  html{scroll-snap-type:none}
+  .pg{min-height:auto;padding:70px 0}
+  .pg-grid{grid-template-columns:1fr;gap:32px}
+  .ordem,.jorn{grid-template-columns:1fr}
+  .pilares{grid-template-columns:1fr 1fr}
+  .tr{grid-template-columns:1fr 84px 84px 84px}
+  .hero-deco{display:none}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px}
+  .section{padding:70px 0}
+  .section-head{margin-bottom:38px}
+  .oc,.jc,.pil,.pg-box{padding:26px 20px}
+  .al .bd{padding:18px 20px}
+  .buraco,.nota,.norte .punch,.pg-obj{padding:24px 22px}
+  .aud-hd{padding:18px 20px}
+  .norte{padding:70px 0}
+  .cta-sec{padding:70px 0}
+  .pg{padding:56px 0}
+  .cta-static{width:100%;padding:18px 22px}
+  .cd,.kp{flex:1 1 100%}
+  .pilares{grid-template-columns:1fr}
+  .tr{grid-template-columns:1fr 58px 58px 58px}
+  .tr>div{padding:12px 8px;font-size:.72rem}
+}
+@media(max-width:400px){
+  .wrap{padding:0 16px}
+  .section{padding:58px 0}
+  .hero-meta span{font-size:.55rem;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-in">
+    <div class="logo">Alma<span>.Convert</span></div>
+    <a href="#investimento" class="nav-cta">Ver investimento</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-deco">TS</div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Proposta comercial · Teacher Taís Sousa — Escola On-line de Idiomas</div>
+    <h1>
+      <span class="l1">Uma comunicação que conecta.</span>
+      <span class="l2">Uma operação que não deixa ninguém escapar.</span>
+    </h1>
+    <p class="hero-sub">A Escola On-line de Idiomas tem a oportunidade de fortalecer sua presença digital e, ao mesmo tempo, estruturar melhor a jornada de quem demonstra interesse em aprender um novo idioma — da primeira conexão até a matrícula.</p>
+    <div class="hero-meta">
+      <span>Metodologia Jornada®️</span>
+      <span>CRM + Agente de IA</span>
+      <span>Conteúdo e comercial integrados</span>
+    </div>
+  </div>
+</header>
+
+<!-- O DESAFIO -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">O desafio</div>
+      <h2>Duas frentes.<br><em>Uma mesma jornada.</em></h2>
+      <p class="lead">A partir da nossa conversa, identificamos duas frentes importantes para sustentar o crescimento da Teacher Taís Sousa — uma cuida de quem ainda não conhece a escola, a outra cuida de quem já chegou até ela.</p>
+    </div>
+    <div class="ordem r d1">
+      <div class="oc">
+        <span class="tag">Frente 01</span>
+        <div class="big">Fortalecer posicionamento, presença digital e geração de demanda</div>
+        <p>Através do marketing de conteúdo — construindo uma comunicação capaz de atrair, conectar e gerar interesse genuíno em aprender um novo idioma.</p>
+      </div>
+      <div class="oc">
+        <span class="tag">Frente 02</span>
+        <div class="big">Estruturar o processo comercial para receber, organizar, triar e qualificar</div>
+        <p>Através de CRM e Inteligência Artificial — para que nenhum potencial aluno se perca entre o primeiro contato e a matrícula.</p>
+      </div>
+    </div>
+    <p class="txt r d2" style="margin-top:34px">A partir dessas duas necessidades, desenvolvemos três possibilidades de atuação — cada uma cuidando de uma parte da jornada, e uma terceira conectando as duas.</p>
+  </div>
+</section>
+
+<!-- METODOLOGIA JORNADA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Como pensamos a comunicação</div>
+      <h2>Metodologia<br><em>Jornada®️.</em></h2>
+      <p class="lead">Mais do que manter as redes sociais ativas, queremos construir uma comunicação capaz de fazer com que as pessoas conheçam a Teacher Taís, se identifiquem com sua metodologia, reconheçam sua autoridade e desenvolvam confiança — antes mesmo de entrar em contato com a escola.</p>
+    </div>
+    <div class="jorn r d1">
+      <div class="jc">
+        <span class="tag">01 · Conexão</span>
+        <h4>Gerar identificação</h4>
+        <p>Conteúdos capazes de gerar identificação com quem deseja aprender um novo idioma: dificuldades, inseguranças, objetivos, experiências anteriores, sonhos e situações do dia a dia. Antes de apresentar um curso, construímos a sensação.</p>
+        <div class="quote">"Ela entende exatamente a dificuldade que eu tenho para aprender."</div>
+      </div>
+      <div class="jc">
+        <span class="tag">02 · Gratidão</span>
+        <h4>Entregar valor antes da matrícula</h4>
+        <p>Transformar conhecimento em conteúdos que entreguem valor por si só. Informação, orientações, dicas e explicações ajudam a audiência a perceber valor em acompanhar a Teacher Taís e fortalecem sua autoridade no ensino de idiomas.</p>
+        <div class="quote">"Eu já aprendo acompanhando esse conteúdo."</div>
+      </div>
+      <div class="jc">
+        <span class="tag">03 · Reciprocidade</span>
+        <h4>Apresentar a oferta como consequência</h4>
+        <p>Depois de construir relacionamento, confiança e percepção de valor, a comunicação passa também a apresentar os cursos, programas e soluções da escola. A oferta deixa de aparecer isolada e passa a ser consequência de uma relação construída ao longo da jornada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSTA 01 -->
+<section class="pg" id="investimento">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 01 · conteúdo e posicionamento</div>
+        <h3>Marketing de conteúdo<br><em>e posicionamento digital.</em></h3>
+        <p class="pg-lead">Transformar as redes sociais em um ativo para fortalecer posicionamento, autoridade, relacionamento e geração de demanda para a Escola On-line de Idiomas.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Planejamento estratégico mensal</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Definição e evolução da linha editorial</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Desenvolvimento de pautas</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Criação recorrente de conteúdos</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Roteiros para vídeos</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Cards e carrosséis</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Copies e legendas</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Direcionamento estratégico das publicações</b></span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Acompanhamento das métricas</b> e evolução da comunicação</span></div>
+        </div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Conteúdo e posicionamento</div>
+        <div class="val">R$ 3.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">Metodologia Jornada®️ — Conexão → Gratidão → Reciprocidade aplicada à comunicação da escola.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSTA 02 -->
+<section class="pg">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 02 · estrutura comercial</div>
+        <h3>CRM e atendimento<br><em>por Agente de IA.</em></h3>
+        <p class="pg-lead">Estruturar a outra ponta da jornada: o atendimento de quem chega até a escola, organizando as oportunidades e realizando a primeira triagem e qualificação pelo WhatsApp.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>CRM implantado</b> — jornada clara para cada potencial aluno: Novo contato → Atendimento → Qualificação → Oportunidade de matrícula → Negociação → Matrícula</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Agente de IA</b> no primeiro atendimento via WhatsApp, preparado para compreender o contexto da escola</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Qualificação automática</b> — idioma desejado, objetivo, nível atual, dificuldades, disponibilidade, curso de maior interesse, momento de decisão e intenção de matrícula</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Resposta a dúvidas recorrentes</b> e encaminhamento das oportunidades mais qualificadas para o atendimento humano</span></div>
+        </div>
+        <div class="pg-obj">O objetivo não é substituir o atendimento humano. <b>É fazer com que ele comece em um ponto melhor</b> — recebendo um potencial aluno já contextualizado, com informações prontas para conduzir a matrícula.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">CRM + Agente de IA</div>
+        <div class="val">R$ 2.500</div>
+        <div class="per">por mês</div>
+        <div class="obs">Sem produção recorrente de conteúdo para o perfil — isso é o que a Proposta 01 cobre.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTELIGENCIA COMERCIAL -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Um ganho adicional</div>
+      <h2>Cada conversa<br><em>gera dados.</em></h2>
+      <p class="lead">Com o tempo, as conversas estruturadas pelo CRM e pelo Agente de IA passam a revelar padrões que ajudam a aprimorar tanto o processo comercial quanto a própria comunicação da escola.</p>
+    </div>
+    <div class="perg r d1">
+      <div class="pg-q"><span class="mk">→</span><span>Por que as pessoas procuram a escola?</span></div>
+      <div class="pg-q"><span class="mk">→</span><span>Quais idiomas despertam maior interesse?</span></div>
+      <div class="pg-q"><span class="mk">→</span><span>Quais são as principais dificuldades relatadas?</span></div>
+      <div class="pg-q"><span class="mk">→</span><span>Quais dúvidas aparecem antes da matrícula?</span></div>
+      <div class="pg-q"><span class="mk">→</span><span>Quais objeções impedem algumas pessoas de avançar?</span></div>
+      <div class="pg-q"><span class="mk">→</span><span>Quais perfis demonstram maior intenção de matrícula?</span></div>
+    </div>
+    <p class="txt r d2" style="margin-top:28px">Criar uma estrutura capaz de organizar, triar e qualificar potenciais alunos, gerando oportunidades de matrícula mais contextualizadas para o atendimento comercial — esse é o objetivo da Proposta 02.</p>
+  </div>
+</section>
+
+<!-- PONTE: SOMA -->
+<section class="ponte">
+  <div class="wrap">
+    <div class="r">
+      <div class="soma">R$ 3.500 <span class="op">+</span> R$ 2.500 <span class="op">=</span> <b>R$ 6.000</b></div>
+      <p>Conteúdo e Estrutura Comercial contratados em separado somam seis mil reais por mês. Na operação integrada a seguir, as duas frentes trabalham juntas — e se retroalimentam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSTA 03 -->
+<section class="pg escuro">
+  <div class="wrap">
+    <div class="pg-grid">
+      <div class="r">
+        <div class="pg-num">Proposta 03 · operação integrada · recomendado</div>
+        <h3>Marketing de conteúdo<br><em>+ CRM + Agente de IA.</em></h3>
+        <p class="pg-lead">A modalidade que conecta as duas pontas da estratégia: de um lado construímos uma comunicação capaz de gerar atenção, relacionamento, autoridade e demanda; do outro, estruturamos uma operação capaz de receber, organizar e qualificar essa demanda.</p>
+        <div class="pg-itens">
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo da Proposta 01</b> — planejamento, linha editorial, pautas, conteúdo recorrente e métricas</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Tudo da Proposta 02</b> — CRM, Agente de IA, qualificação e inteligência comercial</span></div>
+          <div class="pgi"><span class="mk">→</span><span><b>Ciclo de aprendizado contínuo</b> — o que aparece nos atendimentos vira pauta de conteúdo, e o conteúdo prepara melhor quem chega ao atendimento</span></div>
+        </div>
+        <div class="pg-obj"><b>É a integração entre Marketing e Inteligência Comercial.</b> O marketing gera demanda, a IA qualifica, o CRM organiza e o atendimento humano concentra energia nos momentos em que relacionamento e capacidade de fechamento fazem maior diferença.</div>
+      </div>
+      <div class="pg-box r d1">
+        <div class="lab">Operação integrada</div>
+        <div class="depor">De <s>R$ 6.000</s> por:</div>
+        <div class="val">R$ 5.000</div>
+        <div class="per">por mês</div>
+        <span class="selo">Economia de R$ 1.000/mês</span>
+        <div class="obs">Conteúdo e Estrutura Comercial contratados em separado somam R$ 6.000. Integrados, R$ 5.000.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A JORNADA COMPLETA -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Como as duas frentes se conectam</div>
+      <h2>A jornada<br><em>completa.</em></h2>
+      <p class="lead">Da primeira conexão com um conteúdo até a matrícula, cada etapa tem um responsável — conteúdo, Agente de IA, CRM ou atendimento humano.</p>
+    </div>
+    <div class="cad r d1">
+      <div class="cd"><b>Conteúdo</b><span>Jornada®️ em ação</span></div>
+      <div class="cd"><b>Conexão</b><span>Identificação</span></div>
+      <div class="cd"><b>Autoridade</b><span>Confiança construída</span></div>
+      <div class="cd"><b>Interesse</b><span>Em aprender um idioma</span></div>
+      <div class="cd"><b>Contato</b><span>Pelo WhatsApp</span></div>
+      <div class="cd"><b>Agente de IA</b><span>Primeira conversa</span></div>
+      <div class="cd"><b>Triagem</b><span>E qualificação</span></div>
+      <div class="cd"><b>CRM</b><span>Organiza a oportunidade</span></div>
+      <div class="cd"><b>Oportunidade</b><span>De matrícula</span></div>
+      <div class="cd"><b>Atendimento</b><span>Humano</span></div>
+      <div class="cd alvo"><b>Matrícula</b><span>Novo aluno</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA CADA ETAPA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Por dentro da jornada</div>
+      <h2>Como cada etapa<br><em>faz a diferença.</em></h2>
+    </div>
+    <div class="aud r d1">
+      <div class="aud-hd"><b>Da demanda à matrícula</b><span>Quatro responsáveis, uma só jornada</span></div>
+      <div class="al"><div class="ic">01</div><div class="bd">
+        <h5>O marketing gera demanda</h5>
+        <p>Utilizando a metodologia Jornada®️ — Conexão, Gratidão, Reciprocidade — construímos conteúdos capazes de fazer com que novas pessoas descubram a Teacher Taís, se identifiquem com sua comunicação, reconheçam sua autoridade e considerem aprender um idioma através da escola.</p>
+      </div></div>
+      <div class="al"><div class="ic">02</div><div class="bd">
+        <h5>A IA qualifica a demanda</h5>
+        <p>Quando essa pessoa entra em contato, o Agente de IA realiza a primeira etapa da conversa. Em vez de simplesmente responder mensagens automaticamente, buscamos entender quem é aquela pessoa, o que procura e em qual momento da decisão está — para diferenciar uma dúvida inicial de uma oportunidade com maior intenção de matrícula.</p>
+      </div></div>
+      <div class="al"><div class="ic">03</div><div class="bd">
+        <h5>O CRM organiza a demanda</h5>
+        <p>As informações coletadas deixam de ficar dispersas e passam a fazer parte de uma jornada comercial estruturada, permitindo acompanhar cada oportunidade entre primeiro contato, interesse, qualificação e matrícula.</p>
+      </div></div>
+      <div class="al"><div class="ic">04</div><div class="bd">
+        <h5>O atendimento humano concentra energia onde mais importa</h5>
+        <p>A tecnologia cuida da primeira camada do processo. O atendimento humano pode concentrar sua energia nos momentos em que relacionamento, negociação e capacidade de fechamento fazem maior diferença.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAS PONTAS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">A principal diferença da Proposta 03</div>
+      <h2>Duas pontas.<br><em>Uma única estratégia.</em></h2>
+      <p class="lead">Não queremos olhar apenas para "como fazer mais pessoas procurarem a escola?". Também queremos responder "o que acontece quando essas pessoas chegam?". Gerar mais demanda sem estruturar atendimento pode significar gerar também mais oportunidades desperdiçadas — assim como uma excelente estrutura comercial, sem geração contínua de demanda, tem seu potencial limitado.</p>
+    </div>
+    <div class="pilares r d1">
+      <div class="pil"><div class="n">Marketing</div><h5>Atrair e conectar</h5><p>Gera demanda através de conteúdo e relacionamento.</p></div>
+      <div class="pil"><div class="n">Inteligência Artificial</div><h5>Atender e triar</h5><p>Qualifica cada conversa desde o primeiro contato.</p></div>
+      <div class="pil"><div class="n">CRM</div><h5>Organizar</h5><p>Acompanha cada oportunidade até a matrícula.</p></div>
+      <div class="pil"><div class="n">Atendimento humano</div><h5>Relacionar e negociar</h5><p>Concentra energia nas melhores oportunidades.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO DE INTELIGENCIA -->
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">A vantagem de operar as duas frentes juntas</div>
+      <h2>Um ciclo<br><em>de inteligência.</em></h2>
+      <p class="lead">As conversas comerciais começam a alimentar a estratégia de marketing. Se uma dificuldade aparece constantemente nos atendimentos, ela pode virar conteúdo. Se uma objeção impede matrículas, podemos trabalhá-la antes mesmo de a pessoa chegar ao WhatsApp. Se um perfil demonstra maior potencial de matrícula, ajustamos a comunicação para conversar melhor com esse público.</p>
+    </div>
+    <div class="buraco r d1">
+      <div class="lab">O ciclo</div>
+      <h4>Quanto mais conhecemos a audiência, mais precisa se torna a comunicação. E quanto melhor a comunicação, mais preparada chega a oportunidade comercial.</h4>
+    </div>
+    <div class="cad r d2">
+      <div class="cd"><b>Marketing</b><span>Gera atenção</span></div>
+      <div class="cd"><b>Demanda</b><span>Interesse qualificado</span></div>
+      <div class="cd"><b>Atendimento</b><span>IA + humano</span></div>
+      <div class="cd"><b>Dados</b><span>O que cada conversa revela</span></div>
+      <div class="cd alvo"><b>Aprendizado</b><span>Realimenta o marketing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">Lado a lado</div>
+      <h2>O que cada<br><em>proposta resolve.</em></h2>
+    </div>
+    <div class="tbl r d1">
+      <div class="tr hd"><div>Entrega</div><div>Proposta 01</div><div>Proposta 02</div><div>Integrada</div></div>
+      <div class="tr"><div>Planejamento e linha editorial</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Produção recorrente de conteúdo</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>Roteiros, cards, carrosséis e copies</div><div class="s">✓</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr"><div>CRM implantado</div><div class="n">—</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Agente de IA no WhatsApp</div><div class="n">—</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Triagem e qualificação de leads</div><div class="n">—</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Inteligência comercial (dados das conversas)</div><div class="n">—</div><div class="s">✓</div><div class="s">✓</div></div>
+      <div class="tr"><div>Ciclo de aprendizado entre comercial e conteúdo</div><div class="n">—</div><div class="n">—</div><div class="s">✓</div></div>
+      <div class="tr tot"><div>Investimento mensal</div><div>R$ 3.500</div><div>R$ 2.500</div><div>R$ 5.000</div></div>
+    </div>
+    <div class="nota r d2" style="margin-top:28px">As duas frentes, quando contratadas individualmente, representam um investimento de <b>R$ 6.000/mês</b>. Na contratação da operação integrada, o investimento passa para <b>R$ 5.000/mês</b> — uma condição diferenciada de R$ 1.000 mensais.</div>
+  </div>
+</section>
+
+<!-- NOSSA VISAO -->
+<section class="norte">
+  <div class="wrap">
+    <div class="r">
+      <div class="eyebrow">Nossa visão</div>
+      <h2>Marketing e comercial<br><em>não são etapas desconectadas.</em></h2>
+      <p>O conteúdo gera atenção. A Jornada®️ transforma atenção em relacionamento. O relacionamento gera demanda. O Agente de IA recebe e qualifica. O CRM organiza. O atendimento humano conduz as melhores oportunidades para a matrícula. E os dados gerados ao longo desse processo retornam para a estratégia, permitindo que comunicação e atendimento evoluam continuamente.</p>
+      <div class="punch r d1">
+        <p>Mais do que gerar novos contatos, queremos construir uma jornada capaz de <em>transformar atenção em relacionamento, relacionamento em oportunidade e oportunidade em novos alunos.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="r">
+      <h2 class="cta-h">Pronta para estruturar<br><em>as duas pontas da jornada?</em></h2>
+      <p class="cta-sub">Aprovando a proposta, iniciamos pelo planejamento estratégico e pela implantação da estrutura comercial — a base que faz cada conversa virar uma oportunidade acompanhada.</p>
+      <div class="cta-static">Aprovar a proposta</div>
+      <div class="validade"><span class="dot"></span>Validade da proposta: 15 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Alma.Convert · Agência Digital — Proposta comercial para Teacher Taís Sousa | Escola On-line de Idiomas</p></footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+  var nav=document.getElementById('nav'), hero=document.querySelector('.hero');
+  var ho=new IntersectionObserver(function(es){
+    es.forEach(function(e){ nav.classList.toggle('hidden', e.isIntersecting && e.intersectionRatio>.75); });
+  },{threshold:[.75]});
+  if(hero) ho.observe(hero);
+})();
+</script>
+</body>
+</html>
