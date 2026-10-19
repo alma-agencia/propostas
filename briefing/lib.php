@@ -96,6 +96,8 @@ function campos_do_tipo(string $t): array {
     $p = __DIR__ . '/campos/' . $def['arquivo'];
     if (!is_file($p)) return [];
     $base = require $p;
+    // Tipos de acompanhamento recorrente (ex.: Conteúdo Mensal) não repetem o "Resultado esperado".
+    if (!empty($def['sem_resultado'])) { return is_array($base) ? $base : []; }
     $fim  = require __DIR__ . '/campos/_resultado.php';
     return array_merge(is_array($base) ? $base : [], $fim);
 }

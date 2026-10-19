@@ -9,6 +9,13 @@ return [
     'arquivo'   => 'conteudo.php',
     'ativo'     => true,
   ],
+  'conteudo-mensal' => [
+    'nome'          => 'Conteúdo Mensal',
+    'resumo'        => 'Briefing curto, para repetir todo mês: pauta do mês, datas, promoções e uma avaliação de 1 a 5 do trabalho, do atendimento e do resultado.',
+    'arquivo'       => 'conteudo-mensal.php',
+    'ativo'         => true,
+    'sem_resultado' => true,
+  ],
   'conteudo-trafego' => [
     'nome'      => 'Conteúdo + Tráfego pago',
     'resumo'    => 'O briefing de conteúdo com um bloco enxuto de anúncios. Para operações em que a conversão é direta e o conteúdo carrega a estratégia.',

@@ -138,6 +138,14 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
   .dores .dh div:last-child{display:none}
   .dr .c:first-child{border-bottom:1px solid var(--line)}
 }
+
+/* ── NOTA 1 A 5 ── */
+.rate{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:4px 0}
+.rb{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);font-family:var(--f);font-size:.95rem;font-weight:600;color:var(--dim);cursor:pointer;transition:all .15s}
+.rb:hover{border-color:var(--orange);color:var(--orange-d)}
+.rb.sel{background:var(--orange);border-color:var(--orange);color:#000}
+.rl{font-size:.7rem;font-weight:300;color:var(--muted);margin-left:6px}
+
 @media print{
   .bar,.actions,.note.info,footer,.doc-sub{display:none!important}
   body{background:#fff}
@@ -200,6 +208,12 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
         <div class="fld">
           <?php if (($c['tag'] ?? 'textarea') === 'input'): ?>
             <input type="text" <?= $attr ?> placeholder="<?= $ph ?>">
+          <?php elseif (($c['tag'] ?? '') === 'nota'): ?>
+            <div class="rate">
+              <input type="hidden" <?= $attr ?>>
+              <?php for ($i = 1; $i <= 5; $i++): ?><button type="button" class="rb" data-v="<?= $i ?>"><?= $i ?></button><?php endfor; ?>
+              <span class="rl">1 = ruim · 5 = excelente</span>
+            </div>
           <?php else: ?>
             <textarea <?= $attr ?> placeholder="<?= $ph ?>"></textarea>
           <?php endif; ?>
@@ -228,6 +242,20 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
   var pendente=false, salvando=false, ultimoOk=null;
 
   function autosize(t){ if(t.tagName==='TEXTAREA'){ t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'; } }
+  function syncRate(){
+    [].slice.call(document.querySelectorAll('.rate')).forEach(function(r){
+      var v=r.querySelector('input').value;
+      [].slice.call(r.querySelectorAll('.rb')).forEach(function(b){ b.classList.toggle('sel', b.dataset.v===v); });
+    });
+  }
+  [].slice.call(document.querySelectorAll('.rate .rb')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var inp=b.parentNode.querySelector('input');
+      inp.value=b.dataset.v;
+      inp.dispatchEvent(new Event('input',{bubbles:true}));
+      syncRate();
+    });
+  });
   function collect(){ var o={}; els.forEach(function(e){ if(e.value.trim()) o[e.dataset.k]=e.value; }); return o; }
   function apply(o){ els.forEach(function(e){ if(o && o[e.dataset.k]!=null){ e.value=o[e.dataset.k]; autosize(e); } }); }
 
@@ -283,6 +311,7 @@ body.readonly .vazio{color:#bbbbbb;font-style:italic;font-size:.85rem;padding:6p
     // o servidor manda; o backup local só entra se o servidor vier vazio
     var base = (doServidor && Object.keys(doServidor).length) ? doServidor : (local||{});
     apply(base);
+    syncRate();
     progress();
     els.forEach(function(e){
       autosize(e);
