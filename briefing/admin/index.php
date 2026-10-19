@@ -135,7 +135,7 @@ footer{padding:30px 24px 60px;text-align:center;font-size:.68rem;font-weight:300
         ?>
       </p>
     <?php else: ?>
-      <h1>Briefings de tráfego pago</h1>
+      <h1>Gerador de Briefing</h1>
       <p class="sub">Crie um link por cliente. As respostas chegam sozinhas, sem o cliente precisar enviar nada.</p>
     <?php endif; ?>
   </div>
