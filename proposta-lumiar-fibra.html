@@ -63,6 +63,24 @@ h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s
 .oc p{font-size:.85rem;font-weight:300;line-height:1.8;color:var(--dim);margin-top:16px}
 .oc.nossa p{color:rgba(255,255,255,.58)}
 
+.oc .lnh{display:flex;justify-content:space-between;gap:16px;font-size:.82rem;font-weight:300;color:var(--dim);padding:11px 0;border-bottom:1px solid var(--line)}
+.oc .lnh b{font-weight:600;color:var(--ink);white-space:nowrap}
+.oc.nossa .lnh{color:rgba(255,255,255,.58);border-bottom-color:rgba(255,255,255,.12)}
+.oc.nossa .lnh b{color:var(--white)}
+.oc .tot{margin-top:22px;font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--ink)}
+.oc .tot small{display:block;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.oc.nossa .tot{color:var(--orange)}
+.oc.nossa .tot small{color:rgba(255,255,255,.5)}
+.fonte{font-size:.68rem;font-weight:300;line-height:1.7;color:var(--muted);margin-top:22px;max-width:760px}
+
+.eco{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.eco-i{background:var(--white);padding:22px 20px}
+.eco-i small{display:block;font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.eco-i b{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.eco-i.dest{background:var(--orange)}
+.eco-i.dest small{color:rgba(0,0,0,.6)}
+.eco-i.dest b{color:var(--black)}
+.fonte a{color:var(--dim)}
 /* fluxo */
 .cad{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line)}
 .cd{background:var(--white);padding:22px 16px;flex:1 1 160px;text-align:center}
@@ -108,10 +126,6 @@ h1 .l2{color:var(--orange);font-weight:300;font-style:italic;animation-delay:.4s
 .pg-box .val{font-size:clamp(2.2rem,4vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1}
 .pg.escuro .pg-box .val{color:var(--white)}
 .pg-box .per{font-size:.78rem;font-weight:300;color:var(--muted);margin-top:9px}
-.pg-box .setup{margin-top:18px;padding:13px 14px;border:1px solid var(--line);text-align:center;font-size:.74rem;font-weight:300;color:var(--muted);line-height:1.5}
-.pg-box .setup b{display:block;font-size:1.15rem;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.pg.escuro .pg-box .setup{border-color:rgba(255,255,255,.13);color:rgba(255,255,255,.5)}
-.pg.escuro .pg-box .setup b{color:var(--white)}
 .pg-box .obs{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.78rem;font-weight:300;line-height:1.65;color:var(--dim)}
 .pg.escuro .pg-box .obs{border-top-color:rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
 .pg-obj{margin-top:26px;padding:20px 24px;background:var(--orange-l);border-left:3px solid var(--orange);font-size:.86rem;font-weight:400;line-height:1.75;color:var(--mid);max-width:560px}
@@ -147,6 +161,7 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   .pg{min-height:auto;padding:70px 0}
   .pg-grid{grid-template-columns:1fr;gap:32px}
   .ordem,.cols,.bon{grid-template-columns:1fr}
+  .eco{grid-template-columns:1fr 1fr}
   .hero-deco{display:none}
 }
 @media(max-width:600px){
@@ -296,8 +311,8 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
     <div class="pg-grid">
       <div class="r">
         <div class="pg-num">Opção 02 · recorrência · recomendado</div>
-        <h3>Entrada menor,<br><em>operação contínua.</em></h3>
-        <p class="pg-lead">A mesma solução, com um setup bem menor para começar e uma mensalidade que mantém tudo funcionando e evoluindo enquanto o contrato durar.</p>
+        <h3>Sem setup,<br><em>operação contínua.</em></h3>
+        <p class="pg-lead">A mesma solução, sem pagamento de entrada: uma única mensalidade que cobre a implantação e mantém tudo funcionando e evoluindo enquanto o contrato durar.</p>
         <div class="pg-itens">
           <div class="pgi"><span class="mk">→</span><span><b>Tudo da Opção 01</b> — atendimento com IA, leitura da conta de luz e automação de rastreio e direcionamento</span></div>
           <div class="pgi"><span class="mk">→</span><span><b>Implantação em 30 dias</b>, com testes antes de entrar no ar</span></div>
@@ -307,10 +322,9 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
       </div>
       <div class="pg-box r d1">
         <div class="lab">Recorrência</div>
-        <div class="val">R$ 1.500</div>
+        <div class="val">R$ 2.500</div>
         <div class="per">por mês</div>
-        <div class="setup"><b>R$ 7.500</b>de setup, pagamento único</div>
-        <div class="obs">Prazo de implantação e desenvolvimento: 30 dias. Condições de pagamento alinhadas na aprovação da proposta.</div>
+        <div class="obs">Sem setup. Prazo de implantação e desenvolvimento: 30 dias. Condições de contratação alinhadas na aprovação da proposta.</div>
       </div>
     </div>
   </div>
@@ -342,8 +356,55 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
   </div>
 </section>
 
-<!-- CONDICOES -->
+<!-- VANTAGEM ECONOMICA -->
 <section class="section">
+  <div class="wrap">
+    <div class="section-head r">
+      <div class="eyebrow">A conta</div>
+      <h2>Duas atendentes<br><em>ou uma solução.</em></h2>
+      <p class="lead">Triar contas de luz no WhatsApp, todos os dias, exige no mínimo duas pessoas dedicadas. Veja quanto isso custa por mês, com todos os custos de contratar.</p>
+    </div>
+    <div class="ordem r d1">
+      <div class="oc">
+        <div class="tag">Equipe própria · 2 atendentes</div>
+        <div class="lnh"><span>Salário médio de atendente (Bahia)</span><b>R$ 1.690</b></div>
+        <div class="lnh"><span>FGTS (8%)</span><b>R$ 135</b></div>
+        <div class="lnh"><span>13º salário (provisão)</span><b>R$ 141</b></div>
+        <div class="lnh"><span>Férias + 1/3 (provisão)</span><b>R$ 188</b></div>
+        <div class="lnh"><span>INSS patronal, RAT e terceiros (28%)</span><b>R$ 473</b></div>
+        <div class="lnh"><span>Vale-transporte (8% do salário)</span><b>R$ 135</b></div>
+        <div class="lnh"><span>Atestados e faltas (2% do salário)</span><b>R$ 34</b></div>
+        <div class="lnh"><span>Multa de 40% do FGTS na demissão (provisão)</span><b>R$ 54</b></div>
+        <div class="lnh"><span>Risco de ação trabalhista (provisão)</span><b>R$ 167</b></div>
+        <div class="lnh"><span>Custo mensal de 1 atendente</span><b>R$ 3.017</b></div>
+        <div class="tot"><small>2 atendentes, por mês</small>R$ 6.034</div>
+        <p>Atendimento só em horário comercial. Ainda sem vale-refeição, plano de saúde, treinamento e reposição de quem sai.</p>
+      </div>
+      <div class="oc nossa">
+        <div class="tag">Solução Lumiar + Alma</div>
+        <div class="lnh"><span>Atendimento</span><b>24h · 7 dias</b></div>
+        <div class="lnh"><span>Conversas ao mesmo tempo</span><b>Sem fila</b></div>
+        <div class="lnh"><span>Férias, folgas, atestados e faltas</span><b>Nenhum</b></div>
+        <div class="lnh"><span>Encargos, vale-transporte e passivo trabalhista</span><b>Nenhum</b></div>
+        <div class="lnh"><span>Mesma regra de aptidão em todo atendimento</span><b>Sempre</b></div>
+        <div class="lnh"><span>Tráfego pago performance</span><b>Bonificado</b></div>
+        <div class="lnh"><span>Suporte durante o contrato</span><b>Incluído</b></div>
+        <div class="tot"><small>Por mês, sem setup</small>R$ 2.500</div>
+        <p>Cobertura completa, 168 horas por semana, com o tráfego para captar novos clientes incluído.</p>
+      </div>
+    </div>
+    <div class="eco r d2">
+      <div class="eco-i"><small>Economia por mês</small><b>R$ 3.534</b></div>
+      <div class="eco-i"><small>Equipe própria em 12 meses</small><b>R$ 72.408</b></div>
+      <div class="eco-i"><small>Solução em 12 meses</small><b>R$ 30.000</b></div>
+      <div class="eco-i dest"><small>Economia acumulada em 12 meses</small><b>R$ 42.408</b></div>
+    </div>
+    <p class="fonte r d2">Referências: salário médio de "Atendente" na Bahia, R$ 1.690/mês (Indeed Brasil, out/2026). Encargos sobre a folha conforme <a href="https://valorfinal.com.br/estudos/quanto-custa-um-funcionario-clt" target="_blank" rel="noopener">ValorFinal</a> (FGTS 8%, 13º, férias com 1/3 e, no Lucro Presumido ou Real, cerca de 28% de encargos patronais; no Simples Nacional esse item não incide). Vale-transporte, atestados e risco trabalhista são estimativas de referência: transporte a 8% do salário, 2% para faltas por atestado e provisão de R$ 8 mil, piso da faixa de custo por reclamação estimada pela <a href="https://turivius.com/portal/quanto-custa-um-processo-trabalhista-para-empresas-em-2026/" target="_blank" rel="noopener">Turivius</a>, diluída em 48 meses de vínculo. Os valores reais variam conforme o regime tributário e a convenção coletiva. Verba de mídia paga à parte.</p>
+  </div>
+</section>
+
+<!-- CONDICOES -->
+<section class="section alt">
   <div class="wrap">
     <div class="section-head r">
       <div class="eyebrow">Condições</div>
@@ -372,7 +433,7 @@ footer p{font-size:.66rem;font-weight:300;color:var(--dim);letter-spacing:.05em}
 </section>
 
 <!-- LIMITES -->
-<section class="section alt">
+<section class="section">
   <div class="wrap">
     <div class="section-head r">
       <div class="eyebrow">Para não haver dúvida</div>
