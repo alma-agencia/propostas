@@ -19,11 +19,14 @@ return [
     ],
   ],
   [
-    "tipo" => "secao", "titulo" => "Avaliação do mês anterior", "nota" => "De 1 a 5, sendo 1 = ruim e 5 = excelente.", "campos" => [
-      ["k"=>"sat_trabalho","label"=>"Como você avalia o nosso trabalho?","hint"=>"qualidade e consistência dos conteúdos","tag"=>"nota","ph"=>"","opt"=>false],
-      ["k"=>"sat_atendimento","label"=>"Como você avalia o nosso atendimento?","hint"=>"agilidade, clareza e comunicação","tag"=>"nota","ph"=>"","opt"=>false],
-      ["k"=>"sat_resultado","label"=>"Como você avalia o resultado do mês?","hint"=>"o que o marketing trouxe para o negócio","tag"=>"nota","ph"=>"","opt"=>false],
-      ["k"=>"sat_obs","label"=>"Quer acrescentar algo sobre a sua nota?","hint"=>"","tag"=>"textarea","ph"=>"Opcional","opt"=>true],
+    "tipo" => "secao", "titulo" => "Avaliação do mês anterior", "nota" => "Dê uma nota de 1 a 5, sendo 1 = ruim e 5 = excelente.", "campos" => [
+      ["k"=>"sat_trabalho","label"=>"Qualidade dos conteúdos","hint"=>"textos, artes e vídeos publicados","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_prazo","label"=>"Cumprimento de prazos","hint"=>"entregas e publicações no dia combinado","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_atendimento","label"=>"Atendimento da equipe","hint"=>"agilidade, clareza e comunicação","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_processo","label"=>"Facilidade do processo","hint"=>"briefing, aprovações e ajustes","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_resultado","label"=>"Resultado do mês","hint"=>"o que o marketing trouxe para o negócio","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_recomenda","label"=>"Chance de recomendar a Alma a um amigo ou colega","hint"=>"1 = nenhuma, 5 = com certeza","tag"=>"nota","ph"=>"","opt"=>false],
+      ["k"=>"sat_obs","label"=>"O que podemos melhorar no próximo mês?","hint"=>"","tag"=>"textarea","ph"=>"Opcional","opt"=>true],
     ],
   ],
 ];
