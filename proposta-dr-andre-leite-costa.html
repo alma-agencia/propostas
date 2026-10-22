@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Proposta · Dr. André Costa · Instituto Atlas</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   ALMA — PROPOSTA DR. ANDRÉ COSTA · TRÁFEGO PERFORMANCE
+   Formato: apresentação em telas verticais inteiras, com encaixe na rolagem.
+   Uma frase principal e uma evidência por tela. Roteiro do apresentador em documento interno.
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #7a7a7a;
+  --subtle:  #b5b5b5;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.10);
+  --line-s:  rgba(16,24,40,0.18);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --f: 'Poppins', -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { font-family: var(--f); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+
+/* ── Tela ── */
+.tela {
+  min-height: 100vh; min-height: 100svh;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  display: flex; align-items: center;
+  padding: 80px 0 64px; position: relative; background: var(--white);
+}
+.tela.off  { background: var(--off); }
+.tela.dark { background: var(--ink); color: var(--white); }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+
+/* ── Tipografia de apresentação ── */
+.t-label { font-size: .78rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+.t-label::before { content:''; width: 28px; height: 2px; background: var(--orange); }
+.t-frase { font-size: clamp(2rem, 3.9vw, 3.4rem); font-weight: 800; line-height: 1.06; letter-spacing: -.035em; max-width: 960px; text-wrap: balance; }
+.t-frase em { font-style: italic; font-weight: 300; color: var(--orange); }
+.t-corpo { font-size: clamp(1.05rem, 1.45vw, 1.25rem); font-weight: 400; color: var(--dim); line-height: 1.7; max-width: 760px; margin-top: 28px; }
+.dark .t-corpo { color: rgba(255,255,255,.72); }
+.t-nota { font-size: .88rem; font-weight: 400; color: var(--muted); line-height: 1.65; max-width: 860px; margin-top: 28px; }
+.dark .t-nota { color: rgba(255,255,255,.5); }
+.t-nota b { color: var(--dim); font-weight: 600; }
+.dark .t-nota b { color: rgba(255,255,255,.75); }
+
+/* ── Marca e contador fixos ── */
+.marca { position: fixed; top: 26px; left: 40px; z-index: 50; font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; }
+.marca em { font-style: normal; font-weight: 300; color: var(--muted); }
+.contador { position: fixed; bottom: 24px; right: 40px; z-index: 50; font-size: .78rem; font-weight: 600; letter-spacing: .12em; color: var(--dim); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; font-variant-numeric: tabular-nums; }
+.contador b { color: var(--orange); }
+
+/* ── 00 Capa ── */
+.capa { border-bottom: 4px solid var(--orange); }
+.capa .t-frase { font-size: clamp(3rem, 7.5vw, 6.4rem); line-height: .98; letter-spacing: -.045em; }
+.capa-sub { font-size: clamp(1.25rem, 2.2vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--orange); margin-top: 24px; max-width: 820px; line-height: 1.35; }
+.capa-info { margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap; }
+.capa-info div { font-size: .82rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); line-height: 1.9; }
+.capa-info strong { color: var(--ink); font-weight: 700; }
+
+/* ── 01 Agência ── */
+.numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; max-width: 900px; }
+.numeros div { background: var(--white); padding: 26px 28px; }
+.numeros strong { display: block; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--orange); letter-spacing: -.04em; line-height: 1.05; }
+.numeros span { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.pilares { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.pilar { font-size: .9rem; font-weight: 500; padding: 9px 16px; border: 1px solid var(--line-s); color: var(--muted); border-radius: 99px; background: var(--white); }
+.pilar.ativo { border-color: var(--orange); background: var(--orange); color: var(--ink); font-weight: 700; }
+
+/* ── 02 Objetivo ── */
+.gap-row { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin-top: 56px; }
+.gap-num { font-size: clamp(6rem, 13vw, 10rem); font-weight: 800; color: var(--orange); line-height: .85; letter-spacing: -.06em; }
+.gap-txt { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 400; color: rgba(255,255,255,.85); line-height: 1.4; }
+.barras { margin-top: 48px; max-width: 760px; display: grid; gap: 14px; }
+.barra { display: grid; grid-template-columns: 110px 1fr 70px; gap: 16px; align-items: center; font-size: .95rem; color: rgba(255,255,255,.7); }
+.barra-trilho { height: 16px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+.barra-fill { height: 100%; background: rgba(255,255,255,.45); border-radius: 3px; }
+.barra-fill.meta { background: var(--orange); }
+.barra b { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* ── 03 Custo de esperar ── */
+.citacao { margin-top: 32px; padding: 28px 32px; border-left: 4px solid var(--orange); background: var(--off); max-width: 820px; }
+.citacao p { font-size: clamp(1.1rem, 1.7vw, 1.35rem); font-style: italic; color: var(--mid); line-height: 1.55; }
+.citacao cite { display: block; margin-top: 12px; font-style: normal; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.valor-futuro { margin-top: 28px; font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 700; line-height: 1.35; max-width: 820px; letter-spacing: -.02em; }
+.valor-futuro span { color: var(--orange); }
+
+/* ── 04 Experiência anterior ── */
+.perguntas { margin-top: 40px; display: grid; gap: 14px; max-width: 820px; counter-reset: q; }
+.perguntas li { list-style: none; font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 500; color: var(--white); padding: 18px 22px; border: 1px solid rgba(255,255,255,.16); border-radius: 6px; display: flex; gap: 16px; align-items: baseline; }
+.perguntas li::before { counter-increment: q; content: counter(q); color: var(--orange); font-weight: 800; }
+
+/* ── 05 Diagnóstico ── */
+.diag { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; margin-top: 32px; }
+.diag h3 { font-size: .78rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
+.achados, .hipoteses { list-style: none; display: grid; gap: 10px; }
+.achados li { background: var(--white); border: 1px solid var(--line); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--mid); }
+.achados li strong { color: var(--orange); font-weight: 800; margin-right: 6px; }
+.achados li small { display: block; font-size: .76rem; color: var(--muted); margin-top: 4px; }
+.hipoteses li { border: 1px dashed var(--line-s); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--dim); background: transparent; }
+
+/* ── Blocos em duas colunas ── */
+.duas-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; }
+.bloco { border-top: 3px solid var(--orange); padding-top: 18px; }
+.bloco h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
+.bloco p, .bloco li { font-size: 1rem; color: var(--dim); line-height: 1.65; }
+.bloco ul { list-style: none; display: grid; gap: 8px; }
+.bloco li { display: flex; gap: 10px; }
+.bloco li::before { content: '→'; color: var(--orange); flex-shrink: 0; }
+
+/* ── 07 Método ── */
+.etapas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; }
+.etapa { background: var(--white); padding: 26px 22px; }
+.etapa-n { font-size: .78rem; font-weight: 700; letter-spacing: .18em; color: var(--orange); margin-bottom: 10px; }
+.etapa h3 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
+.etapa p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.etapa .verif { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+.etapa .verif b { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+
+/* ── 09 Medição ── */
+.funil { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; }
+.passo { padding: 22px 20px; border: 1px solid var(--line-s); margin-right: -1px; background: var(--white); position: relative; }
+.passo:not(:last-child)::after { content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--orange); font-weight: 800; background: var(--off); z-index: 1; padding: 0 2px; }
+.passo b { display: block; font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+.passo span { font-size: .9rem; color: var(--dim); line-height: 1.5; }
+
+/* ── 10 Expectativa de mídia ── */
+.condicao { margin-top: 24px; background: var(--ink); color: var(--white); padding: 24px 28px; max-width: 900px; border-left: 4px solid var(--orange); }
+.condicao p { font-size: clamp(1.02rem, 1.5vw, 1.22rem); line-height: 1.5; }
+.condicao strong { color: var(--orange); }
+.tab-wrap { overflow-x: auto; margin-top: 16px; max-width: 900px; }
+.tab { width: 100%; border-collapse: collapse; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.tab th { text-align: left; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 10px 16px; border-bottom: 2px solid var(--ink); }
+.tab td { padding: 9px 16px; border-bottom: 1px solid var(--line); color: var(--mid); }
+.tab td:last-child, .tab th:last-child { text-align: right; }
+.tab td:last-child { font-weight: 800; color: var(--orange); }
+
+/* ── Primeiro ciclo ── */
+.fases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 44px; }
+.fase { border-top: 2px solid var(--line-s); padding-top: 18px; }
+.fase-q { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.fase h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; }
+.fase p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.equipe { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.equipe .rot { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-right: 6px; }
+.equipe .cargo { font-size: .92rem; font-weight: 600; padding: 8px 14px; border: 1px solid var(--line-s); border-radius: 99px; background: var(--white); }
+
+/* ── 12 Oferta ── */
+.preco { font-size: clamp(3.2rem, 7vw, 5.6rem); font-weight: 800; color: var(--orange); letter-spacing: -.05em; line-height: 1; margin-top: 28px; }
+.preco small { font-size: .38em; font-weight: 400; color: rgba(255,255,255,.6); letter-spacing: 0; }
+.preco-comp { font-size: clamp(1.1rem, 1.7vw, 1.4rem); color: rgba(255,255,255,.85); margin-top: 14px; }
+
+/* ── 13 Decisão ── */
+.passos { display: flex; gap: 0; margin-top: 56px; flex-wrap: wrap; max-width: 900px; }
+.pp { flex: 1; min-width: 200px; padding: 20px 24px 20px 0; }
+.pp-n { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--orange); color: var(--orange); font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.pp b { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+.pp span { font-size: .92rem; color: var(--dim); line-height: 1.55; }
+footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); scroll-snap-align: end; background: var(--white); }
+
+
+/* ── Entregáveis ── */
+.entregaveis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px; }
+.ent { background: var(--white); padding: 20px 18px; }
+.ent b { display: block; font-size: 1rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -.01em; }
+.ent span { font-size: .88rem; color: var(--dim); line-height: 1.5; }
+
+/* ── Ancoragem ── */
+.ancora { margin-top: 24px; max-width: 760px; background: var(--white); border: 1px solid var(--line); }
+.anc-linha { display: flex; justify-content: space-between; gap: 16px; padding: 7px 22px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.anc-linha b { font-weight: 700; color: var(--ink); white-space: nowrap; }
+.anc-linha.sub { background: var(--off); font-weight: 600; }
+.anc-linha.total { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-size: 1.1rem; font-weight: 700; padding: 11px 22px; }
+.anc-linha.total b { color: var(--orange); font-size: 1.3rem; font-weight: 800; }
+
+/* ── A dor ── */
+.dor { text-align: center; max-width: 960px; }
+.dor-frase { font-size: clamp(1.7rem, 3.4vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.3; letter-spacing: -.02em; color: var(--white); text-wrap: balance; }
+.dor-cite { display: block; margin-top: 24px; font-style: normal; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.dor-ponte { margin-top: 64px; font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 700; color: var(--white); letter-spacing: -.02em; text-wrap: balance; }
+
+/* ── Investimento ── */
+.preco-rot { font-size: .85rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: 10px; }
+.preco-linhas { margin-top: 28px; max-width: 520px; display: grid; gap: 0; }
+.preco-linhas div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 1rem; color: rgba(255,255,255,.7); font-variant-numeric: tabular-nums; }
+.preco-linhas div.tot { color: var(--white); font-weight: 700; }
+.preco-linhas b { font-weight: 600; white-space: nowrap; }
+.inclui-txt { margin-top: 28px; font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.65; max-width: 860px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ── Mobile: a apresentação acontece no desktop; no celular, rolagem livre ── */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .tela { min-height: 100vh; min-height: 100svh; padding: 88px 0 64px; }
+  .numeros, .diag, .duas-col { grid-template-columns: 1fr; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr 1fr; }
+  .passo:not(:last-child)::after { display: none; }
+  .gap-row { grid-template-columns: 1fr; gap: 12px; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .marca { display: none; }
+  .contador { right: 20px; bottom: 16px; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr; }
+  .barra { grid-template-columns: 70px 1fr 44px; }
+  .tab { font-size: .82rem; }
+  .tab th { font-size: .6rem; letter-spacing: .06em; padding: 8px 6px; }
+  .tab td { padding: 8px 6px; }
+  .t-frase { font-size: 1.85rem; }
+  .capa .t-frase { font-size: 2.6rem; }
+  .gap-num { font-size: 5.5rem; }
+  .preco { font-size: 3rem; }
+  footer { padding: 28px 20px; }
+}
+@media(max-width:400px){ .wrap { padding: 0 16px; } }
+
+/* ── Extras desta proposta ── */
+.dark .bloco p, .dark .bloco li { color: rgba(255,255,255,.78); }
+.dark .bloco h3 { color: var(--white); }
+.preco-linhas div.risc b { text-decoration: line-through; color: rgba(255,255,255,.4); font-weight: 500; }
+.preco-linhas div.risc em { font-style: normal; color: var(--orange); font-weight: 700; margin-left: 10px; }
+.credito { margin-top: 28px; max-width: 860px; background: var(--ink); color: var(--white); padding: 22px 28px; border-left: 4px solid var(--orange); }
+.credito p { font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.55; }
+.credito strong { color: var(--orange); }
+.cond-conteudo { margin-top: 28px; display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: end; max-width: 900px; }
+.somas { background: var(--white); border: 1px solid var(--line); }
+.somas div { display: flex; justify-content: space-between; gap: 18px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.somas div.tot { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-weight: 700; }
+.somas div.tot b { color: var(--orange); font-size: 1.25rem; }
+#diagnostico .t-frase, #ancoragem .t-frase, #oferta .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#diagnostico .diag { margin-top: 22px; }
+#diagnostico .achados li { padding: 9px 16px; font-size: .92rem; }
+#diagnostico .hipoteses li { padding: 9px 16px; font-size: .92rem; }
+#ancoragem .ancora { margin-top: 18px; }
+#ancoragem .anc-linha { padding: 4px 22px; font-size: .95rem; }
+#ancoragem .anc-linha.total { padding: 8px 22px; }
+#ancoragem .t-nota { margin-top: 16px; }
+#oferta .preco { margin-top: 16px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 16px; }
+#oferta .preco-linhas div { padding: 6px 0; }
+#oferta .inclui-txt { margin-top: 16px; font-size: .88rem; line-height: 1.55; }
+#oferta .t-nota { margin-top: 14px; font-size: .8rem; line-height: 1.5; }
+@media(max-width:900px){ .cond-conteudo { grid-template-columns: 1fr; } }
+
+.numeros.q4 { grid-template-columns: repeat(4, 1fr); max-width: 1000px; margin-top: 26px; }
+.numeros.q4 div { padding: 20px 20px; }
+.numeros.q4 strong { font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
+.numeros.q4 span { font-size: .72rem; letter-spacing: .1em; display: block; margin-top: 6px; line-height: 1.4; }
+.numeros.q4 small { display: block; font-size: .74rem; color: var(--muted); margin-top: 4px; font-weight: 400; }
+#case .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#case .citacao { margin-top: 20px; padding: 16px 24px; }
+#case .citacao p { font-size: 1rem; }
+#case .t-nota { margin-top: 16px; font-size: .78rem; }
+#case .t-corpo { margin-top: 14px; }
+@media(max-width:900px){ .numeros.q4 { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px){ .numeros.q4 { grid-template-columns: 1fr; } }
+#objetivo .t-frase { font-size: clamp(1.6rem, 3vw, 2.5rem); }
+#objetivo .gap-row { margin-top: 22px; }
+#objetivo .gap-num { font-size: clamp(4rem, 9vw, 7rem); }
+#objetivo .duas-col { margin-top: 22px !important; }
+#objetivo .t-nota { margin-top: 16px; }
+#esperar .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#esperar .citacao { margin-top: 20px; padding: 20px 28px; }
+#esperar .t-corpo { margin-top: 18px; }
+#esperar .valor-futuro { margin-top: 20px; }
+.tres-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
+@media(max-width:900px){ .tres-col { grid-template-columns: 1fr; } }
+#oportunidades .t-frase, #recomendacao .t-frase, #porque .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#oportunidades .bloco p, #oportunidades .bloco li { font-size: .92rem; line-height: 1.55; }
+#oportunidades .tres-col { margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<div class="marca" aria-hidden="true">Alma<em>.Convert</em></div>
+<div class="contador" aria-hidden="true"><b id="cont-atual">01</b> / <span id="cont-total">18</span></div>
+
+<section class="tela capa" id="capa">
+  <div class="wrap">
+    <div class="t-label">Proposta comercial</div>
+    <h1 class="t-frase">Dr. André Costa</h1>
+    <p class="capa-sub">Um plano para trazer pacientes de dor e de emagrecimento: autoridade no Instagram, validada no Google.</p>
+    <div class="capa-info">
+      <div>Preparada para<br><strong>Dr. André Costa · Instituto Atlas</strong></div>
+      <div>Juazeiro do Norte, CE<br><strong>Outubro de 2026</strong></div>
+      <div>Válida até<br><strong>29/10/2026</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="agencia">
+  <div class="wrap">
+    <div class="t-label">Quem somos</div>
+    <h2 class="t-frase">Criamos com alma.<br><em>Entregamos com método.</em></h2>
+    <p class="t-corpo">Você chegou por indicação do Dr. Igor Neri, que trabalha com a gente. O nosso Método Jornada tem quatro pilares que cobrem toda a jornada de marketing digital, da comunicação à venda. Para o seu momento, vamos trabalhar um: geração de demanda, com tráfego e performance.</p>
+    <div class="pilares">
+      <span class="pilar">Criação &amp; Conteúdo</span>
+      <span class="pilar ativo">Geração de Demanda · tráfego e performance</span>
+      <span class="pilar">Conversão Inteligente</span>
+      <span class="pilar">Dados &amp; Retenção</span>
+    </div>
+    <div class="numeros">
+      <div><strong>Desde 2019</strong><span>gerando resultados</span></div>
+      <div><strong>+150</strong><span>clientes atendidos</span></div>
+      <div><strong>+25</strong><span>nichos de atuação</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="objetivo">
+  <div class="wrap">
+    <div class="t-label">Objetivo</div>
+    <h2 class="t-frase">Hoje, a maior parte dos pacientes vem por indicação.<br>O próximo objetivo: <em>2 a 3 novos por semana.</em></h2>
+    <div class="gap-row">
+      <div class="gap-num">2–3</div>
+      <div class="gap-txt">pacientes novos por semana<br>vindos do Instagram e do Google</div>
+    </div>
+    <div class="duas-col" style="margin-top:36px">
+      <div class="bloco"><h3>Hoje</h3><p>Cerca de 12 pacientes no último mês, a maior parte por indicação. Dois públicos: dor e artrose, e emagrecimento.</p></div>
+      <div class="bloco"><h3>Meta</h3><p>Pacientes novos pelos anúncios, medidos até o tratamento fechado, em dois públicos que se complementam.</p></div>
+    </div>
+    <p class="t-nota">Premissa: números informados por você na nossa conversa. Hoje não há medição do que vem dos anúncios. Confirmamos tudo no primeiro mês.</p>
+  </div>
+</section>
+
+<section class="tela " id="esperar">
+  <div class="wrap">
+    <div class="t-label">O custo de esperar</div>
+    <h2 class="t-frase">Se o ritmo continuar, a meta de 2 a 3 pacientes novos por semana <em>continua dependendo de indicação.</em></h2>
+    <div class="citacao">
+      <p>"A maior parte dos pacientes são por indicação de outros ou de outros profissionais."</p>
+      <cite>Dr. André, na nossa conversa</cite>
+    </div>
+    <p class="valor-futuro">Uma agenda mais previsível hoje. <span>Mais espaço para o Instituto Atlas na sua rotina.</span></p>
+    <p class="t-corpo">Cada paciente novo pode iniciar uma relação de confiança, e a indicação continua valendo. Com anúncios medidos, você passa a saber de onde vem cada paciente novo.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="experiencia">
+  <div class="wrap">
+    <div class="t-label">O que já aconteceu</div>
+    <h2 class="t-frase">Você já passou por gestores de tráfego.<br><em>Faltou resultado que desse para ver.</em></h2>
+    <p class="t-corpo">Um anúncio chegou a apresentá-lo com uma especialidade que não era a sua, e os resultados não eram medidos. Agora, o que importa é anunciar o que você é e medir até o tratamento fechado. Queremos entender:</p>
+    <ol class="perguntas">
+      <li>Quantos pacientes novos vieram dos anúncios no último mês?</li>
+      <li>Quantos desses fecharam tratamento?</li>
+      <li>Quem faz o primeiro atendimento e como o contato é registrado?</li>
+    </ol>
+  </div>
+</section>
+
+<section class="tela off" id="diagnostico">
+  <div class="wrap">
+    <div class="t-label">O que encontramos</div>
+    <h2 class="t-frase">Quem busca tratamento de dor em Juazeiro do Norte <em>encontra outras clínicas primeiro.</em></h2>
+    <div class="diag">
+      <div>
+        <h3>Achados</h3>
+        <ul class="achados">
+          <li><strong>1 de 5</strong>buscas locais em que o seu site aparece, na 5ª posição ("medicina regenerativa"). Nas outras, predominam clínicas ortopédicas e listas de profissionais.<small>Google Brasil, 5 buscas como "tratamento de artrose" e "infiltração no joelho" em Juazeiro do Norte, 22/10/2026.</small></li>
+          <li><strong>Nota 5,0</strong>com 9 avaliações para o Instituto Atlas no Google Maps, na categoria "Saúde e segurança ocupacional".<small>Google Maps, 22/10/2026.</small></li>
+          <li><strong>Sem medição</strong>no site: não encontramos tags de medição no código da página.<small>Análise do site, 22/10/2026.</small></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hipóteses a validar</h3>
+        <ul class="hipoteses">
+          <li>Há pouca disputa de anúncios nessas buscas: nenhum anúncio apareceu nas 5 pesquisas.</li>
+          <li>Dor e emagrecimento são dois públicos e pedem duas jornadas diferentes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="oportunidades">
+  <div class="wrap">
+    <div class="t-label">Oportunidades</div>
+    <h2 class="t-frase">Três oportunidades, <em>conectadas entre si.</em></h2>
+    <div class="tres-col">
+      <div class="bloco"><h3>1 · Instagram: autoridade e pacientes</h3><p>É onde o paciente conhece o seu trabalho. Anúncios para dor e artrose e para emagrecimento, com criativos que mostram a solução e o resultado.</p></div>
+      <div class="bloco"><h3>2 · Google: a validação</h3><p>Quem vê você no Instagram pesquisa seu nome no Google. Perfil, site e avaliações organizados confirmam a decisão. Anúncios de busca captam quem já procura o tratamento.</p></div>
+      <div class="bloco"><h3>3 · IA: SEO-IA (GEO)</h3><p>Em 3 das 5 buscas, o Google já mostrou uma resposta gerada por IA, e para o Instituto Atlas ela resume o seu Instagram. Mapear as perguntas dos pacientes, ajustar site e perfis (nome, especialidade, endereço, perguntas frequentes) e acompanhar as menções ajuda a IA a descrevê-lo bem. Bônus do plano de 12 meses. Sem garantia de citação.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="recomendacao">
+  <div class="wrap">
+    <div class="t-label">A recomendação</div>
+    <h2 class="t-frase">O Instagram gera <em>autoridade e pacientes.</em> O Google valida.</h2>
+    <div class="duas-col">
+      <div class="bloco">
+        <h3>Instagram</h3>
+        <ul>
+          <li>Anúncios em duas jornadas: dor e artrose, e emagrecimento</li>
+          <li>Direcionamento dos criativos: ganchos, formatos e depoimentos de pacientes</li>
+          <li>Perfil pronto para converter</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <h3>Google</h3>
+        <ul>
+          <li>Anúncios de busca para quem procura o tratamento</li>
+          <li>Google Meu Negócio do instituto organizado</li>
+          <li>Site com medição instalada</li>
+        </ul>
+      </div>
+    </div>
+    <p class="t-nota">As peças respeitam as regras do CFM: sem anunciar especialidade que não conste no seu registro e sem prometer resultado.</p>
+  </div>
+</section>
+
+<section class="tela " id="case">
+  <div class="wrap">
+    <div class="t-label">Quem já seguiu esse método</div>
+    <h2 class="t-frase">O Dr. Igor começou com R$ 1,5 mil por mês. <em>A verba cresceu quando os números justificaram.</em></h2>
+    <div class="numeros q4">
+      <div><strong>8 → 77 a 96</strong><span>consultas por mês</span><small>2024 → abril a setembro de 2026</small></div>
+      <div><strong>8 → 15</strong><span>tratamentos fechados por mês</span><small>abril → setembro de 2026</small></div>
+      <div><strong>42% → 71%</strong><span>consulta nova que vira tratamento</span><small>abril → setembro de 2026</small></div>
+      <div><strong>R$ 1,5 mil → R$ 14,4 a 20,2 mil</strong><span>mídia por mês</span><small>2024 → abril a setembro de 2026</small></div>
+    </div>
+    <div class="citacao"><p>"A metodologia baseada em dados e na evolução dos investimentos pelos resultados trouxe o retorno que eu precisava."</p><cite>Dr. Igor Neri, Instituto Aguiar Neri</cite></div>
+    <p class="t-nota">Instituto Aguiar Neri, nutrologia e emagrecimento, Feira de Santana (BA). Fonte: almaagencia.com.br/cases/instituto-aguiar-neri. Série de abril a setembro de 2026, sem junho; consultas realizadas no mês, informadas pelo consultório. É o resultado de outro consultório, em outro mercado, e não uma promessa.</p>
+  </div>
+</section>
+
+<section class="tela off" id="metodo">
+  <div class="wrap">
+    <div class="t-label">Método Jornada · Geração de Demanda</div>
+    <h2 class="t-frase">Cada etapa tem uma entrega, um responsável <em>e uma revisão.</em></h2>
+    <div class="etapas">
+      <div class="etapa"><div class="etapa-n">01</div><h3>Preparação</h3><p>Perfil do Instagram, Google Meu Negócio, site, medição e acessos.</p><div class="verif"><b>Como verificar</b>Dados revisados e caminhos de contato testados.</div></div>
+      <div class="etapa"><div class="etapa-n">02</div><h3>Captação</h3><p>Anúncios no Instagram e no Google, com duas jornadas.</p><div class="verif"><b>Como verificar</b>Investimento, conversas e origem de cada contato.</div></div>
+      <div class="etapa"><div class="etapa-n">03</div><h3>Atendimento</h3><p>Acompanhar toda semana, com a sua secretária, o que cada conversa virou.</p><div class="verif"><b>Como verificar</b>Consultas, tratamentos fechados e motivos de não fechamento.</div></div>
+      <div class="etapa"><div class="etapa-n">04</div><h3>Aprendizado</h3><p>Revisar custos e gargalos e subir a verba em etapas, conforme os números.</p><div class="verif"><b>Como verificar</b>Decisões ligadas aos dados da campanha e do atendimento.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="medicao">
+  <div class="wrap">
+    <div class="t-label">Medição e CRM</div>
+    <h2 class="t-frase">O acompanhamento precisa chegar <em>até o tratamento fechado.</em></h2>
+    <div class="funil">
+      <div class="passo"><b>Anúncio</b><span>Instagram ou Google</span></div>
+      <div class="passo"><b>Conversa</b><span>WhatsApp com origem identificada</span></div>
+      <div class="passo"><b>Consulta</b><span>Agendada e realizada</span></div>
+      <div class="passo"><b>Tratamento</b><span>Fechado e valor</span></div>
+    </div>
+    <p class="t-corpo">Nosso CRM, conectado ao WhatsApp, mostra o funil em um painel para você e para a sua secretária. Se a conversão estiver baixa, analisamos as conversas para melhorar a campanha. Não é um treinamento comercial.</p>
+    <p class="t-nota">Quando um dado não estiver disponível, o relatório deixa isso claro. Não atribuímos pacientes aos anúncios por suposição.</p>
+  </div>
+</section>
+
+<section class="tela off" id="midia">
+  <div class="wrap">
+    <div class="t-label">Expectativa de resultado</div>
+    <h2 class="t-frase">Não vendemos métricas. <em>Vendemos o método para chegar a elas.</em></h2>
+    <div class="condicao"><p>Com <strong>R$ 2.000 de mídia por mês</strong>, a meta de <strong>8 a 12 pacientes novos por mês</strong> (2 a 3 por semana) exige um custo de até <strong>R$ 166,67 a R$ 250,00 por paciente novo</strong>. Validamos essa condição com os dados reais das campanhas e do atendimento antes de propor qualquer ampliação.</p></div>
+    <div class="tab-wrap">
+      <table class="tab">
+        <thead><tr><th>Meta por mês</th><th>Mídia</th><th>Custo máximo por paciente novo</th></tr></thead>
+        <tbody>
+          <tr><td>8 pacientes novos</td><td>R$ 2.000</td><td>R$ 250,00</td></tr>
+          <tr><td>12 pacientes novos</td><td>R$ 2.000</td><td>R$ 166,67</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="t-nota" style="margin-top:16px"><b>Como ler:</b> é uma condição de referência, não previsão nem promessa. A meta vem da sua estimativa de 2 a 3 pacientes novos por semana, contando 4 semanas por mês. Em 30 dias medimos o custo real e a taxa de fechamento. A verba sobe em etapas, quando os números justificam.</p>
+  </div>
+</section>
+
+<section class="tela " id="execucao">
+  <div class="wrap">
+    <div class="t-label">Os primeiros 30 dias</div>
+    <h2 class="t-frase">Em 30 dias, o ciclo completo <em>já está rodando.</em></h2>
+    <div class="fases">
+      <div class="fase"><div class="fase-q">Semana 1</div><h3>Preparação</h3><p>Acessos, perfil do Instagram, Google Meu Negócio, site, medição e CRM.</p></div>
+      <div class="fase"><div class="fase-q">Semana 2</div><h3>Captação</h3><p>Anúncios no ar nas duas jornadas, com otimização desde os primeiros dados.</p></div>
+      <div class="fase"><div class="fase-q">Semanas 2 a 4</div><h3>Atendimento</h3><p>Alinhamento semanal com a sua secretária sobre as conversas e o fechamento.</p></div>
+      <div class="fase"><div class="fase-q">Dia 30</div><h3>Aprendizado</h3><p>Primeira revisão completa: custos, gargalos e ajustes para o mês seguinte.</p></div>
+    </div>
+    <p class="t-corpo" style="margin-top:28px">A partir do segundo mês, o mesmo ciclo se repete com o que os dados mostraram, para acelerar os resultados.</p>
+    <div class="equipe">
+      <span class="rot">Quem executa</span>
+      <span class="cargo">Gestor de Tráfego</span>
+      <span class="cargo">Analista de Dados</span>
+      <span class="cargo">Estrategista</span>
+      <span class="cargo">Webdesigner</span>
+      <span class="cargo">Social Media · sucesso do cliente</span>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="entregaveis">
+  <div class="wrap">
+    <div class="t-label">O que você recebe</div>
+    <h2 class="t-frase">Tudo o que esta etapa entrega, <em>em detalhe.</em></h2>
+    <div class="entregaveis">
+      <div class="ent"><b>Meta Ads</b><span>Anúncios no Instagram, em duas jornadas: dor e artrose, e emagrecimento.</span></div>
+      <div class="ent"><b>Google Ads</b><span>Anúncios de busca para quem procura o tratamento em Juazeiro do Norte.</span></div>
+      <div class="ent"><b>Direcionamento de criativos</b><span>Ganchos, formatos e depoimentos de pacientes, para você gravar com segurança.</span></div>
+      <div class="ent"><b>Google Meu Negócio</b><span>Organização do perfil do instituto: categoria, dados e avaliações.</span></div>
+      <div class="ent"><b>Análise do site</b><span>Revisão do caminho até o contato e instalação da medição no seu site.</span></div>
+      <div class="ent"><b>CRM e acompanhamento</b><span>Painel do funil conectado ao WhatsApp e alinhamento semanal.</span></div>
+      <div class="ent"><b>Relatório mensal</b><span>Investimento, conversas, consultas, tratamentos e as decisões do mês seguinte.</span></div>
+      <div class="ent"><b>Bônus SEO-IA (GEO)</b><span>No plano de 12 meses: ajustes para a IA descrevê-lo bem. Sem garantia de citação.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="ancoragem">
+  <div class="wrap">
+    <div class="t-label">Para montar esse time por conta própria</div>
+    <h2 class="t-frase">Quanto custaria <em>contratar cada profissional.</em></h2>
+    <div class="ancora">
+      <div class="anc-linha"><span>Gestor de Tráfego</span><b>R$ 2.416</b></div>
+      <div class="anc-linha"><span>Analista de Dados</span><b>R$ 4.750</b></div>
+      <div class="anc-linha"><span>Estrategista</span><b>R$ 3.993</b></div>
+      <div class="anc-linha"><span>Webdesigner</span><b>R$ 2.850</b></div>
+      <div class="anc-linha"><span>Social Media · sucesso do cliente</span><b>R$ 2.300</b></div>
+      <div class="anc-linha sub"><span>Total do time por mês</span><b>R$ 16.309</b></div>
+      <div class="anc-linha"><span>Investimento em mídia*</span><b>R$ 2.000</b></div>
+      <div class="anc-linha total"><span>Total do projeto por mês</span><b>R$ 18.309</b></div>
+    </div>
+    <p class="t-nota">Valor médio mensal de profissionais PJ/freelancer em cada função (mediana, Glassdoor Brasil, 09/10/2026). *A mídia varia conforme o investimento definido.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="dor">
+  <div class="wrap">
+    <div class="wrap dor" style="padding:0">
+    <p class="dor-frase">"Eu preciso comunicar melhor, para trazer pacientes para tratamento de dor."</p>
+    <cite class="dor-cite">Dr. André, na nossa conversa</cite>
+    <p class="dor-ponte">Quanto vale, para você, começar a mudar isso agora?</p>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="oferta" style="background:#111">
+  <div class="wrap">
+    <div class="t-label">Investimento inicial</div>
+    <h2 class="t-frase">Uma primeira etapa.<br>Um investimento claro.</h2>
+    <div class="preco">R$ 2.500 <small>/ mês</small></div>
+    <div class="preco-rot">Gestão da agência</div>
+    <div class="preco-linhas">
+      <div><span>Investimento em mídia*</span><b>R$ 2.000 / mês</b></div>
+      <div class="tot"><span>Total inicial por mês*</span><b>R$ 4.500</b></div>
+      <div class="risc"><span>Bônus SEO-IA (GEO) no plano de 12 meses</span><span><em>incluso</em></span></div>
+    </div>
+    <p class="inclui-txt">Inclui Meta Ads, Google Ads, direcionamento de criativos, Google Meu Negócio, análise do site com medição, CRM e acompanhamento semanal e relatório mensal.</p>
+    <p class="t-nota"><b style="color:#fff">O valor da gestão da agência não muda com o aumento do investimento em mídia.</b> *A mídia é investida diretamente nas plataformas e pode subir em etapas, conforme os resultados. Não inclui produção de conteúdo.</p>
+  </div>
+</section>
+
+<section class="tela " id="decisao">
+  <div class="wrap">
+    <div class="t-label">A decisão</div>
+    <h2 class="t-frase">Com esse escopo e esse investimento, <em>faz sentido iniciar?</em></h2>
+    <p class="t-corpo">O que ainda precisa ficar claro para você decidir?</p>
+    <div class="passos">
+      <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Revisamos as condições e definimos o início.</span></div>
+      <div class="pp"><div class="pp-n">02</div><b>Preparação</b><span>Semana 1: acessos, perfil, Google Meu Negócio, site, medição e CRM.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Anúncios no ar</b><span>A partir da semana 2, com acompanhamento semanal e primeira revisão no dia 30.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Alma.Convert · Agência Prospect · Proposta preparada exclusivamente para o Dr. André Costa · Instituto Atlas · Válida até 29/10/2026</footer>
+
+<script>
+(function(){
+  const telas = Array.from(document.querySelectorAll('.tela'));
+  const atual = document.getElementById('cont-atual');
+  document.getElementById('cont-total').textContent = String(telas.length).padStart(2,'0');
+  let idx = 0;
+  // A tela atual é a que contém a linha central da janela (funciona com telas mais altas que a tela do celular)
+  function atualiza(){
+    const meio = innerHeight / 2;
+    const i = telas.findIndex(t => { const r = t.getBoundingClientRect(); return r.top <= meio && r.bottom > meio; });
+    if (i >= 0 && i !== idx) { idx = i; }
+    atual.textContent = String(idx + 1).padStart(2,'0');
+  }
+  let pendente = false;
+  addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(() => { pendente = false; atualiza(); }); } }, { passive: true });
+  addEventListener('resize', atualiza);
+  atualiza();
+  // Navegação por teclado durante a apresentação: setas, Page Up/Down e espaço
+  document.addEventListener('keydown', e => {
+    const next = ['ArrowDown','PageDown',' '].includes(e.key);
+    const prev = ['ArrowUp','PageUp'].includes(e.key);
+    if (!next && !prev) return;
+    e.preventDefault();
+    const alvo = telas[Math.max(0, Math.min(telas.length - 1, idx + (next ? 1 : -1)))];
+    alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
