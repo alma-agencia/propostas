@@ -291,7 +291,18 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 #inacao .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
 #inacao .duas-col { margin-top: 28px; }
 #inacao .bloco p, #inacao .bloco li { font-size: .95rem; line-height: 1.55; }
-#agencia .numeros { margin-top: 30px; }
+
+/* ── Carrossel de logos (Quem somos) ── */
+.logos { margin-top: 26px; max-width: 900px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.logos-trilho { display: flex; align-items: center; gap: 56px; width: max-content; animation: logos-passa 45s linear infinite; }
+.logos-trilho img { height: 34px; width: auto; max-width: 150px; object-fit: contain; opacity: .3; filter: grayscale(1); flex-shrink: 0; }
+@keyframes logos-passa { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logos:hover .logos-trilho { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .logos-trilho { animation: none; } }
+@media(max-width:600px){ .logos-trilho { gap: 36px; } .logos-trilho img { height: 26px; } }
+#agencia .numeros { margin-top: 24px; }
+#agencia .t-corpo { margin-top: 20px; }
+
 #objetivo .t-frase { font-size: clamp(1.5rem, 2.8vw, 2.3rem); }
 #objetivo .gap-row { margin-top: 16px; }
 #objetivo .gap-num { font-size: clamp(3.5rem, 8vw, 6rem); }
@@ -339,6 +350,9 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
       <div><strong>Desde 2019</strong><span>gerando resultados</span></div>
       <div><strong>+150</strong><span>clientes atendidos</span></div>
       <div><strong>+25</strong><span>nichos de atuação</span></div>
+    </div>
+    <div class="logos" aria-label="Alguns clientes atendidos">
+      <div class="logos-trilho"><img src="logos/instituto-aguiar-neri.png" alt="" loading="lazy"><img src="logos/ilha-med-hospital.png" alt="" loading="lazy"><img src="logos/prime-day-hospital.png" alt="" loading="lazy"><img src="logos/angioclin.png" alt="" loading="lazy"><img src="logos/vitalab.png" alt="" loading="lazy"><img src="logos/vacinas-vitalab.png" alt="" loading="lazy"><img src="logos/isas.png" alt="" loading="lazy"><img src="logos/luciane-prado-instituto.png" alt="" loading="lazy"><img src="logos/narte.png" alt="" loading="lazy"><img src="logos/asx.png" alt="" loading="lazy"><img src="logos/b2.png" alt="" loading="lazy"><img src="logos/puba.png" alt="" loading="lazy"><img src="logos/sicomercio-ba-feira-de-santana.png" alt="" loading="lazy"><img src="logos/spk-distribuicao.png" alt="" loading="lazy"><img src="logos/tempo-geracao.png" alt="" loading="lazy"><img src="logos/instituto-aguiar-neri.png" alt="" loading="lazy"><img src="logos/ilha-med-hospital.png" alt="" loading="lazy"><img src="logos/prime-day-hospital.png" alt="" loading="lazy"><img src="logos/angioclin.png" alt="" loading="lazy"><img src="logos/vitalab.png" alt="" loading="lazy"><img src="logos/vacinas-vitalab.png" alt="" loading="lazy"><img src="logos/isas.png" alt="" loading="lazy"><img src="logos/luciane-prado-instituto.png" alt="" loading="lazy"><img src="logos/narte.png" alt="" loading="lazy"><img src="logos/asx.png" alt="" loading="lazy"><img src="logos/b2.png" alt="" loading="lazy"><img src="logos/puba.png" alt="" loading="lazy"><img src="logos/sicomercio-ba-feira-de-santana.png" alt="" loading="lazy"><img src="logos/spk-distribuicao.png" alt="" loading="lazy"><img src="logos/tempo-geracao.png" alt="" loading="lazy"></div>
     </div>
   </div>
 </section>
