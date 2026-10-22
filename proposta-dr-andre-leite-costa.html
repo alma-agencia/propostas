@@ -283,6 +283,17 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 #oportunidades .bloco p, #oportunidades .bloco li { font-size: .92rem; line-height: 1.55; }
 #oportunidades .tres-col { margin-top: 24px; }
 .t-frase em { display: block; }
+/* ── Antes/depois do case ── */
+.antes-depois { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; max-width: 1000px; }
+.ad { border-top: 3px solid var(--orange); padding-top: 14px; }
+.ad-rot { font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+.ad-linha { display: flex; align-items: flex-end; gap: 18px; }
+.ad-antes strong, .ad-depois strong { display: block; font-weight: 800; letter-spacing: -.04em; line-height: 1; white-space: nowrap; }
+.ad-antes strong { font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--muted); }
+.ad-depois strong { font-size: clamp(2.6rem, 4.6vw, 3.9rem); color: var(--orange); }
+.ad-antes span, .ad-depois span { display: block; font-size: .78rem; color: var(--muted); margin-top: 6px; }
+.ad-seta { font-size: 1.8rem; color: var(--orange); font-weight: 800; padding-bottom: 22px; }
+@media(max-width:900px){ .antes-depois { grid-template-columns: 1fr; } }
 #case .tab-wrap { margin-top: 14px; }
 #case .tab td { padding: 7px 14px; font-size: .95rem; }
 #case .citacao { margin-top: 14px; padding: 12px 22px; }
@@ -465,16 +476,23 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Quem já seguiu esse método</div>
     <h2 class="t-frase">O Dr. Igor começou com R$ 1,5 mil por mês. <em>A verba cresceu quando os números justificaram.</em></h2>
-    <div class="tab-wrap">
-      <table class="tab">
-        <thead><tr><th>Indicador</th><th>Antes</th><th>Depois</th></tr></thead>
-        <tbody>
-          <tr><td>Consultas por mês</td><td>8 (início de 2024)</td><td>77 a 96 (abr. a set. de 2026)</td></tr>
-          <tr><td>Tratamentos fechados por mês</td><td>8 (abril de 2026)</td><td>15 (setembro de 2026)</td></tr>
-          <tr><td>Consulta nova que vira tratamento</td><td>42% (abril de 2026)</td><td>71% (setembro de 2026)</td></tr>
-          <tr><td>Mídia por mês</td><td>R$ 1,5 mil (2024)</td><td>R$ 14,4 a 20,2 mil (abr. a set. de 2026)</td></tr>
-        </tbody>
-      </table>
+    <div class="antes-depois">
+      <div class="ad">
+        <div class="ad-rot">Consultas por mês</div>
+        <div class="ad-linha">
+          <div class="ad-antes"><strong>8</strong><span>início de 2024</span></div>
+          <div class="ad-seta">→</div>
+          <div class="ad-depois"><strong>77 a 96</strong><span>abril a setembro de 2026</span></div>
+        </div>
+      </div>
+      <div class="ad">
+        <div class="ad-rot">Mídia por mês</div>
+        <div class="ad-linha">
+          <div class="ad-antes"><strong>R$ 1,5 mil</strong><span>2024</span></div>
+          <div class="ad-seta">→</div>
+          <div class="ad-depois"><strong>R$ 20 mil</strong><span>agosto e setembro de 2026</span></div>
+        </div>
+      </div>
     </div>
     <div class="citacao"><p>"A metodologia baseada em dados e na evolução dos investimentos pelos resultados trouxe o retorno que eu precisava."</p><cite>Dr. Igor Neri, Instituto Aguiar Neri</cite></div>
     <p class="t-nota">Instituto Aguiar Neri, nutrologia e emagrecimento, Feira de Santana (BA). Fonte: almaagencia.com.br/cases/instituto-aguiar-neri. Série de abril a setembro de 2026, sem junho; consultas realizadas no mês, informadas pelo consultório. É o resultado de outro consultório, em outro mercado, e não uma promessa.</p>
