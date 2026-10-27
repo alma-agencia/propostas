@@ -706,7 +706,20 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   </div>
 </section>
 
-<section class="tela dark" id="decisao">
+<section class="tela" id="fechamento">
+  <div class="wrap">
+    <div class="t-label">A decisão</div>
+    <h2 class="t-frase">Com esse escopo e esse investimento, <em>o que falta para começarmos hoje?</em></h2>
+    <p class="t-corpo">Se estiver tudo claro, já definimos o início do diagnóstico e do novo site.</p>
+    <div class="passos">
+      <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Confirmamos o escopo e o início.</span></div>
+      <div class="pp"><div class="pp-n">02</div><b>Diagnóstico</b><span>Perguntas de paciente medidas nas IAs e no Google.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Site novo</b><span>Construção no mês 1 e publicação no mês 2.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark extra" id="decisao">
   <div class="wrap">
     <div class="t-label">Condição para começar</div>
     <h2 class="t-frase">Uma condição para iniciar agora. <em>O setup por nossa conta.</em></h2>
@@ -714,12 +727,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
       <div class="riscado"><s>R$ 3.000</s><span>setup bonificado</span></div>
       <p>Na contratação do projeto SEO e GEO por 12 meses, com aprovação até 03/11/2026, o novo site e toda a implantação ficam sem custo. O investimento é só a mensalidade de R$ 1.500.</p>
     </div>
-    <p class="t-corpo">Com esse escopo e essa condição, faz sentido iniciar?</p>
-    <div class="passos">
-      <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Confirmamos o escopo e o início.</span></div>
-      <div class="pp"><div class="pp-n">02</div><b>Diagnóstico</b><span>Perguntas de paciente medidas nas IAs e no Google.</span></div>
-      <div class="pp"><div class="pp-n">03</div><b>Site novo</b><span>Construção no mês 1 e publicação no mês 2.</span></div>
-    </div>
+    <p class="t-corpo">Com essa condição, podemos começar hoje?</p>
   </div>
 </section>
 
@@ -729,7 +737,9 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 (function(){
   const telas = Array.from(document.querySelectorAll('.tela'));
   const atual = document.getElementById('cont-atual');
-  document.getElementById('cont-total').textContent = String(telas.length).padStart(2,'0');
+  // Telas .extra (condição reservada ao vendedor) não entram no total nem mostram o contador
+  const contador = document.querySelector('.contador');
+  document.getElementById('cont-total').textContent = String(telas.filter(t => !t.classList.contains('extra')).length).padStart(2,'0');
   let idx = 0;
   // A tela atual é a que contém a linha central da janela (funciona com telas mais altas que a tela do celular)
   function atualiza(){
@@ -737,6 +747,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     const i = telas.findIndex(t => { const r = t.getBoundingClientRect(); return r.top <= meio && r.bottom > meio; });
     if (i >= 0 && i !== idx) { idx = i; }
     atual.textContent = String(idx + 1).padStart(2,'0');
+    contador.style.visibility = telas[idx].classList.contains('extra') ? 'hidden' : '';
   }
   let pendente = false;
   addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(() => { pendente = false; atualiza(); }); } }, { passive: true });
