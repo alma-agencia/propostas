@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alma — Projeto SEO e GEO · Prime Day Hospital</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   ALMA — PROPOSTA PRIME DAY HOSPITAL
+   Formato: apresentação em telas verticais inteiras, com encaixe na rolagem.
+   Uma frase principal e uma evidência por tela. Roteiro do apresentador em documento interno.
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #7a7a7a;
+  --subtle:  #b5b5b5;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.10);
+  --line-s:  rgba(16,24,40,0.18);
+  --orange:  #F97316;
+  --orange-l:#FFF4ED;
+  --f: 'Poppins', -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { font-family: var(--f); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+
+/* ── Tela ── */
+.tela {
+  min-height: 100vh; min-height: 100svh;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  display: flex; align-items: center;
+  padding: 80px 0 64px; position: relative; background: var(--white);
+}
+.tela.off  { background: var(--off); }
+.tela.dark { background: var(--ink); color: var(--white); }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+
+/* ── Tipografia de apresentação ── */
+.t-label { font-size: .78rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+.t-label::before { content:''; width: 28px; height: 2px; background: var(--orange); }
+.t-frase { font-size: clamp(2rem, 3.9vw, 3.4rem); font-weight: 800; line-height: 1.06; letter-spacing: -.035em; max-width: 960px; text-wrap: balance; }
+.t-frase em { font-style: italic; font-weight: 300; color: var(--orange); }
+.t-corpo { font-size: clamp(1.05rem, 1.45vw, 1.25rem); font-weight: 400; color: var(--dim); line-height: 1.7; max-width: 760px; margin-top: 28px; }
+.dark .t-corpo { color: rgba(255,255,255,.72); }
+.t-nota { font-size: .88rem; font-weight: 400; color: var(--muted); line-height: 1.65; max-width: 860px; margin-top: 28px; }
+.dark .t-nota { color: rgba(255,255,255,.5); }
+.t-nota b { color: var(--dim); font-weight: 600; }
+.dark .t-nota b { color: rgba(255,255,255,.75); }
+
+/* ── Marca e contador fixos ── */
+.marca { position: fixed; top: 26px; left: 40px; z-index: 50; font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; }
+.marca em { font-style: normal; font-weight: 300; color: var(--muted); }
+.contador { position: fixed; bottom: 24px; right: 40px; z-index: 50; font-size: .78rem; font-weight: 600; letter-spacing: .12em; color: var(--dim); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; font-variant-numeric: tabular-nums; }
+.contador b { color: var(--orange); }
+
+/* ── 00 Capa ── */
+.capa { border-bottom: 4px solid var(--orange); }
+.capa .t-frase { font-size: clamp(3rem, 7.5vw, 6.4rem); line-height: .98; letter-spacing: -.045em; }
+.capa-sub { font-size: clamp(1.25rem, 2.2vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--orange); margin-top: 24px; max-width: 820px; line-height: 1.35; }
+.capa-info { margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap; }
+.capa-info div { font-size: .82rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); line-height: 1.9; }
+.capa-info strong { color: var(--ink); font-weight: 700; }
+
+/* ── 01 Agência ── */
+.numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; max-width: 900px; }
+.numeros div { background: var(--white); padding: 26px 28px; }
+.numeros strong { display: block; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--orange); letter-spacing: -.04em; line-height: 1.05; }
+.numeros span { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.pilares { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.pilar { font-size: .9rem; font-weight: 500; padding: 9px 16px; border: 1px solid var(--line-s); color: var(--muted); border-radius: 99px; background: var(--white); }
+.pilar.ativo { border-color: var(--orange); background: var(--orange); color: var(--ink); font-weight: 700; }
+
+/* ── 02 Objetivo ── */
+.gap-row { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin-top: 56px; }
+.gap-num { font-size: clamp(6rem, 13vw, 10rem); font-weight: 800; color: var(--orange); line-height: .85; letter-spacing: -.06em; }
+.gap-txt { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 400; color: rgba(255,255,255,.85); line-height: 1.4; }
+.barras { margin-top: 48px; max-width: 760px; display: grid; gap: 14px; }
+.barra { display: grid; grid-template-columns: 110px 1fr 70px; gap: 16px; align-items: center; font-size: .95rem; color: rgba(255,255,255,.7); }
+.barra-trilho { height: 16px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+.barra-fill { height: 100%; background: rgba(255,255,255,.45); border-radius: 3px; }
+.barra-fill.meta { background: var(--orange); }
+.barra b { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* ── 03 Custo de esperar ── */
+.citacao { margin-top: 32px; padding: 28px 32px; border-left: 4px solid var(--orange); background: var(--off); max-width: 820px; }
+.citacao p { font-size: clamp(1.1rem, 1.7vw, 1.35rem); font-style: italic; color: var(--mid); line-height: 1.55; }
+.citacao cite { display: block; margin-top: 12px; font-style: normal; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.valor-futuro { margin-top: 28px; font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 700; line-height: 1.35; max-width: 820px; letter-spacing: -.02em; }
+.valor-futuro span { color: var(--orange); }
+
+/* ── 04 Experiência anterior ── */
+.perguntas { margin-top: 40px; display: grid; gap: 14px; max-width: 820px; counter-reset: q; }
+.perguntas li { list-style: none; font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 500; color: var(--white); padding: 18px 22px; border: 1px solid rgba(255,255,255,.16); border-radius: 6px; display: flex; gap: 16px; align-items: baseline; }
+.perguntas li::before { counter-increment: q; content: counter(q); color: var(--orange); font-weight: 800; }
+
+/* ── 05 Diagnóstico ── */
+.diag { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; margin-top: 32px; }
+.diag h3 { font-size: .78rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
+.achados, .hipoteses { list-style: none; display: grid; gap: 10px; }
+.achados li { background: var(--white); border: 1px solid var(--line); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--mid); }
+.achados li strong { color: var(--orange); font-weight: 800; margin-right: 6px; }
+.achados li small { display: block; font-size: .76rem; color: var(--muted); margin-top: 4px; }
+.hipoteses li { border: 1px dashed var(--line-s); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--dim); background: transparent; }
+
+/* ── Blocos em duas colunas ── */
+.duas-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; }
+.bloco { border-top: 3px solid var(--orange); padding-top: 18px; }
+.bloco h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
+.bloco p, .bloco li { font-size: 1rem; color: var(--dim); line-height: 1.65; }
+.bloco ul { list-style: none; display: grid; gap: 8px; }
+.bloco li { display: flex; gap: 10px; }
+.bloco li::before { content: '→'; color: var(--orange); flex-shrink: 0; }
+
+/* ── 07 Método ── */
+.etapas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; }
+.etapa { background: var(--white); padding: 26px 22px; }
+.etapa-n { font-size: .78rem; font-weight: 700; letter-spacing: .18em; color: var(--orange); margin-bottom: 10px; }
+.etapa h3 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
+.etapa p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.etapa .verif { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+.etapa .verif b { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+
+/* ── 09 Medição ── */
+.funil { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; }
+.passo { padding: 22px 20px; border: 1px solid var(--line-s); margin-right: -1px; background: var(--white); position: relative; }
+.passo:not(:last-child)::after { content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--orange); font-weight: 800; background: var(--off); z-index: 1; padding: 0 2px; }
+.passo b { display: block; font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+.passo span { font-size: .9rem; color: var(--dim); line-height: 1.5; }
+
+/* ── 10 Expectativa de mídia ── */
+.condicao { margin-top: 24px; background: var(--ink); color: var(--white); padding: 24px 28px; max-width: 900px; border-left: 4px solid var(--orange); }
+.condicao p { font-size: clamp(1.02rem, 1.5vw, 1.22rem); line-height: 1.5; }
+.condicao strong { color: var(--orange); }
+.tab-wrap { overflow-x: auto; margin-top: 16px; max-width: 900px; }
+.tab { width: 100%; border-collapse: collapse; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.tab th { text-align: left; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 10px 16px; border-bottom: 2px solid var(--ink); }
+.tab td { padding: 9px 16px; border-bottom: 1px solid var(--line); color: var(--mid); }
+.tab td:last-child, .tab th:last-child { text-align: right; }
+.tab td:last-child { font-weight: 800; color: var(--orange); }
+
+/* ── Primeiro ciclo ── */
+.fases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 44px; }
+.fase { border-top: 2px solid var(--line-s); padding-top: 18px; }
+.fase-q { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.fase h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; }
+.fase p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.equipe { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.equipe .rot { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-right: 6px; }
+.equipe .cargo { font-size: .92rem; font-weight: 600; padding: 8px 14px; border: 1px solid var(--line-s); border-radius: 99px; background: var(--white); }
+
+/* ── 12 Oferta ── */
+.preco { font-size: clamp(3.2rem, 7vw, 5.6rem); font-weight: 800; color: var(--orange); letter-spacing: -.05em; line-height: 1; margin-top: 28px; }
+.preco small { font-size: .38em; font-weight: 400; color: rgba(255,255,255,.6); letter-spacing: 0; }
+.preco-comp { font-size: clamp(1.1rem, 1.7vw, 1.4rem); color: rgba(255,255,255,.85); margin-top: 14px; }
+
+/* ── 13 Decisão ── */
+.passos { display: flex; gap: 0; margin-top: 56px; flex-wrap: wrap; max-width: 900px; }
+.pp { flex: 1; min-width: 200px; padding: 20px 24px 20px 0; }
+.pp-n { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--orange); color: var(--orange); font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.pp b { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+.pp span { font-size: .92rem; color: var(--dim); line-height: 1.55; }
+footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); scroll-snap-align: end; background: var(--white); }
+
+
+/* ── Entregáveis ── */
+.entregaveis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px; }
+.ent { background: var(--white); padding: 20px 18px; }
+.ent b { display: block; font-size: 1rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -.01em; }
+.ent span { font-size: .88rem; color: var(--dim); line-height: 1.5; }
+
+/* ── Ancoragem ── */
+.ancora { margin-top: 24px; max-width: 760px; background: var(--white); border: 1px solid var(--line); }
+.anc-linha { display: flex; justify-content: space-between; gap: 16px; padding: 7px 22px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.anc-linha b { font-weight: 700; color: var(--ink); white-space: nowrap; }
+.anc-linha.sub { background: var(--off); font-weight: 600; }
+.anc-linha.total { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-size: 1.1rem; font-weight: 700; padding: 11px 22px; }
+.anc-linha.total b { color: var(--orange); font-size: 1.3rem; font-weight: 800; }
+
+/* ── A dor ── */
+.dor { text-align: center; max-width: 960px; }
+.dor-frase { font-size: clamp(1.7rem, 3.4vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.3; letter-spacing: -.02em; color: var(--white); text-wrap: balance; }
+.dor-cite { display: block; margin-top: 24px; font-style: normal; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.dor-ponte { margin-top: 64px; font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 700; color: var(--white); letter-spacing: -.02em; text-wrap: balance; }
+
+/* ── Investimento ── */
+.preco-rot { font-size: .85rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: 10px; }
+.preco-linhas { margin-top: 28px; max-width: 520px; display: grid; gap: 0; }
+.preco-linhas div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 1rem; color: rgba(255,255,255,.7); font-variant-numeric: tabular-nums; }
+.preco-linhas div.tot { color: var(--white); font-weight: 700; }
+.preco-linhas b { font-weight: 600; white-space: nowrap; }
+.inclui-txt { margin-top: 28px; font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.65; max-width: 860px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ── Mobile: a apresentação acontece no desktop; no celular, rolagem livre ── */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .tela { min-height: 100vh; min-height: 100svh; padding: 88px 0 64px; }
+  .numeros, .diag, .duas-col { grid-template-columns: 1fr; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr 1fr; }
+  .passo:not(:last-child)::after { display: none; }
+  .gap-row { grid-template-columns: 1fr; gap: 12px; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .marca { display: none; }
+  .contador { right: 20px; bottom: 16px; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr; }
+  .barra { grid-template-columns: 70px 1fr 44px; }
+  .tab { font-size: .82rem; }
+  .tab th { font-size: .6rem; letter-spacing: .06em; padding: 8px 6px; }
+  .tab td { padding: 8px 6px; }
+  .t-frase { font-size: 1.85rem; }
+  .capa .t-frase { font-size: 2.6rem; }
+  .gap-num { font-size: 5.5rem; }
+  .preco { font-size: 3rem; }
+  footer { padding: 28px 20px; }
+}
+@media(max-width:400px){ .wrap { padding: 0 16px; } }
+
+/* ── Extras desta proposta ── */
+.dark .bloco p, .dark .bloco li { color: rgba(255,255,255,.78); }
+.dark .bloco h3 { color: var(--white); }
+.preco-linhas div.risc b { text-decoration: line-through; color: rgba(255,255,255,.4); font-weight: 500; }
+.preco-linhas div.risc em { font-style: normal; color: var(--orange); font-weight: 700; margin-left: 10px; }
+.credito { margin-top: 28px; max-width: 860px; background: var(--ink); color: var(--white); padding: 22px 28px; border-left: 4px solid var(--orange); }
+.credito p { font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.55; }
+.credito strong { color: var(--orange); }
+.cond-conteudo { margin-top: 28px; display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: end; max-width: 900px; }
+.somas { background: var(--white); border: 1px solid var(--line); }
+.somas div { display: flex; justify-content: space-between; gap: 18px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.somas div.tot { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-weight: 700; }
+.somas div.tot b { color: var(--orange); font-size: 1.25rem; }
+#diagnostico .t-frase, #ancoragem .t-frase, #oferta .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#diagnostico .diag { margin-top: 22px; }
+#diagnostico .achados li { padding: 9px 16px; font-size: .92rem; }
+#diagnostico .hipoteses li { padding: 9px 16px; font-size: .92rem; }
+#ancoragem .ancora { margin-top: 18px; }
+#ancoragem .anc-linha { padding: 4px 22px; font-size: .95rem; }
+#ancoragem .anc-linha.total { padding: 8px 22px; }
+#ancoragem .t-nota { margin-top: 16px; }
+#oferta .preco { margin-top: 16px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 16px; }
+#oferta .preco-linhas div { padding: 6px 0; }
+#oferta .inclui-txt { margin-top: 16px; font-size: .88rem; line-height: 1.55; }
+#oferta .t-nota { margin-top: 14px; font-size: .8rem; line-height: 1.5; }
+@media(max-width:900px){ .cond-conteudo { grid-template-columns: 1fr; } }
+
+.numeros.q4 { grid-template-columns: repeat(4, 1fr); max-width: 1000px; margin-top: 26px; }
+.numeros.q4 div { padding: 20px 20px; }
+.numeros.q4 strong { font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
+.numeros.q4 span { font-size: .72rem; letter-spacing: .1em; display: block; margin-top: 6px; line-height: 1.4; }
+.numeros.q4 small { display: block; font-size: .74rem; color: var(--muted); margin-top: 4px; font-weight: 400; }
+#case .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#case .citacao { margin-top: 20px; padding: 16px 24px; }
+#case .citacao p { font-size: 1rem; }
+#case .t-nota { margin-top: 16px; font-size: .78rem; }
+#case .t-corpo { margin-top: 14px; }
+@media(max-width:900px){ .numeros.q4 { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px){ .numeros.q4 { grid-template-columns: 1fr; } }
+#objetivo .t-frase { font-size: clamp(1.6rem, 3vw, 2.5rem); }
+#objetivo .gap-row { margin-top: 22px; }
+#objetivo .gap-num { font-size: clamp(4rem, 9vw, 7rem); }
+#objetivo .duas-col { margin-top: 22px !important; }
+#objetivo .t-nota { margin-top: 16px; }
+#esperar .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#esperar .citacao { margin-top: 20px; padding: 20px 28px; }
+#esperar .t-corpo { margin-top: 18px; }
+#esperar .valor-futuro { margin-top: 20px; }
+.tres-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
+@media(max-width:900px){ .tres-col { grid-template-columns: 1fr; } }
+#oportunidades .t-frase, #recomendacao .t-frase, #porque .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#oportunidades .bloco p, #oportunidades .bloco li { font-size: .92rem; line-height: 1.55; }
+#oportunidades .tres-col { margin-top: 24px; }
+.t-frase em { display: block; }
+/* ── Antes/depois do case ── */
+.antes-depois { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; max-width: 1000px; }
+.ad { border-top: 3px solid var(--orange); padding-top: 14px; }
+.ad-rot { font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+.ad-linha { display: flex; align-items: flex-end; gap: 18px; }
+.ad-antes strong, .ad-depois strong { display: block; font-weight: 800; letter-spacing: -.04em; line-height: 1; white-space: nowrap; }
+.ad-antes strong { font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--muted); }
+.ad-depois strong { font-size: clamp(2.6rem, 4.6vw, 3.9rem); color: var(--orange); }
+.ad-antes span, .ad-depois span { display: block; font-size: .78rem; color: var(--muted); margin-top: 6px; }
+.ad-seta { font-size: 1.8rem; color: var(--orange); font-weight: 800; padding-bottom: 22px; }
+@media(max-width:900px){ .antes-depois { grid-template-columns: 1fr; } }
+#case .tab-wrap { margin-top: 14px; }
+#case .tab td { padding: 7px 14px; font-size: .95rem; }
+#case .citacao { margin-top: 14px; padding: 12px 22px; }
+#case .t-nota { margin-top: 12px; }
+#case .tab td:first-child { font-weight: 600; color: var(--ink); }
+#inacao .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#inacao .duas-col { margin-top: 28px; }
+#inacao .bloco p, #inacao .bloco li { font-size: .95rem; line-height: 1.55; }
+
+/* ── Carrossel de logos (Quem somos) ── */
+.logos { margin-top: 26px; max-width: 900px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.logos-trilho { display: flex; align-items: center; gap: 56px; width: max-content; animation: logos-passa 45s linear infinite; }
+.logos-trilho img { height: 34px; width: auto; max-width: 150px; object-fit: contain; opacity: .3; filter: grayscale(1); flex-shrink: 0; }
+@keyframes logos-passa { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logos:hover .logos-trilho { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .logos-trilho { animation: none; } }
+@media(max-width:600px){ .logos-trilho { gap: 36px; } .logos-trilho img { height: 26px; } }
+#agencia .numeros { margin-top: 24px; }
+#agencia .t-corpo { margin-top: 20px; }
+
+#objetivo .t-frase { font-size: clamp(1.5rem, 2.8vw, 2.3rem); }
+#objetivo .gap-row { margin-top: 16px; }
+#objetivo .gap-num { font-size: clamp(3.5rem, 8vw, 6rem); }
+#objetivo .duas-col { margin-top: 16px !important; }
+#objetivo .bloco p { font-size: .95rem; }
+#experiencia .perguntas { margin-top: 26px; }
+#experiencia .t-corpo { margin-top: 18px; }
+#oferta .preco { margin-top: 14px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 14px; }
+#oferta .preco-linhas div { padding: 6px 0; }
+#oferta .inclui-txt { margin-top: 14px; font-size: .88rem; }
+#oferta .t-nota { margin-top: 12px; font-size: .8rem; }
+
+/* ── Extras Prime Day Hospital ── */
+.tela .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+.capa .t-frase { font-size: clamp(3rem, 7.5vw, 6.4rem); }
+.tab.cmp td:last-child { font-weight: 400; color: var(--mid); text-align: left; }
+.tab.cmp th:last-child { text-align: left; }
+.tab.cmp td:first-child { font-weight: 600; color: var(--ink); }
+.tab.cmp td.novo { font-weight: 800; color: var(--orange); }
+.tab.ia th, .tab.ia td { text-align: center; }
+.tab.ia th:first-child, .tab.ia td:first-child { text-align: left; }
+.tab.ia td:last-child { color: var(--mid); font-weight: 400; text-align: center; }
+.tab.ia td { padding: 9px 12px; }
+.tab.ia td.sim { color: var(--orange) !important; font-weight: 800 !important; }
+.tab.ia td.nao { color: var(--subtle) !important; }
+.tab.ia tfoot td { font-weight: 800 !important; color: var(--ink) !important; border-top: 2px solid var(--ink); border-bottom: none; }
+.resumo-ia { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+.resumo-ia span { font-size: .9rem; padding: 8px 14px; border: 1px solid var(--line-s); border-radius: 99px; color: var(--dim); background: var(--white); }
+.resumo-ia b { color: var(--orange); }
+.cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+.cardq { background: var(--white); border: 1px solid var(--line); padding: 20px 22px; border-top: 3px solid var(--orange); }
+.cardq .q { font-size: 1.02rem; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 12px; }
+.cardq .q::before { content: '"'; } .cardq .q::after { content: '"'; }
+.cardq p { font-size: .92rem; color: var(--dim); line-height: 1.55; }
+.cardq .res { display: block; font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.dark .bloco p, .dark .bloco li { color: rgba(255,255,255,.78); }
+.dark .bloco h3 { color: var(--white); }
+.tres-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 30px; }
+.tres-col .bloco p, .tres-col .bloco li { font-size: .95rem; line-height: 1.55; }
+.diag { margin-top: 22px; }
+.achados li, .hipoteses li { padding: 9px 16px; font-size: .92rem; }
+.ent b small { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+.entregaveis.e3 { grid-template-columns: repeat(3, 1fr); }
+.entregaveis { margin-top: 26px; }
+.ent { padding: 16px 18px; }
+.ent span { font-size: .86rem; }
+.grupo-rot { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-top: 22px; }
+.grupo-rot + .entregaveis { margin-top: 10px; }
+.ancora { margin-top: 18px; }
+.anc-linha { padding: 5px 22px; font-size: .95rem; }
+.anc-linha.total { padding: 9px 22px; }
+#oferta .preco { margin-top: 14px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 16px; }
+#oferta .preco-linhas div { padding: 7px 0; }
+#oferta .inclui-txt { margin-top: 16px; font-size: .88rem; line-height: 1.55; }
+#oferta .t-nota { margin-top: 12px; font-size: .8rem; }
+.bonus-box { margin-top: 26px; max-width: 900px; border: 1px solid rgba(255,255,255,.16); border-left: 4px solid var(--orange); padding: 22px 28px; }
+.bonus-box .riscado { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; }
+.bonus-box .riscado s { color: rgba(255,255,255,.4); font-weight: 500; margin-right: 14px; }
+.bonus-box .riscado span { color: var(--orange); }
+.bonus-box p { font-size: 1rem; color: rgba(255,255,255,.75); line-height: 1.55; margin-top: 10px; }
+.dark .passos .pp span { color: rgba(255,255,255,.65); }
+.dark .pp b { color: var(--white); }
+#decisao .passos { margin-top: 26px; }
+#decisao .t-corpo { margin-top: 22px; }
+.gap-row.claro .gap-txt { color: var(--mid); }
+.formal-item { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); max-width: 920px; }
+.formal-item:first-of-type { margin-top: 26px; }
+.formal-item .n { font-size: 1.5rem; font-weight: 800; color: var(--orange); line-height: 1.2; }
+.formal-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.formal-item p { font-size: .96rem; color: var(--dim); line-height: 1.55; }
+@media(max-width:900px){ .cards3, .tres-col, .entregaveis.e3 { grid-template-columns: 1fr; } .tab.ia { font-size: .8rem; } .tab.ia td, .tab.ia th { padding: 7px 5px; } }
+</style>
+</head>
+<body>
+
+<div class="marca" aria-hidden="true">Alma<em>.Convert</em></div>
+<div class="contador" aria-hidden="true"><b id="cont-atual">01</b> / <span id="cont-total">00</span></div>
+
+
+<section class="tela capa" id="capa">
+  <div class="wrap">
+    <div class="t-label">Projeto SEO e GEO</div>
+    <h1 class="t-frase">Prime Day Hospital</h1>
+    <p class="capa-sub">Ser encontrado no Google e recomendado pelas IAs quando o paciente procura saúde em Camaçari.</p>
+    <div class="capa-info">
+      <div>Preparada para<br><strong>Rafael Leal · Prime Day Hospital</strong></div>
+      <div>Camaçari, BA<br><strong>Outubro de 2026</strong></div>
+      <div>Válida até<br><strong>03/11/2026</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="agencia">
+  <div class="wrap">
+    <div class="t-label">Quem somos</div>
+    <h2 class="t-frase">Criamos com alma. <em>Entregamos com método.</em></h2>
+    <p class="t-corpo">O Prime já trabalha com a gente em conteúdo e tráfego pago. Este projeto amplia a geração de demanda para onde o paciente pesquisa sem anúncio: a busca orgânica do Google e as respostas das IAs.</p>
+    <div class="pilares">
+      <span class="pilar">Criação &amp; Conteúdo</span>
+      <span class="pilar ativo">Geração de Demanda · busca orgânica e IA</span>
+      <span class="pilar">Conversão Inteligente</span>
+      <span class="pilar">Dados &amp; Retenção</span>
+    </div>
+    <div class="numeros">
+      <div><strong>Desde 2019</strong><span>gerando resultados</span></div>
+      <div><strong>+150</strong><span>clientes atendidos</span></div>
+      <div><strong>+25</strong><span>nichos de atuação</span></div>
+    </div>
+    <div class="logos" aria-label="Alguns clientes atendidos">
+      <div class="logos-trilho"><img src="logos/instituto-aguiar-neri.png" alt=""><img src="logos/ilha-med-hospital.png" alt=""><img src="logos/angioclin.png" alt=""><img src="logos/vitalab.png" alt=""><img src="logos/vacinas-vitalab.png" alt=""><img src="logos/isas.png" alt=""><img src="logos/luciane-prado-instituto.png" alt=""><img src="logos/narte.png" alt=""><img src="logos/asx.png" alt=""><img src="logos/b2.png" alt=""><img src="logos/puba.png" alt=""><img src="logos/sicomercio-ba-feira-de-santana.png" alt=""><img src="logos/spk-distribuicao.png" alt=""><img src="logos/tempo-geracao.png" alt=""><img src="logos/instituto-aguiar-neri.png" alt=""><img src="logos/ilha-med-hospital.png" alt=""><img src="logos/angioclin.png" alt=""><img src="logos/vitalab.png" alt=""><img src="logos/vacinas-vitalab.png" alt=""><img src="logos/isas.png" alt=""><img src="logos/luciane-prado-instituto.png" alt=""><img src="logos/narte.png" alt=""><img src="logos/asx.png" alt=""><img src="logos/b2.png" alt=""><img src="logos/puba.png" alt=""><img src="logos/sicomercio-ba-feira-de-santana.png" alt=""><img src="logos/spk-distribuicao.png" alt=""><img src="logos/tempo-geracao.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="objetivo">
+  <div class="wrap">
+    <div class="t-label">Objetivo</div>
+    <h2 class="t-frase">"Pensou em saúde em Camaçari, pensou no Prime." <em>Hoje, o paciente também pensa perguntando.</em></h2>
+    <div class="duas-col">
+      <div class="bloco"><h3>Hoje</h3><p>O Prime é lembrado por quem já o acompanha no Instagram, com 12,5 mil seguidores. Quem procura uma especialidade no Google ou pergunta a uma IA encontra outros hospitais.</p></div>
+      <div class="bloco"><h3>Meta</h3><p>Aparecer e ser recomendado nas buscas de saúde em Camaçari, especialidade por especialidade, no Google e nas IAs, como alternativa real a Salvador.</p></div>
+    </div>
+    <p class="t-nota">Objetivo definido na reunião de alinhamento de 01/06/2026. Seguidores: Instagram @primedayhospital, 27/10/2026.</p>
+  </div>
+</section>
+
+<section class="tela" id="busca">
+  <div class="wrap">
+    <div class="t-label">A busca mudou</div>
+    <h2 class="t-frase">O paciente não procura só links. <em>Ele pede uma recomendação.</em></h2>
+    <div class="tres-col">
+      <div class="bloco"><h3>Google: a lista</h3><p>O paciente pesquisa "urologista em Camaçari" e escolhe entre os primeiros resultados. Quem não está na primeira página quase não é visto.</p></div>
+      <div class="bloco"><h3>Google com IA: a resposta</h3><p>Antes dos links, o Google já mostra um resumo gerado por IA com os nomes dos hospitais. É a primeira coisa que o paciente lê.</p></div>
+      <div class="bloco"><h3>ChatGPT, Gemini, Perplexity</h3><p>O paciente pergunta em linguagem natural e recebe três ou quatro nomes. Na resposta da IA não existe página 2: o hospital é citado ou não existe.</p></div>
+    </div>
+    <p class="t-corpo"><b style="color:var(--ink)">SEO</b> coloca o Prime nos resultados do Google. <b style="color:var(--ink)">GEO</b> (otimização para IAs generativas) faz o Prime ser citado nas respostas. Este projeto trabalha os dois, com prioridade no GEO.</p>
+  </div>
+</section>
+
+<section class="tela off" id="teste-ia">
+  <div class="wrap">
+    <div class="t-label">Teste real nas IAs</div>
+    <h2 class="t-frase">Fizemos 5 perguntas de paciente a 4 IAs. <em>O Prime apareceu em 4 das 20 respostas.</em></h2>
+    <div class="tab-wrap" style="margin-top:22px;max-width:1000px">
+      <table class="tab ia">
+        <thead><tr><th>Pergunta</th><th>ChatGPT</th><th>Perplexity</th><th>Gemini</th><th>Google modo IA</th></tr></thead>
+        <tbody>
+          <tr><td>Onde fazer endoscopia em Camaçari?</td><td class="nao">não cita</td><td class="nao">não cita</td><td class="nao">não cita</td><td class="nao">não cita</td></tr>
+          <tr><td>Onde encontrar urologista em Camaçari?</td><td class="nao">não cita</td><td class="nao">não cita</td><td class="nao">não cita</td><td class="nao">não cita</td></tr>
+          <tr><td>Qual hospital em Camaçari faz cirurgia de catarata?</td><td class="nao">não cita</td><td class="sim">4º</td><td class="nao">não cita</td><td class="nao">não cita</td></tr>
+          <tr><td>Qual o melhor hospital em Camaçari para fazer cirurgia?</td><td class="nao">não cita</td><td class="sim">3º</td><td class="nao">não cita</td><td class="nao">não cita</td></tr>
+          <tr><td>Hospital dia em Camaçari: quais opções existem?</td><td class="sim">1º</td><td class="sim">2º</td><td class="nao">não cita</td><td class="nao">não cita</td></tr>
+        </tbody>
+        <tfoot><tr><td>Respostas que citam o Prime</td><td>1 de 5</td><td>3 de 5</td><td>0 de 5</td><td>0 de 5</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="t-nota">Posição = ordem em que o Prime aparece na resposta. Teste em 27/10/2026, Brasil, sem login, via Apify (Google Search Scraper com ChatGPT, Perplexity, Gemini e modo IA do Google). As respostas das IAs variam por pessoa e por dia; por isso repetimos as mesmas perguntas todo mês.</p>
+  </div>
+</section>
+
+<section class="tela" id="exemplos">
+  <div class="wrap">
+    <div class="t-label">O que as IAs responderam</div>
+    <h2 class="t-frase">O Prime tem a especialidade. <em>A IA indica outro hospital.</em></h2>
+    <div class="cards3">
+      <div class="cardq"><div class="q">Onde encontrar urologista em Camaçari?</div><span class="res">Prime: 0 de 4 IAs</span><p>Nenhuma IA citou o Prime, que tem urologia. O resumo de IA do Google indicou Sermege, Ser Mais, Santa Helena e São Matheus.</p></div>
+      <div class="cardq"><div class="q">Onde fazer endoscopia em Camaçari?</div><span class="res">Prime: 0 de 4 IAs</span><p>A endoscopia é uma das áreas em expansão do Prime. Nas quatro IAs, o paciente recebeu outros endereços.</p></div>
+      <div class="cardq"><div class="q">Qual o melhor hospital em Camaçari para fazer cirurgia?</div><span class="res">Prime: 1 de 4 IAs</span><p>O ChatGPT recomendou Hospital Geral, Santa Helena e Sermege. O Gemini, Santa Helena, Sermege e São Matheus. O Prime só apareceu no Perplexity, em 3º.</p></div>
+    </div>
+    <p class="t-nota">Teste em 27/10/2026. Respostas resumidas pela agência; os nomes citados são os que as IAs listaram.</p>
+  </div>
+</section>
+
+<section class="tela off" id="dados-ia">
+  <div class="wrap">
+    <div class="t-label">De onde a IA tira os dados</div>
+    <h2 class="t-frase">Quando a IA cita o Prime, usa dados de terceiros. <em>E eles não batem.</em></h2>
+    <div class="duas-col">
+      <div class="bloco"><h3>Dois endereços diferentes</h3><ul>
+        <li>ChatGPT: Rua do Mirante, 54 (dado do cadastro nacional de estabelecimentos de saúde, CNES)</li>
+        <li>Resumo de IA do Google: Av. Eixo Urbano Central, 52 (dado de um site de terceiros)</li>
+      </ul></div>
+      <div class="bloco"><h3>Especialidades incompletas</h3><ul>
+        <li>O Perplexity descreveu o Prime com ortopedia, oftalmologia, gastroenterologia, dermatologia, coloproctologia e reumatologia</li>
+        <li>Ficaram de fora urologia, ginecologia e endoscopia, áreas que o Prime quer destacar</li>
+      </ul></div>
+    </div>
+    <p class="t-corpo">A IA monta a resposta com o que encontra. Se o site do Prime não explica quem é, onde fica e o que faz, outros sites explicam por ele. O GEO faz do Prime a fonte principal sobre o próprio Prime.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="google">
+  <div class="wrap">
+    <div class="t-label">Google orgânico</div>
+    <h2 class="t-frase">Em 8 buscas de saúde em Camaçari, <em>o site do Prime não apareceu em nenhuma.</em></h2>
+    <div class="gap-row">
+      <div class="gap-num">0 de 8</div>
+      <div class="gap-txt">buscas com o site do Prime<br>na primeira página do Google</div>
+    </div>
+    <div class="duas-col" style="margin-top:28px">
+      <div class="bloco"><h3>As buscas</h3><p>Hospital em Camaçari · melhor hospital de Camaçari · urologista · endoscopia · cirurgia de catarata · ginecologista · ortopedista · hospital dia, todas em Camaçari.</p></div>
+      <div class="bloco"><h3>Quem aparece</h3><p>Hospital Central Sermege, São Matheus Hospital e Doctoralia, com páginas por especialidade. O Prime aparece só pelo Instagram, em 3º e 4º, nas duas buscas por hospital.</p></div>
+    </div>
+    <p class="t-nota">Google Brasil, celular, 27/10/2026, primeira página de resultados orgânicos (sem anúncios).</p>
+  </div>
+</section>
+
+<section class="tela off" id="site">
+  <div class="wrap">
+    <div class="t-label">Análise do site</div>
+    <h2 class="t-frase">O site atual não ajuda o Google nem a IA a entender o Prime. <em>Por isso, um site novo.</em></h2>
+    <div class="diag">
+      <div>
+        <h3>O que o Google e a IA leem</h3>
+        <ul class="achados">
+          <li><strong>Sem título</strong>A página inicial se chama "primedayhospital.com.br", sem descrição e com o título principal vazio.</li>
+          <li><strong>10 de 10</strong>imagens da página inicial sem texto alternativo. As especialidades aparecem só em imagens, que o Google e a IA não leem.</li>
+          <li><strong>Sem dados estruturados</strong>Não há marcação que diga ao Google que o Prime é um hospital, com endereço, horário e especialidades.</li>
+          <li><strong>Páginas genéricas</strong>A página de urologia tem cerca de 200 palavras, sem título principal e sem os procedimentos que o paciente pesquisa.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>O que o paciente sente</h3>
+        <ul class="achados">
+          <li><strong>7,3 MB</strong>e 74 arquivos na página inicial: cerca de 21 segundos para carregar no nosso teste.<small>Teste em navegador, 27/10/2026.</small></li>
+          <li><strong>Sem medição</strong>Não encontramos Google Analytics nem Tag Manager no código.</li>
+          <li><strong>Atribuição errada</strong>O botão de WhatsApp do site envia "vim do Instagram".</li>
+          <li><strong>Erro de texto</strong>"Agende uma Conulta" na página inicial.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="t-nota">Análise do código e do conteúdo do site primedayhospital.com.br em 27/10/2026.</p>
+  </div>
+</section>
+
+<section class="tela" id="oportunidades">
+  <div class="wrap">
+    <div class="t-label">Oportunidades</div>
+    <h2 class="t-frase">Há dinheiro na mesa: <em>pacientes que já procuram o que o Prime oferece.</em></h2>
+    <div class="tres-col">
+      <div class="bloco"><h3>1 · A demanda já existe</h3><p>Pessoas em Camaçari já pesquisam urologista, endoscopia, catarata e cirurgia. Hoje, essas buscas e perguntas levam a Sermege, Santa Helena e São Matheus. Cada resposta sem o Prime é um paciente que vai para outro hospital, ou para Salvador.</p></div>
+      <div class="bloco"><h3>2 · Orgânico complementa o pago</h3><p>No anúncio, cada clique é pago, todo mês. A posição orgânica e a citação nas IAs continuam trazendo pacientes sem custo por clique, e reforçam a confiança de quem viu o anúncio e pesquisou o Prime.</p></div>
+      <div class="bloco"><h3>3 · Posicionamento que se acumula</h3><p>Páginas, respostas e citações viram um ativo do hospital, que cresce mês a mês. É a base para "pensou em saúde em Camaçari, pensou no Prime" funcionar também na busca.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="metodo">
+  <div class="wrap">
+    <div class="t-label">Metodologia SEO e GEO</div>
+    <h2 class="t-frase">Quatro frentes, cada uma com entrega <em>e forma de verificar.</em></h2>
+    <div class="etapas">
+      <div class="etapa"><div class="etapa-n">01</div><h3>Base técnica</h3><p>Site novo, rápido e legível para o Google e para a IA: títulos, descrições, imagens com texto, dados estruturados e medição.</p><div class="verif"><b>Como verificar</b>Velocidade, páginas indexadas e Search Console.</div></div>
+      <div class="etapa"><div class="etapa-n">02</div><h3>Conteúdo</h3><p>Uma página por especialidade e procedimento, com as perguntas que o paciente faz e respostas claras, dentro das regras do CFM.</p><div class="verif"><b>Como verificar</b>Páginas publicadas e buscas em que aparecem.</div></div>
+      <div class="etapa"><div class="etapa-n">03</div><h3>Autoridade local</h3><p>Google Meu Negócio, avaliações e cadastros externos (CNES, diretórios de saúde) com o mesmo nome, endereço e especialidades.</p><div class="verif"><b>Como verificar</b>Dados iguais em todas as fontes.</div></div>
+      <div class="etapa"><div class="etapa-n">04</div><h3>GEO e monitoramento</h3><p>As mesmas perguntas de paciente, todo mês, no ChatGPT, Perplexity, Gemini e Google com IA. Ajustes conforme o que as IAs citam.</p><div class="verif"><b>Como verificar</b>Respostas que citam o Prime, mês a mês.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela" id="entregaveis">
+  <div class="wrap">
+    <div class="t-label">O que você recebe</div>
+    <h2 class="t-frase">Um site novo na implantação. <em>Conteúdo e monitoramento todo mês.</em></h2>
+    <div class="grupo-rot">Implantação (setup)</div>
+    <div class="entregaveis">
+      <div class="ent"><b>Novo site</b><span>Institucional, rápido no celular, com caminho claro até o agendamento.</span></div>
+      <div class="ent"><b>Páginas de especialidade</b><span>Oftalmologia, ginecologia, urologia, ortopedia, endoscopia e cirurgia.</span></div>
+      <div class="ent"><b>Dados estruturados e medição</b><span>Marcação de hospital, Search Console, Analytics e WhatsApp com origem correta.</span></div>
+      <div class="ent"><b>Diagnóstico inicial nas IAs</b><span>Perguntas de paciente medidas antes do início, para comparar mês a mês.</span></div>
+    </div>
+    <div class="grupo-rot">Todo mês</div>
+    <div class="entregaveis">
+      <div class="ent"><b>4 conteúdos</b><span>Páginas de procedimento ou respostas a perguntas frequentes dos pacientes.</span></div>
+      <div class="ent"><b>Autoridade local</b><span>Google Meu Negócio, avaliações e cadastros externos atualizados.</span></div>
+      <div class="ent"><b>Monitoramento nas IAs</b><span>As mesmas perguntas, nas quatro IAs, com o registro de quem foi citado.</span></div>
+      <div class="ent"><b>Relatório mensal</b><span>Posições no Google, citações nas IAs, contatos vindos do site e próximos passos.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="especialistas">
+  <div class="wrap">
+    <div class="t-label">Quem executa</div>
+    <h2 class="t-frase">Seis especialistas <em>trabalhando no projeto.</em></h2>
+    <div class="entregaveis e3">
+      <div class="ent"><b>Estrategista</b><span>Define as especialidades e as perguntas prioritárias e conecta o projeto ao conteúdo e ao tráfego.</span></div>
+      <div class="ent"><b>Analista de SEO</b><span>Estrutura técnica, palavras e perguntas, indexação e posições no Google.</span></div>
+      <div class="ent"><b>Copywriter</b><span>Textos das páginas e respostas às perguntas dos pacientes, dentro das regras do CFM.</span></div>
+      <div class="ent"><b>Webdesigner</b><span>Layout do novo site, pensado para o celular e para o agendamento.</span></div>
+      <div class="ent"><b>Desenvolvedor</b><span>Site rápido, dados estruturados e instalação da medição.</span></div>
+      <div class="ent"><b>Analista de Dados</b><span>Monitoramento mensal no Google e nas IAs e relatório de resultados.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela" id="cronograma">
+  <div class="wrap">
+    <div class="t-label">Cronograma</div>
+    <h2 class="t-frase">O site novo nos primeiros 60 dias. <em>Depois, o ciclo mensal.</em></h2>
+    <div class="fases">
+      <div class="fase"><div class="fase-q">Mês 1</div><h3>Diagnóstico e site</h3><p>Diagnóstico inicial nas IAs e no Google, mapa de perguntas por especialidade e construção do novo site.</p></div>
+      <div class="fase"><div class="fase-q">Mês 2</div><h3>Site no ar</h3><p>Novo site publicado com as páginas de especialidade, dados estruturados e medição. Ajuste dos cadastros externos.</p></div>
+      <div class="fase"><div class="fase-q">Mês 3</div><h3>Conteúdo</h3><p>Primeiros conteúdos de procedimentos e perguntas frequentes. Primeira comparação com o diagnóstico inicial.</p></div>
+      <div class="fase"><div class="fase-q">A partir do mês 4</div><h3>Ciclo mensal</h3><p>Conteúdo, autoridade local e monitoramento, com prioridades revistas pelo que as IAs e o Google mostram.</p></div>
+    </div>
+    <p class="t-nota">Prazos previstos; dependem da aprovação de textos e do envio de informações pelo hospital (corpo clínico, procedimentos, fotos).</p>
+  </div>
+</section>
+
+<section class="tela off" id="expectativa">
+  <div class="wrap">
+    <div class="t-label">Expectativa de resultado</div>
+    <h2 class="t-frase">Não vendemos posição nem citação. <em>Vendemos o método e a medição.</em></h2>
+    <div class="duas-col">
+      <div class="bloco"><h3>O que medimos todo mês</h3><ul>
+        <li>Respostas das IAs que citam o Prime, nas mesmas perguntas</li>
+        <li>Buscas de saúde em Camaçari em que o site aparece na primeira página</li>
+        <li>Visitas e contatos de WhatsApp vindos do site</li>
+      </ul></div>
+      <div class="bloco"><h3>Como ler o resultado</h3><ul>
+        <li>Ponto de partida: 4 de 20 respostas nas IAs e 0 de 8 buscas no Google</li>
+        <li>SEO e GEO são construção: os primeiros sinais aparecem depois do site novo no ar</li>
+        <li>Nenhuma agência controla o Google ou as IAs; controlamos o que as alimenta</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela" id="inacao">
+  <div class="wrap">
+    <div class="t-label">O custo da inação</div>
+    <h2 class="t-frase">Continuar como está também tem um custo. <em>Ele aparece nas respostas que indicam outro hospital.</em></h2>
+    <div class="duas-col">
+      <div class="bloco"><h3>O que continua, se nada mudar</h3><ul>
+        <li>Quem pergunta por urologista ou endoscopia em Camaçari segue recebendo outros nomes</li>
+        <li>As IAs seguem descrevendo o Prime com endereços divergentes e especialidades incompletas</li>
+        <li>Quem vê o anúncio e pesquisa o Prime encontra um site lento e sem as especialidades</li>
+      </ul></div>
+      <div class="bloco"><h3>O que isso custa</h3><ul>
+        <li>Pacientes que já procuram o que o Prime oferece vão para Sermege, Santa Helena, São Matheus ou Salvador</li>
+        <li>Todo paciente do Google continua dependendo de clique pago</li>
+        <li>Quem começa antes acumula conteúdo e citações, e a distância aumenta a cada mês</li>
+      </ul></div>
+    </div>
+    <p class="t-nota">Fontes: teste nas IAs, Google e análise do site, 27/10/2026.</p>
+  </div>
+</section>
+
+<section class="tela off" id="ancoragem">
+  <div class="wrap">
+    <div class="t-label">Para montar esse time por conta própria</div>
+    <h2 class="t-frase">Quanto custaria <em>contratar cada especialista.</em></h2>
+    <div class="ancora">
+      <div class="anc-linha"><span>Estrategista</span><b>R$ 3.993</b></div>
+      <div class="anc-linha"><span>Analista de SEO</span><b>R$ 3.153</b></div>
+      <div class="anc-linha"><span>Copywriter</span><b>R$ 3.500</b></div>
+      <div class="anc-linha"><span>Webdesigner</span><b>R$ 2.850</b></div>
+      <div class="anc-linha"><span>Desenvolvedor</span><b>R$ 3.250</b></div>
+      <div class="anc-linha"><span>Analista de Dados</span><b>R$ 4.750</b></div>
+      <div class="anc-linha total"><span>Total do time por mês</span><b>R$ 21.496</b></div>
+    </div>
+    <p class="t-nota">Valor médio mensal de profissionais PJ/freelancer em cada função (mediana dos registros mensais, Glassdoor Brasil; coletas de 09/10/2026 e, para Analista de SEO, 27/10/2026). Não inclui ferramentas de SEO e monitoramento.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="dor">
+  <div class="wrap">
+    <div class="wrap dor" style="padding:0">
+    <p class="dor-frase">"Pensou em saúde em Camaçari, pensou no Prime."</p>
+    <cite class="dor-cite">Objetivo do Prime, reunião de 01/06/2026</cite>
+    <p class="dor-ponte">Hoje, quando o paciente pergunta, a IA pensa em outros hospitais. Quanto vale mudar essa resposta?</p>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="oferta" style="background:#111">
+  <div class="wrap">
+    <div class="t-label">Investimento</div>
+    <h2 class="t-frase">Um projeto contínuo. <em>Um investimento claro.</em></h2>
+    <div class="preco">R$ 1.500 <small>/ mês</small></div>
+    <div class="preco-rot">Projeto SEO e GEO</div>
+    <div class="preco-linhas">
+      <div><span>Setup: novo site e implantação</span><b>R$ 3.000 (uma vez)</b></div>
+    </div>
+    <p class="inclui-txt">O setup inclui o novo site, as páginas de especialidade, os dados estruturados, a medição e o diagnóstico inicial nas IAs. A mensalidade inclui 4 conteúdos por mês, autoridade local, monitoramento nas IAs e relatório mensal.</p>
+    <p class="t-nota">Projeto independente do contrato atual de conteúdo e tráfego pago. Não inclui hospedagem e domínio, contratados em nome do hospital.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="decisao">
+  <div class="wrap">
+    <div class="t-label">Condição para começar</div>
+    <h2 class="t-frase">Uma condição para iniciar agora. <em>O setup por nossa conta.</em></h2>
+    <div class="bonus-box">
+      <div class="riscado"><s>R$ 3.000</s><span>setup bonificado</span></div>
+      <p>Na contratação do projeto SEO e GEO por 12 meses, com aprovação até 03/11/2026, o novo site e toda a implantação ficam sem custo. O investimento é só a mensalidade de R$ 1.500.</p>
+    </div>
+    <p class="t-corpo">Com esse escopo e essa condição, faz sentido iniciar?</p>
+    <div class="passos">
+      <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Confirmamos o escopo e o início.</span></div>
+      <div class="pp"><div class="pp-n">02</div><b>Diagnóstico</b><span>Perguntas de paciente medidas nas IAs e no Google.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Site novo</b><span>Construção no mês 1 e publicação no mês 2.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Alma.Convert · Agência Prospect · Proposta preparada exclusivamente para o Prime Day Hospital · Válida até 03/11/2026</footer>
+
+<script>
+(function(){
+  const telas = Array.from(document.querySelectorAll('.tela'));
+  const atual = document.getElementById('cont-atual');
+  document.getElementById('cont-total').textContent = String(telas.length).padStart(2,'0');
+  let idx = 0;
+  // A tela atual é a que contém a linha central da janela (funciona com telas mais altas que a tela do celular)
+  function atualiza(){
+    const meio = innerHeight / 2;
+    const i = telas.findIndex(t => { const r = t.getBoundingClientRect(); return r.top <= meio && r.bottom > meio; });
+    if (i >= 0 && i !== idx) { idx = i; }
+    atual.textContent = String(idx + 1).padStart(2,'0');
+  }
+  let pendente = false;
+  addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(() => { pendente = false; atualiza(); }); } }, { passive: true });
+  addEventListener('resize', atualiza);
+  atualiza();
+  // Navegação por teclado durante a apresentação: setas, Page Up/Down e espaço
+  document.addEventListener('keydown', e => {
+    const next = ['ArrowDown','PageDown',' '].includes(e.key);
+    const prev = ['ArrowUp','PageUp'].includes(e.key);
+    if (!next && !prev) return;
+    e.preventDefault();
+    const alvo = telas[Math.max(0, Math.min(telas.length - 1, idx + (next ? 1 : -1)))];
+    alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
