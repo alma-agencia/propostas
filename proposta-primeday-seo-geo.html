@@ -388,6 +388,11 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 .formal-item p { font-size: .96rem; color: var(--dim); line-height: 1.55; }
 @media(max-width:900px){ .cards3, .tres-col, .entregaveis.e3 { grid-template-columns: 1fr; } .tab.ia { font-size: .8rem; } .tab.ia td, .tab.ia th { padding: 7px 5px; } }
 .anc-linha.total b.riscado { text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: var(--orange); color: rgba(255,255,255,.55); }
+.tela[hidden] { display: none !important; }
+.revela { position: absolute; left: 40px; bottom: 24px; background: none; border: 1px solid transparent; color: var(--muted); font: 600 .72rem var(--f); letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px; border-radius: 4px; cursor: pointer; opacity: .12; transition: opacity .2s; }
+.revela:hover, .revela:focus-visible { opacity: 1; border-color: var(--line-s); }
+.revela[hidden] { display: none; }
+@media(max-width:600px){ .revela { left: 20px; } }
 </style>
 </head>
 <body>
@@ -717,6 +722,19 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
       <div class="pp"><div class="pp-n">02</div><b>Diagnóstico</b><span>Perguntas de paciente medidas nas IAs e no Google.</span></div>
       <div class="pp"><div class="pp-n">03</div><b>Site novo</b><span>Construção no mês 1 e publicação no mês 2.</span></div>
     </div>
+    <button type="button" class="revela" id="revela" aria-label="Mostrar condição" title="Mostrar condição (tecla C)">condição</button>
+  </div>
+</section>
+
+<section class="tela dark extra" id="decisao" hidden>
+  <div class="wrap">
+    <div class="t-label">Condição para começar</div>
+    <h2 class="t-frase">Uma condição para iniciar agora. <em>O setup por nossa conta.</em></h2>
+    <div class="bonus-box">
+      <div class="riscado"><s>R$ 3.000</s><span>setup bonificado</span></div>
+      <p>Na contratação do projeto SEO e GEO por 12 meses, com aprovação até 03/11/2026, o novo site e toda a implantação ficam sem custo. O investimento é só a mensalidade de R$ 1.500.</p>
+    </div>
+    <p class="t-corpo">Com essa condição, podemos começar hoje?</p>
   </div>
 </section>
 
@@ -724,7 +742,8 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 
 <script>
 (function(){
-  const telas = Array.from(document.querySelectorAll('.tela'));
+  const visiveis = () => Array.from(document.querySelectorAll('.tela')).filter(t => !t.hidden);
+  let telas = visiveis();
   const atual = document.getElementById('cont-atual');
   // Telas .extra (condição reservada ao vendedor) não entram no total nem mostram o contador
   const contador = document.querySelector('.contador');
@@ -742,6 +761,17 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(() => { pendente = false; atualiza(); }); } }, { passive: true });
   addEventListener('resize', atualiza);
   atualiza();
+  // Condição reservada: só aparece quando o vendedor clica no botão discreto (ou tecla C)
+  function revela(){
+    const t = document.getElementById('decisao');
+    if (!t.hidden) return;
+    t.hidden = false;
+    telas = visiveis();
+    document.getElementById('revela').hidden = true;
+    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.getElementById('revela').addEventListener('click', revela);
+  document.addEventListener('keydown', e => { if ((e.key === 'c' || e.key === 'C') && !e.metaKey && !e.ctrlKey) revela(); });
   // Navegação por teclado durante a apresentação: setas, Page Up/Down e espaço
   document.addEventListener('keydown', e => {
     const next = ['ArrowDown','PageDown',' '].includes(e.key);
