@@ -393,6 +393,35 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 .revela:hover, .revela:focus-visible { opacity: 1; border-color: var(--line-s); }
 .revela[hidden] { display: none; }
 @media(max-width:600px){ .revela { left: 20px; } }
+
+/* Unimed: pedidos (recomendação) */
+.pedidos { margin-top: 34px; max-width: 1000px; display: grid; gap: 0; }
+.pedido { display: grid; grid-template-columns: 1.05fr 44px 1fr; gap: 18px; align-items: center; padding: 15px 0; border-top: 1px solid var(--line); }
+.pedido:last-child { border-bottom: 1px solid var(--line); }
+.ped-q { font-size: clamp(1rem, 1.45vw, 1.2rem); font-style: italic; font-weight: 300; color: var(--mid); line-height: 1.4; }
+.ped-seta { color: var(--orange); font-weight: 800; font-size: 1.5rem; text-align: center; }
+.ped-r { font-size: clamp(.95rem, 1.3vw, 1.08rem); font-weight: 600; color: var(--ink); line-height: 1.45; }
+@media(max-width:900px){ .pedido { grid-template-columns: 1fr; gap: 6px; } .ped-seta { text-align: left; transform: rotate(90deg); width: 24px; } }
+/* Unimed: ciclo (metodologia) */
+.ciclo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 34px; position: relative; }
+.ciclo::before { content: ''; position: absolute; left: 28px; right: 28px; top: 27px; height: 2px; background: var(--line-s); }
+.no { position: relative; padding-top: 72px; }
+.no-n { position: absolute; top: 0; left: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--orange); color: var(--white); font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; letter-spacing: .04em; box-shadow: 0 0 0 6px var(--white); }
+.no h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+.no p { font-size: .92rem; color: var(--dim); line-height: 1.55; }
+.no-v { display: block; margin-top: 10px; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.ciclo-volta { margin-top: 26px; padding: 12px 18px; border-left: 3px solid var(--orange); background: var(--off); font-size: .98rem; font-weight: 500; color: var(--mid); max-width: 900px; }
+@media(max-width:900px){ .ciclo { grid-template-columns: 1fr 1fr; } .ciclo::before { display: none; } }
+@media(max-width:600px){ .ciclo { grid-template-columns: 1fr; } }
+#vendas .funil { margin-top: 20px; }
+#vendas .passo { padding: 16px 18px; }
+#vendas .t-frase { font-size: clamp(1.8rem, 3.3vw, 2.9rem); }
+#vendas .condicao { margin-top: 18px; padding: 18px 24px; }
+#inacao .fases { margin-top: 30px; }
+#inacao .fase h3 { font-size: 1.05rem; }
+#inacao .valor-futuro { margin-top: 24px; }
+.perguntas { margin-top: 34px; }
+
 </style>
 </head>
 <body>
@@ -506,28 +535,29 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 <section class="tela off" id="recomendacao">
   <div class="wrap">
     <div class="t-label">Recomendação</div>
-    <h2 class="t-frase">Um time único para planejar, produzir, anunciar <em>e prestar contas.</em></h2>
-    <p class="t-corpo">Desenhamos o projeto sobre o que você pediu: conteúdo para o Instagram, com os Reels repostados no TikTok, design de rede social e de mídia off, tráfego pago e um gerente de projetos exclusivo para a conta.</p>
-    <div class="pilares">
-      <span class="pilar ativo">Instagram + TikTok</span>
-      <span class="pilar ativo">8 vídeos por mês</span>
-      <span class="pilar ativo">Design de redes e de mídia off</span>
-      <span class="pilar ativo">Tráfego pago</span>
-      <span class="pilar ativo">Gerente de projetos exclusivo</span>
+    <h2 class="t-frase">Você já descreveu a agência que procura. <em>Nós desenhamos o projeto a partir dela.</em></h2>
+    <div class="pedidos">
+      <div class="pedido"><p class="ped-q">"Uma agência que me ajude 360 mesmo."</p><div class="ped-seta">→</div><p class="ped-r">Um time só, com todas as frentes: conteúdo, design, vídeo, mídia paga e gestão.</p></div>
+      <div class="pedido"><p class="ped-q">"Trabalhar a quatro mãos."</p><div class="ped-seta">→</div><p class="ped-r">Planejamento feito com você e aprovado antes da produção, não depois.</p></div>
+      <div class="pedido"><p class="ped-q">"Atender na hora que eu preciso."</p><div class="ped-seta">→</div><p class="ped-r">Gerente de projetos exclusivo da conta, com reunião toda semana.</p></div>
+      <div class="pedido"><p class="ped-q">"O ano que vem é para gerar vendas."</p><div class="ped-seta">→</div><p class="ped-r">Mídia paga ativa de novo, gerando demanda para o seu comercial.</p></div>
     </div>
+    <p class="t-nota">Frases suas na triagem de 30/10/2026.</p>
   </div>
 </section>
 
 <section class="tela" id="metodo">
   <div class="wrap">
-    <div class="t-label">Como funciona o mês</div>
-    <h2 class="t-frase">Quatro etapas, <em>todo mês, com prazo e prova.</em></h2>
-    <div class="etapas">
-      <div class="etapa"><div class="etapa-n">01</div><h3>Planejamento</h3><p>Briefing geral no início e briefing mensal depois. Calendário editorial e roteiros pré-aprovados por você, com antecedência.</p><div class="verif"><b>Como verificar</b>Calendário e roteiros aprovados no Trello antes da produção.</div></div>
-      <div class="etapa"><div class="etapa-n">02</div><h3>Produção</h3><p>Duas diárias de gravação por mês, agendadas com a agenda dos médicos. Edição dos 8 vídeos e design das peças.</p><div class="verif"><b>Como verificar</b>Peças entregues dentro do prazo do cronograma.</div></div>
-      <div class="etapa"><div class="etapa-n">03</div><h3>Distribuição</h3><p>Publicação no Instagram, repostagem no TikTok e tráfego pago para levar o conteúdo a quem decide.</p><div class="verif"><b>Como verificar</b>Publicações no ar e campanhas ativas.</div></div>
-      <div class="etapa"><div class="etapa-n">04</div><h3>Medição</h3><p>Report semanal com o gerente de projetos e relatórios de tráfego pago e de orgânico, para ajustar o mês seguinte.</p><div class="verif"><b>Como verificar</b>Reunião semanal e relatório mensal.</div></div>
+    <div class="t-label">Nossa metodologia</div>
+    <h2 class="t-frase">Método Jornada: <em>o mês gira em quatro etapas e volta melhor.</em></h2>
+    <div class="ciclo">
+      <div class="no"><div class="no-n">01</div><h3>Planejar</h3><p>Briefing, calendário editorial e roteiros aprovados por você no Trello.</p><span class="no-v">Prova: aprovação registrada</span></div>
+      <div class="no"><div class="no-n">02</div><h3>Produzir</h3><p>Duas diárias de gravação com a agenda dos médicos. Edição dos 8 vídeos e design das peças.</p><span class="no-v">Prova: entrega no cronograma</span></div>
+      <div class="no"><div class="no-n">03</div><h3>Distribuir</h3><p>Instagram, repostagem no TikTok e mídia paga levando o conteúdo a quem decide.</p><span class="no-v">Prova: publicações e campanhas no ar</span></div>
+      <div class="no"><div class="no-n">04</div><h3>Medir</h3><p>Report semanal e relatórios de tráfego e orgânico. O aprendizado reescreve o próximo 01.</p><span class="no-v">Prova: reunião semanal</span></div>
     </div>
+    <div class="ciclo-volta">↺ &nbsp;O que aprendemos em 04 muda o que planejamos em 01. Por isso o segundo mês é melhor que o primeiro.</div>
+    <p class="t-nota">Pilares do Método Jornada trabalhados neste projeto: Criação &amp; Conteúdo (etapas 01 a 03) e Geração de Demanda (etapas 03 e 04).</p>
   </div>
 </section>
 
@@ -598,61 +628,44 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 
 <section class="tela" id="vendas">
   <div class="wrap">
-    <div class="t-label">Vendas e escopo</div>
-    <h2 class="t-frase">Geramos a demanda. <em>O comercial converte.</em></h2>
-    <div class="duas-col">
-      <div class="bloco"><h3>O que fazemos</h3><ul>
-        <li>Conteúdo e mídia para atrair empresas, beneficiários e cooperados</li>
-        <li>Relatórios que mostram o que gerou interesse</li>
-        <li>Material de apoio ao comercial dentro das cotas</li>
-      </ul></div>
-      <div class="bloco"><h3>O que não fazemos</h3><ul>
-        <li>Produção de eventos</li>
-        <li>Vídeo para TV (nosso conteúdo é exclusivo para redes sociais)</li>
-        <li>Jingle</li>
-        <li>Materiais impressos</li>
-      </ul></div>
+    <div class="t-label">Mídia paga</div>
+    <h2 class="t-frase">O Instagram sozinho não chega a quem decide. <em>A mídia paga leva a Unimed até ele.</em></h2>
+    <p class="t-corpo" style="margin-top:14px">Você disse que o seu público não entra na rede social para procurar plano. Por isso o conteúdo precisa de distribuição paga, com a mensagem certa para cada público.</p>
+    <div class="funil">
+      <div class="passo"><b>Conteúdo</b><span>Vídeos e peças produzidos no mês</span></div>
+      <div class="passo"><b>Mídia paga</b><span>Campanhas por público, com verba mapeada no mês 1</span></div>
+      <div class="passo"><b>Demanda</b><span>Contatos e interesse registrados em relatório</span></div>
+      <div class="passo"><b>Comercial</b><span>Seu gestor comercial e corretores fecham</span></div>
     </div>
-    <p class="t-nota">Hoje a Alma não acessa o CRM nem o time de corretores. Quando os contatos captados precisarem ir ao comercial, esse fluxo pode entrar como evolução do projeto.</p>
+    <div class="condicao"><p><strong>Onde termina o nosso trabalho:</strong> não acessamos o CRM nem o time de corretores. A conversão é do seu comercial. Organizar o fluxo dos contatos até ele pode entrar como evolução do projeto. Também ficam fora: eventos, vídeo para TV, jingle e impressos.</p></div>
   </div>
 </section>
 
-<section class="tela off" id="expectativa">
+<section class="tela dark" id="expectativa">
   <div class="wrap">
     <div class="t-label">Expectativa de resultado</div>
-    <h2 class="t-frase">Não prometemos número de vendas. <em>Prometemos método e medição.</em></h2>
-    <div class="duas-col">
-      <div class="bloco"><h3>O que medimos</h3><ul>
-        <li>Alcance, visualizações e engajamento dos Reels e do orgânico</li>
-        <li>Investimento, cliques e contatos das campanhas</li>
-        <li>Prazo das entregas e aprovações no Trello</li>
-      </ul></div>
-      <div class="bloco"><h3>Como ler</h3><ul>
-        <li>Ponto de partida: 15.471 seguidores e 4 Reels entre as 12 últimas publicações</li>
-        <li>As metas de 2027 são definidas com você no primeiro mês, com o orçamento de mídia</li>
-        <li>Venda depende também da conversão no comercial, que não controlamos</li>
-      </ul></div>
-    </div>
+    <h2 class="t-frase">Não prometemos número de vendas. <em>Prometemos o placar aberto.</em></h2>
+    <ol class="perguntas">
+      <li>Toda semana você vê alcance, visualizações, contatos das campanhas e o prazo de cada entrega.</li>
+      <li>No primeiro mês definimos juntos as metas de 2027 e a verba de mídia, hoje sem referência.</li>
+      <li>Ponto de partida: 15.471 seguidores, 4 Reels nas 12 últimas publicações e tráfego pago parado há mais de um ano.</li>
+    </ol>
+    <p class="t-nota">A venda depende também da conversão no comercial, que não controlamos. Seguidores e publicações: Instagram @unimedanapolis, 02/11/2026. Tráfego: seu relato na triagem.</p>
   </div>
 </section>
 
 <section class="tela" id="inacao">
   <div class="wrap">
     <div class="t-label">O custo da inação</div>
-    <h2 class="t-frase">Planejar sozinho também tem um custo. <em>Ele aparece na sua agenda.</em></h2>
-    <div class="duas-col">
-      <div class="bloco"><h3>O que continua, se nada mudar</h3><ul>
-        <li>Você segue montando o calendário e escrevendo para a agência produzir</li>
-        <li>O tráfego pago continua parado e sem referência de verba</li>
-        <li>Vídeos dependem de encaixe de agenda a cada pedido</li>
-      </ul></div>
-      <div class="bloco"><h3>O que isso custa</h3><ul>
-        <li>Tempo seu, que deveria ir para o crescimento de 2027</li>
-        <li>Meses de dados que não foram coletados para orientar o orçamento</li>
-        <li>Datas fortes do ano chegando sem preparo</li>
-      </ul></div>
+    <h2 class="t-frase">Enquanto a decisão espera, <em>o calendário não.</em></h2>
+    <div class="fases">
+      <div class="fase"><div class="fase-q">Novembro</div><h3>Black Friday e festa dos colaboradores</h3><p>Os vídeos da saúde do homem já disputam o horário dos médicos, sem equipe para encaixar.</p></div>
+      <div class="fase"><div class="fase-q">Dezembro</div><h3>Orçamento de 2027</h3><p>Verba de mídia definida sem benchmark, porque não há dados de campanha dos últimos meses.</p></div>
+      <div class="fase"><div class="fase-q">Janeiro</div><h3>Janeiro Branco</h3><p>O primeiro mês colorido do ano começa com a agência nova ou com a antiga. A diferença é decidida agora.</p></div>
+      <div class="fase"><div class="fase-q">Março</div><h3>Aniversário da Unimed</h3><p>Primeira data canônica de 2027. As peças precisam estar prontas em fevereiro.</p></div>
     </div>
-    <p class="t-nota">Fonte: relato do Hélio na triagem de 30/10/2026.</p>
+    <p class="valor-futuro">Cada mês sem planejamento é um mês de dados que <span>não existem</span> para orientar 2027.</p>
+    <p class="t-nota">Datas citadas por você na triagem de 30/10/2026.</p>
   </div>
 </section>
 
@@ -688,7 +701,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Investimento</div>
     <h2 class="t-frase">Um projeto contínuo. <em>Um investimento claro.</em></h2>
-    <div class="preco">R$ 6.000 <small>/ mês</small></div>
+    <div class="preco">R$ 6.200 <small>/ mês</small></div>
     <div class="preco-rot">Projeto Integrado · gestão e produção</div>
     <div class="preco-linhas">
       <div><span>Mídia paga*</span><b>Verba definida com você, paga direto à plataforma</b></div>
