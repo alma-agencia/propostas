@@ -578,6 +578,30 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 .o-lb{font-size:10px;font-weight:600;fill:#C2570A}
 .org-m{display:none}
 @media(max-width:900px){.org svg{display:none}.org-m{display:grid;gap:8px}.org-m div{background:#fff;border:1px solid var(--line);border-left:3px solid var(--orange);padding:10px 14px;font-size:.88rem;color:var(--mid);line-height:1.45}.org-m b{display:block;color:var(--ink)}}
+/* painel do gestor */
+.gp{max-width:1040px;margin-top:22px}
+.gp-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--off);align-items:center}
+.gp-tabs .jf.per{margin-left:auto;background:transparent;border-style:dashed}
+.gp-corpo{display:grid;grid-template-columns:1fr 250px}
+.gp-main{padding:12px 16px;border-right:1px solid var(--line)}
+.gp-h{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.gp-main .kpis{border:1px solid var(--line);margin-bottom:12px}
+.gp-duas{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+.fn{display:grid;gap:7px}
+.fn-r{display:grid;grid-template-columns:128px 1fr 44px;gap:8px;align-items:center;font-size:.72rem;color:var(--mid)}
+.fn-b{height:14px;background:#F0F0F0;border-radius:3px;overflow:hidden}
+.fn-b i{display:block;height:100%;background:var(--orange);border-radius:3px}
+.fn-r b{text-align:right;font-variant-numeric:tabular-nums}
+.gp-graf svg{width:100%;height:auto;display:block}
+.gp-graf .ax{font-size:8.5px;fill:#888;font-family:'Poppins',sans-serif}
+.leg{display:flex;gap:12px;font-size:.62rem;color:var(--muted);margin-top:4px}
+.leg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.gp-side{padding:12px 14px;display:grid;gap:8px;align-content:start}
+.sc{border:1px solid var(--line);border-left:3px solid var(--orange);padding:7px 10px;font-size:.72rem;line-height:1.35}
+.sc b{display:block;font-size:.76rem}
+.sc span{color:var(--muted)}
+.sc em{font-style:normal;font-weight:800;color:var(--ink)}
+@media(max-width:900px){.gp-corpo,.gp-duas{grid-template-columns:1fr}.gp-main{border-right:0;border-bottom:1px solid var(--line)}.fn-r{grid-template-columns:104px 1fr 40px}}
 /* escopo */
 .esc{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:20px}
 .esc h3{font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
@@ -776,6 +800,45 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   </div>
 </section>
 
+<section class="tela " id="gestor">
+  <div class="wrap">
+    <div class="t-label">Painel do gestor</div>
+    <h2 class="t-frase" style="font-size:clamp(1.7rem,2.9vw,2.4rem)">Os resultados de cada setor, <em>sem precisar abrir conversa por conversa.</em></h2>
+    <div class="janela gp">
+      <div class="jbar">Painel do gestor · Lumiar Internet<span>Exemplo ilustrativo, com dados fictícios</span></div>
+      <div class="gp-tabs"><span class="jf on2">Cobrança</span><span class="jf">SAC</span><span class="jf">Benefícios</span><span class="jf">Ordem de serviço</span><span class="jf">Resgate clientes</span><span class="jf per">Últimos 30 dias</span></div>
+      <div class="gp-corpo">
+        <div class="gp-main">
+          <div class="kpis">
+            <div class="kpi"><b>14.820</b><span>Mensagens enviadas</span></div>
+            <div class="kpi"><b>97%</b><span>Entregues</span></div>
+            <div class="kpi"><b>82%</b><span>Lidas</span></div>
+            <div class="kpi"><b>31%</b><span>Responderam</span></div>
+          </div>
+          <div class="gp-duas">
+            <div><div class="gp-h">Do envio à confirmação</div><div class="fn">
+              <div class="fn-r"><span>Enviadas</span><div class="fn-b"><i style="width:100%"></i></div><b>100%</b></div>
+              <div class="fn-r"><span>Entregues</span><div class="fn-b"><i style="width:97%"></i></div><b>97%</b></div>
+              <div class="fn-r"><span>Lidas</span><div class="fn-b"><i style="width:82%"></i></div><b>82%</b></div>
+              <div class="fn-r"><span>Recebimento confirmado</span><div class="fn-b"><i style="width:64%"></i></div><b>64%</b></div>
+              <div class="fn-r"><span>Responderam</span><div class="fn-b"><i style="width:31%"></i></div><b>31%</b></div>
+            </div></div>
+            <div class="gp-graf"><div class="gp-h">Envios por dia do mês</div><svg viewBox="0 0 360 118"><line x1="0" y1="100" x2="360" y2="100" stroke="#e5e5e5"/><rect x="8.0" y="10.0" width="9" height="90.0" rx="1.5" fill="#F9C9A0"/><rect x="8.0" y="12.7" width="9" height="87.3" rx="1.5" fill="#F97316"/><rect x="19.5" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="19.5" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="31.0" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="31.0" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="42.5" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="42.5" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="54.0" y="17.2" width="9" height="82.8" rx="1.5" fill="#F9C9A0"/><rect x="54.0" y="19.7" width="9" height="80.3" rx="1.5" fill="#F97316"/><rect x="65.5" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="65.5" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="77.0" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="77.0" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="88.5" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="88.5" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="100.0" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="100.0" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="111.5" y="13.6" width="9" height="86.4" rx="1.5" fill="#F9C9A0"/><rect x="111.5" y="16.2" width="9" height="83.8" rx="1.5" fill="#F97316"/><rect x="123.0" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="123.0" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="134.5" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="134.5" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="146.0" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="146.0" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="157.5" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="157.5" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="169.0" y="24.4" width="9" height="75.6" rx="1.5" fill="#F9C9A0"/><rect x="169.0" y="26.7" width="9" height="73.3" rx="1.5" fill="#F97316"/><rect x="180.5" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="180.5" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="192.0" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="192.0" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="203.5" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="203.5" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="215.0" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="215.0" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="226.5" y="46.0" width="9" height="54.0" rx="1.5" fill="#F9C9A0"/><rect x="226.5" y="47.6" width="9" height="52.4" rx="1.5" fill="#F97316"/><rect x="238.0" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="238.0" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="249.5" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="249.5" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="261.0" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="261.0" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="272.5" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="272.5" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="284.0" y="50.5" width="9" height="49.5" rx="1.5" fill="#F9C9A0"/><rect x="284.0" y="52.0" width="9" height="48.0" rx="1.5" fill="#F97316"/><rect x="295.5" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="295.5" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="307.0" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="307.0" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><rect x="318.5" y="64.0" width="9" height="36.0" rx="1.5" fill="#F9C9A0"/><rect x="318.5" y="65.1" width="9" height="34.9" rx="1.5" fill="#F97316"/><rect x="330.0" y="89.2" width="9" height="10.8" rx="1.5" fill="#F9C9A0"/><rect x="330.0" y="89.5" width="9" height="10.5" rx="1.5" fill="#F97316"/><rect x="341.5" y="82.0" width="9" height="18.0" rx="1.5" fill="#F9C9A0"/><rect x="341.5" y="82.5" width="9" height="17.5" rx="1.5" fill="#F97316"/><text class="ax" x="12.5" y="113" text-anchor="middle">1</text><text class="ax" x="58.5" y="113" text-anchor="middle">5</text><text class="ax" x="116.0" y="113" text-anchor="middle">10</text><text class="ax" x="173.5" y="113" text-anchor="middle">15</text><text class="ax" x="231.0" y="113" text-anchor="middle">20</text><text class="ax" x="288.5" y="113" text-anchor="middle">25</text><text class="ax" x="346.0" y="113" text-anchor="middle">30</text></svg><div class="leg"><span><i style="background:#F9C9A0"></i>Enviadas</span><span><i style="background:#F97316"></i>Entregues</span></div></div>
+          </div>
+        </div>
+        <div class="gp-side">
+          <div class="gp-h" style="margin-bottom:0">Outros setores</div>
+          <div class="sc"><b>SAC</b><em>74%</em> <span>resolvidas pela IA</span></div>
+          <div class="sc"><b>Benefícios</b><em>186</em> <span>contas analisadas</span></div>
+          <div class="sc"><b>Ordem de serviço</b><em>42</em> <span>OS abertas pelo agente</span></div>
+          <div class="sc"><b>Resgate clientes</b><em>318</em> <span>ex-clientes abordados</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="ilu">Cada setor tem seus indicadores. Na cobrança medimos entrega, leitura, confirmação de recebimento e resposta de cada aviso.</p>
+  </div>
+</section>
+
 <section class="tela " id="organismo">
   <div class="wrap">
     <div class="t-label">Tudo conectado</div>
@@ -811,7 +874,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
         <li>Canal único no WhatsApp oficial, com acesso da equipe e dos setores.</li>
         <li>Os 5 agentes de IA: SAC, SDR Benefícios, cobrança, suporte técnico e vendas.</li>
         <li>Integração por API com o sistema de gestão (Hubsoft).</li>
-        <li>Painel de conversas e acompanhamento dos números.</li>
+        <li>Painel de conversas e painel do gestor, com métricas por setor.</li>
         <li>Até 2 campanhas por mês (cobrança, resgate ou benefício).</li>
         <li>Atualizações e suporte. Sem custo variável por mensagem de IA.</li>
         <li>Volume de até 50 mil conversas por mês.</li></ul></div>
