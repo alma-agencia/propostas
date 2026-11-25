@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta · Dr. Célio Gomes | Alma.Convert</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   ALMA — PROPOSTA DR. ANDRÉ COSTA · TRÁFEGO PERFORMANCE
+   Formato: apresentação em telas verticais inteiras, com encaixe na rolagem.
+   Uma frase principal e uma evidência por tela. Roteiro do apresentador em documento interno.
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:     #1a1a1a;
+  --mid:     #333333;
+  --dim:     #555555;
+  --muted:   #7a7a7a;
+  --subtle:  #b5b5b5;
+  --off:     #f5f5f5;
+  --white:   #ffffff;
+  --line:    rgba(16,24,40,0.10);
+  --line-s:  rgba(16,24,40,0.18);
+  --orange:  #1D5FA8;
+  --orange-l:#EAF2FB;
+  --f: 'Poppins', -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { font-family: var(--f); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+
+/* ── Tela ── */
+.tela {
+  min-height: 100vh; min-height: 100svh;
+  scroll-snap-align: start; scroll-snap-stop: always;
+  display: flex; align-items: center;
+  padding: 80px 0 64px; position: relative; background: var(--white);
+}
+.tela.off  { background: var(--off); }
+.tela.dark { background: var(--ink); color: var(--white); }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+
+/* ── Tipografia de apresentação ── */
+.t-label { font-size: .78rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+.t-label::before { content:''; width: 28px; height: 2px; background: var(--orange); }
+.t-frase { font-size: clamp(2rem, 3.9vw, 3.4rem); font-weight: 800; line-height: 1.06; letter-spacing: -.035em; max-width: 960px; text-wrap: balance; }
+.t-frase em { font-style: italic; font-weight: 300; color: var(--orange); }
+.t-corpo { font-size: clamp(1.05rem, 1.45vw, 1.25rem); font-weight: 400; color: var(--dim); line-height: 1.7; max-width: 760px; margin-top: 28px; }
+.dark .t-corpo { color: rgba(255,255,255,.72); }
+.t-nota { font-size: .88rem; font-weight: 400; color: var(--muted); line-height: 1.65; max-width: 860px; margin-top: 28px; }
+.dark .t-nota { color: rgba(255,255,255,.5); }
+.t-nota b { color: var(--dim); font-weight: 600; }
+.dark .t-nota b { color: rgba(255,255,255,.75); }
+
+/* ── Marca e contador fixos ── */
+.marca { position: fixed; top: 26px; left: 40px; z-index: 50; font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; }
+.marca em { font-style: normal; font-weight: 300; color: var(--muted); }
+.contador { position: fixed; bottom: 24px; right: 40px; z-index: 50; font-size: .78rem; font-weight: 600; letter-spacing: .12em; color: var(--dim); background: rgba(255,255,255,.9); padding: 6px 12px; border-radius: 4px; font-variant-numeric: tabular-nums; }
+.contador b { color: var(--orange); }
+
+/* ── 00 Capa ── */
+.capa { border-bottom: 4px solid var(--orange); }
+.capa .t-frase { font-size: clamp(3rem, 7.5vw, 6.4rem); line-height: .98; letter-spacing: -.045em; }
+.capa-sub { font-size: clamp(1.25rem, 2.2vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--orange); margin-top: 24px; max-width: 820px; line-height: 1.35; }
+.capa-info { margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap; }
+.capa-info div { font-size: .82rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); line-height: 1.9; }
+.capa-info strong { color: var(--ink); font-weight: 700; }
+
+/* ── 01 Agência ── */
+.numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; max-width: 900px; }
+.numeros div { background: var(--white); padding: 26px 28px; }
+.numeros strong { display: block; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--orange); letter-spacing: -.04em; line-height: 1.05; }
+.numeros span { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.pilares { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.pilar { font-size: .9rem; font-weight: 500; padding: 9px 16px; border: 1px solid var(--line-s); color: var(--muted); border-radius: 99px; background: var(--white); }
+.pilar.ativo { border-color: var(--orange); background: var(--orange); color: var(--ink); font-weight: 700; }
+
+/* ── 02 Objetivo ── */
+.gap-row { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; margin-top: 56px; }
+.gap-num { font-size: clamp(6rem, 13vw, 10rem); font-weight: 800; color: var(--orange); line-height: .85; letter-spacing: -.06em; }
+.gap-txt { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 400; color: rgba(255,255,255,.85); line-height: 1.4; }
+.barras { margin-top: 48px; max-width: 760px; display: grid; gap: 14px; }
+.barra { display: grid; grid-template-columns: 110px 1fr 70px; gap: 16px; align-items: center; font-size: .95rem; color: rgba(255,255,255,.7); }
+.barra-trilho { height: 16px; background: rgba(255,255,255,.08); border-radius: 3px; overflow: hidden; }
+.barra-fill { height: 100%; background: rgba(255,255,255,.45); border-radius: 3px; }
+.barra-fill.meta { background: var(--orange); }
+.barra b { color: var(--white); font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* ── 03 Custo de esperar ── */
+.citacao { margin-top: 32px; padding: 28px 32px; border-left: 4px solid var(--orange); background: var(--off); max-width: 820px; }
+.citacao p { font-size: clamp(1.1rem, 1.7vw, 1.35rem); font-style: italic; color: var(--mid); line-height: 1.55; }
+.citacao cite { display: block; margin-top: 12px; font-style: normal; font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.valor-futuro { margin-top: 28px; font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 700; line-height: 1.35; max-width: 820px; letter-spacing: -.02em; }
+.valor-futuro span { color: var(--orange); }
+
+/* ── 04 Experiência anterior ── */
+.perguntas { margin-top: 40px; display: grid; gap: 14px; max-width: 820px; counter-reset: q; }
+.perguntas li { list-style: none; font-size: clamp(1.05rem, 1.5vw, 1.25rem); font-weight: 500; color: var(--white); padding: 18px 22px; border: 1px solid rgba(255,255,255,.16); border-radius: 6px; display: flex; gap: 16px; align-items: baseline; }
+.perguntas li::before { counter-increment: q; content: counter(q); color: var(--orange); font-weight: 800; }
+
+/* ── 05 Diagnóstico ── */
+.diag { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; margin-top: 32px; }
+.diag h3 { font-size: .78rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 14px; }
+.achados, .hipoteses { list-style: none; display: grid; gap: 10px; }
+.achados li { background: var(--white); border: 1px solid var(--line); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--mid); }
+.achados li strong { color: var(--orange); font-weight: 800; margin-right: 6px; }
+.achados li small { display: block; font-size: .76rem; color: var(--muted); margin-top: 4px; }
+.hipoteses li { border: 1px dashed var(--line-s); padding: 13px 18px; font-size: .98rem; line-height: 1.5; color: var(--dim); background: transparent; }
+
+/* ── Blocos em duas colunas ── */
+.duas-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; }
+.bloco { border-top: 3px solid var(--orange); padding-top: 18px; }
+.bloco h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
+.bloco p, .bloco li { font-size: 1rem; color: var(--dim); line-height: 1.65; }
+.bloco ul { list-style: none; display: grid; gap: 8px; }
+.bloco li { display: flex; gap: 10px; }
+.bloco li::before { content: '→'; color: var(--orange); flex-shrink: 0; }
+
+/* ── 07 Método ── */
+.etapas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 44px; }
+.etapa { background: var(--white); padding: 26px 22px; }
+.etapa-n { font-size: .78rem; font-weight: 700; letter-spacing: .18em; color: var(--orange); margin-bottom: 10px; }
+.etapa h3 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
+.etapa p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.etapa .verif { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+.etapa .verif b { display: block; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+
+/* ── 09 Medição ── */
+.funil { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 44px; }
+.passo { padding: 22px 20px; border: 1px solid var(--line-s); margin-right: -1px; background: var(--white); position: relative; }
+.passo:not(:last-child)::after { content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--orange); font-weight: 800; background: var(--off); z-index: 1; padding: 0 2px; }
+.passo b { display: block; font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+.passo span { font-size: .9rem; color: var(--dim); line-height: 1.5; }
+
+/* ── 10 Expectativa de mídia ── */
+.condicao { margin-top: 24px; background: var(--ink); color: var(--white); padding: 24px 28px; max-width: 900px; border-left: 4px solid var(--orange); }
+.condicao p { font-size: clamp(1.02rem, 1.5vw, 1.22rem); line-height: 1.5; }
+.condicao strong { color: var(--orange); }
+.tab-wrap { overflow-x: auto; margin-top: 16px; max-width: 900px; }
+.tab { width: 100%; border-collapse: collapse; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.tab th { text-align: left; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); padding: 10px 16px; border-bottom: 2px solid var(--ink); }
+.tab td { padding: 9px 16px; border-bottom: 1px solid var(--line); color: var(--mid); }
+.tab td:last-child, .tab th:last-child { text-align: right; }
+.tab td:last-child { font-weight: 800; color: var(--orange); }
+
+/* ── Primeiro ciclo ── */
+.fases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 44px; }
+.fase { border-top: 2px solid var(--line-s); padding-top: 18px; }
+.fase-q { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.fase h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; }
+.fase p { font-size: .93rem; color: var(--dim); line-height: 1.6; }
+.equipe { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.equipe .rot { font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-right: 6px; }
+.equipe .cargo { font-size: .92rem; font-weight: 600; padding: 8px 14px; border: 1px solid var(--line-s); border-radius: 99px; background: var(--white); }
+
+/* ── 12 Oferta ── */
+.preco { font-size: clamp(3.2rem, 7vw, 5.6rem); font-weight: 800; color: var(--orange); letter-spacing: -.05em; line-height: 1; margin-top: 28px; }
+.preco small { font-size: .38em; font-weight: 400; color: rgba(255,255,255,.6); letter-spacing: 0; }
+.preco-comp { font-size: clamp(1.1rem, 1.7vw, 1.4rem); color: rgba(255,255,255,.85); margin-top: 14px; }
+
+/* ── 13 Decisão ── */
+.passos { display: flex; gap: 0; margin-top: 56px; flex-wrap: wrap; max-width: 900px; }
+.pp { flex: 1; min-width: 200px; padding: 20px 24px 20px 0; }
+.pp-n { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--orange); color: var(--orange); font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.pp b { display: block; font-size: 1.1rem; margin-bottom: 4px; }
+.pp span { font-size: .92rem; color: var(--dim); line-height: 1.55; }
+footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--line); scroll-snap-align: end; background: var(--white); }
+
+
+/* ── Entregáveis ── */
+.entregaveis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 36px; }
+.ent { background: var(--white); padding: 20px 18px; }
+.ent b { display: block; font-size: 1rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -.01em; }
+.ent span { font-size: .88rem; color: var(--dim); line-height: 1.5; }
+
+/* ── Ancoragem ── */
+.ancora { margin-top: 24px; max-width: 760px; background: var(--white); border: 1px solid var(--line); }
+.anc-linha { display: flex; justify-content: space-between; gap: 16px; padding: 7px 22px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.anc-linha b { font-weight: 700; color: var(--ink); white-space: nowrap; }
+.anc-linha.sub { background: var(--off); font-weight: 600; }
+.anc-linha.total { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-size: 1.1rem; font-weight: 700; padding: 11px 22px; }
+.anc-linha.total b { color: var(--orange); font-size: 1.3rem; font-weight: 800; }
+
+/* ── A dor ── */
+.dor { text-align: center; max-width: 960px; }
+.dor-frase { font-size: clamp(1.7rem, 3.4vw, 2.8rem); font-weight: 300; font-style: italic; line-height: 1.3; letter-spacing: -.02em; color: var(--white); text-wrap: balance; }
+.dor-cite { display: block; margin-top: 24px; font-style: normal; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+.dor-ponte { margin-top: 64px; font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 700; color: var(--white); letter-spacing: -.02em; text-wrap: balance; }
+
+/* ── Investimento ── */
+.preco-rot { font-size: .85rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: 10px; }
+.preco-linhas { margin-top: 28px; max-width: 520px; display: grid; gap: 0; }
+.preco-linhas div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 1rem; color: rgba(255,255,255,.7); font-variant-numeric: tabular-nums; }
+.preco-linhas div.tot { color: var(--white); font-weight: 700; }
+.preco-linhas b { font-weight: 600; white-space: nowrap; }
+.inclui-txt { margin-top: 28px; font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.65; max-width: 860px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ── Mobile: a apresentação acontece no desktop; no celular, rolagem livre ── */
+@media(max-width:900px){
+  html { scroll-snap-type: none; }
+  .tela { min-height: 100vh; min-height: 100svh; padding: 88px 0 64px; }
+  .numeros, .diag, .duas-col { grid-template-columns: 1fr; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr 1fr; }
+  .passo:not(:last-child)::after { display: none; }
+  .gap-row { grid-template-columns: 1fr; gap: 12px; }
+}
+@media(max-width:600px){
+  .wrap { padding: 0 20px; }
+  .marca { display: none; }
+  .contador { right: 20px; bottom: 16px; }
+  .etapas, .funil, .fases, .entregaveis { grid-template-columns: 1fr; }
+  .barra { grid-template-columns: 70px 1fr 44px; }
+  .tab { font-size: .82rem; }
+  .tab th { font-size: .6rem; letter-spacing: .06em; padding: 8px 6px; }
+  .tab td { padding: 8px 6px; }
+  .t-frase { font-size: 1.85rem; }
+  .capa .t-frase { font-size: 2.6rem; }
+  .gap-num { font-size: 5.5rem; }
+  .preco { font-size: 3rem; }
+  footer { padding: 28px 20px; }
+}
+@media(max-width:400px){ .wrap { padding: 0 16px; } }
+
+/* ── Extras desta proposta ── */
+.dark .bloco p, .dark .bloco li { color: rgba(255,255,255,.78); }
+.dark .bloco h3 { color: var(--white); }
+.preco-linhas div.risc b { text-decoration: line-through; color: rgba(255,255,255,.4); font-weight: 500; }
+.preco-linhas div.risc em { font-style: normal; color: var(--orange); font-weight: 700; margin-left: 10px; }
+.credito { margin-top: 28px; max-width: 860px; background: var(--ink); color: var(--white); padding: 22px 28px; border-left: 4px solid var(--orange); }
+.credito p { font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.55; }
+.credito strong { color: var(--orange); }
+.cond-conteudo { margin-top: 28px; display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: end; max-width: 900px; }
+.somas { background: var(--white); border: 1px solid var(--line); }
+.somas div { display: flex; justify-content: space-between; gap: 18px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--mid); font-variant-numeric: tabular-nums; }
+.somas div.tot { background: var(--ink); color: var(--white); border-bottom: none; border-top: 3px solid var(--orange); font-weight: 700; }
+.somas div.tot b { color: var(--orange); font-size: 1.25rem; }
+#diagnostico .t-frase, #ancoragem .t-frase, #oferta .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#diagnostico .diag { margin-top: 22px; }
+#diagnostico .achados li { padding: 9px 16px; font-size: .92rem; }
+#diagnostico .hipoteses li { padding: 9px 16px; font-size: .92rem; }
+#ancoragem .ancora { margin-top: 18px; }
+#ancoragem .anc-linha { padding: 4px 22px; font-size: .95rem; }
+#ancoragem .anc-linha.total { padding: 8px 22px; }
+#ancoragem .t-nota { margin-top: 16px; }
+#oferta .preco { margin-top: 16px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 16px; }
+#oferta .preco-linhas div { padding: 6px 0; }
+#oferta .inclui-txt { margin-top: 16px; font-size: .88rem; line-height: 1.55; }
+#oferta .t-nota { margin-top: 14px; font-size: .8rem; line-height: 1.5; }
+@media(max-width:900px){ .cond-conteudo { grid-template-columns: 1fr; } }
+
+.numeros.q4 { grid-template-columns: repeat(4, 1fr); max-width: 1000px; margin-top: 26px; }
+.numeros.q4 div { padding: 20px 20px; }
+.numeros.q4 strong { font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
+.numeros.q4 span { font-size: .72rem; letter-spacing: .1em; display: block; margin-top: 6px; line-height: 1.4; }
+.numeros.q4 small { display: block; font-size: .74rem; color: var(--muted); margin-top: 4px; font-weight: 400; }
+#case .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#case .citacao { margin-top: 20px; padding: 16px 24px; }
+#case .citacao p { font-size: 1rem; }
+#case .t-nota { margin-top: 16px; font-size: .78rem; }
+#case .t-corpo { margin-top: 14px; }
+@media(max-width:900px){ .numeros.q4 { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px){ .numeros.q4 { grid-template-columns: 1fr; } }
+#objetivo .t-frase { font-size: clamp(1.6rem, 3vw, 2.5rem); }
+#objetivo .gap-row { margin-top: 22px; }
+#objetivo .gap-num { font-size: clamp(4rem, 9vw, 7rem); }
+#objetivo .duas-col { margin-top: 22px !important; }
+#objetivo .t-nota { margin-top: 16px; }
+#esperar .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#esperar .citacao { margin-top: 20px; padding: 20px 28px; }
+#esperar .t-corpo { margin-top: 18px; }
+#esperar .valor-futuro { margin-top: 20px; }
+.tres-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
+@media(max-width:900px){ .tres-col { grid-template-columns: 1fr; } }
+#oportunidades .t-frase, #recomendacao .t-frase, #porque .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#oportunidades .bloco p, #oportunidades .bloco li { font-size: .92rem; line-height: 1.55; }
+#oportunidades .tres-col { margin-top: 24px; }
+.t-frase em { display: block; }
+/* ── Antes/depois do case ── */
+.antes-depois { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; max-width: 1000px; }
+.ad { border-top: 3px solid var(--orange); padding-top: 14px; }
+.ad-rot { font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+.ad-linha { display: flex; align-items: flex-end; gap: 18px; }
+.ad-antes strong, .ad-depois strong { display: block; font-weight: 800; letter-spacing: -.04em; line-height: 1; white-space: nowrap; }
+.ad-antes strong { font-size: clamp(1.6rem, 2.6vw, 2.2rem); color: var(--muted); }
+.ad-depois strong { font-size: clamp(2.6rem, 4.6vw, 3.9rem); color: var(--orange); }
+.ad-antes span, .ad-depois span { display: block; font-size: .78rem; color: var(--muted); margin-top: 6px; }
+.ad-seta { font-size: 1.8rem; color: var(--orange); font-weight: 800; padding-bottom: 22px; }
+@media(max-width:900px){ .antes-depois { grid-template-columns: 1fr; } }
+#case .tab-wrap { margin-top: 14px; }
+#case .tab td { padding: 7px 14px; font-size: .95rem; }
+#case .citacao { margin-top: 14px; padding: 12px 22px; }
+#case .t-nota { margin-top: 12px; }
+#case .tab td:first-child { font-weight: 600; color: var(--ink); }
+#inacao .t-frase { font-size: clamp(1.7rem, 3.2vw, 2.7rem); }
+#inacao .duas-col { margin-top: 28px; }
+#inacao .bloco p, #inacao .bloco li { font-size: .95rem; line-height: 1.55; }
+
+/* ── Carrossel de logos (Quem somos) ── */
+.logos { margin-top: 26px; max-width: 900px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.logos-trilho { display: flex; align-items: center; gap: 56px; width: max-content; animation: logos-passa 45s linear infinite; }
+.logos-trilho img { height: 34px; width: auto; max-width: 150px; object-fit: contain; opacity: .3; filter: grayscale(1); flex-shrink: 0; }
+@keyframes logos-passa { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logos:hover .logos-trilho { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .logos-trilho { animation: none; } }
+@media(max-width:600px){ .logos-trilho { gap: 36px; } .logos-trilho img { height: 26px; } }
+#agencia .numeros { margin-top: 24px; }
+#agencia .t-corpo { margin-top: 20px; }
+
+#objetivo .t-frase { font-size: clamp(1.5rem, 2.8vw, 2.3rem); }
+#objetivo .gap-row { margin-top: 16px; }
+#objetivo .gap-num { font-size: clamp(3.5rem, 8vw, 6rem); }
+#objetivo .duas-col { margin-top: 16px !important; }
+#objetivo .bloco p { font-size: .95rem; }
+#experiencia .perguntas { margin-top: 26px; }
+#experiencia .t-corpo { margin-top: 18px; }
+#oferta .preco { margin-top: 14px; font-size: clamp(2.8rem, 6vw, 4.8rem); }
+#oferta .preco-linhas { margin-top: 14px; }
+#oferta .preco-linhas div { padding: 6px 0; }
+#oferta .inclui-txt { margin-top: 14px; font-size: .88rem; }
+#oferta .t-nota { margin-top: 12px; font-size: .8rem; }
+</style>
+</head>
+<body>
+
+<div class="marca" aria-hidden="true">Alma<em>.Convert</em></div>
+<div class="contador" aria-hidden="true"><b id="cont-atual">01</b> / <span id="cont-total">00</span></div>
+
+<section class="tela capa" id="capa">
+  <div class="wrap">
+    <div class="t-label">Proposta comercial</div>
+    <h1 class="t-frase">Dr. Célio Gomes</h1>
+    <p class="capa-sub">Um plano para ativar o tráfego de performance no Google e no Meta, com conteúdo gravado para sustentar os anúncios.</p>
+    <div class="capa-info">
+      <div>Preparada para<br><strong>Dr. Célio Gomes · Ortopedia, ombro e cotovelo</strong></div>
+      <div>Goiânia, GO<br><strong>Novembro de 2026</strong></div>
+      <div>Válida até<br><strong>02/12/2026</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="agencia">
+  <div class="wrap">
+    <div class="t-label">Quem somos</div>
+    <h2 class="t-frase">Criamos com alma. <em>Entregamos com método.</em></h2>
+    <p class="t-corpo">O Método Jornada tem quatro pilares que cobrem a comunicação até a venda. Para o seu momento, vamos trabalhar dois: geração de demanda, com tráfego e performance, e criação de conteúdo, com a gravação dos vídeos que alimentam os anúncios.</p>
+    <div class="pilares">
+      <span class="pilar ativo">Criação &amp; Conteúdo · vídeos</span>
+      <span class="pilar ativo">Geração de Demanda · tráfego e performance</span>
+      <span class="pilar">Conversão Inteligente</span>
+      <span class="pilar">Dados &amp; Retenção</span>
+    </div>
+    <div class="numeros">
+      <div><strong>Desde 2019</strong><span>gerando resultados</span></div>
+      <div><strong>+150</strong><span>clientes atendidos</span></div>
+      <div><strong>+25</strong><span>nichos de atuação</span></div>
+    </div>
+    <div class="logos" aria-label="Alguns clientes atendidos">
+      <div class="logos-trilho"><img src="logos/instituto-aguiar-neri.png" alt=""><img src="logos/ilha-med-hospital.png" alt=""><img src="logos/prime-day-hospital.png" alt=""><img src="logos/angioclin.png" alt=""><img src="logos/vitalab.png" alt=""><img src="logos/vacinas-vitalab.png" alt=""><img src="logos/isas.png" alt=""><img src="logos/luciane-prado-instituto.png" alt=""><img src="logos/narte.png" alt=""><img src="logos/asx.png" alt=""><img src="logos/b2.png" alt=""><img src="logos/puba.png" alt=""><img src="logos/sicomercio-ba-feira-de-santana.png" alt=""><img src="logos/spk-distribuicao.png" alt=""><img src="logos/tempo-geracao.png" alt=""><img src="logos/instituto-aguiar-neri.png" alt=""><img src="logos/ilha-med-hospital.png" alt=""><img src="logos/prime-day-hospital.png" alt=""><img src="logos/angioclin.png" alt=""><img src="logos/vitalab.png" alt=""><img src="logos/vacinas-vitalab.png" alt=""><img src="logos/isas.png" alt=""><img src="logos/luciane-prado-instituto.png" alt=""><img src="logos/narte.png" alt=""><img src="logos/asx.png" alt=""><img src="logos/b2.png" alt=""><img src="logos/puba.png" alt=""><img src="logos/sicomercio-ba-feira-de-santana.png" alt=""><img src="logos/spk-distribuicao.png" alt=""><img src="logos/tempo-geracao.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="objetivo">
+  <div class="wrap">
+    <div class="t-label">Objetivo</div>
+    <h2 class="t-frase">Ativar o tráfego de performance no Google e no Meta <em>e organizar o próximo ano.</em></h2>
+    <div class="duas-col" style="margin-top:28px">
+      <div class="bloco"><h3>Hoje</h3><p>Você já tentou fazer o tráfego por conta própria, no Google Ads, e não viu resultado. Tem um site próprio, Instagram ativo e atende particular.</p></div>
+      <div class="bloco"><h3>Meta</h3><p>Anúncios no Google e no Meta funcionando com medição, e vídeos gravados para sustentá-los. Você segue postando por conta própria.</p></div>
+    </div>
+    <p class="t-nota">Premissa: o que você nos contou na conversa inicial. Ainda não fizemos a reunião de triagem; confirmamos metas e números nos primeiros dias.</p>
+  </div>
+</section>
+
+<section class="tela " id="experiencia">
+  <div class="wrap">
+    <div class="t-label">O que já aconteceu</div>
+    <h2 class="t-frase">Você já tentou sozinho. <em>Faltou ver o resultado.</em></h2>
+    <p class="t-corpo">Anúncio sem estrutura e sem medição até o paciente deixa a conta no escuro. Para começar certo, queremos entender:</p>
+    <ol class="perguntas">
+      <li>Quantos contatos e pacientes novos vieram do Google Ads quando você anunciou?</li>
+      <li>Quem faz o primeiro atendimento no WhatsApp e como o contato é registrado?</li>
+      <li>Quais procedimentos você mais quer atrair em 2027, e quanto cada paciente vale para você?</li>
+    </ol>
+  </div>
+</section>
+
+<section class="tela off" id="diagnostico">
+  <div class="wrap">
+    <div class="t-label">O que encontramos</div>
+    <h2 class="t-frase">A base existe: site, Instagram e três locais de atendimento. <em>Falta a máquina de captação.</em></h2>
+    <div class="diag">
+      <div>
+        <h3>Achados</h3>
+        <ul class="achados">
+          <li><strong>2.781 seguidores</strong>e 47 publicações no Instagram, com bio que informa especialidade, CRM e RQE e leva ao WhatsApp.<small>Perfil público @celiogomes, coleta de 25/11/2026.</small></li>
+          <li><strong>3 posts em 2026</strong>entre os 12 mais recentes, e só 1 caso clínico (set/2025, 106 curtidas e 19 comentários). Os vídeos mais recentes são de eventos pessoais.<small>12 publicações mais recentes, 25/11/2026. Cinco são carrosséis e 2 têm curtidas ocultas.</small></li>
+          <li><strong>1 botão de contato</strong>no site: WhatsApp, com 3 locais de atendimento em Goiânia e Google Tag Manager instalado.<small>Site drceliogomes.com.br, 25/11/2026.</small></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hipóteses a validar</h3>
+        <ul class="hipoteses">
+          <li>Conteúdo do seu dia a dia de ombro e cotovelo (casos, dúvidas, cirurgia) é o que dá matéria-prima para anúncios.</li>
+          <li>Não verificamos ainda a ficha do Google Meu Negócio, as conversões do Google Ads nem as tags do Tag Manager.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="recomendacao">
+  <div class="wrap">
+    <div class="t-label">A recomendação</div>
+    <h2 class="t-frase">Anúncios que captam e vídeos que sustentam. <em>Medidos até a consulta.</em></h2>
+    <div class="duas-col">
+      <div class="bloco">
+        <h3>Google e Meta: performance</h3>
+        <ul>
+          <li>Google Ads de busca para quem procura ortopedista de ombro e cotovelo em Goiânia</li>
+          <li>Meta Ads no Instagram, com os vídeos gravados</li>
+          <li>Google Meu Negócio organizado e site com medição instalada</li>
+        </ul>
+      </div>
+      <div class="bloco">
+        <h3>Vídeos: matéria-prima dos anúncios</h3>
+        <ul>
+          <li>Gravação com equipe de vídeo a cada 2 meses, até 8 vídeos</li>
+          <li>Roteiros no seu tema: dor no ombro, lesões esportivas, cirurgia, recuperação</li>
+          <li>Você posta por conta própria, com o conteúdo pronto</li>
+        </ul>
+      </div>
+    </div>
+    <p class="t-nota">As peças respeitam as regras do CFM: sem anunciar especialidade que não conste no seu registro e sem prometer resultado.</p>
+  </div>
+</section>
+
+<section class="tela off" id="gravacao">
+  <div class="wrap">
+    <div class="t-label">Conteúdo gravado</div>
+    <h2 class="t-frase">Uma gravação a cada 2 meses. <em>Até 8 vídeos prontos.</em></h2>
+    <div class="passos">
+      <div class="pp"><div class="pp-n">01</div><b>Roteiros</b><span>Temas definidos com você a partir do que os pacientes perguntam, aprovados antes de gravar.</span></div>
+      <div class="pp"><div class="pp-n">02</div><b>Gravação</b><span>Equipe de vídeo da agência capta tudo em um dia, a cada 2 meses.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Edição</b><span>Até 8 vídeos editados, prontos para os anúncios e para o seu Instagram.</span></div>
+    </div>
+    <p class="t-corpo" style="margin-top:24px">Os mesmos vídeos servem aos dois usos: viram anúncios no Meta e, na sua mão, viram posts orgânicos. Você mantém o Instagram vivo por conta própria, sem precisar gravar todo mês.</p>
+    <p class="t-nota">Local e data da gravação combinados com você, considerando as unidades de atendimento.</p>
+  </div>
+</section>
+
+<section class="tela " id="case">
+  <div class="wrap">
+    <div class="t-label">Quem já seguiu esse método</div>
+    <h2 class="t-frase">O Dr. Igor começou com R$ 1,5 mil por mês. <em>A verba cresceu quando os números justificaram.</em></h2>
+    <div class="antes-depois">
+      <div class="ad"><div class="ad-rot">Consultas por mês</div><div class="ad-linha"><div class="ad-antes"><strong>8</strong><span>início de 2024</span></div><div class="ad-seta">→</div><div class="ad-depois"><strong>77 a 96</strong><span>abril a setembro de 2026</span></div></div></div>
+      <div class="ad"><div class="ad-rot">Mídia por mês</div><div class="ad-linha"><div class="ad-antes"><strong>R$ 1,5 mil</strong><span>2024</span></div><div class="ad-seta">→</div><div class="ad-depois"><strong>R$ 17 mil</strong><span>média de abril a setembro de 2026</span></div></div></div>
+    </div>
+    <div class="citacao"><p>"A metodologia baseada em dados e na evolução dos investimentos pelos resultados trouxe o retorno que eu precisava."</p><cite>Dr. Igor Neri, Instituto Aguiar Neri</cite></div>
+    <p class="t-nota">Instituto Aguiar Neri, nutrologia e emagrecimento, Feira de Santana (BA). Fonte: almaagencia.com.br/cases/instituto-aguiar-neri. Série de abril a setembro de 2026, sem junho; consultas realizadas no mês, informadas pelo consultório. É o resultado de outro consultório, de outra especialidade e outro mercado, e não uma promessa.</p>
+  </div>
+</section>
+
+<section class="tela off" id="metodo">
+  <div class="wrap">
+    <div class="t-label">Método Jornada · Geração de Demanda</div>
+    <h2 class="t-frase">Cada etapa tem uma entrega, um responsável <em>e uma revisão.</em></h2>
+    <div class="etapas">
+      <div class="etapa"><div class="etapa-n">01</div><h3>Preparação</h3><p>Google Meu Negócio, site, medição, CRM e acessos às contas de anúncio.</p><div class="verif"><b>Como verificar</b>Dados revisados e caminhos de contato testados.</div></div>
+      <div class="etapa"><div class="etapa-n">02</div><h3>Captação</h3><p>Anúncios no Google e no Meta, com os vídeos gravados.</p><div class="verif"><b>Como verificar</b>Investimento, conversas e origem de cada contato.</div></div>
+      <div class="etapa"><div class="etapa-n">03</div><h3>Atendimento</h3><p>Acompanhar toda semana, com quem atende por você, o que cada conversa virou.</p><div class="verif"><b>Como verificar</b>Consultas, cirurgias e motivos de não fechamento.</div></div>
+      <div class="etapa"><div class="etapa-n">04</div><h3>Aprendizado</h3><p>Revisar custos e gargalos e subir a verba em etapas, conforme os números.</p><div class="verif"><b>Como verificar</b>Decisões ligadas aos dados da campanha e do atendimento.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="medicao">
+  <div class="wrap">
+    <div class="t-label">Medição e CRM</div>
+    <h2 class="t-frase">O acompanhamento precisa chegar <em>até o paciente que operou ou tratou.</em></h2>
+    <div class="funil">
+      <div class="passo"><b>Anúncio</b><span>Google ou Meta</span></div>
+      <div class="passo"><b>Conversa</b><span>WhatsApp com origem identificada</span></div>
+      <div class="passo"><b>Consulta</b><span>Agendada e realizada</span></div>
+      <div class="passo"><b>Tratamento</b><span>Fechado e valor</span></div>
+    </div>
+    <p class="t-corpo">O CRM, conectado ao WhatsApp, mostra o funil em um painel para você e para quem atende por você. O atendimento continua sendo humano, feito pela sua equipe.</p>
+    <p class="t-nota">Quando um dado não estiver disponível, o relatório deixa isso claro. Não atribuímos pacientes aos anúncios por suposição.</p>
+  </div>
+</section>
+
+<section class="tela off" id="midia">
+  <div class="wrap">
+    <div class="t-label">Investimento em mídia</div>
+    <h2 class="t-frase">Recomendamos, no mínimo, <em>R$ 2.000 por mês em mídia paga.</em></h2>
+    <div class="condicao"><p>Com <strong>R$ 2.000 por mês</strong> divididos entre Google e Meta, em <strong>30 dias medimos o custo real por contato e por consulta</strong> antes de propor qualquer ampliação. Abaixo disso, os dados chegam devagar demais para decidir.</p></div>
+    <p class="t-corpo" style="margin-top:20px">A mídia é investida direto nas plataformas, no seu cartão ou na sua conta, e pode subir em etapas quando os números justificarem. O valor da gestão não muda com a verba.</p>
+    <p class="t-nota">É uma recomendação, não previsão nem promessa de resultado. A meta em número será definida com você no início.</p>
+  </div>
+</section>
+
+<section class="tela " id="execucao">
+  <div class="wrap">
+    <div class="t-label">Os primeiros 30 dias</div>
+    <h2 class="t-frase">Em 30 dias, o ciclo completo <em>já está rodando.</em></h2>
+    <div class="fases">
+      <div class="fase"><div class="fase-q">Semana 1</div><h3>Preparação</h3><p>Acessos, Google Meu Negócio, site, medição, CRM e roteiros da primeira gravação.</p></div>
+      <div class="fase"><div class="fase-q">Semana 2</div><h3>Captação</h3><p>Anúncios no ar no Google e no Meta, com otimização desde os primeiros dados.</p></div>
+      <div class="fase"><div class="fase-q">Semanas 2 a 4</div><h3>Atendimento</h3><p>Alinhamento semanal sobre as conversas e o fechamento.</p></div>
+      <div class="fase"><div class="fase-q">Dia 30</div><h3>Aprendizado</h3><p>Primeira revisão completa: custos, gargalos e ajustes para o mês seguinte.</p></div>
+    </div>
+    <p class="t-corpo" style="margin-top:24px">A partir do segundo mês, o mesmo ciclo se repete com o que os dados mostraram, e a primeira gravação entra no ar.</p>
+    <div class="equipe">
+      <span class="rot">Quem executa</span>
+      <span class="cargo">Gestor de Tráfego</span>
+      <span class="cargo">Analista de Dados</span>
+      <span class="cargo">Estrategista</span>
+      <span class="cargo">Videomaker</span>
+      <span class="cargo">Editor de Vídeo</span>
+    </div>
+  </div>
+</section>
+
+<section class="tela off" id="entregaveis">
+  <div class="wrap">
+    <div class="t-label">O que você recebe</div>
+    <h2 class="t-frase">Tudo o que esta etapa entrega, <em>em detalhe.</em></h2>
+    <div class="entregaveis">
+      <div class="ent"><b>Google Ads</b><span>Anúncios de busca para quem procura ortopedista de ombro e cotovelo em Goiânia.</span></div>
+      <div class="ent"><b>Meta Ads</b><span>Anúncios no Instagram, com os vídeos gravados.</span></div>
+      <div class="ent"><b>Gravação a cada 2 meses</b><span>Equipe de vídeo da agência, com até 8 vídeos editados por gravação.</span></div>
+      <div class="ent"><b>Google Meu Negócio</b><span>Organização do perfil: categoria, dados, unidades e avaliações.</span></div>
+      <div class="ent"><b>Análise do site</b><span>Revisão do caminho até o contato e da medição já instalada.</span></div>
+      <div class="ent"><b>CRM e acompanhamento</b><span>Painel do funil conectado ao WhatsApp, sem atendimento por IA, e alinhamento semanal.</span></div>
+      <div class="ent"><b>Direcionamento de criativos</b><span>Ganchos, formatos e roteiros para você gravar com segurança.</span></div>
+      <div class="ent"><b>Relatório mensal</b><span>Investimento, conversas, consultas, tratamentos e as decisões do mês seguinte.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tela " id="inacao">
+  <div class="wrap">
+    <div class="t-label">O custo da inação</div>
+    <h2 class="t-frase">Mais um ano sem resultado visível <em>também tem um custo.</em></h2>
+    <div class="duas-col">
+      <div class="bloco"><h3>O que continua, se nada mudar</h3><ul>
+        <li>O Google Ads segue sem estrutura nem medição, e você sem saber o que funciona</li>
+        <li>O Instagram segue com poucas publicações sobre o seu trabalho</li>
+        <li>O site recebe contato só de quem já te conhece</li></ul></div>
+      <div class="bloco"><h3>O que isso custa</h3><ul>
+        <li>Pacientes de ombro e cotovelo que procuram tratamento em Goiânia e encontram outros ortopedistas primeiro</li>
+        <li>Mais um ano de verba e tempo investidos sem aprendizado acumulado</li>
+        <li>Um 2027 que começa de novo do zero</li></ul></div>
+    </div>
+    <p class="t-nota">Situação atual: o que você nos contou, o Instagram e o site em 25/11/2026. Não comparamos concorrentes nem o Google Maps nesta versão.</p>
+  </div>
+</section>
+
+<section class="tela off" id="ancoragem">
+  <div class="wrap">
+    <div class="t-label">Para montar esse time por conta própria</div>
+    <h2 class="t-frase">Quanto custaria <em>contratar cada profissional.</em></h2>
+    <div class="ancora"><div class="anc-linha"><span>Gestor de Tráfego</span><b>R$ 2.416</b></div><div class="anc-linha"><span>Analista de Dados</span><b>R$ 4.750</b></div><div class="anc-linha"><span>Estrategista</span><b>R$ 3.993</b></div><div class="anc-linha"><span>Videomaker</span><b>R$ 3.030</b></div><div class="anc-linha"><span>Editor de Vídeo</span><b>R$ 3.125</b></div>
+      <div class="anc-linha sub"><span>Total do time por mês</span><b>R$ 17.314</b></div>
+      <div class="anc-linha"><span>Investimento em mídia*</span><b>R$ 2.000</b></div>
+      <div class="anc-linha total"><span>Total do projeto por mês</span><b>R$ 19.314</b></div>
+    </div>
+    <p class="t-nota">Valor médio mensal de profissionais PJ/freelancer em cada função (mediana, Glassdoor Brasil, 09/10/2026). Não inclui equipamento nem ferramentas. *A mídia varia conforme o investimento definido.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="dor">
+  <div class="wrap">
+    <div class="wrap dor" style="padding:0">
+    <p class="dor-frase">Você já tentou fazer sozinho e não viu o resultado. Agora quer organizar o próximo ano.</p>
+    <cite class="dor-cite">O que você nos contou, na conversa inicial</cite>
+    <p class="dor-ponte">Quanto vale, para você, começar 2027 com isso funcionando?</p>
+    </div>
+  </div>
+</section>
+
+<section class="tela dark" id="oferta1" style="background:#111">
+  <div class="wrap">
+    <div class="t-label">Investimento · Plano 01 · Posicionamento e performance</div>
+    <h2 class="t-frase">Conteúdo todo mês <em>e performance no mesmo plano.</em></h2>
+    <div class="preco">R$ 6.000 <small>/ mês</small></div>
+    <div class="preco-rot">Gestão da agência</div>
+    <div class="preco-linhas">
+      <div><span>Investimento em mídia (mínimo recomendado)*</span><b>R$ 2.000 / mês</b></div>
+      <div class="tot"><span>Total inicial por mês*</span><b>R$ 8.000</b></div>
+    </div>
+    <p class="inclui-txt">Inclui tudo do Plano 02 e mais posicionamento, estratégia de conteúdo e produção mensal de conteúdo: roteiros, captação mensal, edição, design e social media, para a agência cuidar também do seu Instagram.</p>
+    <p class="t-nota"><b style="color:#fff">O valor da gestão não muda com o aumento do investimento em mídia.</b> *A mídia é investida diretamente nas plataformas.</p>
+  </div>
+</section>
+
+<section class="tela dark" id="oferta2" style="background:#111">
+  <div class="wrap">
+    <div class="t-label">Investimento · Plano 02 · Performance</div>
+    <h2 class="t-frase">Performance no Google e no Meta, <em>mais vídeos a cada 2 meses.</em></h2>
+    <div class="preco">R$ 2.900 <small>/ mês</small></div>
+    <div class="preco-rot">Gestão da agência</div>
+    <div class="preco-linhas">
+      <div><span>Investimento em mídia (mínimo recomendado)*</span><b>R$ 2.000 / mês</b></div>
+      <div class="tot"><span>Total inicial por mês*</span><b>R$ 4.900</b></div>
+    </div>
+    <p class="inclui-txt">Inclui Google Ads, Meta Ads, gravação a cada 2 meses (até 8 vídeos), Google Meu Negócio, análise do site, CRM sem atendimento por IA, acompanhamento semanal e relatório mensal.</p>
+    <p class="t-nota"><b style="color:#fff">O valor da gestão não muda com o aumento do investimento em mídia.</b> *A mídia é investida diretamente nas plataformas e pode subir em etapas. Você posta por conta própria; sem produção mensal nem social media.</p>
+  </div>
+</section>
+
+<section class="tela " id="decisao">
+  <div class="wrap">
+    <div class="t-label">A decisão</div>
+    <h2 class="t-frase">Com esse escopo e esse investimento, <em>faz sentido iniciar?</em></h2>
+    <p class="t-corpo">O que ainda precisa ficar claro para você decidir?</p>
+    <div class="passos">
+      <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Escolha do plano e definição do início.</span></div>
+      <div class="pp"><div class="pp-n">02</div><b>Preparação</b><span>Semana 1: acessos, Google Meu Negócio, site, medição, CRM e roteiros.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Anúncios no ar</b><span>A partir da semana 2, com acompanhamento semanal e primeira revisão no dia 30.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>Alma.Convert · Agência Prospect · Proposta preparada exclusivamente para o Dr. Célio Gomes · Válida até 02/12/2026</footer>
+
+<script>
+(function(){
+  const telas = Array.from(document.querySelectorAll('.tela'));
+  const atual = document.getElementById('cont-atual');
+  document.getElementById('cont-total').textContent = String(telas.length).padStart(2,'0');
+  let idx = 0;
+  // A tela atual é a que contém a linha central da janela (funciona com telas mais altas que a tela do celular)
+  function atualiza(){
+    const meio = innerHeight / 2;
+    const i = telas.findIndex(t => { const r = t.getBoundingClientRect(); return r.top <= meio && r.bottom > meio; });
+    if (i >= 0 && i !== idx) { idx = i; }
+    atual.textContent = String(idx + 1).padStart(2,'0');
+  }
+  let pendente = false;
+  addEventListener('scroll', () => { if (!pendente) { pendente = true; requestAnimationFrame(() => { pendente = false; atualiza(); }); } }, { passive: true });
+  addEventListener('resize', atualiza);
+  atualiza();
+  // Navegação por teclado durante a apresentação: setas, Page Up/Down e espaço
+  document.addEventListener('keydown', e => {
+    const next = ['ArrowDown','PageDown',' '].includes(e.key);
+    const prev = ['ArrowUp','PageUp'].includes(e.key);
+    if (!next && !prev) return;
+    e.preventDefault();
+    const alvo = telas[Math.max(0, Math.min(telas.length - 1, idx + (next ? 1 : -1)))];
+    alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
