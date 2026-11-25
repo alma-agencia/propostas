@@ -413,6 +413,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 .ciclo-volta { margin-top: 26px; padding: 12px 18px; border-left: 3px solid var(--orange); background: var(--off); font-size: .98rem; font-weight: 500; color: var(--mid); max-width: 900px; }
 @media(max-width:900px){ .ciclo { grid-template-columns: 1fr 1fr; } .ciclo::before { display: none; } }
 @media(max-width:600px){ .ciclo { grid-template-columns: 1fr; } }
+@media(max-width:600px){.preco-linhas b{white-space:normal;text-align:right}.preco-linhas div{gap:12px}}
 #instagram { padding: 68px 0 48px; }
 #instagram .t-frase { font-size: clamp(1.8rem, 3.3vw, 2.9rem); }
 #instagram .numeros.q4 { margin-top: 18px; }
@@ -458,7 +459,8 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 @media(max-width:900px){.pn-kpis{grid-template-columns:repeat(2,1fr)}.pn-grid{grid-template-columns:1fr}.fn-l{grid-template-columns:96px 1fr 62px}}
 .ponte-api{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 .ponte-api div{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff}
-.ponte-api b{display:block;font-size:.95rem}.ponte-api span{font-size:.85rem;color:var(--dim)}
+.ponte-api b{display:block;font-size:.95rem;color:var(--ink)}.ponte-api span{font-size:.85rem;color:var(--dim)}
+#gestor .condicao{background:rgba(255,255,255,.06)}
 @media(max-width:600px){.preco-linhas b{white-space:normal;text-align:right}.preco-linhas div{gap:12px}}
 @media(max-width:900px){.ponte-api{grid-template-columns:1fr}}
 </style>
@@ -472,7 +474,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Projeto Integrado</div>
     <h1 class="t-frase">Unimed Catalão</h1>
-    <p class="capa-sub">Conteúdo que posiciona, mídia que gera demanda e um painel que mostra cada contrato, da entrada do lead ao fechamento.</p>
+    <p class="capa-sub">Criativos ligados ao planejamento anual, mídia que gera demanda e um painel que mostra cada contrato, da entrada do lead ao fechamento.</p>
     <div class="capa-info">
       <div>Preparada para<br><strong>Unimed Catalão</strong></div>
       <div>Catalão, GO<br><strong>Novembro de 2026</strong></div>
@@ -485,7 +487,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Quem somos</div>
     <h2 class="t-frase">Criamos com alma. <em>Entregamos com método.</em></h2>
-    <p class="t-corpo">Os quatro pilares do Método Jornada cobrem a comunicação até a venda. Este projeto une três deles: o conteúdo que posiciona a Unimed, a mídia paga que leva esse conteúdo a quem decide e os dados que mostram o que virou contrato.</p>
+    <p class="t-corpo">Os quatro pilares do Método Jornada cobrem a comunicação até a venda. Este projeto une três deles: os criativos que comunicam a Unimed, a mídia paga que leva esses criativos a quem decide e os dados que mostram o que virou contrato.</p>
     <div class="pilares">
       <span class="pilar ativo">Criação &amp; Conteúdo</span>
       <span class="pilar ativo">Geração de Demanda</span>
@@ -509,7 +511,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     <h2 class="t-frase">Uma comunicação constante. <em>Agora ligada à venda.</em></h2>
     <div class="duas-col">
       <div class="bloco"><h3>Hoje</h3><p>Uma conta ativa, com 11,9 mil seguidores e publicações quase diárias, incluindo a campanha de Black Friday. A conversa com o público ainda é baixa e não há uma visão única de quantos contatos viram contrato.</p></div>
-      <div class="bloco"><h3>Meta para 2027</h3><p>Planejamento mensal feito com vocês, vídeos com a agenda dos médicos, mídia paga gerando demanda para o comercial e um painel que mostra o pipeline do lead ao fechamento.</p></div>
+      <div class="bloco"><h3>Meta para 2027</h3><p>Criativos planejados com o marketing da Unimed dentro do calendário anual, vídeos com a agenda dos médicos, mídia paga gerando demanda para o comercial e um painel que mostra o pipeline do lead ao fechamento.</p></div>
     </div>
     <p class="t-nota">Seguidores e publicações: Instagram @unimedcatalao, 25/11/2026. Metas e números da unidade serão confirmados com vocês no início do projeto.</p>
   </div>
@@ -537,7 +539,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
       <div>
         <h3>Hipóteses</h3>
         <ul class="hipoteses">
-          <li>Com planejamento mensal, o volume atual pode virar menos peças avulsas e mais séries em vídeo, com médicos e beneficiários.</li>
+          <li>Criativos em vídeo, com médicos e beneficiários, tendem a gerar mais resposta que peças estáticas, e podem ir para a mídia paga.</li>
           <li>Quem compra plano não procura no Instagram: a mídia paga precisa levar a mensagem até ele, e o painel mostrar o que virou contrato.</li>
         </ul>
       </div>
@@ -549,10 +551,10 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 <section class="tela" id="recomendacao">
   <div class="wrap">
     <div class="t-label">Recomendação</div>
-    <h2 class="t-frase">Três frentes, um só time. <em>E um painel que liga tudo à venda.</em></h2>
+    <h2 class="t-frase">Três frentes, alinhadas ao marketing de vocês. <em>E um painel que liga tudo à venda.</em></h2>
     <div class="tres-col">
-      <div class="bloco"><h3>1 · Conteúdo</h3><p>Planejamento mensal aprovado por vocês, 8 vídeos em 2 dias de gravação, design para redes e mídia off. Uma visita presencial por mês para planejar junto.</p></div>
-      <div class="bloco"><h3>2 · Mídia paga</h3><p>Campanhas por público (pessoa física, PME e empresarial), levando o conteúdo a quem decide e gerando contatos para o comercial.</p></div>
+      <div class="bloco"><h3>1 · Criativos</h3><p>Criativos conectados ao planejamento anual de conteúdo e às ações da Unimed, planejados junto ao marketing. Até 10 vídeos em 2 diárias e uma visita presencial por mês.</p></div>
+      <div class="bloco"><h3>2 · Mídia paga</h3><p>Campanhas por público (pessoa física, PME e empresarial), levando os criativos a quem decide e gerando contatos para o comercial.</p></div>
       <div class="bloco"><h3>3 · Dados</h3><p>Painel gestor conectado por API ao CRM da unidade: o pipeline do lead ao contrato, por origem, etapa e produto.</p></div>
     </div>
     <p class="t-nota">As peças seguem as regras da ANS e o manual da marca Unimed.</p>
@@ -564,9 +566,9 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     <div class="t-label">Nossa metodologia</div>
     <h2 class="t-frase">Método Jornada: <em>o mês gira em quatro etapas e volta melhor.</em></h2>
     <div class="ciclo">
-      <div class="no"><div class="no-n">01</div><h3>Planejar</h3><p>Visita presencial, briefing, calendário editorial e roteiros aprovados por vocês no Trello.</p><span class="no-v">Prova: aprovação registrada</span></div>
-      <div class="no"><div class="no-n">02</div><h3>Produzir</h3><p>Duas diárias de gravação com a agenda dos médicos. Edição dos 8 vídeos e design das peças.</p><span class="no-v">Prova: entrega no cronograma</span></div>
-      <div class="no"><div class="no-n">03</div><h3>Distribuir</h3><p>Instagram, repostagem no TikTok e mídia paga levando o conteúdo a quem decide.</p><span class="no-v">Prova: publicações e campanhas no ar</span></div>
+      <div class="no"><div class="no-n">01</div><h3>Planejar</h3><p>Visita presencial com o marketing da Unimed: ações do mês dentro do planejamento anual e roteiros aprovados no Trello.</p><span class="no-v">Prova: aprovação registrada</span></div>
+      <div class="no"><div class="no-n">02</div><h3>Produzir</h3><p>Duas diárias de gravação com a agenda dos médicos. Edição de até 10 vídeos e design dos criativos.</p><span class="no-v">Prova: entrega no cronograma</span></div>
+      <div class="no"><div class="no-n">03</div><h3>Distribuir</h3><p>Criativos nas campanhas de mídia paga e entregues ao marketing para os canais da Unimed.</p><span class="no-v">Prova: campanhas no ar</span></div>
       <div class="no"><div class="no-n">04</div><h3>Medir</h3><p>Painel gestor com o pipeline do CRM, report semanal e relatórios. O aprendizado reescreve o próximo 01.</p><span class="no-v">Prova: reunião semanal</span></div>
     </div>
     <div class="ciclo-volta">↺ &nbsp;O que aprendemos em 04 muda o que planejamos em 01. Por isso o segundo mês é melhor que o primeiro.</div>
@@ -622,7 +624,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     <div class="t-label">Como o painel funciona</div>
     <h2 class="t-frase">Nada de planilha montada à mão. <em>O CRM alimenta o painel sozinho.</em></h2>
     <div class="funil">
-      <div class="passo"><b>Anúncio e conteúdo</b><span>Origem marcada em cada contato</span></div>
+      <div class="passo"><b>Anúncio e criativo</b><span>Origem marcada em cada contato</span></div>
       <div class="passo"><b>CRM da unidade</b><span>O comercial trabalha como já trabalha</span></div>
       <div class="passo"><b>API</b><span>Leitura automática das etapas e contratos</span></div>
       <div class="passo"><b>Painel gestor</b><span>Pipeline, origem, produto e tempo por etapa</span></div>
@@ -630,7 +632,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     <div class="ponte-api">
       <div><b>Para a diretoria</b><span>Quanto a mídia gerou de contrato e de vidas, mês a mês.</span></div>
       <div><b>Para o comercial</b><span>Onde o lead para e quanto tempo leva cada etapa.</span></div>
-      <div><b>Para a agência</b><span>Qual campanha e qual conteúdo trazem o lead que fecha.</span></div>
+      <div><b>Para a agência</b><span>Qual campanha e qual criativo trazem o lead que fecha.</span></div>
     </div>
     <div class="condicao" style="margin-top:22px"><p><strong>Onde termina o nosso trabalho:</strong> o painel só lê os dados do CRM; não alteramos o CRM nem atendemos os leads. A conversão é do comercial e dos corretores. A integração depende de o CRM ter API e de vocês liberarem o acesso.</p></div>
   </div>
@@ -639,20 +641,20 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 <section class="tela" id="entregaveis">
   <div class="wrap">
     <div class="t-label">O que vocês recebem</div>
-    <h2 class="t-frase">Produção completa. <em>Gestão e dados que acompanham.</em></h2>
+    <h2 class="t-frase">Criativos planejados com vocês. <em>Mídia e dados que acompanham.</em></h2>
     <div class="grupo-rot">Produção, todo mês</div>
     <div class="entregaveis">
-      <div class="ent"><b>8 vídeos</b><span>Reels para o Instagram, repostados no TikTok, em 2 dias de gravação.</span></div>
-      <div class="ent"><b>Até 12 designs</b><span>Posts, carrosséis e stories para as redes sociais.</span></div>
-      <div class="ent"><b>Até 6 peças de mídia off</b><span>Design exclusivo para materiais externos e internos.</span></div>
+      <div class="ent"><b>Até 10 vídeos</b><span>Criativos em vídeo, gravados em 2 diárias por mês.</span></div>
+      <div class="ent"><b>Até 12 criativos estáticos</b><span>Peças e carrosséis para campanhas e ações da Unimed.</span></div>
+      <div class="ent"><b>Até 6 peças de mídia off</b><span>Materiais externos e internos das ações específicas.</span></div>
       <div class="ent"><b>Tráfego pago</b><span>Campanhas gerenciadas por analista dedicado.</span></div>
     </div>
     <div class="grupo-rot">Gestão, dados e prestação de contas</div>
     <div class="entregaveis">
-      <div class="ent"><b>Visita presencial mensal</b><span>Planejamento e alinhamento na Unimed Catalão, uma vez por mês.</span></div>
+      <div class="ent"><b>Visita presencial mensal</b><span>Planejamento com o marketing da Unimed Catalão, uma vez por mês.</span></div>
       <div class="ent"><b>Painel gestor</b><span>Conectado via API ao CRM, do lead ao fechamento.</span></div>
-      <div class="ent"><b>Calendário e Trello</b><span>Calendário mensal e roteiros aprovados antes da gravação.</span></div>
-      <div class="ent"><b>Report semanal</b><span>Reunião semanal e relatórios de tráfego e orgânico.</span></div>
+      <div class="ent"><b>Planejamento anual e Trello</b><span>Criativos ligados ao calendário de conteúdo e roteiros aprovados antes da gravação.</span></div>
+      <div class="ent"><b>Report semanal</b><span>Reunião semanal e relatórios de tráfego e criativos.</span></div>
     </div>
   </div>
 </section>
@@ -660,18 +662,31 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
 <section class="tela off" id="especialistas">
   <div class="wrap">
     <div class="t-label">Quem executa</div>
-    <h2 class="t-frase">Dez especialistas <em>a serviço da Unimed Catalão.</em></h2>
+    <h2 class="t-frase">Nove especialistas <em>a serviço da Unimed Catalão.</em></h2>
     <div class="entregaveis e3">
-      <div class="ent"><b>Gerente de Projetos</b><span>Acompanhamento da conta, prazos, reunião semanal e visita mensal.</span></div>
-      <div class="ent"><b>Estrategista de Conteúdo</b><span>Define séries e temas e participa do planejamento.</span></div>
-      <div class="ent"><b>Social Media</b><span>Publicação, rotina das redes e comunidade.</span></div>
-      <div class="ent"><b>Copywriter</b><span>Roteiros e legendas, dentro das regras da ANS.</span></div>
-      <div class="ent"><b>Designer de redes e de mídia off</b><span>Peças do Instagram e materiais externos.</span></div>
+      <div class="ent"><b>Gerente de Projetos</b><span>Acompanhamento da conta, alinhamento com o marketing e visita mensal.</span></div>
+      <div class="ent"><b>Estrategista de Conteúdo</b><span>Conecta os criativos ao planejamento anual e às ações da Unimed.</span></div>
+      <div class="ent"><b>Copywriter</b><span>Roteiros e textos dos criativos, dentro das regras da ANS.</span></div>
+      <div class="ent"><b>Designer de redes e de mídia off</b><span>Criativos estáticos e materiais externos.</span></div>
       <div class="ent"><b>Videomaker</b><span>Gravação dos vídeos, com agenda alinhada aos médicos.</span></div>
-      <div class="ent"><b>Editor de Vídeo</b><span>Edição e acabamento dos Reels.</span></div>
+      <div class="ent"><b>Editor de Vídeo</b><span>Edição e acabamento dos vídeos.</span></div>
       <div class="ent"><b>Analista de Tráfego</b><span>Campanhas, orçamento e relatório de resultados.</span></div>
       <div class="ent"><b>Analista de Dados</b><span>Integração com o CRM e painel gestor.</span></div>
     </div>
+  </div>
+</section>
+
+<section class="tela dark" id="gestor">
+  <div class="wrap">
+    <div class="t-label">Gerente de Projetos · presencial</div>
+    <h2 class="t-frase">Uma vez por mês, <em>a agência senta à mesa com vocês.</em></h2>
+    <p class="t-corpo">O Gerente de Projetos vai à Unimed Catalão todo mês. É a pessoa que conhece o projeto inteiro e responde por ele, do criativo ao painel.</p>
+    <div class="ponte-api">
+      <div><b>Com o marketing</b><span>Ações do mês dentro do planejamento anual, briefing dos criativos e aprovação dos roteiros na hora.</span></div>
+      <div><b>Com a diretoria e o comercial</b><span>Leitura do painel gestor: quanto a mídia gerou de contrato e onde o lead parou.</span></div>
+      <div><b>Com os médicos</b><span>Agenda das 2 diárias de gravação combinada antes, sem tirar ninguém do atendimento.</span></div>
+    </div>
+    <div class="condicao" style="margin-top:22px"><p><strong>Por que presencial:</strong> decisões tomadas na mesma reunião, menos idas e vindas por mensagem e um responsável único que vocês conhecem pessoalmente. Entre as visitas, a reunião semanal continua online.</p></div>
   </div>
 </section>
 
@@ -696,7 +711,7 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
         <li>Datas de reforço definidas com o comercial</li>
       </ul></div>
     </div>
-    <p class="t-nota">Datas e ações vistas no Instagram da Unimed Catalão em 25/11/2026; o calendário final é definido com vocês. Cuidamos das peças e da cobertura, dentro das cotas. Não produzimos os eventos.</p>
+    <p class="t-nota">Datas e ações vistas no Instagram da Unimed Catalão em 25/11/2026; o calendário final é definido com vocês. Criamos os criativos de cada ação com o marketing de vocês, dentro das cotas. Não produzimos os eventos.</p>
   </div>
 </section>
 
@@ -731,8 +746,8 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Para montar esse time por conta própria</div>
     <h2 class="t-frase">Quanto custaria <em>contratar cada especialista.</em></h2>
-    <div class="ancora"><div class="anc-linha"><span>Estrategista de Conteúdo</span><b>R$ 3.993</b></div><div class="anc-linha"><span>Copywriter</span><b>R$ 3.500</b></div><div class="anc-linha"><span>Editor de Vídeo</span><b>R$ 3.125</b></div><div class="anc-linha"><span>Videomaker</span><b>R$ 3.030</b></div><div class="anc-linha"><span>Analista de Tráfego</span><b>R$ 2.416</b></div><div class="anc-linha"><span>Social Media</span><b>R$ 2.300</b></div><div class="anc-linha"><span>Designer de redes e Designer de mídia off (2 profissionais)</span><b>R$ 4.000</b></div><div class="anc-linha"><span>Analista de Dados</span><b>R$ 4.750</b></div>
-      <div class="anc-linha total"><span>Total do time por mês</span><b class="riscado">R$ 27.114</b></div>
+    <div class="ancora"><div class="anc-linha"><span>Estrategista de Conteúdo</span><b>R$ 3.993</b></div><div class="anc-linha"><span>Copywriter</span><b>R$ 3.500</b></div><div class="anc-linha"><span>Editor de Vídeo</span><b>R$ 3.125</b></div><div class="anc-linha"><span>Videomaker</span><b>R$ 3.030</b></div><div class="anc-linha"><span>Analista de Tráfego</span><b>R$ 2.416</b></div><div class="anc-linha"><span>Designer de redes e Designer de mídia off (2 profissionais)</span><b>R$ 4.000</b></div><div class="anc-linha"><span>Analista de Dados</span><b>R$ 4.750</b></div>
+      <div class="anc-linha total"><span>Total do time por mês</span><b class="riscado">R$ 24.814</b></div>
     </div>
     <p class="t-nota">Valor médio mensal de profissionais PJ/freelancer em cada função (mediana, Glassdoor Brasil, coleta de 09/10/2026). O Gerente de Projetos não entra na soma por falta de referência estável de mercado. Não inclui mídia paga, deslocamento nem ferramentas.</p>
   </div>
@@ -752,12 +767,12 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">Investimento</div>
     <h2 class="t-frase">Um projeto contínuo. <em>Um investimento claro.</em></h2>
-    <div class="preco">R$ 8.500 <small>/ mês</small></div>
-    <div class="preco-rot">Projeto Integrado · gestão, produção e dados</div>
+    <div class="preco">R$ 10.500 <small>/ mês</small></div>
+    <div class="preco-rot">Projeto Integrado · criativos, mídia e dados</div>
     <div class="preco-linhas">
       <div><span>Mídia paga*</span><b>Verba definida com vocês, paga direto à plataforma</b></div>
     </div>
-    <p class="inclui-txt">Inclui gestão e produção de conteúdo para Instagram (Reels repostados no TikTok), 8 vídeos em 2 dias de gravação, até 12 designs de redes sociais, até 6 peças de mídia off, analista de tráfego pago, painel gestor conectado via API ao CRM da unidade, uma visita presencial por mês, gerente de projetos com reunião semanal, relatórios de tráfego e orgânico, calendário editorial, roteiros pré-aprovados e projeto exclusivo no Trello.</p>
+    <p class="inclui-txt">Inclui criativos conectados ao planejamento anual de conteúdo e às ações específicas da Unimed, planejados junto ao marketing: até 10 vídeos em 2 diárias de gravação, até 12 criativos estáticos, até 6 peças de mídia off, analista de tráfego pago, painel gestor conectado via API ao CRM da unidade, uma visita presencial por mês, gerente de projetos com reunião semanal, relatórios de tráfego e criativos, roteiros pré-aprovados e projeto exclusivo no Trello.</p>
     <p class="t-nota">*A verba de mídia não está incluída e o valor da gestão não muda com ela. Deslocamento da equipe para a gravação e a visita mensal incluso.</p>
   </div>
 </section>
@@ -769,7 +784,6 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
     <div class="entregaveis">
       <div class="ent"><b>R$ 150</b><span>por demanda adicional de mídia off.</span></div>
       <div class="ent"><b>R$ 800</b><span>por turno extra de gravação.</span></div>
-      <div class="ent"><b>R$ 600 por rede</b><span>gestão e conteúdo exclusivo em outra rede social (LinkedIn, TikTok ou X).</span></div>
       <div class="ent"><b>Sob consulta</b><span>contratação de talento (ator ou atriz) para atuar nos vídeos.</span></div>
     </div>
   </div>
@@ -779,11 +793,11 @@ footer { padding: 32px 40px; text-align: center; font-size: .78rem; color: var(-
   <div class="wrap">
     <div class="t-label">A decisão</div>
     <h2 class="t-frase">Com esse escopo e esse investimento, <em>o que falta para começarmos?</em></h2>
-    <p class="t-corpo">Se estiver tudo claro, já definimos o início do projeto, a primeira visita e o primeiro calendário.</p>
+    <p class="t-corpo">Se estiver tudo claro, já definimos o início do projeto, a primeira visita e os criativos do primeiro mês.</p>
     <div class="passos">
       <div class="pp"><div class="pp-n">01</div><b>Aprovação</b><span>Confirmamos o escopo e a data de início.</span></div>
       <div class="pp"><div class="pp-n">02</div><b>Briefing e acesso ao CRM</b><span>Primeira visita: públicos, tom, regras e liberação da API do CRM.</span></div>
-      <div class="pp"><div class="pp-n">03</div><b>Primeiro calendário e painel</b><span>Calendário e roteiros do primeiro mês no Trello, e o painel com as etapas de vocês.</span></div>
+      <div class="pp"><div class="pp-n">03</div><b>Primeiros criativos e painel</b><span>Ações e roteiros do primeiro mês no Trello, e o painel com as etapas de vocês.</span></div>
     </div>
   </div>
 </section>
